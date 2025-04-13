@@ -11,6 +11,7 @@
   <template v-else>
     <BotTurn v-if="navigationState.currentCard"
        :navigationState="navigationState" :currentCard="navigationState.currentCard"
+       :key="JSON.stringify(state.alienDiscovery.species)"
        @executed="next" @notPossible="notPossible"/>
   </template>
 

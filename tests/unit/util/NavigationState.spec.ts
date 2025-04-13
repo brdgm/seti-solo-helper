@@ -48,6 +48,6 @@ function cardDeck(pile: string[], discard: string[]) : CardDeckPersistence {
   return mockCardDeck({pile, discard}).toPersistence()
 }
 
-function navigationState(params:RouteParams, state:State) : NavigationState {
-  return new NavigationState(mockRouteLocation({params}), state)
+function navigationState(params:RouteParams, theState:State) : NavigationState {
+  return new NavigationState(mockRouteLocation({params}), theState)
 }
