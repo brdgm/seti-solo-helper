@@ -41,6 +41,7 @@ import { useRouter } from 'vue-router'
 import getDifficultyLevelSettings, { DifficultyLevelSettings } from '@/util/getDifficultyLevelSettings'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Player from '@/services/enum/Player'
+import RouteCalculator from '@/services/RouteCalculator'
 
 export default defineComponent({
   name: 'SetupGame',
@@ -71,7 +72,8 @@ export default defineComponent({
   },
   methods: {
     setupBot() : void {
-      this.router.push('/setupBot')
+      const routeCalculator = new RouteCalculator({round:1})
+      this.router.push(routeCalculator.getFirstTurnRouteTo(this.state))
     }
   }
 })

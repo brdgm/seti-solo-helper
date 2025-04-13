@@ -24,11 +24,11 @@ const state = mockState({rounds:[
 
 describe('util/NavigationState', () => {
   it('getCardDeck', () => {
-    expect(navigationState({name:'TurnBot',round:'1',turn:'1'}).cardDeck?.toPersistence())
+    expect(navigationState({name:'RoundTurnBot',round:'1',turn:'1'}).cardDeck?.toPersistence())
         .to.eql(cardDeck(['S.2'], ['S.1']), 'round1-turn1-bot1')
-    expect(navigationState({name:'TurnBot',round:'1',turn:'2'}).cardDeck?.toPersistence())
+    expect(navigationState({name:'RoundTurnBot',round:'1',turn:'2'}).cardDeck?.toPersistence())
         .to.eql(cardDeck([], ['S.2','S.1']), 'round1-turn2-bot1')
-    expect(navigationState({name:'TurnBot',round:'1',turn:'3'}).botPass).to.be.true
+    expect(navigationState({name:'RoundTurnBot',round:'1',turn:'3'}).botPass).to.be.true
   })
 })
 

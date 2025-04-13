@@ -10,6 +10,7 @@ export default class NavigationState {
   readonly round : number
   readonly turn : number
   readonly turnOrderIndex : number
+  readonly action : number
   readonly player : Player
   readonly startPlayer : Player
   readonly botPersistence? : BotPersistence
@@ -20,8 +21,9 @@ export default class NavigationState {
     this.round = getIntRouteParam(route, 'round')
     this.turn = getIntRouteParam(route, 'turn')
     this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
+    this.action = getIntRouteParam(route, 'action')
 
-    if (route.name == 'TurnPlayer') {
+    if (route.name == 'RoundTurnPlayer') {
       this.player = Player.PLAYER
     }
     else {
