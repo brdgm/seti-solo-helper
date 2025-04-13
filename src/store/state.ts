@@ -8,7 +8,7 @@ export const useStateStore = defineStore(`${name}.state`, {
       language: 'en',
       baseFontSize: 1.0,
       setup: {
-        difficultyLevels: [DifficultyLevel.MEDIUM]
+        difficultyLevel: DifficultyLevel.LEVEL_1
       },
       rounds: []
     } as State
@@ -40,7 +40,7 @@ export interface State {
   rounds: Round[]
 }
 export interface Setup {
-  difficultyLevels: DifficultyLevel[] 
+  difficultyLevel: DifficultyLevel
   debugMode?: boolean
 }
 
@@ -55,4 +55,5 @@ export interface Turn {
 export interface CardDeckPersistence {
   pile: string[]
   discard: string[]
+  advanced: string[]
 }
