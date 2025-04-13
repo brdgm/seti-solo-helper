@@ -5,15 +5,16 @@ import { CardDeckPersistence } from '@/store/state'
 import { ref } from 'vue'
 import DifficultyLevel from './enum/DifficultyLevel'
 import CardType from './enum/CardType'
+import getDifficultyLevelSettings from '@/util/getDifficultyLevelSettings'
 
 /**
  * Manages the solo card deck with action cards and advanced reserve cards.
  */
 export default class CardDeck {
 
-  private _pile
-  private _discard
-  private _advanced
+  private readonly _pile
+  private readonly _discard
+  private readonly _advanced
 
   private constructor(pile : Card[], discard : Card[], advanced : Card[]) {
     this._pile = ref(pile)
@@ -89,18 +90,11 @@ export default class CardDeck {
    * @param difficultyLevel DifficultyLevel
    */
   public static new(difficultyLevel: DifficultyLevel) : CardDeck {
-    const starterCards = shuffle(Cards.getAll(CardType.STARTER))
-    const advancedCards = shuffle(Cards.getAll(CardType.ADVANCED))
-    let cards : Card[]
-    let advanced : Card[]
-    if ([DifficultyLevel.LEVEL_3, DifficultyLevel.LEVEL_4, DifficultyLevel.LEVEL_5].includes(difficultyLevel)) {
-      cards = shuffle([...starterCards, advancedCards[0]])
-      advanced = advancedCards.slice(1)
-    }
-    else {
-      cards = starterCards
-      advanced = advancedCards
-    }
+    const allStarterCards = shuffle(Cards.getAll(CardType.STARTER))
+    const allAdvancedCards = shuffle(Cards.getAll(CardType.ADVANCED))
+    const advancedCardCount = getDifficultyLevelSettings(difficultyLevel).advancedCards
+    const cards = shuffle([...allStarterCards, ...allAdvancedCards.slice(0, advancedCardCount)])
+    const advanced = allAdvancedCards.slice(advancedCardCount)
     return new CardDeck(cards, [], advanced)
   }
 
