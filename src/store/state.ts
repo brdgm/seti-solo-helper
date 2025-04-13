@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { name } from '@/../package.json'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
+import Player from '@/services/enum/Player'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -41,11 +42,14 @@ export interface State {
 }
 export interface Setup {
   difficultyLevel: DifficultyLevel
+  startPlayer?: Player
   debugMode?: boolean
 }
 
 export interface Round {
   round: number
+  startPlayer: Player
+  initialCardDeck: CardDeckPersistence
   turns: Turn[]
 }
 export interface Turn {

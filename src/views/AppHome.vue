@@ -19,7 +19,7 @@
   </p>
 -->
 
-  <router-link to="/setupGame" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
+  <router-link to="/setup" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
 
   <p class="disclaimer">
     This is not an official Czech Games Edition product and has no affiliation with <a href="https://www.czechgames.com/" target="_blank" rel="noopener">Czech Games Edition</a>.
