@@ -1,6 +1,6 @@
 <template>
   <SideBar :navigationState="navigationState"/>
-  <h1>Turn Player</h1>
+  <h1>{{t('player.player')}}</h1>
 
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 

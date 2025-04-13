@@ -37,6 +37,22 @@
       "draw": "Reveal the <b>top 3 tiles</b> of the objective stack."
     }
   },
+  "roundTurnPlayer": {
+    "execute": "Execute your turn."
+  },
+  "roundTurnBot": {
+    "executed": "Action Completed",
+    "notPossible": "Not Possible",
+    "pass": "The Rival passes."
+  },
+  "sideBar": {
+    "round": "Round {round}",
+    "turn": "Turn {turn}"
+  },
+  "player": {
+    "player": "Player",
+    "bot": "Rival"
+  },
   "difficultyLevel": {
     "1": "Level 1",
     "2": "Level 2",

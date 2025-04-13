@@ -37,6 +37,22 @@
       "draw": "Decke die <b>obersten 3 Ziele</b> auf."
     }
   },
+  "roundTurnPlayer": {
+    "execute": "Führe deinen Zug aus."
+  },
+  "roundTurnBot": {
+    "executed": "Aktion ausgeführt",
+    "notPossible": "Nicht möglich",
+    "pass": "Der Rivale passt."
+  },
+  "sideBar": {
+    "round": "Runde {round}",
+    "turn": "Zug {turn}"
+  },
+  "player": {
+    "player": "Spieler",
+    "bot": "Rivale"
+  },
   "difficultyLevel": {
     "1": "Level 1",
     "2": "Level 2",

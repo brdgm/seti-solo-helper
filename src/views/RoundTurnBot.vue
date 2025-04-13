@@ -1,17 +1,15 @@
 <template>
   <SideBar :navigationState="navigationState"/>
-  <h1>Turn Bot</h1>
+  <h1>{{t('player.bot')}}</h1>
 
   <template v-if="navigationState.botPass">
-    <p class="mt-4">Bot passes...</p>
+    <p class="mt-4" v-html="t('roundTurnBot.pass')"></p>
   </template>
   <template v-else>
-    <p class="mt-4">...</p>
+    <BotTurn v-if="navigationState.cardDeck?.currentCard"
+       :navigationState="navigationState" :currentCard="navigationState.cardDeck?.currentCard"
+       @executed="next" @notPossible="notPossible"/>
   </template>
-
-  <button class="btn btn-primary btn-lg mt-4" @click="next">
-    {{t('action.next')}}
-  </button>
 
   <DebugInfo :navigationState="navigationState"/>
 
@@ -29,13 +27,15 @@ import { useStateStore } from '@/store/state'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import { Tooltip } from 'bootstrap'
+import BotTurn from '@/components/round/BotTurn.vue'
 
 export default defineComponent({
   name: 'RoundTurnBot',
   components: {
     FooterButtons,
     SideBar,
-    DebugInfo
+    DebugInfo,
+    BotTurn
   },
   setup() {
     const { t } = useI18n()
