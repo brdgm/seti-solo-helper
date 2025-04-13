@@ -5,7 +5,7 @@
     {{t('roundTurnBot.executed')}}
   </button>
 
-  <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()">
+  <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()" v-if="hasMoreActions">
     {{t('roundTurnBot.notPossible')}}
   </button>
 </template>
@@ -41,6 +41,11 @@ export default defineComponent({
     currentCard: {
       type: Object as PropType<Card>,
       required: true
+    }
+  },
+  computed: {
+    hasMoreActions() : boolean {
+      return this.navigationState.action < this.currentCard.actions.length - 1
     }
   },
   methods: {

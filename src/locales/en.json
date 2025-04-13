@@ -38,7 +38,8 @@
     }
   },
   "roundTurnPlayer": {
-    "execute": "Execute your turn."
+    "execute": "Execute your turn.",
+    "passConfirm": "Pass and drop out of the action phase?"
   },
   "roundTurnBot": {
     "executed": "Action Completed",

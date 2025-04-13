@@ -1,7 +1,11 @@
 <template>
   <ActionBox :instruction-title="'Tech...'">
     <template #action>
-      Action Tech...
+      <div class="action">
+        <AppIcon v-if="action.publicityCost == 6" name="publicity-cost-6" class="icon"/>
+        <AppIcon type="action" name="tech" class="icon"/>
+        <AppIcon v-if="action.progress == 1" name="progress-1" class="icon"/>
+      </div>
     </template>
     <template #instruction>
       Rules Tech...
@@ -15,12 +19,14 @@ import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
 import Card, { CardActionTech } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'ActionTech',
   inheritAttrs: false,
   components: {
-    ActionBox
+    ActionBox,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -44,4 +50,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.icon {
+  height: 4rem;
+}
 </style>

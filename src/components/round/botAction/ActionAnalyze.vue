@@ -1,7 +1,12 @@
 <template>
   <ActionBox :instruction-title="'Analyze...'">
     <template #action>
-      Action Analyze...
+      <div class="action">
+        <AppIcon type="action" name="analyze" class="icon"/>
+        <AppIcon v-if="action.victoryPoints == 3" name="vp-3" class="icon"/>
+        <span class="plus">+</span>
+        <AppIcon type="action" name="analyze-tech-discard" class="icon"/>
+      </div>
     </template>
     <template #instruction>
       Rules Analyze...
@@ -15,12 +20,14 @@ import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
 import Card, { CardActionAnalyze } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'ActionAnalyze',
   inheritAttrs: false,
   components: {
-    ActionBox
+    ActionBox,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -44,4 +51,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.icon {
+  height: 4rem;
+}
+.plus {
+  font-size: 30px;
+  color: grey;
+}
 </style>

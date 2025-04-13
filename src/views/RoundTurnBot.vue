@@ -4,6 +4,9 @@
 
   <template v-if="navigationState.botPass">
     <p class="mt-4" v-html="t('roundTurnBot.pass')"></p>
+    <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()" data-testid="nextButton">
+      {{t('action.next')}}
+    </button>
   </template>
   <template v-else>
     <BotTurn v-if="navigationState.cardDeck?.currentCard"

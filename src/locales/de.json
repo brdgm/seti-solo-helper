@@ -38,7 +38,8 @@
     }
   },
   "roundTurnPlayer": {
-    "execute": "Führe deinen Zug aus."
+    "execute": "Führe deinen Zug aus.",
+    "passConfirm": "Passen und die Aktionsphase beenden?"
   },
   "roundTurnBot": {
     "executed": "Aktion ausgeführt",
