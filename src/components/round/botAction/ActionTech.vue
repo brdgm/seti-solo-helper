@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :instruction-title="'Tech...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="'Tech...'">
     <template #action>
       <div class="action">
         <AppIcon v-if="action.publicityCost == 6" name="publicity-cost-6" class="icon"/>

@@ -7,9 +7,10 @@
       <ul>
         <li v-html="t(`setupGame.startPlayer.${startPlayer}`)"></li>
       </ul>
-      <li v-html="t('setupGame.rivalPieces', {scoreTrackField:botScoreTrackField})"></li>
+      <li v-html="t('setupGame.rivalPieces')"></li>
       <ul>
-        <li v-html="t('setupGame.rivalComponentsNotRequired')"></li>
+        <li v-html="t('setupGame.rivalPlayerBoard', {difficultyLevel:state.setup.difficultyLevel})"></li>
+        <li v-html="t('setupGame.rivalScoreCounter', {scoreTrackField:botScoreTrackField})"></li>
       </ul>
       <template v-if="hasObjectives">
         <li v-html="t('setupGame.objectiveStack.title')"></li>

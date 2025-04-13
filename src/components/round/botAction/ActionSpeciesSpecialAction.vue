@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :instruction-title="'Species Special Action...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="'Species Special Action...'">
     <template #action>
       Action Species Special Action...
     </template>

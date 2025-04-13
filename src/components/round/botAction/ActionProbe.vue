@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :instruction-title="'Probe...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="'Probe...'">
     <template #action>
       <div class="action">
         <AppIcon :name="`movement-points-${action.movementPoints}`" class="icon"/>

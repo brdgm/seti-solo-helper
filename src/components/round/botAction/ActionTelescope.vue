@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :instruction-title="'Telescope...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="'Telescope...'">
     <template #action>
       <div class="action">
         <AppIcon type="action" name="telescope" class="icon"/>

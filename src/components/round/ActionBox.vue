@@ -1,6 +1,7 @@
 <template>
   <div class="actionBox col" @click="showInstructions">
     <slot name="action"></slot>
+    <AppIcon type="decision-direction" :name="currentCard.decisionDirection" class="decisionIcon"/>
   </div>
 
   <ModalDialog :id="modalId" :title="instructionTitle" :scrollable="true" :size-lg="modalSizeLg">
@@ -11,20 +12,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
+import AppIcon from '../structure/AppIcon.vue'
+import Card from '@/services/Card'
 
 export default defineComponent({
   name: 'ActionBox',
   components: {
-    ModalDialog
+    ModalDialog,
+    AppIcon
   },
   setup() {
     const modalId = `modal-${crypto.randomUUID()}`
     return { modalId }
   },
   props: {
+    currentCard: {
+      type: Object as PropType<Card>,
+      required: true
+    },
     instructionTitle: {
       type: String,
       required: true
@@ -44,6 +52,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .actionBox {
+  position: relative;
   background-color: #c3cce8;
   border: 2px solid #9ca1af;
   border-radius: 0.5rem;
@@ -53,5 +62,11 @@ export default defineComponent({
   background-repeat: no-repeat;
   background-position: right 5px top 5px;
   background-size: 1.25rem;
+}
+.decisionIcon {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 25px;
 }
 </style>
