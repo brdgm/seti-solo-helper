@@ -43,7 +43,9 @@ export default defineComponent({
       const round : Round = {
         round: 1,
         startPlayer: this.state.setup.startPlayer ?? randomEnum(Player),
-        initialCardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
+        initialBotPersistence: {
+          cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence()
+        },
         turns: []
       }
       this.state.storeRound(round)
