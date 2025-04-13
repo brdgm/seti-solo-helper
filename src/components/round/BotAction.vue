@@ -9,9 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import NavigationState from '@/util/NavigationState'
-import { PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import Card, { CardAction } from '@/services/Card'
 import ActionTech from './botAction/ActionTech.vue'

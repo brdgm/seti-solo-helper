@@ -11,11 +11,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
 import { useStateStore } from '@/store/state'
-import { PropType } from 'vue'
 import Card from '@/services/Card'
 import BotAction from './BotAction.vue'
 
