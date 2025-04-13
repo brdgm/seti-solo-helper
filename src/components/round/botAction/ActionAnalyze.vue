@@ -1,9 +1,9 @@
 <template>
-  <ActionBox>
-    <template #summary>
+  <ActionBox :instruction-title="'Analyze...'">
+    <template #action>
       Action Analyze...
     </template>
-    <template #rules>
+    <template #instruction>
       Rules Analyze...
     </template>
   </ActionBox>

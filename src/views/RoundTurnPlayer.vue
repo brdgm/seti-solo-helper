@@ -4,7 +4,7 @@
 
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 
-  <button class="btn btn-primary btn-lg mt-4" @click="next">
+  <button class="btn btn-primary btn-lg mt-4" @click="next" data-testid="nextButton">
     {{t('action.next')}}
   </button>
   <button class="btn btn-outline-danger btn-lg mt-4 ms-2" data-bs-toggle="modal" data-bs-target="#passModal">

@@ -1,9 +1,9 @@
 <template>
-  <ActionBox>
-    <template #summary>
+  <ActionBox :instruction-title="'Telescope...'">
+    <template #action>
       Action Telescope...
     </template>
-    <template #rules>
+    <template #instruction>
       Rules Telescope...
     </template>
   </ActionBox>

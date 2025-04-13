@@ -1,8 +1,5 @@
 <template>
-  <div class="actionBox upper">
-    <h5>{{t(`botAction.${action.action}.title`)}}</h5>
-  </div>
-  <div class="actionBox lower">
+  <div class="actionItem">
     <component :is="`action-${action.action}`" :action="action"
         :currentCard="currentCard" :navigationState="navigationState"/>
   </div>
@@ -54,28 +51,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.actionBox {
-  border: 2px solid #9ca1af;
-  padding: 15px;
-  background-color: #c3cce8;
-  &.upper {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.actionItem {
+  margin-top: 15px;
+  max-width: 38rem;
+  padding-right: 10rem;
+  @media (max-width: 600px) {
+    padding-right: 2rem;
   }
-  &.lower {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top: 0;
-  }
-}
-.actionIcon {
-  width: 3rem;
-  height: 3rem;
-  object-fit: contain;
 }
 </style>

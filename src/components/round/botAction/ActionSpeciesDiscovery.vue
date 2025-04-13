@@ -1,9 +1,9 @@
 <template>
-  <ActionBox>
-    <template #summary>
+  <ActionBox :instruction-title="'Species Discovery...'">
+    <template #action>
       Action Species Discovery...
     </template>
-    <template #rules>
+    <template #instruction>
       Rules Species Discovery...
     </template>
   </ActionBox>

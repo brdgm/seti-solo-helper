@@ -1,7 +1,7 @@
 <template>
   <BotAction :action="currentAction" :currentCard="currentCard" :navigationState="navigationState"/>
 
-  <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()">
+  <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" data-testid="nextButton">
     {{t('roundTurnBot.executed')}}
   </button>
 
