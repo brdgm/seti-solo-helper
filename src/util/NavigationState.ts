@@ -4,6 +4,9 @@ import getIntRouteParam from '@brdgm/brdgm-commons/src/util/router/getIntRoutePa
 import Player from '@/services/enum/Player'
 import getPreviousTurns from './getPreviousTurns'
 import CardDeck from '@/services/CardDeck'
+import Card from '@/services/Card'
+import Action from '@/services/enum/Action'
+import Cards from '@/services/Cards'
 
 export default class NavigationState {
 
@@ -16,8 +19,10 @@ export default class NavigationState {
   readonly botPersistence? : BotPersistence
   readonly cardDeck? : CardDeck
   readonly botPass?: boolean
+  private readonly state
 
   constructor(route: RouteLocation, state: State) {    
+    this.state = state
     this.round = getIntRouteParam(route, 'round')
     this.turn = getIntRouteParam(route, 'turn')
     this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
@@ -43,6 +48,21 @@ export default class NavigationState {
         this.cardDeck.draw()
       }
     }
+  }
+
+  public get currentCard() : Card|undefined {
+    let currentCard = this.cardDeck?.currentCard
+    if (currentCard) {
+      const speciesDiscoveryAction = currentCard.actions.find(item => item.action == Action.SPECIES_DISCOVERY)
+      if (speciesDiscoveryAction) {
+        // replace card with alien species card is species is discovered
+        const alienSpecies = this.state.alienDiscovery.species[speciesDiscoveryAction.alienSpeciesIndex-1]
+        if (alienSpecies) {
+          currentCard = Cards.getAlienSpeciesCard(alienSpecies)
+        }
+      }
+    }
+    return currentCard
   }
 
 }

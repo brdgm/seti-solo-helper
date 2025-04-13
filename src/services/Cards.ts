@@ -229,6 +229,19 @@ export default {
    */
   getAll(cardType: CardType) : Card[] {
     return cards.filter(card => card.cardType === cardType)
+  },
+
+  /**
+   * Get alien species card.
+   * @param alienSpecies Alien species card
+   * @returns Card
+   */
+  getAlienSpeciesCard(alienSpecies: AlienSpecies) : Card {
+    const card = cards.filter(card => card.cardType === CardType.ALIEN && card.alienSpecies === alienSpecies)[0]
+    if (!card) {
+      throw new Error("No alien species card for " + alienSpecies)
+    }
+    return card
   }
 
 }

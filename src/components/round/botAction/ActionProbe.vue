@@ -7,14 +7,14 @@
           <AppIcon v-if="index > 0" name="probe-next" class="icon"/>
           <div class="planet">
             <AppIcon type="planet" :name="planet" class="icon"/>
-            <div class="name">{{planet}}</div>
+            <div class="name">{{t(`planet.${planet}`)}}</div>
           </div>
         </template>
       </div>
       <div class="action mt-3">
-        <AppIcon type="action" name="probe-tech-discard" class="icon"/>
-        <template v-for="probeAction in action.probeActions" :key="probeAction">
-          <AppIcon name="probe-next" class="icon"/>
+        <AppIcon type="action" name="probe-tech-discard" class="icon" v-if="showProbeTechDiscard"/>
+        <template v-for="(probeAction,index) in action.probeActions" :key="probeAction">
+          <AppIcon v-if="showProbeTechDiscard || index > 0" name="probe-next" class="icon"/>
           <AppIcon type="probe-action" :name="probeAction" class="icon"/>
         </template>
       </div>
@@ -32,6 +32,7 @@ import NavigationState from '@/util/NavigationState'
 import Card, { CardActionProbe } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import Planet from '@/services/enum/Planet'
 
 export default defineComponent({
   name: 'ActionProbe',
@@ -57,6 +58,11 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
+  },
+  computed: {
+    showProbeTechDiscard() : boolean {
+      return this.action.planets.filter(planet => planet != Planet.OUMUAMUA).length > 0
+    }
   }
 })
 </script>
@@ -64,6 +70,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .action {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 10px;

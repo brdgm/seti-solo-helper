@@ -17,6 +17,7 @@ import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDial
 import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
 import AppIcon from '../structure/AppIcon.vue'
 import Card from '@/services/Card'
+import AlienSpecies from '@/services/enum/AlienSpecies'
 
 export default defineComponent({
   name: 'ActionBox',
@@ -42,6 +43,40 @@ export default defineComponent({
       required: false
     }
   },
+  computed: {
+    backgroundColor() : string {
+      switch (this.currentCard.alienSpecies) {
+        case AlienSpecies.MASCAMITES:
+          return '#d7c881'
+        case AlienSpecies.ANOMALIES:
+          return '#93d2d3'
+        case AlienSpecies.OUMUAMUA:
+          return '#b3a8c8'
+        case AlienSpecies.CENTAURIANS:
+          return '#8bbfa9'
+        case AlienSpecies.EXERTIANS:
+          return '#e7b49f'
+        default:
+          return '#c3cce8'
+      }
+    },
+    borderColor() : string {
+      switch (this.currentCard.alienSpecies) {
+        case AlienSpecies.MASCAMITES:
+          return '#a28917'
+        case AlienSpecies.ANOMALIES:
+          return '#004a65'
+        case AlienSpecies.OUMUAMUA:
+          return '#333469'
+        case AlienSpecies.CENTAURIANS:
+          return '#014d3e'
+        case AlienSpecies.EXERTIANS:
+          return '#bc0406'
+        default:
+          return '#9ca1af'
+      }
+    }
+  },
   methods: {
     showInstructions() {
       showModal(this.modalId)
@@ -53,8 +88,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .actionBox {
   position: relative;
-  background-color: #c3cce8;
-  border: 2px solid #9ca1af;
+  background-color: v-bind(backgroundColor);
+  border: 2px solid v-bind(borderColor);
   border-radius: 0.5rem;
   padding: 1rem;
   cursor: pointer;

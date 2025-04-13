@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { name } from '@/../package.json'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Player from '@/services/enum/Player'
+import AlienSpecies from '@/services/enum/AlienSpecies'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -11,12 +12,16 @@ export const useStateStore = defineStore(`${name}.state`, {
       setup: {
         difficultyLevel: DifficultyLevel.LEVEL_1
       },
+      alienDiscovery: {
+        species: [undefined, undefined]
+      },
       rounds: []
     } as State
   },
   actions: {
     resetGame() {
       this.rounds = []
+      this.alienDiscovery.species = [undefined, undefined]
     },
     storeRound(round : Round) : void {
       this.rounds = this.rounds.filter(item => item.round < round.round)
@@ -38,12 +43,17 @@ export interface State {
   language: string
   baseFontSize: number
   setup: Setup
+  alienDiscovery: AlienDiscovery
   rounds: Round[]
 }
 export interface Setup {
   difficultyLevel: DifficultyLevel
   startPlayer?: Player
   debugMode?: boolean
+}
+
+export interface AlienDiscovery {
+  species: (AlienSpecies|undefined)[]
 }
 
 export interface Round {

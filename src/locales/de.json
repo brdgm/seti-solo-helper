@@ -49,11 +49,35 @@
   },
   "sideBar": {
     "round": "Runde {round}",
-    "turn": "Zug {turn}"
+    "turn": "Zug {turn}",
+    "species": "Spezies",
+    "discover": "Entdecken",
+    "speciesDiscovery": {
+      "title": "Spezies entdecken",
+      "alreadyDiscovered": "Bitte wähle aus welche Spezies schon entdeckt wurden:",
+      "none": "(keine)"
+    }
   },
   "player": {
     "player": "Spieler",
     "bot": "Rivale"
+  },
+  "planet": {
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Mercury",
+    "neptune": "Neptune",
+    "saturn": "Saturn",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "oumuamua": "‘Oumuamua"
+  },
+  "alienSpecies": {
+    "mascamites": "Mascamiten",
+    "anomalies": "Anomalien",
+    "oumuamua": "‘Oumuamua",
+    "centaurians": "Centaurianer",
+    "exertians": "Exertianer"
   },
   "difficultyLevel": {
     "1": "Level 1",

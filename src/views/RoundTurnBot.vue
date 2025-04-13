@@ -9,8 +9,8 @@
     </button>
   </template>
   <template v-else>
-    <BotTurn v-if="navigationState.cardDeck?.currentCard"
-       :navigationState="navigationState" :currentCard="navigationState.cardDeck?.currentCard"
+    <BotTurn v-if="navigationState.currentCard"
+       :navigationState="navigationState" :currentCard="navigationState.currentCard"
        @executed="next" @notPossible="notPossible"/>
   </template>
 

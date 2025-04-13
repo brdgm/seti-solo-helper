@@ -39,6 +39,7 @@ export default defineComponent({
   },
   methods: {
     setupGame() : void {
+      this.state.resetGame()
       // prepare round 1
       const round : Round = {
         round: 1,
