@@ -22,6 +22,7 @@ import StartPlayer from '@/components/setup/StartPlayer.vue'
 import randomEnum from '@brdgm/brdgm-commons/src/util/random/randomEnum'
 import Player from '@/services/enum/Player'
 import CardDeck from '@/services/CardDeck'
+import getInitialBotResources from '@/util/getInitialBotResources'
 
 export default defineComponent({
   name: 'SetupApp',
@@ -46,12 +47,7 @@ export default defineComponent({
         startPlayer: this.state.setup.startPlayer ?? randomEnum(Player),
         initialBotPersistence: {
           cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
-          progress: 1,
-          publicity: 4,
-          data: 0,
-          techProbe: 0,
-          techTelescope: 0,
-          techComputer: 0
+          resources: getInitialBotResources()
         },
         turns: []
       }

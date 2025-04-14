@@ -72,15 +72,18 @@ export interface RoundTurn {
 }
 export interface BotPersistence {
   cardDeck: CardDeckPersistence
+  resources: BotResources
+}
+export interface CardDeckPersistence {
+  pile: string[]
+  discard: string[]
+  advanced: string[]
+}
+export interface BotResources {
   progress: number
   publicity: number
   data: number
   techProbe: number
   techTelescope: number
   techComputer: number
-}
-export interface CardDeckPersistence {
-  pile: string[]
-  discard: string[]
-  advanced: string[]
 }

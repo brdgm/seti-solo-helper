@@ -13,7 +13,7 @@
 import NavigationState from '@/util/NavigationState'
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStateStore } from '@/store/state'
+import { BotResources, useStateStore } from '@/store/state'
 import CardDeck from '@/services/CardDeck'
 
 export default defineComponent({
@@ -33,10 +33,8 @@ export default defineComponent({
     cardDeck() : CardDeck {
       return this.navigationState.cardDeck
     },
-    resources() {
-      const result : any = {...this.navigationState.botPersistence}
-      delete result.cardDeck
-      return result
+    resources() : BotResources {
+      return this.navigationState.botResources
     }
   }
 })

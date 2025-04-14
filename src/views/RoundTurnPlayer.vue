@@ -71,7 +71,6 @@ export default defineComponent({
       this.nextWithPassed(true)
     },
     nextWithPassed(passed : boolean) {
-      const { progress, publicity, data, techProbe, techTelescope, techComputer } = this.navigationState.botPersistence
       this.state.storeRoundTurn({
         round:this.navigationState.round,
         turn:this.navigationState.turn,
@@ -80,7 +79,7 @@ export default defineComponent({
         pass: passed ? true : undefined,
         botPersistence: {
           cardDeck: this.navigationState.cardDeck.toPersistence(),
-          progress, publicity, data, techProbe, techTelescope, techComputer
+          resources: this.navigationState.botResources
         }
       })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))

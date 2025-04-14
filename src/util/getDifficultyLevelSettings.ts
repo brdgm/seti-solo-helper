@@ -1,4 +1,4 @@
-import DifficultyLevel from "@/services/enum/DifficultyLevel"
+import DifficultyLevel from '@/services/enum/DifficultyLevel'
 
 /**
  * Get settings for difficulty level.

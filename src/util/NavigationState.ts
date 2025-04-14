@@ -1,4 +1,4 @@
-import { BotPersistence, State } from '@/store/state'
+import { BotPersistence, BotResources, State } from '@/store/state'
 import { RouteLocation } from 'vue-router'
 import getIntRouteParam from '@brdgm/brdgm-commons/src/util/router/getIntRouteParam'
 import Player from '@/services/enum/Player'
@@ -6,6 +6,7 @@ import CardDeck from '@/services/CardDeck'
 import Card from '@/services/Card'
 import Action from '@/services/enum/Action'
 import Cards from '@/services/Cards'
+import getInitialBotResources from './getInitialBotResources'
 
 export default class NavigationState {
 
@@ -15,8 +16,8 @@ export default class NavigationState {
   readonly action : number
   readonly player : Player
   readonly startPlayer : Player
-  readonly botPersistence : BotPersistence
   readonly cardDeck : CardDeck
+  readonly botResources : BotResources
   readonly botPass?: boolean
   private readonly state
 
@@ -31,8 +32,9 @@ export default class NavigationState {
     const roundData = state.rounds.find(item => item.round === this.round)
     this.startPlayer = roundData?.startPlayer ?? Player.PLAYER
 
-    this.botPersistence = getBotPersistence(state, this.round, this.turn, this.turnOrderIndex)
-    this.cardDeck = CardDeck.fromPersistence(this.botPersistence.cardDeck)
+    const botPersistence = getBotPersistence(state, this.round, this.turn, this.turnOrderIndex)
+    this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
+    this.botResources = botPersistence.resources
 
     if (this.player == Player.BOT) {
       if (this.cardDeck.pileEmpty) {
@@ -80,11 +82,6 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
   // last resort: create new (should never happen)
   return {
     cardDeck: CardDeck.new(round).toPersistence(),
-    progress: 1,
-    publicity: 4,
-    data: 0,
-    techProbe: 0,
-    techTelescope: 0,
-    techComputer: 0
+    resources: getInitialBotResources()
   }
 }
