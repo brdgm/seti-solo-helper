@@ -1,6 +1,8 @@
 <template>
   <BotAction :action="currentAction" :currentCard="currentCard" :navigationState="navigationState"/>
 
+  <BotResources/>
+
   <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" data-testid="nextButton">
     {{t('roundTurnBot.executed')}}
   </button>
@@ -17,11 +19,13 @@ import NavigationState from '@/util/NavigationState'
 import { useStateStore } from '@/store/state'
 import Card from '@/services/Card'
 import BotAction from './BotAction.vue'
+import BotResources from './BotResources.vue'
 
 export default defineComponent({
   name: 'BotTurn',
   components: {
-    BotAction
+    BotAction,
+    BotResources
   },
   emits: ['executed', 'notPossible'],
   setup(props) {

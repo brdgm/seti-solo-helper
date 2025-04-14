@@ -4,6 +4,8 @@
 
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 
+  <BotResources/>
+  
   <button class="btn btn-primary btn-lg mt-4" @click="next" data-testid="nextButton">
     {{t('action.next')}}
   </button>
@@ -37,11 +39,13 @@ import RouteCalculator from '@/services/RouteCalculator'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
+import BotResources from '@/components/round/BotResources.vue'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
   components: {
     FooterButtons,
+    BotResources,
     ModalDialog,
     SideBar,
     DebugInfo

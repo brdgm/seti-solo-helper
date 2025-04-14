@@ -21,7 +21,7 @@
     <div class="rival">
       <h6>{{t('sideBar.rival.title')}}</h6>
       <span class="cardCount">{{cardDeck.discard.length}}</span> / <span class="cardCount">{{cardDeck.pile.length+cardDeck.discard.length}}</span><br/>
-      <AppIcon type="progress" :name="progressCount.toString()" class="icon"/>: {{progressCount}}<br/>
+      <AppIcon type="progress" :name="progressCount.toString()" class="icon"/>: {{progressCount}}/12<br/>
       <AppIcon type="resource" name="publicity" class="icon"/>: {{resources.publicity}}<br/>
       <AppIcon type="resource" name="data" class="icon"/>: {{resources.data}}<br/>
       <AppIcon type="resource" name="vp" class="icon"/>: {{resources.vp}}<br/>
