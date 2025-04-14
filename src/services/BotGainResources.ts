@@ -103,7 +103,7 @@ export default class BotGainResources {
 
   public merge(botResources: BotResources) : BotResources {
     let initialData = botResources.data
-    if (this.resources.data == -6) {
+    if (this.actionData.value == -6) {
       initialData = 0
     }
     const result : BotResources = {
@@ -128,6 +128,18 @@ export default class BotGainResources {
       result.publicity = 10
     }
     return result
+  }
+
+  public getDrawAdvancedCardCount(botResources: BotResources) : number {
+    const initialProgress = botResources.progress
+    const newProgress = this.merge(botResources).progress
+    let count = 0
+    for (let i = initialProgress; i < newProgress; i++) {
+      if (i % 12 == 0) {
+        count++
+      }
+    }
+    return count
   }
 
 }

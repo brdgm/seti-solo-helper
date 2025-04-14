@@ -126,8 +126,8 @@ describe('services/BotGainResources', () => {
       techTelescope: 3,
       techComputer: 2
     }))).to.eql(resources({
-      progress: 8,
-      publicity: 5,
+      progress: 12,
+      publicity: 6,
       data: 5,
       vp: 14,
       techProbe: 1,
@@ -160,6 +160,21 @@ describe('services/BotGainResources', () => {
 
     expect(underTest.merge(resources({data:8}))).to.eql(resources({publicity:1, data: 2}))
     expect(underTest.merge(resources({data:10}))).to.eql(resources({progress:4, publicity:1, data: 4}))
+  })
+
+  it('getDrawAdvancedCardCount', () => {
+    const underTest = new BotGainResources()
+
+    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}))).to.eq(0)
+
+    underTest.gainProgressSingleStep.value = 11
+    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}))).to.eq(0)
+
+    underTest.gainProgressSingleStep.value = 12
+    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}))).to.eq(1)
+
+    underTest.gainProgressSingleStep.value = 28
+    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}))).to.eq(2)
   })
 })
 

@@ -80,10 +80,13 @@ export default defineComponent({
   methods: {
     next(action?: CardAction, techType?: TechType) : void {
       const cardDeck = this.navigationState.cardDeck
+      const previousTurnResources = this.navigationState.botResources
       const gainResources = this.navigationState.botGainResources
       if (action) {
         gainResources.applyAction(action, techType)
       }
+      const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
+      cardDeck.addAdvancedCards(drawAdvancedCards)
       this.state.storeRoundTurn({
         round:this.navigationState.round,
         turn:this.navigationState.turn,
@@ -91,7 +94,7 @@ export default defineComponent({
         player:this.navigationState.player,
         botPersistence: {
           cardDeck: cardDeck.toPersistence(),
-          resources: gainResources.merge(this.navigationState.botResources)
+          resources: gainResources.merge(previousTurnResources)
         },
         pass: this.navigationState.botPass ? true : undefined
       })

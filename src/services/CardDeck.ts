@@ -57,12 +57,14 @@ export default class CardDeck {
   }
 
   /**
-   * Adds the next advanced card (if any) to top of the pile.
+   * Adds further advanced cards (if available) to top of the pile.
    */
-  public addAdvancedCard() {
-    const card = this._advanced.value.shift()
-    if (card) {
-      this._pile.value.unshift(card)
+  public addAdvancedCards(count: number) {
+    for (let i=0; i<count; i++) {
+      const card = this._advanced.value.shift()
+      if (card) {
+        this._pile.value.unshift(card)
+      }
     }
   }
 

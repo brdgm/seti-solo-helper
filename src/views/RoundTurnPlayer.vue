@@ -84,6 +84,11 @@ export default defineComponent({
       this.nextWithPassed(true)
     },
     nextWithPassed(passed : boolean) {
+      const cardDeck = this.navigationState.cardDeck
+      const previousTurnResources = this.navigationState.botResources
+      const gainResources = this.navigationState.botGainResources
+      const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
+      cardDeck.addAdvancedCards(drawAdvancedCards)
       this.state.storeRoundTurn({
         round:this.navigationState.round,
         turn:this.navigationState.turn,
@@ -91,8 +96,8 @@ export default defineComponent({
         player:this.navigationState.player,
         pass: passed ? true : undefined,
         botPersistence: {
-          cardDeck: this.navigationState.cardDeck.toPersistence(),
-          resources: this.navigationState.botGainResources.merge(this.navigationState.botResources)
+          cardDeck: cardDeck.toPersistence(),
+          resources: gainResources.merge(previousTurnResources)
         }
       })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))
