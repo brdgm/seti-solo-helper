@@ -18,6 +18,7 @@ export default class BotGainResources {
 
   private readonly actionProgress = ref(0)
   private readonly actionPublicity = ref(0)
+  private readonly actionData = ref(0)
   private readonly actionVP = ref(0)
   private readonly actionTechProbe = ref(0)
   private readonly actionTechTelescope = ref(0)
@@ -30,7 +31,7 @@ export default class BotGainResources {
           + toNumber(this.gainProgressIncomeIncrease.value) * 4
           + toNumber(this.actionProgress.value),
       publicity: toNumber(this.gainPublicity.value) + this.actionPublicity.value,
-      data: toNumber(this.gainData.value),
+      data: toNumber(this.gainData.value) + this.actionData.value,
       vp: toNumber(this.gainVP.value) + this.actionVP.value,
       techProbe: this.actionTechProbe.value,
       techTelescope: this.actionTechTelescope.value,
@@ -65,6 +66,7 @@ export default class BotGainResources {
         break
       case Action.ANALYZE:
         this.actionVP.value += action.victoryPoints
+        this.actionData.value -= 6
         if (techType === TechType.COMPUTER) {
           this.actionTechComputer.value -= 1
           this.actionVP.value += 3
@@ -91,6 +93,7 @@ export default class BotGainResources {
   private resetAction() : void {
     this.actionProgress.value = 0
     this.actionPublicity.value = 0
+    this.actionData.value = 0
     this.actionVP.value = 0
     this.actionTechProbe.value = 0
     this.actionTechTelescope.value = 0

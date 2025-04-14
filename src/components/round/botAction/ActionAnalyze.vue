@@ -11,6 +11,7 @@
     <template #action>
       <div class="action">
         <AppIcon type="action" name="analyze" class="icon"/>
+        <AppIcon type="alien-trace" name="computer" class="icon"/>
       </div>
     </template>
     <template #instruction>
@@ -58,7 +59,7 @@ export default defineComponent({
   },
   computed: {
     hasComputerTech() : boolean {
-      return this.navigationState.botResources.techComputer == 0
+      return this.navigationState.botResources.techComputer > 0
     }
   },
   mounted() {

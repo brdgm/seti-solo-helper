@@ -1,4 +1,3 @@
-import getTurnOrder from '@/util/getTurnOrder'
 import { expect } from 'chai'
 import mockState from '../helper/mockState'
 import mockRound from '../helper/mockRound'

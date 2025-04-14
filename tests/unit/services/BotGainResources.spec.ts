@@ -89,6 +89,7 @@ describe('services/BotGainResources', () => {
     underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2})
 
     expect(underTest.resources).to.eql(resources({
+      data: -6,
       vp: 2
     }))
   })
@@ -99,6 +100,7 @@ describe('services/BotGainResources', () => {
 
     expect(underTest.resources).to.eql(resources({
       progress: 1,
+      data: -6,
       vp: 5,
       techComputer: -1,
     }))
@@ -118,7 +120,7 @@ describe('services/BotGainResources', () => {
     expect(underTest.merge(resources({
       progress: 1,
       publicity: 2,
-      data: 3,
+      data: 7,
       vp: 4,
       techProbe: 1,
       techTelescope: 3,
@@ -126,7 +128,7 @@ describe('services/BotGainResources', () => {
     }))).to.eql(resources({
       progress: 8,
       publicity: 5,
-      data: 7,
+      data: 5,
       vp: 14,
       techProbe: 1,
       techTelescope: 3,
