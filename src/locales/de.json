@@ -3,7 +3,7 @@
   "home": {
     "title": "SETI Solo Helper",
     "play1": "Spiele den <a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> Solomodus gegen ein rivalisierendes Forschungsinstitut.",
-    "play2": "Diese Applikation ersetzt die Aktionskarten des Rivalen und führt dich durch das Spiel und das Solo-Regelwerk. Alle Schwierigkeitsgrade werden unterstützt.",
+    "play2": "Diese Applikation ersetzt die Aktionskarten und das Spieltableau des Rivalen und führt dich durch das Spiel und das Solo-Regelwerk. Alle Schwierigkeitsgrade werden unterstützt.",
     "feedback": "Discussion and Feedback:"
   },
   "setup": {
@@ -28,8 +28,8 @@
       "bot": "Dein <b>Rivale</b> ist der Startspieler."
     },
     "rivalPieces": "Dein Rivale erhält <b>alles Material einer Farbe</b>.",
-    "rivalPlayerBoard": "Gib ihm das <b>{difficultyLevel} Sterne</b> Rivalen-Spieltableau. Lege einen Rivalenmarker auf das Startfeld der Fortschrittsleiste.",
     "rivalScoreCounter": "Platziere seinen Wertungsmarker auf Feld {scoreTrackField} der Wertungsleiste.",
+    "componentsNotRequired": "Er benötigt keine Aktionskarten, Spielertableau oder Bekanntheitsmarker.",
     "objectiveStack": {
       "title": "Bereite den <b>Zielstapel</b> vor:",
       "top": "Oben: Wähle zufällig und mische <b>{count} x Level 1</b>-Ziele.",
