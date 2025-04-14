@@ -42,12 +42,13 @@ export default defineComponent({
     setupGame() : void {
       this.state.resetGame()
       // prepare round 1
+      const startPlayer = this.state.setup.startPlayer ?? randomEnum(Player)
       const round : Round = {
         round: 1,
-        startPlayer: this.state.setup.startPlayer ?? randomEnum(Player),
+        startPlayer,
         initialBotPersistence: {
           cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
-          resources: getInitialBotResources()
+          resources: getInitialBotResources(startPlayer)
         },
         turns: []
       }

@@ -28,8 +28,7 @@
       "bot": "Dein <b>Rivale</b> ist der Startspieler."
     },
     "rivalPieces": "Dein Rivale erhält <b>alles Material einer Farbe</b>.",
-    "rivalScoreCounter": "Platziere seinen Wertungsmarker auf Feld {scoreTrackField} der Wertungsleiste.",
-    "componentsNotRequired": "Er benötigt keine Aktionskarten, Spielertableau oder Bekanntheitsmarker.",
+    "componentsNotRequired": "Er benötigt keine Aktionskarten, Spielertableau, Wertungsmarker oder Bekanntheitsmarker.",
     "objectiveStack": {
       "title": "Bereite den <b>Zielstapel</b> vor:",
       "top": "Oben: Wähle zufällig und mische <b>{count} x Level 1</b>-Ziele.",

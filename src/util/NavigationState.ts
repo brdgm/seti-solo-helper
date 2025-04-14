@@ -82,6 +82,6 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
   // last resort: create new (should never happen)
   return {
     cardDeck: CardDeck.new(round).toPersistence(),
-    resources: getInitialBotResources()
+    resources: getInitialBotResources(roundData?.startPlayer ?? Player.PLAYER),
   }
 }

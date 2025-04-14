@@ -28,8 +28,7 @@
       "bot": "Your <b>rival</b> is the start player."
     },
     "rivalPieces": "Give the rival <b>all pieces of one color</b>.",
-    "rivalScoreCounter": "Place his score counter on field {scoreTrackField} on the score track.",
-    "componentsNotRequired": "He does not need the action cards, player board or publicity marker.",
+    "componentsNotRequired": "He does not need the action cards, player board, score counter or publicity marker.",
     "objectiveStack": {
       "title": "Prepare the <b>objectives stack</b>:",
       "top": "Top: Randomly select and shuffle <b>{count} x Level 1</b> objectives.",

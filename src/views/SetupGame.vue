@@ -9,7 +9,6 @@
       </ul>
       <li v-html="t('setupGame.rivalPieces')"></li>
       <ul>
-        <li v-html="t('setupGame.rivalScoreCounter', {scoreTrackField:botScoreTrackField})"></li>
         <li v-html="t('setupGame.componentsNotRequired')"></li>
       </ul>
       <template v-if="hasObjectives">
@@ -58,9 +57,6 @@ export default defineComponent({
     startPlayer() : Player {
       const round1 = this.state.rounds.find(round => round.round == 1)
       return round1?.startPlayer ?? Player.PLAYER
-    },
-    botScoreTrackField() : number {
-      return this.startPlayer == Player.PLAYER ? 2 : 1
     },
     difficultyLevelSettings() : DifficultyLevelSettings {
       return getDifficultyLevelSettings(this.state.setup.difficultyLevel)
