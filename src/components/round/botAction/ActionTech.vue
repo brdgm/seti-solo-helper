@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="'Tech...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.tech.title')">
     <template #resources v-if="action.publicityCost == 6 || action.progress == 1">
       <AppIcon v-if="action.publicityCost == 6" name="publicity-cost-6" class="icon resources"/>
       <AppIcon v-if="action.progress == 1" name="progress-1" class="icon resources"/>

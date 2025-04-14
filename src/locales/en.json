@@ -100,6 +100,55 @@
       "title": "Rival"
     }
   },
+  "rules": {
+    "action": {
+      "tech": {
+        "title": "Tech"
+      },
+      "launch": {
+        "title": "Launch",
+        "placeProbe": "Place a rival probe figure on Earth."
+      },
+      "probe": {
+        "title": "Orbiter/Lander"
+      },
+      "telescope": {
+        "title": "Telescope",
+        "markSignals": "Mark your rival's signals as shown by the action. For signals from the card row, use the decision arrow to determine whether the leftmost or rightmost cards will be chosen.",
+        "redrawCards": "After the rival has finished marking signals from the card row, replace the discarded cards with new cards from the top of the deck.",
+        "multipleSectors": {
+          "title": "If a signal could be marked in multiple different sectors, the rival chooses a sector for their signal based on the following logic:",
+          "sectorWin": "If by marking the signal the rival would <b>win a sector</b>, the rival chooses that sector.",
+          "scorePoints": "If no such sector can be won, the rival instead checks to see if marking a signal <b>can score points</b> for marking the second signal in a sector.",
+          "mostMarkers": "If no sector can be won or score points, the rival chooses the sector where they <b>have the most markers</b>.",
+          "tieBreaker": "For each of these steps, in the event of a tie, the rival favors the bigger sector (the sector that can contain the most data)."
+        }
+      },
+      "analyze": {
+        "title": "Analyze"
+      },
+      "speciesDiscovery": {
+        "title": "Species Discovery"
+      },
+      "speciesSpecialAction": {
+        "mascamites": {
+          "title": "Mascamites Special Action"
+        },
+        "anomalies": {
+          "title": "Anomalies Special Action"
+        },
+        "oumuamua": {
+          "title": "‘Oumuamua Special Action"
+        },
+        "centaurians": {
+          "title": "Centaurians Special Action"
+        },
+        "exertians": {
+          "title": "Exertians Special Action"
+        }
+      }
+    }
+  },
   "player": {
     "player": "Player",
     "bot": "Rival"

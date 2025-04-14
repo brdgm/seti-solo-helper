@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="'Telescope...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.telescope.title')">
     <template #resources v-if="hasTelescopeTech">
       <AppIcon type="tech-discard" name="telescope" class="icon resources"/>
     </template>
@@ -11,7 +11,15 @@
       </div>
     </template>
     <template #instruction>
-      Rules Telescope...
+      <p v-html="t('rules.action.telescope.markSignals')"/>
+      <p v-html="t('rules.action.telescope.redrawCards')"/>
+      <p v-html="t('rules.action.telescope.multipleSectors.title')"/>
+      <ol>
+        <li v-html="t('rules.action.telescope.multipleSectors.sectorWin')"/>
+        <li v-html="t('rules.action.telescope.multipleSectors.scorePoints')"/>
+        <li v-html="t('rules.action.telescope.multipleSectors.mostMarkers')"/>
+      </ol>
+      <p v-html="t('rules.action.telescope.multipleSectors.tieBreaker')"/>
     </template>
   </ActionBox>
 </template>

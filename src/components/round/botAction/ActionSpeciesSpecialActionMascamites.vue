@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="'Species Special Action...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.mascamites.title')">
     <template #resources v-if="isLanderMoonSelected">
       <AppIcon type="tech-discard" name="probe" class="icon resources"/>
     </template>

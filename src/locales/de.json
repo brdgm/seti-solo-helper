@@ -100,6 +100,55 @@
       "title": "Rivale"
     }
   },
+  "rules": {
+    "action": {
+      "tech": {
+        "title": "Erforschen einer Technologie"
+      },
+      "launch": {
+        "title": "Starten einer Sonde",
+        "placeProbe": "Stelle 1 Sonde des Rivalen auf die Erde."
+      },
+      "probe": {
+        "title": "Umkreisen/Landen"
+      },
+      "telescope": {
+        "title": "Scannen naher Sterne",
+        "markSignals": "Platziere Signale deines Rivalen wie von der Aktion vorgegeben. Bei Signalen aus der Auslage wählt dein Rivale dem Entscheidungspfeil folgend die erste Karte von links bzw. rechts.",
+        "redrawCards": "Fülle Karten der Auslage nach seiner Aktion sofort wieder auf.",
+        "multipleSectors": {
+          "title": "Kann er sein Signal in mehreren Sektoren platzieren, bevorzugt er sie folgendermaßen:",
+          "sectorWin": "Führt das Platzieren zu <b>seinem Sektorensieg</b>, wählt er diesen Sektor.",
+          "scorePoints": "Ist dies nicht möglich, sucht er nach Feldern, für die er <b>Punkte erhält</b>, weil er das 2. Signal im Sektor platziert.",
+          "mostMarkers": "Kann er weder den Sektorensieg noch Punkte erlangen, wählt er den Sektor, in dem er die <b>meisten Marker</b> hat.",
+          "tieBreaker": "Bei Gleichstand entscheidet er sich immer für den größeren Sektor (der mehr Daten aufnehmen kann)."
+        }
+      },
+      "analyze": {
+        "title": "Datenanalyse"
+      },
+      "speciesDiscovery": {
+        "title": "Entdecken einer Species"
+      },
+      "speciesSpecialAction": {
+        "mascamites": {
+          "title": "Maskamiten Spezial-Aktion"
+        },
+        "anomalies": {
+          "title": "Anomalien Spezial-Aktion"
+        },
+        "oumuamua": {
+          "title": "‘Oumuamua Spezial-Aktion"
+        },
+        "centaurians": {
+          "title": "Centaurianer Spezial-Aktion"
+        },
+        "exertians": {
+          "title": "Exertianer Spezial-Aktion"
+        }
+      }
+    }
+  },
   "player": {
     "player": "Spieler",
     "bot": "Rivale"

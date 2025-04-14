@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="'Species Special Action...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.extertians.title')">
     <template #action>
       <div class="action">
         <p><b>Exertians:</b> If the sum of exertian cards and alien traces of the rival on this alien species board is max. 4: He plays 1 <b>secret exertian card</b>.</p>

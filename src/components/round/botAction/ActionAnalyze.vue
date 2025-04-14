@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="'Analyze...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.analyze.title')">
     <template #resources v-if="action.victoryPoints == 3 || hasComputerTech">
       <AppIcon v-if="action.victoryPoints == 3" name="vp-3" class="icon resources"/>
       <template v-if="hasComputerTech">

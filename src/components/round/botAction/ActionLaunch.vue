@@ -1,5 +1,5 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="'Launch...'">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.launch.title')">
     <template #resources v-if="action.publicity == 1 || action.progress == 1">
       <AppIcon v-if="action.publicity == 1" type="resource" name="publicity" class="icon resources"/>
       <AppIcon v-if="action.progress == 1" name="progress-1" class="icon resources"/>
@@ -10,7 +10,7 @@
       </div>
     </template>
     <template #instruction>
-      Rules Launch...
+      <p v-html="t('rules.action.launch.placeProbe')"/>
     </template>
   </ActionBox>
 </template>
