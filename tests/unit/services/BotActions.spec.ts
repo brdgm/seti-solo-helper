@@ -92,5 +92,5 @@ function getState(params: {cardDeck: MockCardDeckParams, publicity?: number, dat
 
 function botActions(routeName:string, params:RouteParams, state:State) : BotActions {
   const navigationState = new NavigationState(mockRouteLocation({name:routeName, params}), state)
-  return new BotActions(navigationState, state)
+  return navigationState.botActions
 }

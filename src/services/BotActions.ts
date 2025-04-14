@@ -1,5 +1,4 @@
 import Card, { CardAction } from './Card'
-import NavigationState from '@/util/NavigationState'
 import Action from './enum/Action'
 import { BotResources, State } from '@/store/state'
 import Cards from './Cards'
@@ -15,10 +14,10 @@ export default class BotActions {
   private readonly botPass : boolean
   private readonly state : State
 
-  constructor(navigationState : NavigationState, state : State) {
-    this.cardDeck = navigationState.cardDeck
-    this.botResources = navigationState.botResources
-    this.botPass = navigationState.botPass ?? false
+  constructor(cardDeck : CardDeck, botResources: BotResources, botPass: boolean|undefined, state : State) {
+    this.cardDeck = cardDeck
+    this.botResources = botResources
+    this.botPass = botPass ?? false
     this.state = state
   }
 

@@ -18,8 +18,8 @@ export default class NavigationState {
   readonly cardDeck : CardDeck
   readonly botResources : BotResources
   readonly botGainResources : BotGainResources
-  readonly botActions : BotActions
   readonly botPass?: boolean
+  readonly botActions : BotActions
 
   constructor(route: RouteLocation, state: State) {    
     this.round = getIntRouteParam(route, 'round')
@@ -35,7 +35,6 @@ export default class NavigationState {
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = botPersistence.resources
     this.botGainResources = new BotGainResources()
-    this.botActions = new BotActions(this, state)
 
     if (this.player == Player.BOT) {
       if (this.cardDeck.pileEmpty) {
@@ -45,6 +44,8 @@ export default class NavigationState {
         this.cardDeck.draw()
       }
     }
+
+    this.botActions = new BotActions(this.cardDeck, this.botResources, this.botPass, state)
   }
 
 }
