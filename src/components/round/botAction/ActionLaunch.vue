@@ -1,10 +1,12 @@
 <template>
   <ActionBox :currentCard="currentCard" :instruction-title="'Launch...'">
+    <template #resources v-if="action.publicity == 1 || action.progress == 1">
+      <AppIcon v-if="action.publicity == 1" name="publicity-1" class="icon resources"/>
+      <AppIcon v-if="action.progress == 1" name="progress-1" class="icon resources"/>
+    </template>
     <template #action>
       <div class="action">
         <AppIcon type="action" name="launch" class="icon"/>
-        <AppIcon v-if="action.publicity == 1" name="publicity-1" class="icon"/>
-        <AppIcon v-if="action.progress == 1" name="progress-1" class="icon"/>
       </div>
     </template>
     <template #instruction>
@@ -59,5 +61,8 @@ export default defineComponent({
 }
 .icon {
   height: 4rem;
+  &.resources {
+    height: 1.5rem;
+  }
 }
 </style>

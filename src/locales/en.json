@@ -47,7 +47,7 @@
     "pass": "The Rival passes."
   },
   "botResources": {
-    "gainThisTurn": "Resources <b>the rival</b> gained this turn:"
+    "gainThisTurn": "<b>Rival</b> gains this turn from the <i>game board</i>:"
   },
   "sideBar": {
     "round": "Round {round}",
@@ -90,6 +90,13 @@
     "3": "Level 3",
     "4": "Level 4",
     "5": "Level 5"
+  },
+  "rules": {
+    "action": {
+      "speciesDiscovery": {
+        "checkDiscovery": "Check if <b>species #{alienSpeciesIndex}</b> is already discovered.<br/>Otherwise, action is not possible."
+      }
+    }
   },
   "notfound": {
     "title": "Not Found"

@@ -47,7 +47,7 @@
     "pass": "Der Rivale passt."
   },
   "botResources": {
-    "gainThisTurn": "Ressourcen die <b>der Rivale</b> diesen Zug erhalten hat:"
+    "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielbrett</i>:"
   },
   "sideBar": {
     "round": "Runde {round}",
@@ -90,6 +90,13 @@
     "3": "Level 3",
     "4": "Level 4",
     "5": "Level 5"
+  },
+  "rules": {
+    "action": {
+      "speciesDiscovery": {
+        "checkDiscovery": "Prüfe ob <b>Spezies #{alienSpeciesIndex}</b> schon entdeckt ist.<br/>Ansonsten ist die Aktion nicht möglich."
+      }
+    }
   },
   "notfound": {
     "title": "Nicht Gefunden"

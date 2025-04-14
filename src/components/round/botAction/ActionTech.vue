@@ -1,11 +1,13 @@
 <template>
   <ActionBox :currentCard="currentCard" :instruction-title="'Tech...'">
+    <template #resources v-if="action.publicityCost == 6 || action.progress == 1">
+      <AppIcon v-if="action.publicityCost == 6" name="publicity-cost-6" class="icon resources"/>
+      <AppIcon v-if="action.progress == 1" name="progress-1" class="icon resources"/>
+    </template>
     <template #action>
       <div class="action">
-        <AppIcon v-if="action.publicityCost == 6" name="publicity-cost-6" class="icon"/>
         <AppIcon name="rotate-solar-system" class="icon"/>
         <AppIcon type="tech" name="any" class="icon"/>
-        <AppIcon v-if="action.progress == 1" name="progress-1" class="icon"/>
       </div>
     </template>
     <template #instruction>
@@ -60,5 +62,8 @@ export default defineComponent({
 }
 .icon {
   height: 4rem;
+  &.resources {
+    height: 1.5rem;
+  }
 }
 </style>

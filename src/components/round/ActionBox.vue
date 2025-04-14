@@ -1,6 +1,9 @@
 <template>
   <div class="actionBox col" @click="showInstructions">
     <slot name="action"></slot>
+    <div class="resources" v-if="$slots.resources">
+      <slot name="resources"></slot>
+    </div>
     <AppIcon type="decision-direction" :name="currentCard.decisionDirection" class="decisionIcon"/>
   </div>
 
@@ -103,5 +106,10 @@ export default defineComponent({
   right: 5px;
   bottom: 5px;
   width: 25px;
+}
+.resources {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
 }
 </style>

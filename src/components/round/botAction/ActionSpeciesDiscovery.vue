@@ -3,9 +3,7 @@
     <template #action>
       <div class="action">
         <AppIcon type="action" name="species-discovery" class="icon"/>
-        <div class="fst-italic">
-          If the #{{action.alienSpeciesIndex}} alien species is discoverd, replace this card with the corresponding alien card and resolve it.
-        </div>
+        <div v-html="t('rules.action.speciesDiscovery.checkDiscovery', {alienSpeciesIndex})"></div>
       </div>
     </template>
     <template #instruction>
@@ -46,6 +44,11 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
+  },
+  computed: {
+    alienSpeciesIndex() : number {
+      return this.action.alienSpeciesIndex
+    }
   }
 })
 </script>
@@ -53,12 +56,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 .action {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 .icon {
-  height: 4rem;
+  height: 2.5rem;
 }
 </style>
