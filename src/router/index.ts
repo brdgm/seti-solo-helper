@@ -8,6 +8,7 @@ import SetupGame from '@/views/SetupGame.vue'
 import RoundTurnPlayer from '@/views/RoundTurnPlayer.vue'
 import RoundTurnBot from '@/views/RoundTurnBot.vue'
 import RoundEnd from '@/views/RoundEnd.vue'
+import GameEnd from '@/views/GameEnd.vue'
 
 const LOCALSTORAGE_KEY = `${name}.route`
 
@@ -47,6 +48,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'RoundEnd',
     component: RoundEnd
 
+  },
+  {
+    path: '/round/:round/gameEnd',
+    name: 'GameEnd',
+    component: GameEnd
   },
   {
     path: '/:pathMatch(.*)*',

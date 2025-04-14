@@ -13,7 +13,7 @@
     <BotResources :botGainResources="navigationState.botGainResources"/>
     <BotReachedMilestones :botResources="navigationState.botResources" :botGainResources="navigationState.botGainResources"
         :currentCard="navigationState.botActions.currentCard"/>
-    <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()" data-testid="nextButton">
+    <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()">
       {{t('action.next')}}
     </button>
   </template>

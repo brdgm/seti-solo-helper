@@ -6,6 +6,7 @@ import CardDeck from '@/services/CardDeck'
 import getInitialBotResources from './getInitialBotResources'
 import BotGainResources from '@/services/BotGainResources'
 import BotActions from '@/services/BotActions'
+import { MAX_TURN } from './getTurnOrder'
 
 export default class NavigationState {
 
@@ -31,7 +32,8 @@ export default class NavigationState {
     const roundData = state.rounds.find(item => item.round === this.round)
     this.startPlayer = roundData?.startPlayer ?? Player.PLAYER
 
-    const botPersistence = getBotPersistence(state, this.round, this.turn, this.turnOrderIndex)
+    const lookupTurn = (route.name == 'RoundEnd') ? MAX_TURN : this.turn
+    const botPersistence = getBotPersistence(state, this.round, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = botPersistence.resources
     this.botGainResources = new BotGainResources()

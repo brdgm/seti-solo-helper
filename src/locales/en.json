@@ -35,6 +35,11 @@
       "middle": "Middle: Randomly select and shuffle <b>{count} x Level 2</b> objectives.",
       "bottom": "Bottom: Randomly select and shuffle <b>{count} x Level 3</b> objectives.",
       "draw": "Reveal the <b>top 3 tiles</b> of the objective stack."
+    },
+    "ruleChanges": {
+      "title": "Rule Changes",
+      "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Effects from rival action cards are managed by the application automatically.",
+      "objectives": "<b>Objectives</b>: At the end of your turn, move all completed objectives into a completed-objectives pile near your board and replace them with new ones from the stack. You will always have 3 objectives to work on until the stack runs out."
     }
   },
   "roundTurnPlayer": {
@@ -48,6 +53,31 @@
     "pickTech": "Tech:",
     "pickProbeAction": "Action:",
     "checkSpeciesDiscovery": "Is <b>species #{alienSpeciesIndex}</b> already discovered?"
+  },
+  "roundEnd": {
+    "title": "End of Round",
+    "gainIncome": "Gain your income",
+    "objectives": {
+      "title": "<b>Objectives: </b> You need to discard {count} <b>completed objectives</b>, if possible",
+      "enterNumberCompleted": "Enter number of <b>completed</b> objectives:",
+      "discardObjectives": "Discard {count} completed objective tiles",
+      "botObjectiveProgress": "Your rival gains {count} progress"
+    }
+  },
+  "gameEnd": {
+    "title": "End of Game",
+    "objectives": {
+      "title": "<b>Objectives:</b> Your rival scores VP for each uncompleted objective (from the row and those still in the stack)",
+      "enterNumberUncompleted": "Enter number of <b>uncompleted</b> objectives:",
+      "botGainVP": "Your rival gains {count} VP"
+    },
+    "finalScoreBot": "Final Score of your Rival: <b>{count} VP</b>",
+    "finalScoring": {
+      "title": "Final scoring (only you):",
+      "scoringCards": "Score points for your <b>end-of-game scoring cards</b>",
+      "goldScoringTiles": "Score points for your <b>gold scoring tiles</b>",
+      "alienSpecies": "Some <b>alien species</b> may add one more scoring step"
+    }
   },
   "botResources": {
     "gainThisTurn": "<b>Rival</b> gains this turn from the <i>game board</i>:"

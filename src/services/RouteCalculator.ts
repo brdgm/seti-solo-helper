@@ -33,6 +33,9 @@ export default class RouteCalculator {
     }
     const nextStep = steps[currentStepIndex+1]
     if (!nextStep) {
+      if (this.round == 5) {
+        return `/round/${this.round}/gameEnd`
+      }
       return `/round/${this.round}/end`
     }
     return RouteCalculator.routeTo(nextStep)

@@ -23,6 +23,18 @@
     </ol>
   </div>
 
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col alert alert-primary">
+        <h4>{{t('setupGame.ruleChanges.title')}}</h4>
+        <ul>
+          <li v-html="t('setupGame.ruleChanges.resources')"></li>
+          <li v-if="hasObjectives" v-html="t('setupGame.ruleChanges.objectives')"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <button class="btn btn-primary btn-lg mt-4" @click="setupBot()">
     {{t('action.startGame')}}
   </button>

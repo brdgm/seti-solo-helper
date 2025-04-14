@@ -35,6 +35,11 @@
       "middle": "Mitte: Wähle zufällig und mische <b>{count} x Level 2</b>-Ziele.",
       "bottom": "Unten: Wähle zufällig und mische <b>{count} x Level 3</b>-Ziele.",
       "draw": "Decke die <b>obersten 3 Ziele</b> auf."
+    },
+    "ruleChanges": {
+      "title": "Rule Changes",
+      "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielbrett</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Effekte von Aktionskarten des Rivalen werden automatisch von der Applikation verwaltet.",
+      "objectives": "<b>Ziele</b>: Sammle am Ende deines Zugs alle abgeschlossenen Ziele auf einem Stapel und ersetze sie durch neue vom Zielstapel. Du hast immer 3 Ziele – bis der Zielstapel leer ist."
     }
   },
   "roundTurnPlayer": {
@@ -48,6 +53,31 @@
     "pickTech": "Technologie:",
     "pickProbeAction": "Aktion:",
     "checkSpeciesDiscovery": "Ist <b>Spezies #{alienSpeciesIndex}</b> schon entdeckt?"
+  },
+  "roundEnd": {
+    "title": "Rundenende",
+    "gainIncome": "Erhalte dein Einkommen.",
+    "objectives": {
+      "title": "<b>Ziele: </b> Du musst {count} <b>abgeschlossene Ziele</b> abwerfen, wenn möglich.",
+      "enterNumberCompleted": "Anzahl deiner <b>abgeschlossenen</b> Ziele:",
+      "discardObjectives": "Werfe {count} abgeschlossene Ziele ab.",
+      "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt."
+    }
+  },
+  "gameEnd": {
+    "title": "Spielende",
+    "objectives": {
+      "title": "<b>Ziele:</b> Dein Rivale erhält Punkte für jedes nicht abgeschlossenes Ziel (sowohl die in der Zielauslage als auch die im Zielstapel)",
+      "enterNumberUncompleted": "Anzahl der <b>nicht abgeschlossenen</b> Ziele:",
+      "botGainVP": "Dein Rivale erhält {count} Punkte"
+    },
+    "finalScoreBot": "Finaler Punktestand deines Rivalen: <b>{count} Punkte</b>",
+    "finalScoring": {
+      "title": "Abschlusswertung (nur für dich):",
+      "scoringCards": "Erhalte Punkte für deine ausgespielten <b>Wertungskarten</b>",
+      "goldScoringTiles": "Erhalte Punkte für deine Marker auf <b>Gold-Wertungsplättchen</b>",
+      "alienSpecies": "Erhalte Punkte durch eine <b>Spezies</b> (falls in ihren Regeln angegeben)"
+    }
   },
   "botResources": {
     "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielbrett</i>:"

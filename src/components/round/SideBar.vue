@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     {{t('sideBar.round', {round})}}<br/>
-    {{t('sideBar.turn', {turn})}}<br/>
+    <template v-if="turn > 0">{{t('sideBar.turn', {turn})}}<br/></template>
     <hr/>
     <div class="aliens">
       <h6>{{t('sideBar.species')}}</h6>
@@ -91,7 +91,7 @@ export default defineComponent({
       return this.navigationState.botResources
     },
     progressCount() : number {
-      return (this.resources.progress+1) % 12 - 1
+      return (this.resources.progress-1) % 12 + 1
     }
   }
 })
