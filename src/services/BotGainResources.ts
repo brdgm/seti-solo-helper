@@ -54,18 +54,18 @@ export default class BotGainResources {
         break
       case Action.PROBE:
         this.actionProbeCount.value -= 1
-        if (this.actionTechProbe.value > 0 && techType === TechType.PROBE) {
+        if (techType === TechType.PROBE) {
           this.actionTechProbe.value -= 1
         }
         break
       case Action.TELESCOPE:
-        if (this.actionTechTelescope.value > 0 && techType === TechType.TELESCOPE) {
+        if (techType === TechType.TELESCOPE) {
           this.actionTechTelescope.value -= 1
         }
         break
       case Action.ANALYZE:
         this.actionVP.value += action.victoryPoints
-        if (this.actionTechComputer.value > 0 && techType === TechType.COMPUTER) {
+        if (techType === TechType.COMPUTER) {
           this.actionTechComputer.value -= 1
           this.actionVP.value += 3
           this.actionProgress.value += 1
@@ -93,8 +93,8 @@ export default class BotGainResources {
     this.actionPublicity.value = 0
     this.actionVP.value = 0
     this.actionTechProbe.value = 0
+    this.actionTechTelescope.value = 0
     this.actionTechComputer.value = 0
-    this.actionTechProbe.value = 0
     this.actionProbeCount.value = 0
   }
 

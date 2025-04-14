@@ -44,7 +44,9 @@
   "roundTurnBot": {
     "executed": "Aktion ausgeführt",
     "notPossible": "Nicht möglich",
-    "pass": "Der Rivale passt."
+    "pass": "Der Rivale passt.",
+    "pickTech": "Technologie:",
+    "pickProbeAction": "Aktion:"
   },
   "botResources": {
     "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielbrett</i>:"

@@ -7,6 +7,7 @@
       <AppIcon type="action" name="pass" class="icon"/>
       <p class="mt-4" v-html="t('roundTurnBot.pass')"></p>
     </div>
+    <BotResources :botGainResources="navigationState.botGainResources"/>
     <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()" data-testid="nextButton">
       {{t('action.next')}}
     </button>
@@ -40,6 +41,7 @@ import BotTurn from '@/components/round/BotTurn.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import { CardAction } from '@/services/Card'
 import TechType from '@/services/enum/TechType'
+import BotResources from '@/components/round/BotResources.vue'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -48,7 +50,8 @@ export default defineComponent({
     SideBar,
     DebugInfo,
     BotTurn,
-    AppIcon
+    AppIcon,
+    BotResources
   },
   setup() {
     const { t } = useI18n()

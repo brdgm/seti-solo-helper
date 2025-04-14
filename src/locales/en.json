@@ -44,7 +44,9 @@
   "roundTurnBot": {
     "executed": "Action Completed",
     "notPossible": "Not Possible",
-    "pass": "The Rival passes."
+    "pass": "The Rival passes.",
+    "pickTech": "Tech:",
+    "pickProbeAction": "Action:"
   },
   "botResources": {
     "gainThisTurn": "<b>Rival</b> gains this turn from the <i>game board</i>:"

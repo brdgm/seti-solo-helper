@@ -94,7 +94,10 @@ export default defineComponent({
   background-color: v-bind(backgroundColor);
   border: 2px solid v-bind(borderColor);
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   cursor: pointer;
   background-image: url('@/assets/icons/help-semi-transparent.webp');
   background-repeat: no-repeat;

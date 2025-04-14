@@ -4,7 +4,7 @@
 
   <BotResources :botGainResources="navigationState.botGainResources"/>
 
-  <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" data-testid="nextButton" :disabled="!actionReady">
+  <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" data-testid="nextButton" v-if="actionReady">
     {{t('roundTurnBot.executed')}}
   </button>
 
