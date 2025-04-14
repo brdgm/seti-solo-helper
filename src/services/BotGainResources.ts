@@ -1,6 +1,9 @@
 import { BotResources } from '@/store/state'
 import { ref } from 'vue'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
+import { CardAction } from './Card'
+import Action from './enum/Action'
+import TechType from './enum/TechType'
 
 /**
  * Resources the bot gained this turn by either the actions, or manual input.
@@ -34,6 +37,82 @@ export default class BotGainResources {
       techComputer: this.actionTechComputer.value,
       probeCount: this.actionProbeCount.value
     }  
+  }
+
+  public applyAction(action: CardAction, techType?: TechType) : void {
+    this.resetAction()
+    switch (action.action) {
+      case Action.TECH:
+        this.actionPublicity.value -= action.publicityCost
+        this.actionProgress.value += action.progress
+        this.gainTech(techType)
+        break
+      case Action.LAUNCH:
+        this.actionPublicity.value += action.publicity
+        this.actionProgress.value += action.progress
+        this.actionProbeCount.value += 1
+        break
+      case Action.PROBE:
+        this.actionProbeCount.value -= 1
+        if (this.actionTechProbe.value > 0 && techType === TechType.PROBE) {
+          this.actionTechProbe.value -= 1
+        }
+        break
+      case Action.TELESCOPE:
+        if (this.actionTechTelescope.value > 0 && techType === TechType.TELESCOPE) {
+          this.actionTechTelescope.value -= 1
+        }
+        break
+      case Action.ANALYZE:
+        this.actionVP.value += action.victoryPoints
+        if (this.actionTechComputer.value > 0 && techType === TechType.COMPUTER) {
+          this.actionTechComputer.value -= 1
+          this.actionVP.value += 3
+          this.actionProgress.value += 1
+        }
+        break
+    }
+  }
+
+  private gainTech(techType?: TechType) : void {
+    switch (techType) {
+      case TechType.PROBE:
+        this.actionTechProbe.value += 1
+        break
+      case TechType.TELESCOPE:
+        this.actionTechTelescope.value += 1
+        break
+      case TechType.COMPUTER:
+        this.actionTechComputer.value += 1
+        break
+    }
+  }
+
+  private resetAction() : void {
+    this.actionProgress.value = 0
+    this.actionPublicity.value = 0
+    this.actionVP.value = 0
+    this.actionTechProbe.value = 0
+    this.actionTechComputer.value = 0
+    this.actionTechProbe.value = 0
+    this.actionProbeCount.value = 0
+  }
+
+  public merge(botResources: BotResources) : BotResources {
+    const result : BotResources = {
+      progress: botResources.progress + this.resources.progress,
+      publicity: botResources.publicity + this.resources.publicity,
+      data: botResources.data + this.resources.data,
+      vp: botResources.vp + this.resources.vp,
+      techProbe: botResources.techProbe + this.resources.techProbe,
+      techTelescope: botResources.techTelescope + this.resources.techTelescope,
+      techComputer: botResources.techComputer + this.resources.techComputer,
+      probeCount: botResources.probeCount + this.resources.probeCount
+    }
+    if (result.publicity > 10) {
+      result.publicity = 10
+    }
+    return result
   }
 
 }

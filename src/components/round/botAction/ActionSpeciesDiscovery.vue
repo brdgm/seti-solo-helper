@@ -19,6 +19,7 @@ import NavigationState from '@/util/NavigationState'
 import Card, { CardActionSpeciesDiscovery } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import TechType from '@/services/enum/TechType'
 
 export default defineComponent({
   name: 'ActionSpeciesDiscovery',
@@ -26,6 +27,9 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon
+  },
+  emits: {
+    ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
@@ -49,6 +53,9 @@ export default defineComponent({
     alienSpeciesIndex() : number {
       return this.action.alienSpeciesIndex
     }
+  },
+  mounted() {
+    this.$emit('ready')
   }
 })
 </script>

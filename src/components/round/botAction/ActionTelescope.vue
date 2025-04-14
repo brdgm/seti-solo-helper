@@ -1,13 +1,13 @@
 <template>
   <ActionBox :currentCard="currentCard" :instruction-title="'Telescope...'">
+    <template #resources v-if="hasTelescopeTech">
+      <AppIcon type="tech-discard" name="telescope" class="icon resources"/>
+    </template>
     <template #action>
       <div class="action">
         <AppIcon type="action" name="telescope" class="icon"/>
         <AppIcon v-for="scanSector of action.scanSector" :key="scanSector" type="scan-sector" :name="scanSector" class="icon scan"/>
-      </div>
-      <div class="action">
-        <span class="plus">+</span>
-        <AppIcon type="tech-discard" name="telescope" class="icon"/>
+        <AppIcon v-if="hasTelescopeTech" type="scan-sector" name="card" class="icon scan"/>
       </div>
     </template>
     <template #instruction>
@@ -23,6 +23,7 @@ import NavigationState from '@/util/NavigationState'
 import Card, { CardActionTelescope } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import TechType from '@/services/enum/TechType'
 
 export default defineComponent({
   name: 'ActionTelescope',
@@ -30,6 +31,9 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon
+  },
+  emits: {
+    ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
@@ -48,6 +52,14 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
+  },
+  computed: {
+    hasTelescopeTech() : boolean {
+      return this.navigationState.botResources.techTelescope > 0
+    }
+  },
+  mounted() {
+    this.$emit('ready', this.hasTelescopeTech ? TechType.TELESCOPE : undefined)
   }
 })
 </script>
@@ -65,9 +77,8 @@ export default defineComponent({
   &.scan {
     height: 3rem;
   }
-}
-.plus {
-  font-size: 30px;
-  color: grey;
+  &.resources {
+    height: 1.5rem;
+  }
 }
 </style>

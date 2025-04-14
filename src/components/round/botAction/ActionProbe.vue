@@ -1,5 +1,8 @@
 <template>
   <ActionBox :currentCard="currentCard" :instruction-title="'Probe...'">
+    <template #resources v-if="showLanderMoon">
+      <AppIcon type="tech-discard" name="probe" class="icon resources"/>
+    </template>
     <template #action>
       <div class="action">
         <AppIcon :name="`movement-points-${action.movementPoints}`" class="icon"/>
@@ -12,9 +15,9 @@
         </template>
       </div>
       <div class="action mt-3">
-        <AppIcon type="tech-discard" name="probe" class="icon" v-if="showProbeTechDiscard"/>
+        <AppIcon type="probe-action" name="lander-moon" class="icon" v-if="showLanderMoon"/>
         <template v-for="(probeAction,index) in action.probeActions" :key="probeAction">
-          <AppIcon v-if="showProbeTechDiscard || index > 0" name="probe-next" class="icon"/>
+          <AppIcon v-if="showLanderMoon || index > 0" name="probe-next" class="icon"/>
           <AppIcon type="probe-action" :name="probeAction" class="icon"/>
         </template>
       </div>
@@ -33,6 +36,7 @@ import Card, { CardActionProbe } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import Planet from '@/services/enum/Planet'
+import TechType from '@/services/enum/TechType'
 
 export default defineComponent({
   name: 'ActionProbe',
@@ -40,6 +44,9 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon
+  },
+  emits: {
+    ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
@@ -60,9 +67,15 @@ export default defineComponent({
     }
   },
   computed: {
-    showProbeTechDiscard() : boolean {
-      return this.action.planets.filter(planet => planet != Planet.OUMUAMUA).length > 0
+    showLanderMoon() : boolean {
+      return this.hasProbeTech && this.action.planets.filter(planet => planet != Planet.OUMUAMUA).length > 0
+    },
+    hasProbeTech() : boolean {
+      return this.navigationState.botResources.techProbe > 0
     }
+  },
+  mounted() {
+    this.$emit('ready', this.showLanderMoon ? TechType.PROBE : undefined)
   }
 })
 </script>
@@ -77,6 +90,9 @@ export default defineComponent({
 }
 .icon {
   height: 3rem;
+  &.resources {
+    height: 1.5rem;
+  }
 }
 .planet {
   display: flex;

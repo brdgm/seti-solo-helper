@@ -3,7 +3,10 @@
   <h1>{{t('player.bot')}}</h1>
 
   <template v-if="navigationState.botPass">
-    <p class="mt-4" v-html="t('roundTurnBot.pass')"></p>
+    <div class="passInfo">
+      <AppIcon type="action" name="pass" class="icon"/>
+      <p class="mt-4" v-html="t('roundTurnBot.pass')"></p>
+    </div>
     <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()" data-testid="nextButton">
       {{t('action.next')}}
     </button>
@@ -34,6 +37,9 @@ import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import { Tooltip } from 'bootstrap'
 import BotTurn from '@/components/round/BotTurn.vue'
+import AppIcon from '@/components/structure/AppIcon.vue'
+import { CardAction } from '@/services/Card'
+import TechType from '@/services/enum/TechType'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -41,7 +47,8 @@ export default defineComponent({
     FooterButtons,
     SideBar,
     DebugInfo,
-    BotTurn
+    BotTurn,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -61,10 +68,11 @@ export default defineComponent({
     }
   },
   methods: {
-    next() : void {
+    next(action?: CardAction, techType?: TechType) : void {
       const cardDeck = this.navigationState.cardDeck
-      if (!cardDeck) {
-        return
+      const gainResources = this.navigationState.botGainResources
+      if (action) {
+        gainResources.applyAction(action, techType)
       }
       this.state.storeRoundTurn({
         round:this.navigationState.round,
@@ -73,7 +81,7 @@ export default defineComponent({
         player:this.navigationState.player,
         botPersistence: {
           cardDeck: cardDeck.toPersistence(),
-          resources: this.navigationState.botResources
+          resources: gainResources.merge(this.navigationState.botResources)
         },
         pass: this.navigationState.botPass ? true : undefined
       })
@@ -88,3 +96,14 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.passInfo {
+  margin-top: 15px;
+  display: flex;
+  gap: 1rem;
+  .icon {
+    height: 4rem;
+  }
+}
+</style>

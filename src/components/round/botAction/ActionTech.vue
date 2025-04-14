@@ -6,8 +6,8 @@
     </template>
     <template #action>
       <div class="action">
+        <AppIcon type="action" name="tech" class="icon"/>
         <AppIcon name="rotate-solar-system" class="icon"/>
-        <AppIcon type="tech" name="any" class="icon"/>
       </div>
     </template>
     <template #instruction>
@@ -23,6 +23,7 @@ import NavigationState from '@/util/NavigationState'
 import Card, { CardActionTech } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import TechType from '@/services/enum/TechType'
 
 export default defineComponent({
   name: 'ActionTech',
@@ -30,6 +31,9 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon
+  },
+  emits: {
+    ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()

@@ -83,7 +83,7 @@ export default defineComponent({
         pass: passed ? true : undefined,
         botPersistence: {
           cardDeck: this.navigationState.cardDeck.toPersistence(),
-          resources: this.navigationState.botResources
+          resources: this.navigationState.botGainResources.merge(this.navigationState.botResources)
         }
       })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))

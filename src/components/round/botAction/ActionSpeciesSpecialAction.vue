@@ -15,12 +15,16 @@ import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
 import Card, { CardActionSpeciesSpecialAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
+import TechType from '@/services/enum/TechType'
 
 export default defineComponent({
   name: 'ActionSpeciesSpecialAction',
   inheritAttrs: false,
   components: {
     ActionBox
+  },
+  emits: {
+    ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
@@ -39,6 +43,9 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
+  },
+  mounted() {
+    this.$emit('ready')
   }
 })
 </script>

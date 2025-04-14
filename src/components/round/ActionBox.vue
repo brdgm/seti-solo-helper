@@ -111,5 +111,7 @@ export default defineComponent({
   position: absolute;
   left: 5px;
   bottom: 5px;
+  display: flex;
+  gap: 0.25rem;
 }
 </style>

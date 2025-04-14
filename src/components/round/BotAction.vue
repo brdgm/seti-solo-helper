@@ -1,7 +1,8 @@
 <template>
   <div class="actionItem">
     <component :is="`action-${action.action}`" :action="action"
-        :currentCard="currentCard" :navigationState="navigationState"/>
+        :currentCard="currentCard" :navigationState="navigationState"
+        @ready="(techType:TechType) => $emit('ready', techType)"/>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import ActionTelescope from './botAction/ActionTelescope.vue'
 import ActionAnalyze from './botAction/ActionAnalyze.vue'
 import ActionSpeciesDiscovery from './botAction/ActionSpeciesDiscovery.vue'
 import ActionSpeciesSpecialAction from './botAction/ActionSpeciesSpecialAction.vue'
+import TechType from '@/services/enum/TechType'
 
 export default defineComponent({
   name: 'BotAction',
@@ -28,6 +30,9 @@ export default defineComponent({
     ActionAnalyze,
     ActionSpeciesDiscovery,
     ActionSpeciesSpecialAction
+  },
+  emits: {
+    ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
