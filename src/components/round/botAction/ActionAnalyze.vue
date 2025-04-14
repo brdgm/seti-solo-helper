@@ -5,7 +5,7 @@
         <AppIcon type="action" name="analyze" class="icon"/>
         <AppIcon v-if="action.victoryPoints == 3" name="vp-3" class="icon"/>
         <span class="plus">+</span>
-        <AppIcon type="action" name="analyze-tech-discard" class="icon"/>
+        <AppIcon type="tech-discard" name="analyze" class="icon"/>
       </div>
     </template>
     <template #instruction>

@@ -7,7 +7,7 @@
       </div>
       <div class="action">
         <span class="plus">+</span>
-        <AppIcon type="action" name="telescope-tech-discard" class="icon"/>
+        <AppIcon type="tech-discard" name="telescope" class="icon"/>
       </div>
     </template>
     <template #instruction>

@@ -12,7 +12,7 @@
         </template>
       </div>
       <div class="action mt-3">
-        <AppIcon type="action" name="probe-tech-discard" class="icon" v-if="showProbeTechDiscard"/>
+        <AppIcon type="tech-discard" name="probe" class="icon" v-if="showProbeTechDiscard"/>
         <template v-for="(probeAction,index) in action.probeActions" :key="probeAction">
           <AppIcon v-if="showProbeTechDiscard || index > 0" name="probe-next" class="icon"/>
           <AppIcon type="probe-action" :name="probeAction" class="icon"/>
