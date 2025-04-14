@@ -1,7 +1,8 @@
 <template>
+  <!-- eslint-disable vue/no-mutating-props -->
   <div class="resourcesWrapper">
     <div class="resources">
-      <p>Resources <b>the rival</b> gained this turn:</p>
+      <p v-html="t('botResources.gainThisTurn')"></p>
       <div class="grid">
         <div class="grid-item span-3">
           <AppIcon type="resource" name="credit" class="icon"/><span>/</span>
@@ -10,31 +11,31 @@
           <AppIcon type="resource" name="card-species" class="icon"/>
         </div>
         <div class="grid-item">
-          <ScoringTextInput v-model="progressSingleSteps"/>
+          <ScoringTextInput v-model="botGainResources.gainProgressSingleStep.value"/>
         </div>
         <div class="grid-item">
           <AppIcon name="income-increase" class="icon"/>
         </div>
         <div class="grid-item">
-          <ScoringTextInput v-model="incomeIncreaseSteps"/>
+          <ScoringTextInput v-model="botGainResources.gainProgressIncomeIncrease.value"/>
         </div>
         <div class="grid-item">
           <AppIcon type="resource" name="publicity" class="icon"/>
         </div>
         <div class="grid-item">
-          <ScoringTextInput v-model="publicity"/>
+          <ScoringTextInput v-model="botGainResources.gainPublicity.value"/>
         </div>
         <div class="grid-item">
           <AppIcon type="resource" name="data" class="icon"/>
         </div>
         <div class="grid-item">
-          <ScoringTextInput v-model="data"/>
+          <ScoringTextInput v-model="botGainResources.gainData.value"/>
         </div>
         <div class="grid-item">
           <AppIcon type="resource" name="vp" class="icon"/>
         </div>
         <div class="grid-item">
-          <ScoringTextInput v-model="vp"/>
+          <ScoringTextInput v-model="botGainResources.gainVP.value"/>
         </div>
       </div>
     </div>
@@ -42,11 +43,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { BotResources, useStateStore } from '@/store/state'
 import AppIcon from '../structure/AppIcon.vue'
 import ScoringTextInput from '@brdgm/brdgm-commons/src/components/form/ScoringTextInput.vue'
+import BotGainResources from '@/services/BotGainResources'
 
 export default defineComponent({
   name: 'BotResources',
@@ -56,30 +57,13 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    const state = useStateStore()
-
-    const progressSingleSteps = ref(0)
-    const incomeIncreaseSteps = ref(0)
-    const publicity = ref(0)
-    const data = ref(0)
-    const vp = ref(0)
-
-    return { t, state, progressSingleSteps, incomeIncreaseSteps, publicity, data, vp }
+    return { t }
   },
-  computed: {
-    resources() : BotResources {
-      return {
-        progress: this.progressSingleSteps + this.incomeIncreaseSteps * 4,
-        publicity: this.publicity,
-        data: this.data,
-        techProbe: 0,
-        techTelescope: 0,
-        techComputer: 0,
-        vp: this.vp
-      }
-    },
-  },
-  methods: {
+  props: {
+    botGainResources: {
+      type: BotGainResources,
+      required: true
+    }
   }
 })
 </script>

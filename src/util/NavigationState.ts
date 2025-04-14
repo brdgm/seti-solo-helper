@@ -7,6 +7,7 @@ import Card from '@/services/Card'
 import Action from '@/services/enum/Action'
 import Cards from '@/services/Cards'
 import getInitialBotResources from './getInitialBotResources'
+import BotGainResources from '@/services/BotGainResources'
 
 export default class NavigationState {
 
@@ -18,6 +19,7 @@ export default class NavigationState {
   readonly startPlayer : Player
   readonly cardDeck : CardDeck
   readonly botResources : BotResources
+  readonly botGainResources : BotGainResources
   readonly botPass?: boolean
   private readonly state
 
@@ -35,6 +37,7 @@ export default class NavigationState {
     const botPersistence = getBotPersistence(state, this.round, this.turn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = botPersistence.resources
+    this.botGainResources = new BotGainResources()
 
     if (this.player == Player.BOT) {
       if (this.cardDeck.pileEmpty) {

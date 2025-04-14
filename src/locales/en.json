@@ -46,6 +46,9 @@
     "notPossible": "Not Possible",
     "pass": "The Rival passes."
   },
+  "botResources": {
+    "gainThisTurn": "Resources <b>the rival</b> gained this turn:"
+  },
   "sideBar": {
     "round": "Round {round}",
     "turn": "Turn {turn}",

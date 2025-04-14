@@ -46,6 +46,9 @@
     "notPossible": "Nicht möglich",
     "pass": "Der Rivale passt."
   },
+  "botResources": {
+    "gainThisTurn": "Ressourcen die <b>der Rivale</b> diesen Zug erhalten hat:"
+  },
   "sideBar": {
     "round": "Runde {round}",
     "turn": "Zug {turn}",

@@ -5,6 +5,7 @@
       <b>card</b>: {{cardDeck.currentCard ?? '-'}}<br/>
       <b>deck</b>: {{cardDeck.toPersistence()}}<br/>
       <b>resources</b>: {{resources}}<br/>
+      <b>gain resources</b>: {{gainResources}}<br/>
     </p>
   </div>
 </template>
@@ -35,6 +36,9 @@ export default defineComponent({
     },
     resources() : BotResources {
       return this.navigationState.botResources
+    },
+    gainResources() : BotResources {
+      return this.navigationState.botGainResources.resources
     }
   }
 })
