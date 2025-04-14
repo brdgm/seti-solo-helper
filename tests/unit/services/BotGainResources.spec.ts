@@ -106,6 +106,15 @@ describe('services/BotGainResources', () => {
     }))
   })
 
+  it('apply-pass', () => {
+    const underTest = new BotGainResources()
+    underTest.applyAction({action:Action.PASS})
+
+    expect(underTest.resources).to.eql(resources({
+      progress: 1
+    }))
+  })
+
   it('merge', () => {
     const underTest = new BotGainResources()
 

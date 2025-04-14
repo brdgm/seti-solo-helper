@@ -2,10 +2,10 @@
   <SideBar :navigationState="navigationState"/>
   <h1>{{t('player.bot')}}</h1>
 
-  <template v-if="navigationState.botPass">
+  <template v-if="botPass">
     <div class="passInfo">
       <AppIcon type="action" name="pass" class="icon"/>
-      <p class="mt-4" v-html="t('roundTurnBot.pass')"></p>
+      <div v-html="t('roundTurnBot.pass')"></div>
     </div>
     <p v-if="isFirstPass" class="mt-2">
       <AppIcon name="rotate-solar-system" class="icon"/>
@@ -49,6 +49,7 @@ import TechType from '@/services/enum/TechType'
 import BotResources from '@/components/round/BotResources.vue'
 import isFirstPass from '@/util/isFirstPass'
 import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
+import Action from '@/services/enum/Action'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -68,10 +69,14 @@ export default defineComponent({
     const state = useStateStore()
 
     const navigationState = new NavigationState(route, state)
-    const { round, turn, turnOrderIndex, action, player } = navigationState
+    const { round, turn, turnOrderIndex, action, player, botPass } = navigationState
     const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
 
-    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex }
+    if (botPass) {
+      navigationState.botGainResources.applyAction({action:Action.PASS})
+    }
+
+    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, botPass }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -86,7 +91,10 @@ export default defineComponent({
       const cardDeck = this.navigationState.cardDeck
       const previousTurnResources = this.navigationState.botResources
       const gainResources = this.navigationState.botGainResources
-      if (action) {
+      if (this.botPass) {
+        gainResources.applyAction({action:Action.PASS})
+      }
+      else if (action) {
         gainResources.applyAction(action, techType)
       }
       const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
@@ -100,7 +108,7 @@ export default defineComponent({
           cardDeck: cardDeck.toPersistence(),
           resources: gainResources.merge(previousTurnResources)
         },
-        pass: this.navigationState.botPass ? true : undefined
+        pass: this.botPass ? true : undefined
       })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))
     },
@@ -119,6 +127,7 @@ export default defineComponent({
   margin-top: 15px;
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 .icon {
   height: 4rem;

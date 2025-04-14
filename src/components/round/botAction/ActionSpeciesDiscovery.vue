@@ -3,7 +3,7 @@
     <template #action>
       <div class="action">
         <AppIcon type="action" name="species-discovery" class="icon"/>
-        <div v-html="t('rules.action.speciesDiscovery.checkDiscovery', {alienSpeciesIndex})"></div>
+        <div v-html="t('roundTurnBot.checkSpeciesDiscovery', {alienSpeciesIndex})"></div>
       </div>
     </template>
     <template #instruction>
@@ -53,9 +53,6 @@ export default defineComponent({
     alienSpeciesIndex() : number {
       return this.action.alienSpeciesIndex
     }
-  },
-  mounted() {
-    this.$emit('ready')
   }
 })
 </script>

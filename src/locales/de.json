@@ -44,9 +44,10 @@
   "roundTurnBot": {
     "executed": "Aktion ausgeführt",
     "notPossible": "Nicht möglich",
-    "pass": "Der Rivale passt.",
+    "pass": "Der Rivale passt.<br/>Entferne die <b>oberste Karte</b> des aktuellen Abschlussstapels.",
     "pickTech": "Technologie:",
-    "pickProbeAction": "Aktion:"
+    "pickProbeAction": "Aktion:",
+    "checkSpeciesDiscovery": "Ist <b>Spezies #{alienSpeciesIndex}</b> schon entdeckt?"
   },
   "botResources": {
     "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielbrett</i>:"
@@ -96,13 +97,6 @@
     "3": "Level 3",
     "4": "Level 4",
     "5": "Level 5"
-  },
-  "rules": {
-    "action": {
-      "speciesDiscovery": {
-        "checkDiscovery": "Prüfe ob <b>Spezies #{alienSpeciesIndex}</b> schon entdeckt ist.<br/>Ansonsten ist die Aktion nicht möglich."
-      }
-    }
   },
   "notfound": {
     "title": "Nicht Gefunden"

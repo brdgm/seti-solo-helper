@@ -44,9 +44,10 @@
   "roundTurnBot": {
     "executed": "Action Completed",
     "notPossible": "Not Possible",
-    "pass": "The Rival passes.",
+    "pass": "The Rival passes.<br/>Remove the <b>top card</b> from the end-of-round stack.",
     "pickTech": "Tech:",
-    "pickProbeAction": "Action:"
+    "pickProbeAction": "Action:",
+    "checkSpeciesDiscovery": "Is <b>species #{alienSpeciesIndex}</b> already discovered?"
   },
   "botResources": {
     "gainThisTurn": "<b>Rival</b> gains this turn from the <i>game board</i>:"
@@ -96,13 +97,6 @@
     "3": "Level 3",
     "4": "Level 4",
     "5": "Level 5"
-  },
-  "rules": {
-    "action": {
-      "speciesDiscovery": {
-        "checkDiscovery": "Check if <b>species #{alienSpeciesIndex}</b> is already discovered.<br/>Otherwise, action is not possible."
-      }
-    }
   },
   "notfound": {
     "title": "Not Found"

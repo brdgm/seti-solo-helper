@@ -21,7 +21,8 @@ export type CardAction =
   CardActionTelescope |
   CardActionAnalyze |
   CardActionSpeciesDiscovery |
-  CardActionSpeciesSpecialAction
+  CardActionSpeciesSpecialAction |
+  CardActionPassAction
 
 export type CardActionTech = {
   action: Action.TECH
@@ -59,4 +60,8 @@ export type CardActionSpeciesDiscovery = {
 
 export type CardActionSpeciesSpecialAction = {
   action: Action.SPECIES_SPECIAL_ACTION
+}
+
+export type CardActionPassAction = {
+  action: Action.PASS
 }

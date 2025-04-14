@@ -73,6 +73,9 @@ export default class BotGainResources {
           this.actionProgress.value += 1
         }
         break
+      case Action.PASS:
+        this.actionProgress.value += 1
+        break
     }
   }
 
