@@ -11,11 +11,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
 import BotGainResources from '@/services/BotGainResources'
-import { PropType } from 'vue'
 import { BotResources } from '@/store/state'
 import getReachedMilestones, { Milestone } from '@/util/getReachedMilestones'
 import MilestoneType from '@/services/enum/MilestoneType'

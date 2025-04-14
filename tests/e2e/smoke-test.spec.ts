@@ -12,10 +12,10 @@ test('smoke test', async ({ page }) => {
   await page.getByRole('button', { name: 'Start Game' }).click()
 
   // play a few rounds
-  await page.getByTestId('nextButton').click()
-  await page.getByTestId('nextButton').click()
-  await page.getByTestId('nextButton').click()
-  await page.getByTestId('nextButton').click()
+  await page.getByRole('button').first().click()
+  await page.getByRole('button').first().click()
+  await page.getByRole('button').first().click()
+  await page.getByRole('button').first().click()
 
   // abort game
   await page.getByRole('button', { name: 'Abort Game' }).click()
