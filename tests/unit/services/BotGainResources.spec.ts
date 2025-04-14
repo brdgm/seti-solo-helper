@@ -135,6 +135,32 @@ describe('services/BotGainResources', () => {
       techComputer: 1
     }))
   })
+
+  it('merge-data-bonus', () => {
+    const underTest = new BotGainResources()
+
+    underTest.gainData.value = 1
+    expect(underTest.merge(resources({}))).to.eql(resources({data: 1}))
+
+    underTest.gainData.value = 2
+    expect(underTest.merge(resources({}))).to.eql(resources({publicity:1, data: 2}))
+
+    underTest.gainData.value = 4
+    expect(underTest.merge(resources({}))).to.eql(resources({progress:4, publicity:1, data: 4}))
+
+    underTest.gainData.value = 0
+    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 0})
+    expect(underTest.merge(resources({data:8}))).to.eql(resources({publicity:1, data: 2}))
+  })
+
+  it('merge-data-bonus-analyze', () => {
+    const underTest = new BotGainResources()
+
+    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 0})
+
+    expect(underTest.merge(resources({data:8}))).to.eql(resources({publicity:1, data: 2}))
+    expect(underTest.merge(resources({data:10}))).to.eql(resources({progress:4, publicity:1, data: 4}))
+  })
 })
 
 function resources(params:{progress?: number, publicity?: number, data?: number, vp?: number,

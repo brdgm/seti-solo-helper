@@ -102,6 +102,10 @@ export default class BotGainResources {
   }
 
   public merge(botResources: BotResources) : BotResources {
+    let initialData = botResources.data
+    if (this.resources.data == -6) {
+      initialData = 0
+    }
     const result : BotResources = {
       progress: botResources.progress + this.resources.progress,
       publicity: botResources.publicity + this.resources.publicity,
@@ -112,6 +116,14 @@ export default class BotGainResources {
       techComputer: botResources.techComputer + this.resources.techComputer,
       probeCount: botResources.probeCount + this.resources.probeCount
     }
+    // data bonus
+    if (initialData < 2 && result.data >= 2) {
+      result.publicity += 1
+    }
+    if (initialData < 4 && result.data >= 4) {
+      result.progress += 4
+    }
+    // limit publicity
     if (result.publicity > 10) {
       result.publicity = 10
     }
