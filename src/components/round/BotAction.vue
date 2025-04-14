@@ -1,6 +1,6 @@
 <template>
   <div class="actionItem">
-    <component :is="`action-${action.action}`" :action="action"
+    <component :is="componentName" :action="action"
         :currentCard="currentCard" :navigationState="navigationState"
         @ready="(techType:TechType) => $emit('ready', techType)"/>
   </div>
@@ -17,8 +17,12 @@ import ActionProbe from './botAction/ActionProbe.vue'
 import ActionTelescope from './botAction/ActionTelescope.vue'
 import ActionAnalyze from './botAction/ActionAnalyze.vue'
 import ActionSpeciesDiscovery from './botAction/ActionSpeciesDiscovery.vue'
-import ActionSpeciesSpecialAction from './botAction/ActionSpeciesSpecialAction.vue'
+import ActionSpeciesSpecialActionMascamites from './botAction/ActionSpeciesSpecialActionMascamites.vue'
+import ActionSpeciesSpecialActionAnomalies from './botAction/ActionSpeciesSpecialActionAnomalies.vue'
+import ActionSpeciesSpecialActionCentaurians from './botAction/ActionSpeciesSpecialActionCentaurians.vue'
+import ActionSpeciesSpecialActionExertians from './botAction/ActionSpeciesSpecialActionExertians.vue'
 import TechType from '@/services/enum/TechType'
+import Action from '@/services/enum/Action'
 
 export default defineComponent({
   name: 'BotAction',
@@ -29,7 +33,10 @@ export default defineComponent({
     ActionTelescope,
     ActionAnalyze,
     ActionSpeciesDiscovery,
-    ActionSpeciesSpecialAction
+    ActionSpeciesSpecialActionMascamites,
+    ActionSpeciesSpecialActionAnomalies,
+    ActionSpeciesSpecialActionCentaurians,
+    ActionSpeciesSpecialActionExertians
   },
   emits: {
     ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -50,6 +57,14 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
+    }
+  },
+  computed: {
+    componentName() : string {
+      if (this.action.action == Action.SPECIES_SPECIAL_ACTION) {
+        return `action-${this.action.action}-${this.currentCard.alienSpecies}`
+      }
+      return `action-${this.action.action}`
     }
   }
 })

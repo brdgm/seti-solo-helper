@@ -95,7 +95,7 @@ export default defineComponent({
         gainResources.applyAction({action:Action.PASS})
       }
       else if (action) {
-        gainResources.applyAction(action, techType)
+        gainResources.applyAction(action, techType, this.navigationState.botActions.currentCard?.alienSpecies)
       }
       const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
       cardDeck.addAdvancedCards(drawAdvancedCards)

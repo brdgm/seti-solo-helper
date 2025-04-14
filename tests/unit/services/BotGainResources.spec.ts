@@ -1,5 +1,6 @@
 import BotGainResources from '@/services/BotGainResources'
 import Action from '@/services/enum/Action'
+import AlienSpecies from '@/services/enum/AlienSpecies'
 import TechType from '@/services/enum/TechType'
 import { BotResources } from '@/store/state'
 import { expect } from 'chai'
@@ -109,6 +110,43 @@ describe('services/BotGainResources', () => {
   it('apply-pass', () => {
     const underTest = new BotGainResources()
     underTest.applyAction({action:Action.PASS})
+
+    expect(underTest.resources).to.eql(resources({
+      progress: 1
+    }))
+  })
+
+  it('apply-alien-special-action-mascamites', () => {
+    const underTest = new BotGainResources()
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.MASCAMITES)
+
+    expect(underTest.resources).to.eql(resources({
+      probeCount: -1
+    }))
+  })
+
+  it('apply-alien-special-action-mascamites-tech', () => {
+    const underTest = new BotGainResources()
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, TechType.PROBE, AlienSpecies.MASCAMITES)
+
+    expect(underTest.resources).to.eql(resources({
+      techProbe: -1,
+      probeCount: -1      
+    }))
+  })
+
+  it('apply-alien-special-action-anomalies', () => {
+    const underTest = new BotGainResources()
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.ANOMALIES)
+
+    expect(underTest.resources).to.eql(resources({
+      vp: 3
+    }))
+  })
+
+  it('apply-alien-special-action-centaurians', () => {
+    const underTest = new BotGainResources()
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.CENTAURIANS)
 
     expect(underTest.resources).to.eql(resources({
       progress: 1

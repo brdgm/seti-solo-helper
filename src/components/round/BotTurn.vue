@@ -82,7 +82,7 @@ export default defineComponent({
     ready(techType?: TechType) : void {
       this.actionReady = true
       this.actionTechType = techType
-      this.navigationState.botGainResources.applyAction(this.currentAction, techType)
+      this.navigationState.botGainResources.applyAction(this.currentAction, techType, this.currentCard.alienSpecies)
     }
   }
 })

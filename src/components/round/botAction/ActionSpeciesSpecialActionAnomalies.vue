@@ -1,7 +1,13 @@
 <template>
   <ActionBox :currentCard="currentCard" :instruction-title="'Species Special Action...'">
+    <template #resources>
+      <AppIcon name="vp-3" class="icon resources"/>
+    </template>
     <template #action>
-      Action Species Special Action...
+      <div class="action">
+        <AppIcon type="alien-trace" name="any" class="icon"/>
+        <p><b>Anomalies:</b> If the rival would not win the next anomaly: He places 1 species trace with the <b>matching color</b> on this alien species board.</p>
+      </div>
     </template>
     <template #instruction>
       Rules Species Special Action...
@@ -10,25 +16,31 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
 import Card, { CardActionSpeciesSpecialAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import TechType from '@/services/enum/TechType'
+import AppIcon from '@/components/structure/AppIcon.vue'
+import ProbeAction from '@/services/enum/ProbeAction'
 
 export default defineComponent({
-  name: 'ActionSpeciesSpecialAction',
+  name: 'ActionSpeciesSpecialActionAnomalies',
   inheritAttrs: false,
   components: {
-    ActionBox
+    ActionBox,
+    AppIcon
   },
   emits: {
     ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
-    return { t }
+
+    const selectedProbeAction = ref(undefined as ProbeAction|undefined)
+
+    return { t, selectedProbeAction }
   },
   props: {
     action: {
@@ -51,4 +63,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.action {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.icon {
+  height: 3rem;
+  &.resources {
+    height: 1.5rem;
+  }
+}
 </style>

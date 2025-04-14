@@ -4,6 +4,7 @@ import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import { CardAction } from './Card'
 import Action from './enum/Action'
 import TechType from './enum/TechType'
+import AlienSpecies from './enum/AlienSpecies'
 
 /**
  * Resources the bot gained this turn by either the actions, or manual input.
@@ -40,7 +41,7 @@ export default class BotGainResources {
     }  
   }
 
-  public applyAction(action: CardAction, techType?: TechType) : void {
+  public applyAction(action: CardAction, techType?: TechType, alienSpecies?: AlienSpecies) : void {
     this.resetAction()
     switch (action.action) {
       case Action.TECH:
@@ -75,6 +76,22 @@ export default class BotGainResources {
         break
       case Action.PASS:
         this.actionProgress.value += 1
+        break
+      case Action.SPECIES_SPECIAL_ACTION:
+        switch (alienSpecies) {
+          case AlienSpecies.MASCAMITES:
+            this.actionProbeCount.value -= 1
+            if (techType === TechType.PROBE) {
+              this.actionTechProbe.value -= 1
+            }
+            break
+          case AlienSpecies.ANOMALIES:
+            this.actionVP.value += 3
+            break
+          case AlienSpecies.CENTAURIANS:
+            this.actionProgress.value += 1
+            break
+        }
         break
     }
   }
