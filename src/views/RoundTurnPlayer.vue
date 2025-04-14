@@ -5,6 +5,8 @@
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 
   <BotResources :botGainResources="navigationState.botGainResources"/>
+  <BotReachedMilestones :botResources="navigationState.botResources" :botGainResources="navigationState.botGainResources" 
+      :currentCard="navigationState.botActions.currentCard"/>
   
   <button class="btn btn-primary btn-lg mt-4" @click="next" data-testid="nextButton">
     {{t('action.next')}}
@@ -45,12 +47,14 @@ import DebugInfo from '@/components/round/DebugInfo.vue'
 import BotResources from '@/components/round/BotResources.vue'
 import isFirstPass from '@/util/isFirstPass'
 import AppIcon from '@/components/structure/AppIcon.vue'
+import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
   components: {
     FooterButtons,
     BotResources,
+    BotReachedMilestones,
     ModalDialog,
     SideBar,
     DebugInfo,

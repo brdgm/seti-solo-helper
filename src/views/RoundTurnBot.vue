@@ -11,6 +11,8 @@
       <AppIcon name="rotate-solar-system" class="icon"/>
     </p>
     <BotResources :botGainResources="navigationState.botGainResources"/>
+    <BotReachedMilestones :botResources="navigationState.botResources" :botGainResources="navigationState.botGainResources"
+        :currentCard="navigationState.botActions.currentCard"/>
     <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()" data-testid="nextButton">
       {{t('action.next')}}
     </button>
@@ -46,6 +48,7 @@ import { CardAction } from '@/services/Card'
 import TechType from '@/services/enum/TechType'
 import BotResources from '@/components/round/BotResources.vue'
 import isFirstPass from '@/util/isFirstPass'
+import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -55,7 +58,8 @@ export default defineComponent({
     DebugInfo,
     BotTurn,
     AppIcon,
-    BotResources
+    BotResources,
+    BotReachedMilestones
   },
   setup() {
     const { t } = useI18n()

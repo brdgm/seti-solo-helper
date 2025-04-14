@@ -3,6 +3,7 @@
       @ready="ready"/>
 
   <BotResources v-if="showBotResources" :botGainResources="navigationState.botGainResources"/>
+  <BotReachedMilestones :botResources="navigationState.botResources" :botGainResources="navigationState.botGainResources" :currentCard="currentCard"/>
 
   <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" data-testid="nextButton" v-if="actionReady">
     {{t('roundTurnBot.executed')}}
@@ -24,12 +25,14 @@ import BotResources from './BotResources.vue'
 import BotActions from '@/services/BotActions'
 import TechType from '@/services/enum/TechType'
 import Action from '@/services/enum/Action'
+import BotReachedMilestones from './BotReachedMilestones.vue'
 
 export default defineComponent({
   name: 'BotTurn',
   components: {
     BotAction,
-    BotResources
+    BotResources,
+    BotReachedMilestones
   },
   emits: {
     executed: (_action?: CardAction, _techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars

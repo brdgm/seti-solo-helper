@@ -51,6 +51,10 @@
   "botResources": {
     "gainThisTurn": "<b>Rival</b> gains this turn from the <i>game board</i>:"
   },
+  "botReachedMilestones": {
+    "neutral": "The rival reached a <b>neutral</b> milestone on score {score}.",
+    "gold": "The rival reached a <b>gold</b> milestone on score {score}.<br/>He claims the first, most valuable free spot on a gold tile."
+  },
   "sideBar": {
     "round": "Round {round}",
     "turn": "Turn {turn}",
