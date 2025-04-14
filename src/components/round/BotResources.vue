@@ -2,47 +2,41 @@
   <div class="resourcesWrapper">
     <div class="resources">
       <p>Resources <b>the rival</b> gained this turn:</p>
-      <table>
-        <tbody>
-          <tr>
-            <td colspan="3">
-              <AppIcon type="resource" name="credit" class="icon"/><span>/</span>
-              <AppIcon type="resource" name="energy" class="icon"/><span>/</span>
-              <AppIcon type="resource" name="card" class="icon"/><span>/</span>
-              <AppIcon type="resource" name="card-species" class="icon"/>
-            </td>
-            <td>
-              <ScoringTextInput v-model="progressSingleSteps"/>
-            </td>
-            <td>
-              <AppIcon name="income-increase" class="icon"/>
-            </td>
-            <td>
-              <ScoringTextInput v-model="incomeIncreaseSteps"/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <AppIcon type="resource" name="publicity" class="icon"/>
-            </td>
-            <td>
-              <ScoringTextInput v-model="publicity"/>
-            </td>
-            <td>
-              <AppIcon type="resource" name="data" class="icon"/>
-            </td>
-            <td>
-              <ScoringTextInput v-model="data"/>
-            </td>
-            <td>
-              <AppIcon type="resource" name="vp" class="icon"/>
-            </td>
-            <td>
-              <ScoringTextInput v-model="vp"/>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="grid">
+        <div class="grid-item span-3">
+          <AppIcon type="resource" name="credit" class="icon"/><span>/</span>
+          <AppIcon type="resource" name="energy" class="icon"/><span>/</span>
+          <AppIcon type="resource" name="card" class="icon"/><span>/</span>
+          <AppIcon type="resource" name="card-species" class="icon"/>
+        </div>
+        <div class="grid-item">
+          <ScoringTextInput v-model="progressSingleSteps"/>
+        </div>
+        <div class="grid-item">
+          <AppIcon name="income-increase" class="icon"/>
+        </div>
+        <div class="grid-item">
+          <ScoringTextInput v-model="incomeIncreaseSteps"/>
+        </div>
+        <div class="grid-item">
+          <AppIcon type="resource" name="publicity" class="icon"/>
+        </div>
+        <div class="grid-item">
+          <ScoringTextInput v-model="publicity"/>
+        </div>
+        <div class="grid-item">
+          <AppIcon type="resource" name="data" class="icon"/>
+        </div>
+        <div class="grid-item">
+          <ScoringTextInput v-model="data"/>
+        </div>
+        <div class="grid-item">
+          <AppIcon type="resource" name="vp" class="icon"/>
+        </div>
+        <div class="grid-item">
+          <ScoringTextInput v-model="vp"/>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -110,8 +104,26 @@ export default defineComponent({
   }
   input {
     width: 3rem;
-    margin-left: 0.25rem;
-    margin-right: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1.9em 4rem);
+    gap: 0.25rem;
+    align-items: center;
+    @media (max-width: 500px) {
+      grid-template-columns: repeat(2, 1.9em 4rem);
+    }
+    @media (max-width: 360px) {
+      grid-template-columns: repeat(1, 4.3em 4rem);
+    }
+  }
+  .grid-item {
+    &.span-3 {
+      grid-column: span 3;
+      @media (max-width: 360px) {
+        grid-column: span 1;
+      }
+    }  
   }
 }
 </style>
