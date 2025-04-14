@@ -1,12 +1,12 @@
 import Player from '@/services/enum/Player'
 import { BotPersistence, Round, RoundTurn } from '@/store/state'
-import mockCardDeck from './mockCardDeck'
+import mockBotPersistence from './mockBotPersistence'
 
 export default function (params?: MockRoundParams) : Round {
   const round : Round = {
     round: params?.round ?? 1,
     startPlayer: params?.startPlayer ?? Player.PLAYER,
-    initialBotPersistence: params?.initialBotPersistence ?? { cardDeck: mockCardDeck().toPersistence()},
+    initialBotPersistence: params?.initialBotPersistence ?? mockBotPersistence(),
     turns: params?.turns ?? []
   }
   // renumber turnOrderIndex

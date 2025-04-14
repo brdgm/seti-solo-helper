@@ -21,6 +21,8 @@
     </template>
   </ModalDialog>
 
+  <DebugInfo :navigationState="navigationState"/>
+
   <FooterButtons :backButtonRouteTo="backButtonRouteTo" endGameButtonType="abortGame"/>
 </template>
 
@@ -34,13 +36,15 @@ import { useStateStore } from '@/store/state'
 import RouteCalculator from '@/services/RouteCalculator'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import SideBar from '@/components/round/SideBar.vue'
+import DebugInfo from '@/components/round/DebugInfo.vue'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
   components: {
     FooterButtons,
     ModalDialog,
-    SideBar
+    SideBar,
+    DebugInfo
   },
   setup() {
     const { t } = useI18n()
@@ -67,12 +71,17 @@ export default defineComponent({
       this.nextWithPassed(true)
     },
     nextWithPassed(passed : boolean) {
+      const { progress, publicity, data, techProbe, techTelescope, techComputer } = this.navigationState.botPersistence
       this.state.storeRoundTurn({
         round:this.navigationState.round,
         turn:this.navigationState.turn,
         turnOrderIndex:this.navigationState.turnOrderIndex,
         player:this.navigationState.player,
-        pass: passed ? true : undefined
+        pass: passed ? true : undefined,
+        botPersistence: {
+          cardDeck: this.navigationState.cardDeck.toPersistence(),
+          progress, publicity, data, techProbe, techTelescope, techComputer
+        }
       })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))
     }

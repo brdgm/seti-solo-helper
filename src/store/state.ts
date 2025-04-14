@@ -68,10 +68,16 @@ export interface RoundTurn {
   turnOrderIndex: number
   player: Player
   pass?: boolean
-  botPersistence?: BotPersistence
+  botPersistence: BotPersistence
 }
 export interface BotPersistence {
   cardDeck: CardDeckPersistence
+  progress: number
+  publicity: number
+  data: number
+  techProbe: number
+  techTelescope: number
+  techComputer: number
 }
 export interface CardDeckPersistence {
   pile: string[]

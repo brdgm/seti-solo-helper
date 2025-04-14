@@ -2,7 +2,6 @@ import { BotPersistence, State } from '@/store/state'
 import { RouteLocation } from 'vue-router'
 import getIntRouteParam from '@brdgm/brdgm-commons/src/util/router/getIntRouteParam'
 import Player from '@/services/enum/Player'
-import getPreviousTurns from './getPreviousTurns'
 import CardDeck from '@/services/CardDeck'
 import Card from '@/services/Card'
 import Action from '@/services/enum/Action'
@@ -16,8 +15,8 @@ export default class NavigationState {
   readonly action : number
   readonly player : Player
   readonly startPlayer : Player
-  readonly botPersistence? : BotPersistence
-  readonly cardDeck? : CardDeck
+  readonly botPersistence : BotPersistence
+  readonly cardDeck : CardDeck
   readonly botPass?: boolean
   private readonly state
 
@@ -27,20 +26,15 @@ export default class NavigationState {
     this.turn = getIntRouteParam(route, 'turn')
     this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
     this.action = getIntRouteParam(route, 'action')
-
-    if (route.name == 'RoundTurnPlayer') {
-      this.player = Player.PLAYER
-    }
-    else {
-      this.player = Player.BOT
-    }
+    this.player = (route.name == 'RoundTurnPlayer') ? Player.PLAYER : Player.BOT
 
     const roundData = state.rounds.find(item => item.round === this.round)
     this.startPlayer = roundData?.startPlayer ?? Player.PLAYER
 
+    this.botPersistence = getBotPersistence(state, this.round, this.turn, this.turnOrderIndex)
+    this.cardDeck = CardDeck.fromPersistence(this.botPersistence.cardDeck)
+
     if (this.player == Player.BOT) {
-      this.botPersistence = getBotPersistence(state, this.round, this.turn)
-      this.cardDeck = CardDeck.fromPersistence(this.botPersistence.cardDeck)
       if (this.cardDeck.pileEmpty) {
         this.botPass = true
       }
@@ -67,20 +61,30 @@ export default class NavigationState {
 
 }
 
-function getBotPersistence(state:State, round:number, turn:number) : BotPersistence {
-  // get card deck from previous turn
-  const previousTurns = getPreviousTurns({state, round, turn, player: Player.BOT})
-  for (let i=previousTurns.length-1; i>=0; i--) {
-    const previousTurn = previousTurns[i]
-    if (previousTurn.botPersistence) {
-      return previousTurn.botPersistence
-    }
+function getBotPersistence(state:State, round:number, turn:number, turnOrderIndex:number) : BotPersistence {
+  const roundData = state.rounds.find(item => item.round==round)
+
+  // get from previous turn
+  const lastTurn = roundData?.turns.toSorted((item1,item2) => item1.turn==item2.turn ? item1.turnOrderIndex - item2.turnOrderIndex : item1.turn - item2.turn)
+      .findLast(item => item.turn < turn || (item.turn == turn && item.turnOrderIndex < turnOrderIndex))
+  if (lastTurn) {
+    return lastTurn.botPersistence
   }
+
   // get initial card deck prepared for this round
-  const initialBotPersistence = state.rounds.find(item => item.round == round)?.initialBotPersistence
+  const initialBotPersistence = roundData?.initialBotPersistence
   if (initialBotPersistence) {
     return initialBotPersistence
   }
-  // last resort: create new card deck
-  return { cardDeck: CardDeck.new(round).toPersistence() }
+  
+  // last resort: create new (should never happen)
+  return {
+    cardDeck: CardDeck.new(round).toPersistence(),
+    progress: 1,
+    publicity: 4,
+    data: 0,
+    techProbe: 0,
+    techTelescope: 0,
+    techComputer: 0
+  }
 }

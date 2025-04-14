@@ -2,8 +2,9 @@
   <div class="mt-4" v-if="state.setup.debugMode">
     <hr/>
     <p class="debug">
-      <template v-if="cardDeck.currentCard"><b>card</b>: {{cardDeck.currentCard}}<br/></template>
+      <b>card</b>: {{cardDeck.currentCard ?? '-'}}<br/>
       <b>deck</b>: {{cardDeck.toPersistence()}}<br/>
+      <b>resources</b>: {{resources}}<br/>
     </p>
   </div>
 </template>
@@ -30,8 +31,13 @@ export default defineComponent({
   },
   computed: {
     cardDeck() : CardDeck {
-      return this.navigationState.cardDeck ?? CardDeck.new(this.navigationState.round)
-    } 
+      return this.navigationState.cardDeck
+    },
+    resources() {
+      const result : any = {...this.navigationState.botPersistence}
+      delete result.cardDeck
+      return result
+    }
   }
 })
 </script>

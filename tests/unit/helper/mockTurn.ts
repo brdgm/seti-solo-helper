@@ -1,5 +1,6 @@
 import Player from '@/services/enum/Player'
 import { BotPersistence, RoundTurn } from '@/store/state'
+import mockBotPersistence from './mockBotPersistence'
 
 export default function (params?: MockTurnParams) : RoundTurn {
   return {
@@ -8,7 +9,7 @@ export default function (params?: MockTurnParams) : RoundTurn {
     turnOrderIndex: params?.turnOrderIndex ?? 0,
     player: params?.player ?? Player.PLAYER,
     pass: params?.pass,
-    botPersistence: params?.botPersistence
+    botPersistence: params?.botPersistence ?? mockBotPersistence()
   }
 }
 

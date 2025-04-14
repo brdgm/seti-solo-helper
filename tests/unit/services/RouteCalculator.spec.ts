@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import mockRound from '../helper/mockRound'
 import mockState from '../helper/mockState'
 import Player from '@/services/enum/Player'
+import mockTurn from '../helper/mockTurn'
 
 describe('services/RouteCalculator', () => {
   it('getNextRouteTo-round1-turn1-player', () => {
@@ -70,7 +71,7 @@ describe('services/RouteCalculator', () => {
 
     const state = mockState({rounds:[
       mockRound({round:1, startPlayer:Player.PLAYER, turns:[
-        {round:1, turn:1, turnOrderIndex:0, player:Player.PLAYER, pass:true}
+        mockTurn({round:1, turn:1, player:Player.PLAYER, pass:true})
       ]})
     ]})
     expect(routeCalculator.getNextRouteTo(state)).to.eq('/round/1/turn/2/0/bot')
@@ -82,8 +83,8 @@ describe('services/RouteCalculator', () => {
 
     const state = mockState({rounds:[
       mockRound({round:1, startPlayer:Player.PLAYER, turns:[
-        {round:1, turn:1, turnOrderIndex:0, player:Player.PLAYER, pass:true},
-        {round:1, turn:1, turnOrderIndex:1, player:Player.BOT, pass:true}]})
+        mockTurn({round:1, turn:1, player:Player.PLAYER, pass:true}),
+        mockTurn({round:1, turn:1, player:Player.BOT, pass:true})]})
     ]})
     expect(routeCalculator.getNextRouteTo(state)).to.eq('/round/1/end')
     expect(routeCalculator.getBackRouteTo(state)).to.eq('/round/1/turn/1/0/player')
@@ -110,8 +111,8 @@ describe('services/RouteCalculator', () => {
 
     const state = mockState({rounds:[
       mockRound({round:1, startPlayer:Player.PLAYER, turns:[
-        {round:1, turn:1, turnOrderIndex:0, player:Player.PLAYER, pass:true},
-        {round:1, turn:1, turnOrderIndex:1, player:Player.BOT, pass:true}]})
+        mockTurn({round:1, turn:1, player:Player.PLAYER, pass:true}),
+        mockTurn({round:1, turn:1, player:Player.BOT, pass:true})]})
   ]})
     expect(routeCalculator.getLastTurnRouteTo(state)).to.eq('/round/1/turn/1/1/bot')
   })

@@ -64,13 +64,15 @@ export default defineComponent({
       if (!cardDeck) {
         return
       }
+      const { progress, publicity, data, techProbe, techTelescope, techComputer } = this.navigationState.botPersistence
       this.state.storeRoundTurn({
         round:this.navigationState.round,
         turn:this.navigationState.turn,
         turnOrderIndex:this.navigationState.turnOrderIndex,
         player:this.navigationState.player,
         botPersistence: {
-          cardDeck: cardDeck.toPersistence()
+          cardDeck: cardDeck.toPersistence(),
+          progress, publicity, data, techProbe, techTelescope, techComputer
         },
         pass: this.navigationState.botPass ? true : undefined
       })

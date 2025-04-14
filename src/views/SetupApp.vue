@@ -45,7 +45,13 @@ export default defineComponent({
         round: 1,
         startPlayer: this.state.setup.startPlayer ?? randomEnum(Player),
         initialBotPersistence: {
-          cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence()
+          cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
+          progress: 1,
+          publicity: 4,
+          data: 0,
+          techProbe: 0,
+          techTelescope: 0,
+          techComputer: 0
         },
         turns: []
       }
