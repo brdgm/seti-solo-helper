@@ -83,8 +83,9 @@ export interface BotResources {
   progress: number
   publicity: number
   data: number
+  vp: number
   techProbe: number
   techTelescope: number
   techComputer: number
-  vp: number
+  probeCount: number
 }

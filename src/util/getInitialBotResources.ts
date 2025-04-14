@@ -11,9 +11,10 @@ export default function(startPlayer: Player) : BotResources {
     progress: 1,
     publicity: 4,
     data: 0,
+    vp: startPlayer == Player.BOT ? 1 : 2,
     techProbe: 0,
     techTelescope: 0,
     techComputer: 0,
-    vp: startPlayer == Player.BOT ? 1 : 2
+    probeCount: 0
   }
 }

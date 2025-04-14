@@ -3,11 +3,9 @@ import { RouteLocation } from 'vue-router'
 import getIntRouteParam from '@brdgm/brdgm-commons/src/util/router/getIntRouteParam'
 import Player from '@/services/enum/Player'
 import CardDeck from '@/services/CardDeck'
-import Card from '@/services/Card'
-import Action from '@/services/enum/Action'
-import Cards from '@/services/Cards'
 import getInitialBotResources from './getInitialBotResources'
 import BotGainResources from '@/services/BotGainResources'
+import BotActions from '@/services/BotActions'
 
 export default class NavigationState {
 
@@ -20,11 +18,10 @@ export default class NavigationState {
   readonly cardDeck : CardDeck
   readonly botResources : BotResources
   readonly botGainResources : BotGainResources
+  readonly botActions : BotActions
   readonly botPass?: boolean
-  private readonly state
 
   constructor(route: RouteLocation, state: State) {    
-    this.state = state
     this.round = getIntRouteParam(route, 'round')
     this.turn = getIntRouteParam(route, 'turn')
     this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
@@ -38,6 +35,7 @@ export default class NavigationState {
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = botPersistence.resources
     this.botGainResources = new BotGainResources()
+    this.botActions = new BotActions(this, state)
 
     if (this.player == Player.BOT) {
       if (this.cardDeck.pileEmpty) {
@@ -47,21 +45,6 @@ export default class NavigationState {
         this.cardDeck.draw()
       }
     }
-  }
-
-  public get currentCard() : Card|undefined {
-    let currentCard = this.cardDeck?.currentCard
-    if (currentCard) {
-      const speciesDiscoveryAction = currentCard.actions.find(item => item.action == Action.SPECIES_DISCOVERY)
-      if (speciesDiscoveryAction) {
-        // replace card with alien species card is species is discovered
-        const alienSpecies = this.state.alienDiscovery.species[speciesDiscoveryAction.alienSpeciesIndex-1]
-        if (alienSpecies) {
-          currentCard = Cards.getAlienSpeciesCard(alienSpecies)
-        }
-      }
-    }
-    return currentCard
   }
 
 }

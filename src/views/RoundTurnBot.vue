@@ -9,8 +9,10 @@
     </button>
   </template>
   <template v-else>
-    <BotTurn v-if="navigationState.currentCard"
-       :navigationState="navigationState" :currentCard="navigationState.currentCard"
+    <BotTurn v-if="navigationState.botActions.currentCard"
+       :navigationState="navigationState"
+       :botActions="navigationState.botActions"
+       :currentCard="navigationState.botActions.currentCard"
        :key="JSON.stringify(state.alienDiscovery.species)"
        @executed="next" @notPossible="notPossible"/>
   </template>

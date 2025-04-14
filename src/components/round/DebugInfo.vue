@@ -2,7 +2,8 @@
   <div class="mt-4" v-if="state.setup.debugMode">
     <hr/>
     <p class="debug">
-      <b>card</b>: {{cardDeck.currentCard ?? '-'}}<br/>
+      <b>card</b>: {{botActions.currentCard ?? '-'}}<br/>
+      <b>valid actions</b>: {{botActions.actions}}<br/>
       <b>deck</b>: {{cardDeck.toPersistence()}}<br/>
       <b>resources</b>: {{resources}}<br/>
       <b>gain resources</b>: {{gainResources}}<br/>
@@ -16,6 +17,7 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { BotResources, useStateStore } from '@/store/state'
 import CardDeck from '@/services/CardDeck'
+import BotActions from '@/services/BotActions'
 
 export default defineComponent({
   name: 'DebugInfo',
@@ -33,6 +35,9 @@ export default defineComponent({
   computed: {
     cardDeck() : CardDeck {
       return this.navigationState.cardDeck
+    },
+    botActions() : BotActions {
+      return this.navigationState.botActions
     },
     resources() : BotResources {
       return this.navigationState.botResources

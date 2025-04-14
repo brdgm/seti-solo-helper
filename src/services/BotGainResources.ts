@@ -15,10 +15,11 @@ export default class BotGainResources {
 
   private readonly actionProgress = ref(0)
   private readonly actionPublicity = ref(0)
+  private readonly actionVP = ref(0)
   private readonly actionTechProbe = ref(0)
   private readonly actionTechTelescope = ref(0)
   private readonly actionTechComputer = ref(0)
-  private readonly actionVP = ref(0)
+  private readonly actionProbeCount = ref(0)
 
   public get resources() : BotResources {
     return {
@@ -27,10 +28,11 @@ export default class BotGainResources {
           + toNumber(this.actionProgress.value),
       publicity: toNumber(this.gainPublicity.value) + this.actionPublicity.value,
       data: toNumber(this.gainData.value),
+      vp: toNumber(this.gainVP.value) + this.actionVP.value,
       techProbe: this.actionTechProbe.value,
       techTelescope: this.actionTechTelescope.value,
       techComputer: this.actionTechComputer.value,
-      vp: toNumber(this.gainVP.value) + this.actionVP.value
+      probeCount: this.actionProbeCount.value
     }  
   }
 

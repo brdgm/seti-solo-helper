@@ -20,6 +20,7 @@ import { useStateStore } from '@/store/state'
 import Card from '@/services/Card'
 import BotAction from './BotAction.vue'
 import BotResources from './BotResources.vue'
+import BotActions from '@/services/BotActions'
 
 export default defineComponent({
   name: 'BotTurn',
@@ -33,13 +34,17 @@ export default defineComponent({
     const state = useStateStore()
 
     const { action } = props.navigationState
-    const currentAction = props.currentCard.actions[action]
+    const currentAction = props.botActions.actions[action]
 
     return { t, state, currentAction }
   },
   props: {
     navigationState: {
       type: NavigationState,
+      required: true
+    },
+    botActions: {
+      type: BotActions,
       required: true
     },
     currentCard: {
@@ -49,7 +54,7 @@ export default defineComponent({
   },
   computed: {
     hasMoreActions() : boolean {
-      return this.navigationState.action < this.currentCard.actions.length - 1
+      return this.navigationState.action < this.botActions.actions.length - 1
     }
   },
   methods: {
