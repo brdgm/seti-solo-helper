@@ -7,6 +7,9 @@
       <AppIcon type="action" name="pass" class="icon"/>
       <p class="mt-4" v-html="t('roundTurnBot.pass')"></p>
     </div>
+    <p v-if="isFirstPass" class="mt-2">
+      <AppIcon name="rotate-solar-system" class="icon"/>
+    </p>
     <BotResources :botGainResources="navigationState.botGainResources"/>
     <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()" data-testid="nextButton">
       {{t('action.next')}}
@@ -42,6 +45,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import { CardAction } from '@/services/Card'
 import TechType from '@/services/enum/TechType'
 import BotResources from '@/components/round/BotResources.vue'
+import isFirstPass from '@/util/isFirstPass'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -63,11 +67,14 @@ export default defineComponent({
     const { round, turn, turnOrderIndex, action, player } = navigationState
     const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
 
-    return { t, router, navigationState, state, routeCalculator, round, turn }
+    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex }
   },
   computed: {
     backButtonRouteTo() : string {
       return this.routeCalculator.getBackRouteTo(this.state)
+    },
+    isFirstPass() : boolean {
+      return isFirstPass(this.state, this.round, this.turn, this.turnOrderIndex)
     }
   },
   methods: {
@@ -105,8 +112,8 @@ export default defineComponent({
   margin-top: 15px;
   display: flex;
   gap: 1rem;
-  .icon {
-    height: 4rem;
-  }
+}
+.icon {
+  height: 4rem;
 }
 </style>

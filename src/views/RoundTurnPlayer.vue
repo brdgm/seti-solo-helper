@@ -16,6 +16,9 @@
   <ModalDialog id="passModal" :title="t('action.pass')">
     <template #body>
       <p v-html="t('roundTurnPlayer.passConfirm')"></p>
+      <p v-if="isFirstPass">
+        <AppIcon name="rotate-solar-system" class="icon"/>
+      </p>
     </template>
     <template #footer>
       <button class="btn btn-danger" @click="pass" data-bs-dismiss="modal">{{t('action.pass')}}</button>
@@ -40,6 +43,8 @@ import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDial
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import BotResources from '@/components/round/BotResources.vue'
+import isFirstPass from '@/util/isFirstPass'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
@@ -48,7 +53,8 @@ export default defineComponent({
     BotResources,
     ModalDialog,
     SideBar,
-    DebugInfo
+    DebugInfo,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -65,6 +71,9 @@ export default defineComponent({
   computed: {
     backButtonRouteTo() : string {
       return this.routeCalculator.getBackRouteTo(this.state)
+    },
+    isFirstPass() : boolean {
+      return isFirstPass(this.state, this.round, this.turn, this.turnOrderIndex)
     }
   },
   methods: {
@@ -91,3 +100,10 @@ export default defineComponent({
   }
 })
 </script>
+
+
+<style lang="scss" scoped>
+.icon {
+  height: 4rem;
+}
+</style>
