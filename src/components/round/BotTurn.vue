@@ -2,7 +2,7 @@
   <BotAction :action="currentAction" :currentCard="currentCard" :navigationState="navigationState"
       @ready="ready"/>
 
-  <BotResources :botGainResources="navigationState.botGainResources"/>
+  <BotResources v-if="showBotResources" :botGainResources="navigationState.botGainResources"/>
 
   <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" data-testid="nextButton" v-if="actionReady">
     {{t('roundTurnBot.executed')}}
@@ -23,6 +23,7 @@ import BotAction from './BotAction.vue'
 import BotResources from './BotResources.vue'
 import BotActions from '@/services/BotActions'
 import TechType from '@/services/enum/TechType'
+import Action from '@/services/enum/Action'
 
 export default defineComponent({
   name: 'BotTurn',
@@ -63,6 +64,9 @@ export default defineComponent({
   computed: {
     hasMoreActions() : boolean {
       return this.navigationState.action < this.botActions.actions.length - 1
+    },
+    showBotResources() : boolean {
+      return [Action.TECH, Action.PROBE, Action.TELESCOPE, Action.ANALYZE, Action.SPECIES_SPECIAL_ACTION].includes(this.currentAction.action)
     }
   },
   methods: {
