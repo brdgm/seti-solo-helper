@@ -11,7 +11,8 @@ export default function (params?: MockBotPersistenceParams) : BotPersistence {
       data: params?.data ?? 0,
       techProbe: params?.techProbe ?? 0,
       techTelescope: params?.techTelescope ?? 0,
-      techComputer: params?.techComputer ?? 0
+      techComputer: params?.techComputer ?? 0,
+      vp: params?.vp ?? 0
     }
   }
 }
@@ -24,4 +25,5 @@ export interface MockBotPersistenceParams {
   techProbe?: number
   techTelescope?: number
   techComputer?: number
+  vp?: number
 }

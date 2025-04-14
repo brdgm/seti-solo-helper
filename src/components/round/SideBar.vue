@@ -17,6 +17,18 @@
       </ol>
       <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#discoverAliensModal">{{t('sideBar.discover')}}</button>
     </div>
+    <hr/>
+    <div class="rival">
+      <h6>{{t('sideBar.rival.title')}}</h6>
+      <span class="cardCount">{{cardDeck.discard.length}}</span> / <span class="cardCount">{{cardDeck.pile.length+cardDeck.discard.length}}</span><br/>
+      <AppIcon type="progress" :name="progressCount.toString()" class="icon"/>: {{progressCount}}<br/>
+      <AppIcon type="resource" name="publicity" class="icon"/>: {{resources.publicity}}<br/>
+      <AppIcon type="resource" name="data" class="icon"/>: {{resources.data}}<br/>
+      <AppIcon type="resource" name="vp" class="icon"/>: {{resources.vp}}<br/>
+      <AppIcon type="tech" name="probe" class="icon tech" v-for="item of resources.techProbe" :key="item"/>
+      <AppIcon type="tech" name="telescope" class="icon tech" v-for="item of resources.techTelescope" :key="item"/>
+      <AppIcon type="tech" name="computer" class="icon tech" v-for="item of resources.techComputer" :key="item"/>
+    </div>
   </div>
 
   <ModalDialog id="discoverAliensModal" :title="t('sideBar.speciesDiscovery.title')">
@@ -37,12 +49,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStateStore } from '@/store/state'
+import { BotResources, useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import AppIcon from '../structure/AppIcon.vue'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import AlienSpecies from '@/services/enum/AlienSpecies'
 import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
+import CardDeck from '@/services/CardDeck'
 
 export default defineComponent({
   name: 'SideBar',
@@ -70,6 +83,15 @@ export default defineComponent({
     },
     alienSpecies() : AlienSpecies[] {
       return getAllEnumValues(AlienSpecies)
+    },
+    cardDeck() : CardDeck {
+      return this.navigationState.cardDeck
+    },
+    resources() : BotResources {
+      return this.navigationState.botResources
+    },
+    progressCount() : number {
+      return (this.resources.progress+1) % 12 - 1
     }
   }
 })
@@ -97,6 +119,28 @@ export default defineComponent({
   }
   .icon {
     height: 1.5rem;
+  }
+}
+.rival {
+  .cardCount {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 1.1rem;
+    height: 1.6rem;
+    text-align: center;
+    background-color: #797ca4;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+  .icon {
+    height: 1.5rem;
+    width: 1.7rem;
+    object-fit: contain;
+    &.tech {
+      height: 2.25rem;
+      margin-top: 0.25rem;
+    }
   }
 }
 </style>

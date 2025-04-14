@@ -56,6 +56,9 @@
       "title": "Spezies entdecken",
       "alreadyDiscovered": "Bitte wähle aus welche Spezies schon entdeckt wurden:",
       "none": "(keine)"
+    },
+    "rival": {
+      "title": "Rivale"
     }
   },
   "player": {

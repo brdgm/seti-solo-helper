@@ -86,4 +86,5 @@ export interface BotResources {
   techProbe: number
   techTelescope: number
   techComputer: number
+  vp: number
 }

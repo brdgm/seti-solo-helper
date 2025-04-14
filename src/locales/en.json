@@ -56,6 +56,9 @@
       "title": "Discover Species",
       "alreadyDiscovered": "Please select the species already discovered:",
       "none": "(none)"
+    },
+    "rival": {
+      "title": "Rival"
     }
   },
   "player": {

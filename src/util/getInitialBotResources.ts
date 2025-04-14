@@ -11,6 +11,7 @@ export default function() : BotResources {
     data: 0,
     techProbe: 0,
     techTelescope: 0,
-    techComputer: 0
+    techComputer: 0,
+    vp: 0
   }
 }
