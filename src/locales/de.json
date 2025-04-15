@@ -103,14 +103,25 @@
   "rules": {
     "action": {
       "tech": {
-        "title": "Erforschen einer Technologie"
+        "title": "Erforschen einer Technologie",
+        "rotateSolarSystems": "Wenn dein Rivale eine Technologie erforscht, dreht er wie üblich das Solarsystem.",
+        "chooseTech": "Er priorisiert die Technologien folgendermaßen:",
+        "preferredTechs": "Dein Rivale bevorzugt die Technologien in der angezeigten Reihenfolge.",
+        "twoPointTile": "Ist eine Technologie vorhanden, die zusätzlich 2 Punkte gewährt, bevorzugt er diese vor allen anderen innerhalb dieser Reihenfolge.",
+        "getBonus": "Er erhält die darauf angegebene Belohnung (und die 2 Punkte, falls die Technologie diese hatte).<br/><b>Ausnahme</b>: Dein Rivale erhält niemals <i>Starten einer Sonde</i> oder <i>2 Daten</i> durch Technologien."
       },
       "launch": {
         "title": "Starten einer Sonde",
         "placeProbe": "Stelle 1 Sonde des Rivalen auf die Erde."
       },
       "probe": {
-        "title": "Umkreisen/Landen"
+        "title": "Umkreisen/Landen",
+        "moveProbe": "Bewege die Sonde deines Rivalen von der Erde zu einem Planeten. Dabei wählt er den ersten Planeten (von links nach rechts), den er mit der angegebenen Bewegung erreichen kann. Auch dein Rivale nutzt beim Verlassen von Asteroiden 1 zusätzliche Bewegung. Berücksichtige dies bezüglich der Erreichbarkeit. Ist kein Planet erreichbar oder hat dein Rivale keine Sonde auf der Erde, ignoriert er diese Aktion und wählt einen Ersatz.",
+        "publicity": "Nach der Bewegung erhält dein Rivale wie üblich Bekanntheit für das Besuchen von Planeten und Kometen. Kann er mit seiner Bewegung auf verschiedene Arten zum bevorzugten Planeten fliegen, wählt er die Route, die ihm die meiste Bekanntheit bringt.",
+        "landOrbit": "Danach wandelt er die Sonde in einen Lander oder Orbiter um:",
+        "landMoon": "Hat der Planet einen <b>Mond</b> mit freiem Feld, landet der Rivale darauf. Sind mehrere Monde verfügbar, wählt er dem Entscheidungspfeil folgend den ersten freien Mond ganz links bzw. ganz rechts.",
+        "preferOrbitLand": "Der Rivale bevorzugt das <b>erste</b> Orbiter- oder Landerfeld dieses Planeten. Sind beide Felder frei oder keines der beiden, wählt dein Rivale entsprechend der angezeigten Aktionssymbole.",
+        "pointsResources": "Anschließend erhält dein Rivale die angegebenen Punkte, Ressourcen und Spuren seines Orbiters oder Landers."
       },
       "telescope": {
         "title": "Scannen naher Sterne",
@@ -125,10 +136,12 @@
         }
       },
       "analyze": {
-        "title": "Datenanalyse"
+        "title": "Datenanalyse",
+        "lifeTrace": "Der Rivale platziert die angezeigte Spur."
       },
       "speciesDiscovery": {
-        "title": "Entdecken einer Species"
+        "title": "Entdecken einer Species",
+        "instructions": "Wenn <b>Spezies #{alienSpeciesIndex}</b> bereits entdeckt ist, vermerke das in der Applikation, indem du die Funktion <i>Entdecken</i> auf der rechten Seite benutzt. Folge dann den Spezies-Aktionen die anstelle angezeigt werden."
       },
       "speciesSpecialAction": {
         "mascamites": {

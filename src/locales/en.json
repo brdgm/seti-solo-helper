@@ -103,14 +103,25 @@
   "rules": {
     "action": {
       "tech": {
-        "title": "Tech"
+        "title": "Tech",
+        "rotateSolarSystems": "Whenever the rival gains a tech, advance the solar system as usual.",
+        "chooseTech": "The rival chooses what technology to research in the following manner:",
+        "preferredTechs": "The rival prefers techs in the displayed order.",
+        "twoPointTile": "If there is a tech with a 2-point tile on it, it prefers that before all others within that order.",
+        "getBonus": "Give the rival whatever bonuses are shown on the tech tile it took, including the 2-point bonus if the tech had one.<br/><b>Exception</b>: The rival will never get <i>launch</i> or <i>2 data</i> bonuses from techs."
       },
       "launch": {
         "title": "Launch",
         "placeProbe": "Place a rival probe figure on Earth."
       },
       "probe": {
-        "title": "Orbiter/Lander"
+        "title": "Orbiter/Lander",
+        "moveProbe": "Move the rival's probe from Earth to a planet. Check the planets in order from left to right, until you find one which you can reach in the depicted number of moves. As usual, the rival needs to pay 1 extra move to leave asteroids, so take that into account when deciding what is reachable.",
+        "publicity": "After moving, give the rival the publicity earned for visiting planets and comets. If there are multiple ways to fly to that planet using the moves provided, choose the flight plan that gives the most publicity.",
+        "landOrbit": "Finally, the probe becomes a lander or an orbiter:",
+        "landMoon": "If the planet has a <b>moon</b> with an available space, rival will land on it. If multiple moons are available, the rival chooses the leftmost or rightmost, depending on the decision arrow.",
+        "preferOrbitLand": "The rival tries to take the <b>first</b> orbiter space or the <b>first</b> lander space on the planet. If both first spaces are available, or if neither is, the rival defers to the displayed action order.",
+        "pointsResources": "Either way, give the rival any points, resources, and life traces earned from the orbiter or lander."
       },
       "telescope": {
         "title": "Telescope",
@@ -125,10 +136,12 @@
         }
       },
       "analyze": {
-        "title": "Analyze"
+        "title": "Analyze",
+        "lifeTrace": "The rival marks the displayed life trace."
       },
       "speciesDiscovery": {
-        "title": "Species Discovery"
+        "title": "Species Discovery",
+        "instructions": "If alien <b>species #{alienSpeciesIndex}</b> is already discovered, please mark this in the application by using the button <i>Discover</i> on the right side. Follow the replaced species action then instead."
       },
       "speciesSpecialAction": {
         "mascamites": {

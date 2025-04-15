@@ -15,7 +15,7 @@
       </div>
     </template>
     <template #instruction>
-      Rules Analyze...
+      <p v-html="t('rules.action.analyze.lifeTrace')"></p>
     </template>
   </ActionBox>
 </template>

@@ -2,7 +2,7 @@
   <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.extertians.title')">
     <template #action>
       <div class="action">
-        <p><b>Exertians:</b> If the sum of exertian cards and alien traces of the rival on this alien species board is max. 4: He plays 1 <b>secret exertian card</b>.</p>
+        <p><b>Exertians:</b> Count the number of rival's played exertian cards and rival's alien traces on this species board. If the total is less than 5, the rival secretly <b>plays a exertian card</b>.</p>
       </div>
     </template>
     <template #instruction>

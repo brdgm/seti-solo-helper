@@ -6,7 +6,7 @@
     <template #action>
       <div class="action">
         <AppIcon type="alien-trace" name="any" class="icon"/>
-        <p><b>Anomalies:</b> If the rival would not win the next anomaly: He places 1 species trace with the <b>matching color</b> on this alien species board.</p>
+        <p><b>Anomalies:</b> If the rival is not winning the next anomaly, they mark 1 species trace <b>of that color</b> for this species.</p>
       </div>
     </template>
     <template #instruction>

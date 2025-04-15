@@ -17,7 +17,13 @@
       </div>
     </template>
     <template #instruction>
-      Rules Tech...
+      <p v-html="t('rules.action.tech.rotateSolarSystems')"></p>
+      <p v-html="t('rules.action.tech.chooseTech')"></p>
+      <ol>
+        <li v-html="t('rules.action.tech.preferredTechs')"></li>
+        <li v-html="t('rules.action.tech.twoPointTile')"></li>
+        <li v-html="t('rules.action.tech.getBonus')"></li>
+      </ol>
     </template>
   </ActionBox>
 

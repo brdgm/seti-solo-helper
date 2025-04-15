@@ -5,7 +5,7 @@
     </template>
     <template #action>
       <div class="action">
-        <p><b>Centraurians:</b> If the rival has a message milestone left in his reserve and none on the scoring track currently: Place one 15 points ahead of his current position on the scoring track.</p>
+        <p><b>Centraurians:</b> If the rival still has a message milestone in his reserve and none on the scoring track, place one message milestone 15 points ahead of their current score.</p>
       </div>
     </template>
     <template #instruction>

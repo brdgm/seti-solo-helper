@@ -7,7 +7,7 @@
       </div>
     </template>
     <template #instruction>
-      Rules Species Discovery...
+      <p v-html="t('rules.action.speciesDiscovery.instructions', {alienSpeciesIndex})"></p>
     </template>
   </ActionBox>
 </template>

@@ -22,7 +22,14 @@
       </div>
     </template>
     <template #instruction>
-      Rules Probe...
+      <p v-html="t('rules.action.probe.moveProbe')"></p>
+      <p v-html="t('rules.action.probe.publicity')"></p>
+      <p v-html="t('rules.action.probe.landOrbit')"></p>
+      <ol>
+        <li v-if="showLanderMoon" v-html="t('rules.action.probe.landMoon')"></li>
+        <li v-html="t('rules.action.probe.preferOrbitLand')"></li>
+        <li v-html="t('rules.action.probe.pointsResources')"></li>
+      </ol>
     </template>
   </ActionBox>
 

@@ -24,7 +24,7 @@
         </template>
       </div>
       <div class="action">
-        <p><b>Mascamites</b>: Take a random <b>sample token</b> from the planet and place it face up in the next dedicated space on this alien species board.</p>
+        <p><b>Mascamites</b>: Take a random <b>sample token</b> from the planet and place it face up on this species board (ignore its reward).</p>
       </div>
     </template>
     <template #instruction>
