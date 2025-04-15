@@ -11,23 +11,23 @@
             <AppIcon type="resource" name="card" class="icon"/><span>/</span>
             <AppIcon type="resource" name="card-species" class="icon"/>
           </div>
-          <ScoringTextInput v-model="botGainResources.gainProgressSingleStep.value"/>
+          <NumberInput v-model="botGainResources.gainProgressSingleStep.value"/>
         </div>
         <div class="option">
           <AppIcon name="income-increase" class="icon"/>
-          <ScoringTextInput v-model="botGainResources.gainProgressIncomeIncrease.value"/>
+          <NumberInput v-model="botGainResources.gainProgressIncomeIncrease.value"/>
         </div>
         <div class="option">
           <AppIcon type="resource" name="publicity" class="icon"/>
-          <ScoringTextInput v-model="botGainResources.gainPublicity.value"/>
+          <NumberInput v-model="botGainResources.gainPublicity.value"/>
         </div>
         <div class="option">
           <AppIcon type="resource" name="data" class="icon"/>
-          <ScoringTextInput v-model="botGainResources.gainData.value"/>
+          <NumberInput v-model="botGainResources.gainData.value"/>
         </div>
         <div class="option">
           <AppIcon type="resource" name="vp" class="icon"/>
-          <ScoringTextInput v-model="botGainResources.gainVP.value"/>
+          <NumberInput v-model="botGainResources.gainVP.value"/>
         </div>
         <div class="option small">
           <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#botResourcesLifeTraceModal">
@@ -67,7 +67,7 @@
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
-import ScoringTextInput from '@brdgm/brdgm-commons/src/components/form/ScoringTextInput.vue'
+import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vue'
 import BotGainResources from '@/services/BotGainResources'
 import { useStateStore } from '@/store/state'
 import AlienSpecies from '@/services/enum/AlienSpecies'
@@ -77,7 +77,7 @@ export default defineComponent({
   name: 'BotResources',
   components: {
     AppIcon,
-    ScoringTextInput,
+    NumberInput,
     ModalDialog
   },
   setup() {

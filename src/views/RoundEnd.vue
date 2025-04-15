@@ -10,7 +10,7 @@
         <ul>
           <li>
             <span v-html="t('roundEnd.objectives.enterNumberCompleted')"></span>
-            <ScoringTextInput v-model="completedObjectives" class="ms-1"/></li>
+            <NumberInput v-model="completedObjectives" class="ms-1"/></li>
           <template v-if="completedObjectives != undefined">
             <li v-if="discardObjectives > 0" v-html="t('roundEnd.objectives.discardObjectives', {count:discardObjectives})"></li>
             <li v-if="botObjectivesProgress > 0" v-html="t('roundEnd.objectives.botObjectiveProgress', {count:botObjectivesProgress})"></li>
@@ -46,7 +46,7 @@ import { MAX_TURN } from '@/util/getTurnOrder'
 import CardDeck from '@/services/CardDeck'
 import DifficultyLevel from '@/components/setup/DifficultyLevel.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
-import ScoringTextInput from '@brdgm/brdgm-commons/src/components/form/ScoringTextInput.vue'
+import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vue'
 
 export default defineComponent({
   name: 'RoundEnd',
@@ -54,7 +54,7 @@ export default defineComponent({
     FooterButtons,
     SideBar,
     DebugInfo,
-    ScoringTextInput
+    NumberInput
   },
   setup() {
     const { t } = useI18n()

@@ -19,7 +19,7 @@
             <span class="small" v-html="t('gameEnd.gameStatus.uncompletedObjectivesNote')"></span>
           </th>
           <td>
-            <ScoringTextInput :max="17" v-model="uncompletedObjectives"/>
+            <NumberInput :max="17" v-model="uncompletedObjectives"/>
           </td>
           <td>
             {{botObjectivesVP}}
@@ -31,10 +31,10 @@
               <span v-html="t('gameEnd.gameStatus.exertianDanger')"></span>
             </th>
             <td>
-              <ScoringTextInput v-model="playerExertianDanger"/>
+              <NumberInput v-model="playerExertianDanger"/>
             </td>
             <td>
-              <ScoringTextInput v-model="botExertianDanger"/>
+              <NumberInput v-model="botExertianDanger"/>
             </td>
           </tr>
           <tr>
@@ -57,7 +57,7 @@
             <span v-html="t('gameEnd.finalScoring.scoreTrack')"></span><br/>
           </th>
           <td>
-            <ScoringTextInput v-model="playerScoreTrackVP"/>
+            <NumberInput v-model="playerScoreTrackVP"/>
           </td>
           <td>
             {{botScoreTrackVP}}
@@ -68,7 +68,7 @@
             <span v-html="t('gameEnd.finalScoring.endGameScoringCards')"></span><br/>
           </th>
           <td>
-            <ScoringTextInput v-model="playerCardsVP"/>
+            <NumberInput v-model="playerCardsVP"/>
           </td>
           <td></td>
         </tr>
@@ -77,7 +77,7 @@
             <span v-html="t('gameEnd.finalScoring.goldScoringTile', {index})"></span><br/>
           </th>
           <td>
-            <ScoringTextInput v-model="playerGoldTileVP[index-1]"/>
+            <NumberInput v-model="playerGoldTileVP[index-1]"/>
           </td>
           <td></td>
         </tr>
@@ -87,10 +87,10 @@
               <span v-html="t('gameEnd.finalScoring.exertianVP')"></span>
             </th>
             <td>
-              <ScoringTextInput v-model="playerExertianVP"/>
+              <NumberInput v-model="playerExertianVP"/>
             </td>
             <td>
-              <ScoringTextInput v-model="botExertianVP"/>
+              <NumberInput v-model="botExertianVP"/>
             </td>
           </tr>
           <tr>
@@ -125,7 +125,7 @@
 import { useStateStore } from '@/store/state'
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import ScoringTextInput from '@brdgm/brdgm-commons/src/components/form/ScoringTextInput.vue'
+import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vue'
 import NavigationState from '@/util/NavigationState'
 import { useRoute } from 'vue-router'
 import DifficultyLevel from '../setup/DifficultyLevel.vue'
@@ -135,7 +135,7 @@ import AlienSpecies from '@/services/enum/AlienSpecies'
 export default defineComponent({
   name: 'FinalScoring',
   components: {
-    ScoringTextInput
+    NumberInput
   },
   setup() {
     const { t } = useI18n()
