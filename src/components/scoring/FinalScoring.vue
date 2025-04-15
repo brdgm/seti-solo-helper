@@ -19,7 +19,7 @@
             <span class="small" v-html="t('gameEnd.gameStatus.uncompletedObjectivesNote')"></span>
           </th>
           <td>
-            <NumberInput :max="17" v-model="uncompletedObjectives"/>
+            <NumberInput :max="maxObjectiveCount" v-model="uncompletedObjectives"/>
           </td>
           <td>
             {{botObjectivesVP}}
@@ -131,6 +131,7 @@ import { useRoute } from 'vue-router'
 import DifficultyLevel from '../setup/DifficultyLevel.vue'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import AlienSpecies from '@/services/enum/AlienSpecies'
+import getDifficultyLevelSettings from '@/util/getDifficultyLevelSettings'
 
 export default defineComponent({
   name: 'FinalScoring',
@@ -164,6 +165,10 @@ export default defineComponent({
     }
   },
   computed: {
+    maxObjectiveCount() : number {
+      const { objectivesLevel1, objectivesLevel2, objectivesLevel3 } = getDifficultyLevelSettings(this.state.setup.difficultyLevel)
+      return objectivesLevel1 + objectivesLevel2 + objectivesLevel3
+    },
     hasObjectives() : boolean {
       return this.state.setup.difficultyLevel != DifficultyLevel.LEVEL_1
     },
