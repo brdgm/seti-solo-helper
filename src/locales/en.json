@@ -1,0 +1,258 @@
+{
+  "gameTitle": "SETI",
+  "home": {
+    "title": "SETI Solo Helper",
+    "play1": "Play a <a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> solo game against a rival research institution.",
+    "play2": "This application replaces the rival action cards and player board and guides you through the game and solo ruleset. It supports all difficult levels.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "setup": {
+    "title": "Setup",
+    "difficultyLevel": {
+      "title": "Difficulty Level",
+      "easy": "Easy",
+      "hard": "Hard"
+    },
+    "startPlayer": {
+      "title": "Start Player",
+      "random": "Random",
+      "player": "Player",
+      "bot": "Rival"
+    }
+  },
+  "setupGameBoard": {
+    "title": "Setup Game Board",
+    "solarSystem": {
+      "title": "Solar System",
+      "randomizerApp": "CGE SETI Randomizer (external)"
+    },
+    "goldScoringTile": {
+      "title": "Gold Scoring Tiles",
+      "randomize": "Randomize"
+    }
+  },
+  "setupGame": {
+    "title": "Setup Game",
+    "setup2Players": "Set up the game for <b>two players</b>.",
+    "startPlayer": {
+      "player": "<b>You</b> are the start player.",
+      "bot": "Your <b>rival</b> is the start player."
+    },
+    "playerScoreTrackSetup": "Place your score counter on space {space} of the score track.",
+    "rivalPieces": "Give the rival <b>all pieces of one color</b>.",
+    "componentsNotRequired": "He does not need the action cards, player board, score counter or publicity marker.",
+    "objectiveStack": {
+      "title": "Prepare the <b>objectives stack</b>:",
+      "top": "Top: Randomly select and shuffle <b>{count} x Level 1</b> objectives.",
+      "middle": "Middle: Randomly select and shuffle <b>{count} x Level 2</b> objectives.",
+      "bottom": "Bottom: Randomly select and shuffle <b>{count} x Level 3</b> objectives.",
+      "draw": "Reveal the <b>top 3 tiles</b> of the objective stack."
+    },
+    "ruleChanges": {
+      "title": "Rule Changes",
+      "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Direct effects from rival actions are managed by the application automatically, do not enter them in the input fields.",
+      "objectives": "<b>Objectives</b>: At the end of your turn, move all completed objectives into a completed-objectives pile near your board and replace them with new ones from the stack. You will always have 3 objectives to work on until the stack runs out."
+    }
+  },
+  "roundTurnPlayer": {
+    "execute": "Execute your turn.",
+    "passConfirm": "Pass and drop out of the action phase?"
+  },
+  "roundTurnBot": {
+    "executed": "Action Completed",
+    "notPossible": "Not Possible",
+    "notPossibleConfirm": {
+      "title": "Skip Action",
+      "confirm": "Please confirm to skip this action and discard the entered resource values."
+    },
+    "pass": "The Rival passes.",
+    "discardEndOfRoundCard": "Remove the <b>top card</b> from the end-of-round stack.",
+    "pickTech": "Tech:",
+    "pleaseSelectTech": "Please select the type of the chosen tech.",
+    "pickProbeAction": "Action:",
+    "pleaseSelectProbeAction": "Please select the chosen action.",
+    "checkSpeciesDiscovery": "Is <b>species #{alienSpeciesIndex}</b> already discovered?"
+  },
+  "roundEnd": {
+    "title": "End of Round",
+    "gainIncome": "Gain your income",
+    "objectives": {
+      "title": "<b>Objectives: </b> You need to discard {count} <b>completed objectives</b>, if possible",
+      "enterNumberCompleted": "Enter number of <b>completed</b> objectives:",
+      "discardObjectives": "Discard {count} completed objective tiles",
+      "botObjectiveProgress": "Your rival gains {count} progress",
+      "objectivesWarning": "Please enter the number of completed objectives."
+    }
+  },
+  "gameEnd": {
+    "title": "End of Game",
+    "gameStatus": {
+      "title": "Game Status",
+      "uncompletedObjectives": "Number of <b>uncompleted</b> objectives",
+      "uncompletedObjectivesNote": "(from the row and those still in the stack)",
+      "exertianDanger": "Danger from revealed Exertian cards",
+      "exterianRivalCards": "At the end of the game, all rival Exertian cards are considered successfully completed, and the rival scores full points for them."
+    },
+    "finalScoring": {
+      "title": "Final Scoring",
+      "scoreTrack": "Score Track",
+      "endGameScoringCards": "End-of-game scoring cards",
+      "goldScoringTile": "Gold Scoring Tile {index}",
+      "exertianVP": "Exertian Cards VP",
+      "exertianMinus": "Exertian Point Loss",
+      "totalVP": "Total VP"
+    }
+  },
+  "botResources": {
+    "gainThisTurn": "<b>Rival</b> gains this turn from the <i>game board</i>:",
+    "lifeTrace": {
+      "title": "Life Traces",
+      "mark": "Whenever your rival earns a life trace, look at that column for each alien species. Your rival marks the lowest available space in that column. (They ignore the overflow space below the column, unless all other spaces are full.)",
+      "tiebreaker": "If the spaces in the selected columns are equally low, choose the leftmost or rightmost, depending on the decision arrow.",
+      "oumuamua": "They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied."
+    },
+    "exofossil": {
+      "title": "Exofossils",
+      "collect": "The rival also collects exofossil tokens."
+    }
+  },
+  "botReachedMilestones": {
+    "neutral": "The rival reached a <b>neutral</b> milestone on score {score}.",
+    "gold": "The rival reached a <b>gold</b> milestone on score {score}.<br/>He claims the first, most valuable free spot on a gold tile."
+  },
+  "sideBar": {
+    "round": "Round {round}",
+    "turn": "Turn {turn}",
+    "species": "Species",
+    "discover": "Discover",
+    "speciesDiscovery": {
+      "title": "Discover Species",
+      "alreadyDiscovered": "Please select the species already discovered:",
+      "none": "(none)"
+    },
+    "rival": {
+      "title": "Rival"
+    }
+  },
+  "rules": {
+    "action": {
+      "tech": {
+        "title": "Tech",
+        "rotateSolarSystems": "Whenever the rival gains a tech, advance the solar system as usual.",
+        "chooseTech": "The rival chooses what technology to research in the following manner:",
+        "preferredTechs": "The rival prefers techs in the displayed order.",
+        "twoPointTile": "If there is a tech with a 2-point tile on it, it prefers that before all others within that order.",
+        "getBonus": "Give the rival whatever bonuses are shown on the tech tile it took, including the 2-point bonus if the tech had one.<br/><b>Exception</b>: The rival will never get <i>launch</i> or <i>2 data</i> bonuses from techs.",
+        "discard": "Discard the tech, the application manages it automatically."
+      },
+      "launch": {
+        "title": "Launch",
+        "placeProbe": "Place a rival probe figure on Earth."
+      },
+      "probe": {
+        "title": "Orbiter/Lander",
+        "moveProbe": "Move the rival's probe from Earth to a planet. Check the planets in order from left to right, until you find one which you can reach in the depicted number of moves. As usual, the rival needs to pay 1 extra move to leave asteroids, so take that into account when deciding what is reachable.",
+        "publicity": "After moving, give the rival the publicity earned for visiting planets and comets. If there are multiple ways to fly to that planet using the moves provided, choose the flight plan that gives the most publicity.",
+        "landOrbit": "Finally, the probe becomes a lander or an orbiter:",
+        "landMoon": "If the planet has a <b>moon</b> with an available space, rival will land on it. If multiple moons are available, the rival chooses the leftmost or rightmost, depending on the decision arrow.",
+        "preferOrbitLand": "The rival tries to take the <b>first</b> orbiter space or the <b>first</b> lander space on the planet. If both first spaces are available, or if neither is, the rival defers to the displayed action order.",
+        "pointsResources": "Either way, give the rival any points, resources, and life traces earned from the orbiter or lander."
+      },
+      "telescope": {
+        "title": "Telescope",
+        "markSignals": "Mark your rival's signals as shown by the action. For signals from the card row, use the decision arrow to determine whether the leftmost or rightmost cards will be chosen.",
+        "redrawCards": "After the rival has finished marking signals from the card row, replace the discarded cards with new cards from the top of the deck.",
+        "multipleSectors": {
+          "title": "If a signal could be marked in multiple different sectors, the rival chooses a sector for their signal based on the following logic:",
+          "sectorWin": "If by marking the signal the rival would <b>win a sector</b>, the rival chooses that sector.",
+          "scorePoints": "If no such sector can be won, the rival instead checks to see if marking a signal <b>can score points</b> for marking the second signal in a sector.",
+          "mostMarkers": "If no sector can be won or score points, the rival chooses the sector where they <b>have the most markers</b>.",
+          "tieBreaker": "For each of these steps, in the event of a tie, the rival favors the bigger sector (the sector that can contain the most data)."
+        }
+      },
+      "analyze": {
+        "title": "Analyze",
+        "lifeTrace": "The rival marks the displayed life trace."
+      },
+      "speciesDiscovery": {
+        "title": "Species Discovery",
+        "instructions": "If alien <b>species #{alienSpeciesIndex}</b> is already discovered, please mark this in the application by using the button <i>Discover</i> on the right side. Follow the replaced species action then instead."
+      },
+      "speciesSpecialAction": {
+        "mascamites": {
+          "title": "Mascamites Special Action",
+          "instructions": "Take a random <b>sample token</b> from the planet and place it face up on this species board (ignore its reward).",
+          "landPlanet": "The rival lands on the planet."
+        },
+        "anomalies": {
+          "title": "Anomalies Special Action",
+          "instructions": "If the rival is not winning the next anomaly, they mark 1 species trace <b>of that color</b> for this species."
+        },
+        "centaurians": {
+          "title": "Centaurians Special Action",
+          "instructions": "If the rival still has a message milestone in his reserve and none on the scoring track, place one message milestone 15 points ahead of their current score.",
+          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action card.<br/>When the rival reaches their message milestone, they choose the leftmost or rightmost available reward, according to the decision arrow.<br/>The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay."
+        },
+        "exertians": {
+          "title": "Exertians Special Action",
+          "instructions": "Count the number of rival's played exertian cards and rival's alien traces on this species board. If the total is less than 5, the rival secretly <b>plays a exertian card</b>.",
+          "generalInstructions": "The rival can only draw and play Exertian cards via the actions for this species. They ignore the Exertian milestones.<br/>When this species is discovered, the rival does not draw or play any cards."
+        }
+      }
+    }
+  },
+  "player": {
+    "player": "Player",
+    "bot": "Rival"
+  },
+  "planet": {
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Mercury",
+    "neptune": "Neptune",
+    "saturn": "Saturn",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "oumuamua": "‘Oumuamua"
+  },
+  "alienSpecies": {
+    "mascamites": "Mascamites",
+    "anomalies": "Anomalies",
+    "oumuamua": "‘Oumuamua",
+    "centaurians": "Centaurians",
+    "exertians": "Exertians"
+  },
+  "difficultyLevel": {
+    "1": "Level 1",
+    "2": "Level 2",
+    "3": "Level 3",
+    "4": "Level 4",
+    "5": "Level 5"
+  },
+  "notfound": {
+    "title": "Not Found"
+  },
+  "action": {
+    "playGame": "Play Game",
+    "startGame": "Start Game",
+    "next": "Next",
+    "nextRound": "Next Round",
+    "abortGame": "Abort Game",
+    "abortGameConfirm": "Aborting the running game - are you sure?",
+    "endGame": "End Game",
+    "endGameConfirm": "End this game and return to home screen - are you sure?",
+    "cancel": "Cancel",
+    "backToHome": "Back to Home",
+    "back": "Back",
+    "close": "Close",
+    "ok": "OK",
+    "pass": "Pass"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Refresh Application",
+    "notice": "The application was updated - do you want to refresh to use the latest version?"
+  }
+}
