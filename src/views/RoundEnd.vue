@@ -20,11 +20,7 @@
     </ol>
   </div>
 
-  <div class="container-fluid" v-if="hasObjectives && completedObjectives == undefined">
-    <div class="row">
-      <div class="col alert alert-warning" v-html="t('roundEnd.objectives.objectivesWarning')"></div>
-    </div>
-  </div>
+  <div v-if="hasObjectives && completedObjectives == undefined" class="alert alert-warning" v-html="t('roundEnd.objectives.objectivesWarning')"></div>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="!hasObjectives || completedObjectives != undefined">
     {{t('action.next')}}
@@ -141,5 +137,11 @@ export default defineComponent({
 }
 input {
   width: 3rem;
+}
+.alert {
+  margin-right: 150px;
+  @media (max-width: 600px) {
+    margin-right: 125px;
+  }
 }
 </style>

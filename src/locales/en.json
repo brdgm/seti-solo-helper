@@ -61,10 +61,16 @@
   "roundTurnBot": {
     "executed": "Action Completed",
     "notPossible": "Not Possible",
+    "notPossibleConfirm": {
+      "title": "Skip Action",
+      "confirm": "Please confirm to skip this action and discard the entered resource values."
+    },
     "pass": "The Rival passes.",
     "discardEndOfRoundCard": "Remove the <b>top card</b> from the end-of-round stack.",
     "pickTech": "Tech:",
+    "pleaseSelectTech": "Please select the type of the chosen tech.",
     "pickProbeAction": "Action:",
+    "pleaseSelectProbeAction": "Please select the chosen action.",
     "checkSpeciesDiscovery": "Is <b>species #{alienSpeciesIndex}</b> already discovered?"
   },
   "roundEnd": {

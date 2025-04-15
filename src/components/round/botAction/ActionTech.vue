@@ -35,6 +35,7 @@
       <AppIcon type="tech" :name="techType" class="icon"/>
     </button>
   </div>
+  <div v-if="!selectedTechType" class="alert alert-warning mt-3" v-html="t('roundTurnBot.pleaseSelectTech')"></div>
 </template>
 
 <script lang="ts">

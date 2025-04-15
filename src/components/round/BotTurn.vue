@@ -9,9 +9,19 @@
     {{t('roundTurnBot.executed')}}
   </button>
 
-  <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()" v-if="hasMoreActions">
+  <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossibleCheckConfirm()" v-if="hasMoreActions">
     {{t('roundTurnBot.notPossible')}}
   </button>
+
+  <ModalDialog id="botNotPossibleConfirmModal" :title="t('roundTurnBot.notPossibleConfirm.title')">
+    <template #body>
+      <p v-html="t('roundTurnBot.notPossibleConfirm.confirm')"></p>
+    </template>
+    <template #footer>
+      <button class="btn btn-danger" @click="notPossible()" data-bs-dismiss="modal">{{t('roundTurnBot.notPossibleConfirm.title')}}</button>
+      <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
+    </template>
+  </ModalDialog>
 </template>
 
 <script lang="ts">
@@ -26,13 +36,16 @@ import BotActions from '@/services/BotActions'
 import TechType from '@/services/enum/TechType'
 import Action from '@/services/enum/Action'
 import BotReachedMilestones from './BotReachedMilestones.vue'
+import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'BotTurn',
   components: {
     BotAction,
     BotResources,
-    BotReachedMilestones
+    BotReachedMilestones,
+    ModalDialog
   },
   emits: {
     executed: (_action?: CardAction, _techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -75,6 +88,14 @@ export default defineComponent({
   methods: {
     executed() : void {
       this.$emit('executed', this.currentAction, this.actionTechType)
+    },
+    notPossibleCheckConfirm() : void {
+      if (this.navigationState.botGainResources.hasGainedResources) {
+        showModal('botNotPossibleConfirmModal')
+      }
+      else {
+        this.notPossible()
+      }
     },
     notPossible() : void {
       this.$emit('notPossible')

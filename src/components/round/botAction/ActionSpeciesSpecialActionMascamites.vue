@@ -48,6 +48,7 @@
       </button>
     </template>
   </div>
+  <div v-if="!selectedProbeAction" class="alert alert-warning mt-3" v-html="t('roundTurnBot.pleaseSelectProbeAction')"></div>
 </template>
 
 <script lang="ts">

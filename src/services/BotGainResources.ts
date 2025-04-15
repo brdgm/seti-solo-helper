@@ -26,6 +26,14 @@ export default class BotGainResources {
   private readonly actionTechComputer = ref(0)
   private readonly actionProbeCount = ref(0)
 
+  public get hasGainedResources() : boolean {
+    return this.gainProgressSingleStep.value != undefined
+        || this.gainProgressIncomeIncrease.value != undefined
+        || this.gainPublicity.value != undefined
+        || this.gainData.value != undefined
+        || this.gainVP.value != undefined
+  }
+
   public get resources() : BotResources {
     return {
       progress: toNumber(this.gainProgressSingleStep.value)

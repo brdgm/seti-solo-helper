@@ -61,10 +61,16 @@
   "roundTurnBot": {
     "executed": "Aktion ausgeführt",
     "notPossible": "Nicht möglich",
+    "notPossibleConfirm": {
+      "title": "Aktion überspringen",
+      "confirm": "Bestätige, dass diese Aktion übersprungen und die eingegebenen Ressourcen-Werte verworfen werden."
+    },
     "pass": "Der Rivale passt.",
     "discardEndOfRoundCard": "Entferne die <b>oberste Karte</b> des aktuellen Abschlussstapels.",
     "pickTech": "Technologie:",
+    "pleaseSelectTech": "Bitte wähle den Type der gewählten Technologie aus.",
     "pickProbeAction": "Aktion:",
+    "pleaseSelectProbeAction": "Bitte aktiviere die gewählte Aktion.",
     "checkSpeciesDiscovery": "Ist <b>Spezies #{alienSpeciesIndex}</b> schon entdeckt?"
   },
   "roundEnd": {
