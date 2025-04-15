@@ -11,13 +11,11 @@
   <p v-html="t('home.play1')"></p>
   <p v-html="t('home.play2')"></p>
 
-<!--
   <p class="text-muted fst-italic">
     {{t('home.feedback')}}
-    <a href="https://boardgamegeek.com/thread/XXX" target="_blank" rel="noopener">Board Game Geek Thread</a> |
+    <a href="https://boardgamegeek.com/thread/3496749/brdgmme-seti-solo-helper-web-application" target="_blank" rel="noopener">Board Game Geek Thread</a> |
     <a href="https://github.com/brdgm/seti-solo-helper" target="_blank" rel="noopener">GitHub</a>
   </p>
--->
 
   <router-link to="/setup" class="btn btn-primary btn-lg mt-3">{{t('action.playGame')}}</router-link>
 
