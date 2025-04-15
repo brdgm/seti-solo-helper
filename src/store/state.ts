@@ -3,6 +3,8 @@ import { name } from '@/../package.json'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Player from '@/services/enum/Player'
 import AlienSpecies from '@/services/enum/AlienSpecies'
+import GoldScoreTile from '@/services/enum/GoldScoreTile'
+import GoldScoreTileSide from '@/services/enum/GoldScoreTileSide'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -21,6 +23,7 @@ export const useStateStore = defineStore(`${name}.state`, {
   actions: {
     resetGame() {
       this.rounds = []
+      this.setup.goldScoreTileSetup = undefined
       this.alienDiscovery.species = [undefined, undefined]
     },
     storeRound(round : Round) : void {
@@ -49,7 +52,12 @@ export interface State {
 export interface Setup {
   difficultyLevel: DifficultyLevel
   startPlayer?: Player
+  goldScoreTileSetup?: GoldScoreTileSetup
   debugMode?: boolean
+}
+export interface GoldScoreTileSetup {
+  tile: GoldScoreTile[]
+  side: GoldScoreTileSide[]
 }
 
 export interface AlienDiscovery {

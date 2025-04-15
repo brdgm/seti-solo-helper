@@ -5,7 +5,7 @@
   <StartPlayer/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="setupGame()">
-    {{t('setupGame.title')}}
+    {{t('setupGameBoard.title')}}
   </button>
 
   <FooterButtons endGameButtonType="abortGame"/>
@@ -23,6 +23,7 @@ import randomEnum from '@brdgm/brdgm-commons/src/util/random/randomEnum'
 import Player from '@/services/enum/Player'
 import CardDeck from '@/services/CardDeck'
 import getInitialBotResources from '@/util/getInitialBotResources'
+import getRandomGoldScoreTileSetup from '@/util/getRandomGoldScoreTileSetup'
 
 export default defineComponent({
   name: 'SetupApp',
@@ -41,6 +42,7 @@ export default defineComponent({
   methods: {
     setupGame() : void {
       this.state.resetGame()
+      this.state.setup.goldScoreTileSetup = getRandomGoldScoreTileSetup()
       // prepare round 1
       const startPlayer = this.state.setup.startPlayer ?? randomEnum(Player)
       const round : Round = {
@@ -53,7 +55,7 @@ export default defineComponent({
         turns: []
       }
       this.state.storeRound(round)
-      this.router.push('/setupGame')
+      this.router.push('/setupGameBoard')
     }
   }
 })

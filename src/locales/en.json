@@ -20,6 +20,17 @@
       "bot": "Rival"
     }
   },
+  "setupGameBoard": {
+    "title": "Setup Game Board",
+    "solarSystem": {
+      "title": "Solar System",
+      "randomizerApp": "CGE SETI Randomizer (external)"
+    },
+    "goldScoringTile": {
+      "title": "Gold Scoring Tiles",
+      "randomize": "Randomize"
+    }
+  },
   "setupGame": {
     "title": "Setup Game",
     "setup2Players": "Set up the game for <b>two players</b>.",

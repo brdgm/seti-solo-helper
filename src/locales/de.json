@@ -20,6 +20,17 @@
       "bot": "Rivale"
     }
   },
+  "setupGameBoard": {
+    "title": "Spielplan vorbereiten",
+    "solarSystem": {
+      "title": "Solarsystem",
+      "randomizerApp": "CGE SETI Randomizer (extern)"
+    },
+    "goldScoringTile": {
+      "title": "Gold-Wertungsplättchen",
+      "randomize": "Zufällig"
+    }
+  },
   "setupGame": {
     "title": "Spielaufbau",
     "setup2Players": "Bereite die Partie für <b>2 Personen</b> vor.",
@@ -38,7 +49,7 @@
     },
     "ruleChanges": {
       "title": "Rule Changes",
-      "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielbrett</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Effekte von Aktionskarten des Rivalen werden automatisch von der Applikation verwaltet.",
+      "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Effekte von Aktionskarten des Rivalen werden automatisch von der Applikation verwaltet.",
       "objectives": "<b>Ziele</b>: Sammle am Ende deines Zugs alle abgeschlossenen Ziele auf einem Stapel und ersetze sie durch neue vom Zielstapel. Du hast immer 3 Ziele – bis der Zielstapel leer ist."
     }
   },
@@ -80,7 +91,7 @@
     }
   },
   "botResources": {
-    "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielbrett</i>:",
+    "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielplan</i>:",
     "lifeTrace": {
       "title": "Spuren",
       "mark": "Platziert dein Rivale Spuren, musst du alle Spalten dieser Spezies überprüfen. Er bevorzugt das niedrigste freie Feld dieser Spalten. (Er ignoriert Überflussfelder, solange er eine andere Wahl hat.)",
