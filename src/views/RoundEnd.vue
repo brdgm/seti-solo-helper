@@ -20,6 +20,12 @@
     </ol>
   </div>
 
+  <div class="container-fluid" v-if="hasObjectives && completedObjectives == undefined">
+    <div class="row">
+      <div class="col alert alert-warning" v-html="t('roundEnd.objectives.objectivesWarning')"></div>
+    </div>
+  </div>
+
   <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="!hasObjectives || completedObjectives != undefined">
     {{t('action.next')}}
   </button>

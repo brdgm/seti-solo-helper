@@ -37,6 +37,17 @@
       <p v-html="t('rules.action.speciesSpecialAction.mascamites.instructions')"></p>
     </template>
   </ActionBox>
+
+  <div class="action mt-2" v-if="showLanderMoon">
+    <span v-html="t('roundTurnBot.pickProbeAction')"></span>
+    <template v-for="(probeAction,index) in probeActions" :key="probeAction">
+      <AppIcon v-if="index > 0" name="probe-next" class="icon"/>
+      <button class="btn" @click="pickProbeAction(probeAction)"
+          :class="{'btn-primary': !selectedProbeAction, 'btn-secondary': selectedProbeAction == probeAction, 'btn-outline-secondary': selectedProbeAction != probeAction}">
+        <AppIcon type="probe-action" :name="probeAction" class="icon"/>
+      </button>
+    </template>
+  </div>
 </template>
 
 <script lang="ts">

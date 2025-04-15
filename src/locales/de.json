@@ -72,7 +72,8 @@
       "title": "<b>Ziele: </b> Du musst {count} <b>abgeschlossene Ziele</b> abwerfen, wenn möglich.",
       "enterNumberCompleted": "Anzahl deiner <b>abgeschlossenen</b> Ziele:",
       "discardObjectives": "Werfe {count} abgeschlossene Ziele ab.",
-      "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt."
+      "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt.",
+      "objectivesWarning": "Bitte gebe die Anzahl der abgeschlossenen Ziele ein."
     }
   },
   "gameEnd": {
