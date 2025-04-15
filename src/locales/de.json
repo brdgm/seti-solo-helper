@@ -164,7 +164,7 @@
         "exertians": {
           "title": "Exertianer Spezial-Aktion",
           "instructions": "Falls die Anzahl der Exertianer-Karten und Spuren des Rivalen auf dem Tableau dieser Spezies max. 4 ist: Er <b>spielt 1 geheime Exertianer-Karte</b>.",
-          "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch seine Aktionskarte dieser Spezies. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen. Jedoch schreitet er auf der Fortschrittsleiste pro eigenem Marker auf Entdeckungsfeldern voran.<br/>Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte.<br/>Danach addiere und vergleiche die Gefahrenstufen wie üblich."
+          "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch die Aktionen dieser Spezies. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen. Jedoch schreitet er auf der Fortschrittsleiste pro eigenem Marker auf Entdeckungsfeldern voran.<br/>Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte.<br/>Danach addiere und vergleiche die Gefahrenstufen wie üblich."
         }
       }
     }
