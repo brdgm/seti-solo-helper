@@ -86,6 +86,7 @@
   },
   "gameEnd": {
     "title": "End of Game",
+    "difficultyLevel": "Difficulty:",
     "gameStatus": {
       "title": "Game Status",
       "uncompletedObjectives": "Number of <b>uncompleted</b> objectives",
@@ -223,11 +224,11 @@
     "exertians": "Exertians"
   },
   "difficultyLevel": {
-    "1": "Level 1",
-    "2": "Level 2",
-    "3": "Level 3",
-    "4": "Level 4",
-    "5": "Level 5"
+    "1": "Level 1 - no objectives",
+    "2": "Level 2 - 10 objectives",
+    "3": "Level 3 - 12 objectives",
+    "4": "Level 4 - 15 objectives",
+    "5": "Level 5 - 17 objectives"
   },
   "notfound": {
     "title": "Not Found"
