@@ -21,6 +21,7 @@ import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
 import AppIcon from '../structure/AppIcon.vue'
 import Card from '@/services/Card'
 import AlienSpecies from '@/services/enum/AlienSpecies'
+import { nanoid } from 'nanoid'
 
 export default defineComponent({
   name: 'ActionBox',
@@ -29,7 +30,7 @@ export default defineComponent({
     AppIcon
   },
   setup() {
-    const modalId = `modal-${crypto.randomUUID()}`
+    const modalId = `modal-${nanoid()}`
     return { modalId }
   },
   props: {
