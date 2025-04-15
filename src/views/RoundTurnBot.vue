@@ -5,7 +5,10 @@
   <template v-if="botPass">
     <div class="passInfo">
       <AppIcon type="action" name="pass" class="icon"/>
-      <div v-html="t('roundTurnBot.pass')"></div>
+      <div>
+        <span v-html="t('roundTurnBot.pass')"></span><br/>
+        <span v-if="!isLastRound" v-html="t('roundTurnBot.discardEndOfRoundCard')"></span>
+      </div>
     </div>
     <p v-if="isFirstPass" class="mt-2">
       <AppIcon name="rotate-solar-system" class="icon"/>
@@ -72,11 +75,12 @@ export default defineComponent({
     const { round, turn, turnOrderIndex, action, player, botPass } = navigationState
     const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
 
-    if (botPass) {
+    const isLastRound = (round == 5)
+    if (botPass && !isLastRound) {
       navigationState.botGainResources.applyAction({action:Action.PASS})
     }
 
-    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, botPass }
+    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, botPass, isLastRound }
   },
   computed: {
     backButtonRouteTo() : string {

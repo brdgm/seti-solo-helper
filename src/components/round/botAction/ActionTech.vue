@@ -23,6 +23,7 @@
         <li v-html="t('rules.action.tech.preferredTechs')"></li>
         <li v-html="t('rules.action.tech.twoPointTile')"></li>
         <li v-html="t('rules.action.tech.getBonus')"></li>
+        <li v-html="t('rules.action.tech.discard')"></li>
       </ol>
     </template>
   </ActionBox>

@@ -6,6 +6,7 @@
       <li v-html="t('setupGame.setup2Players')"></li>
       <ul>
         <li v-html="t(`setupGame.startPlayer.${startPlayer}`)"></li>
+        <li v-html="t('setupGame.playerScoreTrackSetup', {space:playerScoreTrackSpace})"></li>
       </ul>
       <li v-html="t('setupGame.rivalPieces')"></li>
       <ul>
@@ -75,6 +76,9 @@ export default defineComponent({
     },
     hasObjectives() : boolean {
       return this.state.setup.difficultyLevel != DifficultyLevel.LEVEL_1
+    },
+    playerScoreTrackSpace() : number {
+      return this.startPlayer == Player.PLAYER ? 1 : 2
     }
   },
   methods: {

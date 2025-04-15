@@ -38,6 +38,7 @@
       "player": "<b>You</b> are the start player.",
       "bot": "Your <b>rival</b> is the start player."
     },
+    "playerScoreTrackSetup": "Place your score counter on space {space} of the score track.",
     "rivalPieces": "Give the rival <b>all pieces of one color</b>.",
     "componentsNotRequired": "He does not need the action cards, player board, score counter or publicity marker.",
     "objectiveStack": {
@@ -49,7 +50,7 @@
     },
     "ruleChanges": {
       "title": "Rule Changes",
-      "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Effects from rival action cards are managed by the application automatically.",
+      "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Direct effects from rival actions are managed by the application automatically, do not enter them in the input fields.",
       "objectives": "<b>Objectives</b>: At the end of your turn, move all completed objectives into a completed-objectives pile near your board and replace them with new ones from the stack. You will always have 3 objectives to work on until the stack runs out."
     }
   },
@@ -60,7 +61,8 @@
   "roundTurnBot": {
     "executed": "Action Completed",
     "notPossible": "Not Possible",
-    "pass": "The Rival passes.<br/>Remove the <b>top card</b> from the end-of-round stack.",
+    "pass": "The Rival passes.",
+    "discardEndOfRoundCard": "Remove the <b>top card</b> from the end-of-round stack.",
     "pickTech": "Tech:",
     "pickProbeAction": "Action:",
     "checkSpeciesDiscovery": "Is <b>species #{alienSpeciesIndex}</b> already discovered?"
@@ -134,7 +136,8 @@
         "chooseTech": "The rival chooses what technology to research in the following manner:",
         "preferredTechs": "The rival prefers techs in the displayed order.",
         "twoPointTile": "If there is a tech with a 2-point tile on it, it prefers that before all others within that order.",
-        "getBonus": "Give the rival whatever bonuses are shown on the tech tile it took, including the 2-point bonus if the tech had one.<br/><b>Exception</b>: The rival will never get <i>launch</i> or <i>2 data</i> bonuses from techs."
+        "getBonus": "Give the rival whatever bonuses are shown on the tech tile it took, including the 2-point bonus if the tech had one.<br/><b>Exception</b>: The rival will never get <i>launch</i> or <i>2 data</i> bonuses from techs.",
+        "discard": "Discard the tech, the application manages it automatically."
       },
       "launch": {
         "title": "Launch",

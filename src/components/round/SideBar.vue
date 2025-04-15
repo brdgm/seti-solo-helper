@@ -20,7 +20,8 @@
     <hr/>
     <div class="rival">
       <h6>{{t('sideBar.rival.title')}}</h6>
-      <span class="cardCount">{{cardDeck.discard.length}}</span> / <span class="cardCount">{{cardDeck.pile.length+cardDeck.discard.length}}</span><br/>
+      <span class="cardCount">{{cardDeck.discard.length}}</span> / <span class="cardCount">{{cardDeck.pile.length+cardDeck.discard.length}}</span>
+        <AppIcon v-if="currentCard" type="decision-direction" :name="currentCard.decisionDirection" class="icon decision"/><br/>
       <AppIcon type="progress" :name="progressCount.toString()" class="icon"/>: {{progressCount}}/12<br/>
       <AppIcon type="resource" name="publicity" class="icon"/>: {{resources.publicity}}<br/>
       <AppIcon type="resource" name="data" class="icon"/>: {{resources.data}}<br/>
@@ -64,6 +65,7 @@ import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDial
 import AlienSpecies from '@/services/enum/AlienSpecies'
 import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
 import CardDeck from '@/services/CardDeck'
+import Card from '@/services/Card'
 
 export default defineComponent({
   name: 'SideBar',
@@ -94,6 +96,9 @@ export default defineComponent({
     },
     cardDeck() : CardDeck {
       return this.navigationState.cardDeck
+    },
+    currentCard() : Card|undefined {
+      return this.navigationState.botActions.currentCard
     },
     resources() : BotResources {
       return this.navigationState.botResources
@@ -154,6 +159,11 @@ export default defineComponent({
     &.tech {
       height: 2.25rem;
       margin-top: 0.25rem;
+    }
+    &.decision {
+      width: 1.25rem;
+      object-fit: contain;
+      margin-left: 0.25rem;
     }
   }
 }

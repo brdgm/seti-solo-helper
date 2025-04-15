@@ -32,7 +32,7 @@ export default class NavigationState {
     const roundData = state.rounds.find(item => item.round === this.round)
     this.startPlayer = roundData?.startPlayer ?? Player.PLAYER
 
-    const lookupTurn = (route.name == 'RoundEnd') ? MAX_TURN : this.turn
+    const lookupTurn = isRoundEndRoute(route) ? MAX_TURN : this.turn
     const botPersistence = getBotPersistence(state, this.round, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = botPersistence.resources
@@ -73,4 +73,8 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
     cardDeck: CardDeck.new(round).toPersistence(),
     resources: getInitialBotResources(roundData?.startPlayer ?? Player.PLAYER),
   }
+}
+
+function isRoundEndRoute(route:RouteLocation) : boolean {
+  return route.name == 'RoundEnd' || route.name == 'GameEnd'
 }

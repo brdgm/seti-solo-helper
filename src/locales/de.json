@@ -38,6 +38,7 @@
       "player": "<b>Du</b> bist der Startspieler.",
       "bot": "Dein <b>Rivale</b> ist der Startspieler."
     },
+    "playerScoreTrackSetup": "Platziere deinen Wertungsmarker auf Feld {space} der Wertungsleiste.",
     "rivalPieces": "Dein Rivale erhält <b>alles Material einer Farbe</b>.",
     "componentsNotRequired": "Er benötigt keine Aktionskarten, Spielertableau, Wertungsmarker oder Bekanntheitsmarker.",
     "objectiveStack": {
@@ -49,7 +50,7 @@
     },
     "ruleChanges": {
       "title": "Rule Changes",
-      "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Effekte von Aktionskarten des Rivalen werden automatisch von der Applikation verwaltet.",
+      "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Direkte Effekte der Aktionen des Rivalen werden automatisch von der Applikation verwaltet, trage sie nicht in den Eingabefeldern ein.",
       "objectives": "<b>Ziele</b>: Sammle am Ende deines Zugs alle abgeschlossenen Ziele auf einem Stapel und ersetze sie durch neue vom Zielstapel. Du hast immer 3 Ziele – bis der Zielstapel leer ist."
     }
   },
@@ -60,7 +61,8 @@
   "roundTurnBot": {
     "executed": "Aktion ausgeführt",
     "notPossible": "Nicht möglich",
-    "pass": "Der Rivale passt.<br/>Entferne die <b>oberste Karte</b> des aktuellen Abschlussstapels.",
+    "pass": "Der Rivale passt.",
+    "discardEndOfRoundCard": "Entferne die <b>oberste Karte</b> des aktuellen Abschlussstapels.",
     "pickTech": "Technologie:",
     "pickProbeAction": "Aktion:",
     "checkSpeciesDiscovery": "Ist <b>Spezies #{alienSpeciesIndex}</b> schon entdeckt?"
@@ -134,7 +136,8 @@
         "chooseTech": "Er priorisiert die Technologien folgendermaßen:",
         "preferredTechs": "Dein Rivale bevorzugt die Technologien in der angezeigten Reihenfolge.",
         "twoPointTile": "Ist eine Technologie vorhanden, die zusätzlich 2 Punkte gewährt, bevorzugt er diese vor allen anderen innerhalb dieser Reihenfolge.",
-        "getBonus": "Er erhält die darauf angegebene Belohnung (und die 2 Punkte, falls die Technologie diese hatte).<br/><b>Ausnahme</b>: Dein Rivale erhält niemals <i>Starten einer Sonde</i> oder <i>2 Daten</i> durch Technologien."
+        "getBonus": "Er erhält die darauf angegebene Belohnung (und die 2 Punkte, falls die Technologie diese hatte).<br/><b>Ausnahme</b>: Dein Rivale erhält niemals <i>Starten einer Sonde</i> oder <i>2 Daten</i> durch Technologien.",
+        "discard": "Werfe die Technologie ab, die Applikation verwaltet sie automatisch."
       },
       "launch": {
         "title": "Starten einer Sonde",
