@@ -78,17 +78,21 @@
   },
   "gameEnd": {
     "title": "Spielende",
-    "objectives": {
-      "title": "<b>Ziele:</b> Dein Rivale erhält Punkte für jedes nicht abgeschlossenes Ziel (sowohl die in der Zielauslage als auch die im Zielstapel)",
-      "enterNumberUncompleted": "Anzahl der <b>nicht abgeschlossenen</b> Ziele:",
-      "botGainVP": "Dein Rivale erhält {count} Punkte"
+    "gameStatus": {
+      "title": "Spiel Status",
+      "uncompletedObjectives": "Anzahl der <b>nicht abgeschlossenen</b> Ziele",
+      "uncompletedObjectivesNote": "(sowohl die in der Zielauslage als auch die im Zielstapel)",
+      "exertianDanger": "Gefahr ausgespielter Extertianer-Karten",
+      "exterianRivalCards": "Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte."
     },
-    "finalScoreBot": "Finaler Punktestand deines Rivalen: <b>{count} Punkte</b>",
     "finalScoring": {
-      "title": "Abschlusswertung (nur für dich):",
-      "scoringCards": "Erhalte Punkte für deine ausgespielten <b>Wertungskarten</b>",
-      "goldScoringTiles": "Erhalte Punkte für deine Marker auf <b>Gold-Wertungsplättchen</b>",
-      "alienSpecies": "Erhalte Punkte durch eine <b>Spezies</b> (falls in ihren Regeln angegeben)"
+      "title": "Abschlusswertung",
+      "scoreTrack": "Wertungsleiste",
+      "endGameScoringCards": "Wertungskarten (mit goldenem Feld)",
+      "goldScoringTile": "Gold-Wertungsplättchen {index}",
+      "exertianVP": "Punkte von Extertianer-Karten",
+      "exertianMinus": "Punkteverlust durch Extertianer",
+      "totalVP": "Total VP"
     }
   },
   "botResources": {
@@ -183,7 +187,7 @@
         "exertians": {
           "title": "Exertianer Spezial-Aktion",
           "instructions": "Falls die Anzahl der Exertianer-Karten und Spuren des Rivalen auf dem Tableau dieser Spezies max. 4 ist: Er <b>spielt 1 geheime Exertianer-Karte</b>.",
-          "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch die Aktionen dieser Spezies. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen. Jedoch schreitet er auf der Fortschrittsleiste pro eigenem Marker auf Entdeckungsfeldern voran.<br/>Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte.<br/>Danach addiere und vergleiche die Gefahrenstufen wie üblich."
+          "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch die Aktionen dieser Spezies. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen."
         }
       }
     }
