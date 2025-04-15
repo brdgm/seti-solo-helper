@@ -1,6 +1,6 @@
 {
   "name": "@brdgm/seti-solo-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "SETI Solo Helper",
   "appDeployName": "seti",
@@ -17,7 +17,7 @@
     "generate-pwa-assets": "pwa-assets-generator"
   },
   "dependencies": {
-    "@brdgm/brdgm-commons": "^1.7.3",
+    "@brdgm/brdgm-commons": "^1.7.4",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "core-js": "^3.40.0",
