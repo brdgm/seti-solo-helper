@@ -24,11 +24,17 @@
         </template>
       </div>
       <div class="action">
-        <p><b>Mascamites</b>: Take a random <b>sample token</b> from the planet and place it face up on this species board (ignore its reward).</p>
+        <p class="small">
+          <span class="fw-bold" v-html="t('alienSpecies.mascamites')"></span>:
+          <span v-html="t('rules.action.speciesSpecialAction.mascamites.instructions')"></span>
+        </p>
       </div>
     </template>
     <template #instruction>
-      Rules Species Special Action...
+      <p v-html="t('rules.action.probe.moveProbe')"></p>
+      <p v-html="t('rules.action.probe.publicity')"></p>
+      <p v-html="t('rules.action.speciesSpecialAction.mascamites.landPlanet')"></p>
+      <p v-html="t('rules.action.speciesSpecialAction.mascamites.instructions')"></p>
     </template>
   </ActionBox>
 </template>

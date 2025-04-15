@@ -1,12 +1,15 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.extertians.title')">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.exertians.title')">
     <template #action>
       <div class="action">
-        <p><b>Exertians:</b> Count the number of rival's played exertian cards and rival's alien traces on this species board. If the total is less than 5, the rival secretly <b>plays a exertian card</b>.</p>
+        <p class="small">
+          <span class="fw-bold" v-html="t('alienSpecies.exertians')"></span>:
+          <span v-html="t('rules.action.speciesSpecialAction.exertians.instructions')"></span>
+        </p>
       </div>
     </template>
     <template #instruction>
-      Rules Species Special Action...
+      <p v-html="t('rules.action.speciesSpecialAction.exertians.instructions')"></p>
     </template>
   </ActionBox>
 </template>

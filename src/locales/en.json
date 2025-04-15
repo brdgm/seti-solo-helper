@@ -145,19 +145,26 @@
       },
       "speciesSpecialAction": {
         "mascamites": {
-          "title": "Mascamites Special Action"
+          "title": "Mascamites Special Action",
+          "instructions": "Take a random <b>sample token</b> from the planet and place it face up on this species board (ignore its reward).",
+          "landPlanet": "The rival lands on the planet."
         },
         "anomalies": {
-          "title": "Anomalies Special Action"
+          "title": "Anomalies Special Action",
+          "instructions": "If the rival is not winning the next anomaly, they mark 1 species trace <b>of that color</b> for this species."
         },
         "oumuamua": {
-          "title": "‘Oumuamua Special Action"
+          "generalInstructions": "The rival also collects exofossil tokens. They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied."
         },
         "centaurians": {
-          "title": "Centaurians Special Action"
+          "title": "Centaurians Special Action",
+          "instructions": "If the rival still has a message milestone in his reserve and none on the scoring track, place one message milestone 15 points ahead of their current score.",
+          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action card.<br/>When the rival reaches their message milestone, they choose the leftmost or rightmost available reward, according to the decision arrow.<br/>The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay."
         },
         "exertians": {
-          "title": "Exertians Special Action"
+          "title": "Exertians Special Action",
+          "instructions": "Count the number of rival's played exertian cards and rival's alien traces on this species board. If the total is less than 5, the rival secretly <b>plays a exertian card</b>.",
+          "generalInstructions": "The rival can only draw and play Exertian cards via their action card for this species. They ignore the Exertian milestones.<br/>When this species is discovered, the rival does not draw or play any cards, but they do advance on the progress track for each marker they placed on the discovery spaces.<br/>At the end of the game, all rival Exertian cards are considered successfully completed, and the rival scores full points for them.<br/>Then, count up and compare danger with your rival in the usual way."
         }
       }
     }

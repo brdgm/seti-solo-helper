@@ -6,11 +6,14 @@
     <template #action>
       <div class="action">
         <AppIcon type="alien-trace" name="any" class="icon"/>
-        <p><b>Anomalies:</b> If the rival is not winning the next anomaly, they mark 1 species trace <b>of that color</b> for this species.</p>
+        <p class="small">
+          <span class="fw-bold" v-html="t('alienSpecies.anomalies')"></span>:
+          <span v-html="t('rules.action.speciesSpecialAction.anomalies.instructions')"></span>
+        </p>
       </div>
     </template>
     <template #instruction>
-      Rules Species Special Action...
+      <p v-html="t('rules.action.speciesSpecialAction.anomalies.instructions')"></p>
     </template>
   </ActionBox>
 </template>

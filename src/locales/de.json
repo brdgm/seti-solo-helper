@@ -145,19 +145,26 @@
       },
       "speciesSpecialAction": {
         "mascamites": {
-          "title": "Maskamiten Spezial-Aktion"
+          "title": "Maskamiten Spezial-Aktion",
+          "instructions": "Nimm ein beliebiges <b>Probenplättchen</b> vom Planeten und platziere es offen auf dem Tableau dieser Spezies (ignoriere die Belohnung).",
+          "landPlanet": "Der Rivale landed auf dem Planet."
         },
         "anomalies": {
-          "title": "Anomalien Spezial-Aktion"
+          "title": "Anomalien Spezial-Aktion",
+          "instructions": "Falls der Rivale die nächste Anomalie aktuell nicht gewinnen würde: Er platziert eine Spur der <b>passenden Farbe</b> auf dem Tableau dieser Spezies."
         },
         "oumuamua": {
-          "title": "‘Oumuamua Spezial-Aktion"
+          "generalInstructions": "Auch dein Rivale sammelt und nutzt Exofossilien. Wie du kann er nur Felder besetzen, falls er die entsprechende Anzahl an Exofossilien besitzt. Ansonsten ignoriert er sie."
         },
         "centaurians": {
-          "title": "Centaurianer Spezial-Aktion"
+          "title": "Centaurianer Spezial-Aktion",
+          "instructions": "Falls der Rivale noch Nachrichten-Meilensteine in seiner Reserve hat und keine auf der Punkteleiste: Platziere 15 Felder vor seinem aktuellen Punktemarker einen Nachrichten-Meilenstein.",
+          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktionskarte nutzen.<br/> Bei Erreichen des Nachricht-Meilensteins legt dein Rivale diesen dem Entscheidungspfeil folgend auf das freie am weitesten linke oder rechte Feld.<br/> Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt."
         },
         "exertians": {
-          "title": "Exertianer Spezial-Aktion"
+          "title": "Exertianer Spezial-Aktion",
+          "instructions": "Falls die Anzahl der Exertianer-Karten und Spuren des Rivalen auf dem Tableau dieser Spezies max. 4 ist: Er <b>spielt 1 geheime Exertianer-Karte</b>.",
+          "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch seine Aktionskarte dieser Spezies. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen. Jedoch schreitet er auf der Fortschrittsleiste pro eigenem Marker auf Entdeckungsfeldern voran.<br/>Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte.<br/>Danach addiere und vergleiche die Gefahrenstufen wie üblich."
         }
       }
     }

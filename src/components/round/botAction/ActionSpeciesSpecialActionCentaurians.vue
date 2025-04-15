@@ -5,11 +5,14 @@
     </template>
     <template #action>
       <div class="action">
-        <p><b>Centraurians:</b> If the rival still has a message milestone in his reserve and none on the scoring track, place one message milestone 15 points ahead of their current score.</p>
+        <p class="small">
+          <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
+          <span v-html="t('rules.action.speciesSpecialAction.centaurians.instructions')"></span>
+        </p>
       </div>
     </template>
     <template #instruction>
-      Rules Species Special Action...
+      <p v-html="t('rules.action.speciesSpecialAction.centaurians.instructions')"></p>
     </template>
   </ActionBox>
 </template>
