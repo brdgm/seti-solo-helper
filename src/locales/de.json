@@ -80,7 +80,17 @@
     }
   },
   "botResources": {
-    "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielbrett</i>:"
+    "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielbrett</i>:",
+    "lifeTrace": {
+      "title": "Spuren",
+      "mark": "Platziert dein Rivale Spuren, musst du alle Spalten dieser Spezies überprüfen. Er bevorzugt das niedrigste freie Feld dieser Spalten. (Er ignoriert Überflussfelder, solange er eine andere Wahl hat.)",
+      "tiebreaker": "Gibt es mehrere gleichniedrige Spalten, wählt dein Rivale dem Entscheidungspfeil folgend das erste freie Feld von links bzw. rechts.",
+      "oumuamua": "Er kann nur Felder besetzen, falls er die entsprechende Anzahl an Exofossilien besitzt. Ansonsten ignoriert er sie."
+    },
+    "exofossil": {
+      "title": "Exofossilien",
+      "collect": "Auch dein Rivale sammelt und nutzt Exofossilien."
+    }
   },
   "botReachedMilestones": {
     "neutral": "Der Rivale hat einen <b>Entdeckungs</b>-Meilenstein auf Feld {score} erreicht.",
@@ -152,9 +162,6 @@
         "anomalies": {
           "title": "Anomalien Spezial-Aktion",
           "instructions": "Falls der Rivale die nächste Anomalie aktuell nicht gewinnen würde: Er platziert eine Spur der <b>passenden Farbe</b> auf dem Tableau dieser Spezies."
-        },
-        "oumuamua": {
-          "generalInstructions": "Auch dein Rivale sammelt und nutzt Exofossilien. Wie du kann er nur Felder besetzen, falls er die entsprechende Anzahl an Exofossilien besitzt. Ansonsten ignoriert er sie."
         },
         "centaurians": {
           "title": "Centaurianer Spezial-Aktion",

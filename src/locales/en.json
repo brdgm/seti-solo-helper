@@ -80,7 +80,17 @@
     }
   },
   "botResources": {
-    "gainThisTurn": "<b>Rival</b> gains this turn from the <i>game board</i>:"
+    "gainThisTurn": "<b>Rival</b> gains this turn from the <i>game board</i>:",
+    "lifeTrace": {
+      "title": "Life Traces",
+      "mark": "Whenever your rival earns a life trace, look at that column for each alien species. Your rival marks the lowest available space in that column. (They ignore the overflow space below the column, unless all other spaces are full.)",
+      "tiebreaker": "If the spaces in the selected columns are equally low, choose the leftmost or rightmost, depending on the decision arrow.",
+      "oumuamua": "They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied."
+    },
+    "exofossil": {
+      "title": "Exofossils",
+      "collect": "The rival also collects exofossil tokens."
+    }
   },
   "botReachedMilestones": {
     "neutral": "The rival reached a <b>neutral</b> milestone on score {score}.",
@@ -152,9 +162,6 @@
         "anomalies": {
           "title": "Anomalies Special Action",
           "instructions": "If the rival is not winning the next anomaly, they mark 1 species trace <b>of that color</b> for this species."
-        },
-        "oumuamua": {
-          "generalInstructions": "The rival also collects exofossil tokens. They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied."
         },
         "centaurians": {
           "title": "Centaurians Special Action",

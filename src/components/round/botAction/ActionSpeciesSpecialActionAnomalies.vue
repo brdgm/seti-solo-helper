@@ -5,7 +5,7 @@
     </template>
     <template #action>
       <div class="action">
-        <AppIcon type="alien-trace" name="any" class="icon"/>
+        <AppIcon type="life-trace" name="any" class="icon"/>
         <p class="small">
           <span class="fw-bold" v-html="t('alienSpecies.anomalies')"></span>:
           <span v-html="t('rules.action.speciesSpecialAction.anomalies.instructions')"></span>

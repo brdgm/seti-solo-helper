@@ -42,10 +42,6 @@
           </select>
         </li>
       </ol>
-      <p class="alert alert-info small" v-if="isSpeciesOumuamua">
-        <span class="fw-bold" v-html="t('alienSpecies.oumuamua')"></span>:
-        <span v-html="t('rules.action.speciesSpecialAction.oumuamua.generalInstructions')"></span>
-      </p>
       <p class="alert alert-info small" v-if="isSpeciesCentaurians">
         <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
         <span v-html="t('rules.action.speciesSpecialAction.centaurians.generalInstructions')"></span>
@@ -104,9 +100,6 @@ export default defineComponent({
     },
     progressCount() : number {
       return (this.resources.progress-1) % 12 + 1
-    },
-    isSpeciesOumuamua() : boolean {
-      return this.state.alienDiscovery.species.includes(AlienSpecies.OUMUAMUA)
     },
     isSpeciesCentaurians() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.CENTAURIANS)
