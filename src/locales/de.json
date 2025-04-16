@@ -75,7 +75,7 @@
   },
   "roundEnd": {
     "title": "Rundenende",
-    "gainIncome": "Erhalte dein Einkommen.",
+    "gainIncome": "Erhalte dein <b>Einkommen</b>.",
     "objectives": {
       "title": "<b>Ziele: </b> Du musst {count} <b>abgeschlossene Ziele</b> abwerfen, wenn möglich.",
       "enterNumberCompleted": "Anzahl deiner <b>abgeschlossenen</b> Ziele:",
@@ -91,7 +91,7 @@
       "title": "Spiel Status",
       "uncompletedObjectives": "Anzahl der <b>nicht abgeschlossenen</b> Ziele",
       "uncompletedObjectivesNote": "(sowohl die in der Zielauslage als auch die im Zielstapel)",
-      "exertianDanger": "Gefahr ausgespielter Extertianer-Karten",
+      "exertianDanger": "Gesamte Exertianer-Gefahr",
       "exterianRivalCards": "Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte."
     },
     "finalScoring": {
@@ -99,8 +99,8 @@
       "scoreTrack": "Wertungsleiste",
       "endGameScoringCards": "Wertungskarten (mit goldenem Feld)",
       "goldScoringTile": "Gold-Wertungsplättchen {index}",
-      "exertianVP": "Punkte von Extertianer-Karten",
-      "exertianMinus": "Punkteverlust durch Extertianer",
+      "exertianVP": "Punkte von Exertianer-Karten",
+      "exertianMinus": "Punkteverlust durch Exertianer",
       "totalVP": "Total VP"
     }
   },
@@ -197,7 +197,7 @@
         "exertians": {
           "title": "Exertianer Spezial-Aktion",
           "instructions": "Falls die Anzahl der Exertianer-Karten und Spuren des Rivalen auf dem Tableau dieser Spezies max. 4 ist: Er <b>spielt 1 geheime Exertianer-Karte</b>.",
-          "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch die Aktionen dieser Spezies. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen."
+          "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch Aktionen die sich auf diese Spezies beziehen. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen. Jedoch schreitet er auf der Fortschrittsleiste pro eigenem Marker auf Entdeckungsfeldern voran."
         }
       }
     }
