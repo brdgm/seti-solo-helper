@@ -44,9 +44,9 @@ import Player from '@/services/enum/Player'
 import getPreviousTurns from '@/util/getPreviousTurns'
 import { MAX_TURN } from '@/util/getTurnOrder'
 import CardDeck from '@/services/CardDeck'
-import DifficultyLevel from '@/components/setup/DifficultyLevel.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vue'
+import DifficultyLevel from '@/services/enum/DifficultyLevel'
 
 export default defineComponent({
   name: 'RoundEnd',
