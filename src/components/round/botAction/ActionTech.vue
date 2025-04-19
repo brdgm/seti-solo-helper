@@ -46,7 +46,6 @@ import Card, { CardActionTech } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import TechType from '@/services/enum/TechType'
-import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
 
 export default defineComponent({
   name: 'ActionTech',
@@ -86,7 +85,19 @@ export default defineComponent({
       return [...all.slice(progress-1),...all.slice(0,progress-1)]
     },
     techTypes() : TechType[] {
-      return getAllEnumValues(TechType)
+      // display tech types in order of preference
+      const techTypesPerTech = this.preferredTechs.map((index) => {
+        if (index >= 1 && index <= 4) {
+          return TechType.COMPUTER
+        }
+        else if (index >= 5 && index <= 8) {
+          return TechType.TELESCOPE
+        }
+        else {
+          return TechType.PROBE
+        }
+      })
+      return [...new Set(techTypesPerTech)]
     }
   },
   methods: {
