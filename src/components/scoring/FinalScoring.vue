@@ -2,44 +2,46 @@
   <div class="tableWrapper">
     <table>
       <tbody>
-        <tr>
-          <th scope="col">
-            <h5 class="mt-2">{{t('gameEnd.gameStatus.title')}}</h5>
-          </th>
-          <th scope="col">
-            <span class="fw-bold">{{t('player.player')}}</span>
-          </th>
-          <th scope="col">
-            <span class="fw-bold">{{t('player.bot')}}</span>
-          </th>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span v-html="t('gameEnd.gameStatus.uncompletedObjectives')"></span><br/>
-            <span class="small" v-html="t('gameEnd.gameStatus.uncompletedObjectivesNote')"></span>
-          </th>
-          <td>
-            <NumberInput :max="maxObjectiveCount" v-model="uncompletedObjectives"/>
-          </td>
-          <td>
-            {{botObjectivesVP}}
-          </td>
-        </tr>
-        <template v-if="isSpeciesExertians">
+        <template v-if="hasObjectives || isSpeciesExertians">
           <tr>
+            <th scope="col">
+              <h5 class="mt-2">{{t('gameEnd.gameStatus.title')}}</h5>
+            </th>
+            <th scope="col">
+              <span class="fw-bold">{{t('player.player')}}</span>
+            </th>
+            <th scope="col">
+              <span class="fw-bold">{{t('player.bot')}}</span>
+            </th>
+          </tr>
+          <tr v-if="hasObjectives">
             <th scope="row">
-              <span v-html="t('gameEnd.gameStatus.exertianDanger')"></span>
+              <span v-html="t('gameEnd.gameStatus.uncompletedObjectives')"></span><br/>
+              <span class="small" v-html="t('gameEnd.gameStatus.uncompletedObjectivesNote')"></span>
             </th>
             <td>
-              <NumberInput v-model="playerExertianDanger"/>
+              <NumberInput :max="maxObjectiveCount" v-model="uncompletedObjectives"/>
             </td>
             <td>
-              <NumberInput v-model="botExertianDanger"/>
+              {{botObjectivesVP}}
             </td>
           </tr>
-          <tr>
-            <td colspan="3" class="fst-italic small" v-html="t('gameEnd.gameStatus.exterianRivalCards')"></td>
-          </tr>
+          <template v-if="isSpeciesExertians">
+            <tr>
+              <th scope="row">
+                <span v-html="t('gameEnd.gameStatus.exertianDanger')"></span>
+              </th>
+              <td>
+                <NumberInput v-model="playerExertianDanger"/>
+              </td>
+              <td>
+                <NumberInput v-model="botExertianDanger"/>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" class="fst-italic small" v-html="t('gameEnd.gameStatus.exterianRivalCards')"></td>
+            </tr>
+          </template>
         </template>
         <tr>
           <th scope="col">
@@ -128,10 +130,10 @@ import { useI18n } from 'vue-i18n'
 import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vue'
 import NavigationState from '@/util/NavigationState'
 import { useRoute } from 'vue-router'
-import DifficultyLevel from '../setup/DifficultyLevel.vue'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import AlienSpecies from '@/services/enum/AlienSpecies'
 import getDifficultyLevelSettings from '@/util/getDifficultyLevelSettings'
+import DifficultyLevel from '@/services/enum/DifficultyLevel'
 
 export default defineComponent({
   name: 'FinalScoring',
