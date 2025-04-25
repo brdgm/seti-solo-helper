@@ -24,6 +24,7 @@ import Player from '@/services/enum/Player'
 import CardDeck from '@/services/CardDeck'
 import getInitialBotResources from '@/util/getInitialBotResources'
 import getRandomGoldScoreTileSetup from '@/util/getRandomGoldScoreTileSetup'
+import ObjectiveStack from '@/services/ObjectiveStack'
 
 export default defineComponent({
   name: 'SetupApp',
@@ -50,6 +51,7 @@ export default defineComponent({
         startPlayer,
         initialBotPersistence: {
           cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
+          objectiveStack: ObjectiveStack.new(this.state.setup.difficultyLevel).toPersistence(),
           resources: getInitialBotResources(startPlayer)
         },
         turns: []

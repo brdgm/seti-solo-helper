@@ -80,6 +80,7 @@ export interface RoundTurn {
 }
 export interface BotPersistence {
   cardDeck: CardDeckPersistence
+  objectiveStack?: ObjectiveStackPersistence
   resources: BotResources
 }
 export interface CardDeckPersistence {

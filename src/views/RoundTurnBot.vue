@@ -110,6 +110,7 @@ export default defineComponent({
         player:this.navigationState.player,
         botPersistence: {
           cardDeck: cardDeck.toPersistence(),
+          objectiveStack: this.navigationState.objectiveStack.toPersistence(),
           resources: gainResources.merge(previousTurnResources)
         },
         pass: this.botPass ? true : undefined

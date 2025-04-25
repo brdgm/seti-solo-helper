@@ -113,6 +113,7 @@ export default defineComponent({
       cardDeck.addAdvancedCards(drawAdvancedCards)
       const initialBotPersistence : BotPersistence = {
         cardDeck: cardDeck.toPersistence(),
+        objectiveStack: lastTurn.botPersistence.objectiveStack,
         resources: gainResources.merge(previousTurnResources)
       }
       this.state.storeRound({
