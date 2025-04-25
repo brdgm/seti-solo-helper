@@ -80,6 +80,9 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  label {
+    cursor: pointer;
+  }
 }
 .tasks {
   display: flex;

@@ -5,7 +5,7 @@
   </div>
   <template v-for="(planet,index) of task.planets" :key="planet">
     <template v-if="index > 0">/</template>    
-    <AppIcon type="planet" :name="planet" class="icon"/>
+    <AppIcon type="planet" :name="planet" class="planetIcon"/>
   </template>
 </template>
 
@@ -30,6 +30,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .icon {
-  height: 1.5rem;
+  height: 2rem;
+}
+.planetIcon {
+  height: 1.25rem;
 }
 </style>

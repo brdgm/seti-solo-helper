@@ -23,8 +23,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .icon {
-  height: 2rem;
-  max-width: 2.2rem;
-  object-fit: contain;
+  height: 1.6rem;
+  margin: 0.2rem;
 }
 </style>
