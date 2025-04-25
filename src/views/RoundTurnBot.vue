@@ -1,5 +1,6 @@
 <template>
   <SideBar :navigationState="navigationState"/>
+  <ObjectivesTopBar :navigationState="navigationState"/>
   <h1>{{t('player.bot')}}</h1>
 
   <template v-if="botPass">
@@ -53,12 +54,14 @@ import BotResources from '@/components/round/BotResources.vue'
 import isFirstPass from '@/util/isFirstPass'
 import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
 import Action from '@/services/enum/Action'
+import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
 
 export default defineComponent({
   name: 'RoundTurnBot',
   components: {
     FooterButtons,
     SideBar,
+    ObjectivesTopBar,
     DebugInfo,
     BotTurn,
     AppIcon,

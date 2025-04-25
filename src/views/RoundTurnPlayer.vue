@@ -1,5 +1,6 @@
 <template>
   <SideBar :navigationState="navigationState"/>
+  <ObjectivesTopBar :navigationState="navigationState"/>
   <h1>{{t('player.player')}}</h1>
 
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
@@ -48,6 +49,7 @@ import BotResources from '@/components/round/BotResources.vue'
 import isFirstPass from '@/util/isFirstPass'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
+import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
@@ -57,6 +59,7 @@ export default defineComponent({
     BotReachedMilestones,
     ModalDialog,
     SideBar,
+    ObjectivesTopBar,
     DebugInfo,
     AppIcon
   },
