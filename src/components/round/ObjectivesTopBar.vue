@@ -1,9 +1,17 @@
 <template>
   <div class="objectives mb-2">
-    <div class="objective" v-for="objective in objectiveStack.current" :key="objective.id">
+    <div class="objective" v-for="(objective,objectiveIndex) in objectiveStack.current" :key="objective.id">
       <AppIcon type="objective-level" :name="`${objective.level}`" class="levelIcon"/>
-      <div v-for="(item,index) of objective.items" :key="index">
-        <ObjectiveItemDisplay :objectiveItem="item" />
+      <div v-for="(item,itemIndex) of objective.items" :key="itemIndex">
+        <div class="item">
+          <label class="tasks" :for="`check-${objectiveIndex}-${itemIndex}`">
+            <template v-for="(task, index) in item.tasks" :key="index">
+              <div v-if="index > 0">/</div>
+              <ObjectiveItemTaskDisplay :task="task"/>
+            </template>
+          </label>
+          <input type="checkbox" :id="`check-${objectiveIndex}-${itemIndex}`"/>
+        </div>
       </div>
     </div>
   </div>
@@ -15,13 +23,13 @@ import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ObjectiveStack from '@/services/ObjectiveStack'
-import ObjectiveItemDisplay from './ObjectiveItemDisplay.vue'
+import ObjectiveItemTaskDisplay from './ObjectiveItemTaskDisplay.vue'
 
 export default defineComponent({
   name: 'ObjectivesTopBar',
   components: {
     AppIcon,
-    ObjectiveItemDisplay
+    ObjectiveItemTaskDisplay
   },
   setup() {
     const { t } = useI18n()
@@ -65,5 +73,16 @@ export default defineComponent({
     top: 0;
     left: 0;
   }
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.tasks {
+  display: flex;
+  gap: 1px;
+  align-items: center;
 }
 </style>
