@@ -12,15 +12,7 @@
       <ul>
         <li v-html="t('setupGame.componentsNotRequired')"></li>
       </ul>
-      <template v-if="hasObjectives">
-        <li v-html="t('setupGame.objectiveStack.title')"></li>
-        <ul>
-          <li v-html="t('setupGame.objectiveStack.top', {count:difficultyLevelSettings.objectivesLevel1})"></li>
-          <li v-html="t('setupGame.objectiveStack.middle', {count:difficultyLevelSettings.objectivesLevel2})"></li>
-          <li v-html="t('setupGame.objectiveStack.bottom', {count:difficultyLevelSettings.objectivesLevel3})"></li>
-        </ul>
-        <li v-html="t('setupGame.objectiveStack.draw')"></li>
-      </template>
+      <li v-if="hasObjectives" v-html="t('setupGame.objectiveStack')"></li>
     </ol>
   </div>
 
@@ -49,7 +41,6 @@ import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useRouter } from 'vue-router'
-import getDifficultyLevelSettings, { DifficultyLevelSettings } from '@/util/getDifficultyLevelSettings'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Player from '@/services/enum/Player'
 import RouteCalculator from '@/services/RouteCalculator'
@@ -70,9 +61,6 @@ export default defineComponent({
     startPlayer() : Player {
       const round1 = this.state.rounds.find(round => round.round == 1)
       return round1?.startPlayer ?? Player.PLAYER
-    },
-    difficultyLevelSettings() : DifficultyLevelSettings {
-      return getDifficultyLevelSettings(this.state.setup.difficultyLevel)
     },
     hasObjectives() : boolean {
       return this.state.setup.difficultyLevel != DifficultyLevel.LEVEL_1

@@ -41,13 +41,7 @@
     "playerScoreTrackSetup": "Place your score counter on space {space} of the score track.",
     "rivalPieces": "Give the rival <b>all pieces of one color</b>.",
     "componentsNotRequired": "He does not need the action cards, player board, score counter or publicity marker.",
-    "objectiveStack": {
-      "title": "Prepare the <b>objectives stack</b>:",
-      "top": "Top: Randomly select and shuffle <b>{count} x Level 1</b> objectives.",
-      "middle": "Middle: Randomly select and shuffle <b>{count} x Level 2</b> objectives.",
-      "bottom": "Bottom: Randomly select and shuffle <b>{count} x Level 3</b> objectives.",
-      "draw": "Reveal the <b>top 3 tiles</b> of the objective stack."
-    },
+    "objectiveStack": "The objective stack is managed by the application.",
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Direct effects from rival actions are managed by the application automatically, do not enter them in the input fields.",
