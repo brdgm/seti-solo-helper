@@ -51,6 +51,7 @@ export default defineComponent({
   .name {
     font-size: 0.5rem;
     margin-top: -0.1rem;
+    text-transform: uppercase;
   }
 }
 .divider {
