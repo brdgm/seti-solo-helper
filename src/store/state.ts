@@ -87,6 +87,12 @@ export interface CardDeckPersistence {
   discard: string[]
   advanced: string[]
 }
+export interface ObjectiveStackPersistence {
+  pile: number[]
+  current: number[]
+  complete: number[]
+  discard: number[]
+}
 export interface BotResources {
   progress: number
   publicity: number

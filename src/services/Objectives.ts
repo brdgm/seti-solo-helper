@@ -218,7 +218,7 @@ export default {
    * @returns Objectives
    */
   getAll(level: ObjectiveLevel) : Objective[] {
-    return cards.filter(objective => objective.level === level)
+    return cards.filter(objective => objective.level == level)
   }
 
 }
