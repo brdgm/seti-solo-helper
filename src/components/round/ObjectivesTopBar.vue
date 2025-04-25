@@ -49,6 +49,7 @@ export default defineComponent({
 .objective {
   display: flex;
   position: relative;
+  gap: 10px;
   background-color: #c0def5;
   border-radius: 5px;
   min-width: 50px;

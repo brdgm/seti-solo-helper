@@ -24,5 +24,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .icon {
   height: 2rem;
+  max-width: 2.2rem;
+  object-fit: contain;
 }
 </style>
