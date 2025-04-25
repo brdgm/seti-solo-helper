@@ -167,20 +167,12 @@ const cards : Objective[] = [
     id: 306,
     level: ObjectiveLevel.LEVEL_3,
     items: [
-      { tasks: [{ task: ObjectiveTask.TECH_TYPE, techType: TechType.COMPUTER }] },
-      { tasks: [{ task: ObjectiveTask.LIFE_TRACE, lifeTrace: LifeTrace.COMPUTER }] }
-    ]
-  },
-  {
-    id: 307,
-    level: ObjectiveLevel.LEVEL_3,
-    items: [
       { tasks: [{ task: ObjectiveTask.TECH_TYPE, techType: TechType.PROBE }] },
       { tasks: [{ task: ObjectiveTask.ACTION_PROBE_LAND }] }
     ]
   },
   {
-    id: 308,
+    id: 307,
     level: ObjectiveLevel.LEVEL_3,
     items: [
       { tasks: [{ task: ObjectiveTask.LIFE_TRACE, lifeTrace: LifeTrace.COMPUTER }] },
@@ -188,11 +180,18 @@ const cards : Objective[] = [
     ]
   },
   {
+    id: 308,
+    level: ObjectiveLevel.LEVEL_3,
+    items: [
+      { tasks: [{ task: ObjectiveTask.SECTOR_WIN, sectorWin: SectorWin.BLACK }] },
+    ]
+  },
+  {
     id: 309,
     level: ObjectiveLevel.LEVEL_3,
     items: [
       { tasks: [{ task: ObjectiveTask.ACTION_LAUNCH }] },
-      { tasks: [{ task: ObjectiveTask.TECH_TYPE, techType: TechType.COMPUTER }] },
+      { tasks: [{ task: ObjectiveTask.LIFE_TRACE, lifeTrace: LifeTrace.COMPUTER }] },
       { tasks: [{ task: ObjectiveTask.ACTION_TELESCOPE }] }
     ]
   },

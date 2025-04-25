@@ -52,6 +52,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .objectives {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
 }
 .objective {
