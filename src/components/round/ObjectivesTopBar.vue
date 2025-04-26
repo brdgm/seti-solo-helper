@@ -1,5 +1,5 @@
 <template>
-  <div class="objectives mb-2">
+  <div class="objectives">
     <div class="objective" v-for="(objective,objectiveIndex) in objectiveStack.current" :key="objective.id">
       <AppIcon type="objective-level" :name="`${objective.level}`" class="levelIcon"/>
       <div v-for="(item,itemIndex) of objective.items" :key="itemIndex">
@@ -14,9 +14,15 @@
         </div>
       </div>
     </div>
-    <div class="completedObjectives" v-if="objectiveStack.complete.length > 0">
-      <AppIcon name="objective-completed" class="completedIcon"/>:
-      {{objectiveStack.complete.length}}
+    <div class="objectiveCount">
+      <div class="count">
+        <AppIcon name="objective" class="tileIcon"/>
+        <div>: {{objectiveStack.pile.length}}</div>
+      </div>
+      <div class="count" v-if="objectiveStack.complete.length > 0">
+        <AppIcon name="objective-completed" class="tileIcon"/>
+        <div>: {{objectiveStack.complete.length}}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +64,17 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  margin-bottom: 10px;
+  width: fit-content;
+  @media (min-width: 820px) {
+    position: absolute;
+    right: 160px;
+    flex-direction: column;
+    margin-left: 15px;
+    & > * {
+      width: 100%
+    }
+  }
 }
 .objective {
   display: flex;
@@ -71,6 +88,7 @@ export default defineComponent({
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 5px;
+  justify-content: center;
   .levelIcon {
     border-top-left-radius: 5px;
     width: 1.5rem;
@@ -93,11 +111,21 @@ export default defineComponent({
   gap: 1px;
   align-items: center;
 }
-.completedObjectives {
+.objectiveCount {
   display: flex;
   align-items: center;
   margin-left: 5px;
-  .completedIcon {
+  gap: 5px;
+  font-size: small;
+  @media (min-width: 820px) {
+    margin-left: 0;
+  }
+  .count {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+  }
+  .tileIcon {
     height: 1.5rem;
   }
 }
