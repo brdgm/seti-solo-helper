@@ -8,6 +8,7 @@ import BotGainResources from '@/services/BotGainResources'
 import BotActions from '@/services/BotActions'
 import { MAX_TURN } from './getTurnOrder'
 import ObjectiveStack from '@/services/ObjectiveStack'
+import MilestoneTracker from '@/services/MilestoneTracker'
 
 export default class NavigationState {
 
@@ -19,6 +20,7 @@ export default class NavigationState {
   readonly startPlayer : Player
   readonly cardDeck : CardDeck
   readonly objectiveStack : ObjectiveStack
+  readonly milestoneTracker : MilestoneTracker
   readonly botResources : BotResources
   readonly botGainResources : BotGainResources
   readonly botPass?: boolean
@@ -37,12 +39,8 @@ export default class NavigationState {
     const lookupTurn = isRoundEndRoute(route) ? MAX_TURN : this.turn
     const botPersistence = getBotPersistence(state, this.round, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
-    if (botPersistence.objectiveStack) {
-      this.objectiveStack = ObjectiveStack.fromPersistence(botPersistence.objectiveStack)
-    }
-    else {
-      this.objectiveStack = ObjectiveStack.new(state.setup.difficultyLevel)
-    }
+    this.objectiveStack = botPersistence.objectiveStack ? ObjectiveStack.fromPersistence(botPersistence.objectiveStack) : ObjectiveStack.new(state.setup.difficultyLevel)
+    this.milestoneTracker = botPersistence.milestoneTracker ? MilestoneTracker.fromPersistence(botPersistence.milestoneTracker) : MilestoneTracker.new()
     this.botResources = botPersistence.resources
     this.botGainResources = new BotGainResources()
 
@@ -80,6 +78,7 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
   return {
     cardDeck: CardDeck.new(state.setup.difficultyLevel).toPersistence(),
     objectiveStack: ObjectiveStack.new(state.setup.difficultyLevel).toPersistence(),
+    milestoneTracker: MilestoneTracker.new().toPersistence(),
     resources: getInitialBotResources(roundData?.startPlayer ?? Player.PLAYER),
   }
 }

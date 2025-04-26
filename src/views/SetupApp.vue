@@ -25,6 +25,7 @@ import CardDeck from '@/services/CardDeck'
 import getInitialBotResources from '@/util/getInitialBotResources'
 import getRandomGoldScoreTileSetup from '@/util/getRandomGoldScoreTileSetup'
 import ObjectiveStack from '@/services/ObjectiveStack'
+import MilestoneTracker from '@/services/MilestoneTracker'
 
 export default defineComponent({
   name: 'SetupApp',
@@ -52,6 +53,7 @@ export default defineComponent({
         initialBotPersistence: {
           cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
           objectiveStack: ObjectiveStack.new(this.state.setup.difficultyLevel).toPersistence(),
+          milestoneTracker: MilestoneTracker.new().toPersistence(),
           resources: getInitialBotResources(startPlayer)
         },
         turns: []
