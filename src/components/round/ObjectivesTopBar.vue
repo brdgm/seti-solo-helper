@@ -1,5 +1,5 @@
 <template>
-  <div class="objectives" v-if="hasObjectives">
+  <div class="objectives" v-if="hasObjectives && hasAnyObjectiveTiles">
     <div class="objective" v-for="(objective,objectiveIndex) in objectiveStack.current" :key="objective.id">
       <AppIcon type="objective-level" :name="`${objective.level}`" class="levelIcon"/>
       <div v-for="(item,itemIndex) of objective.items" :key="itemIndex">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="objectiveCount">
-      <div class="count">
+      <div class="count" v-if="objectiveStack.pile.length > 0">
         <AppIcon name="objective" class="tileIcon"/>
         <div>: {{objectiveStack.pile.length}}</div>
       </div>
@@ -60,6 +60,10 @@ export default defineComponent({
     },
     objectiveStack() : ObjectiveStack {
       return this.navigationState.objectiveStack
+    },
+    hasAnyObjectiveTiles() : boolean {
+      const { pile, current, complete } = this.objectiveStack
+      return pile.length > 0 || current.length > 0 || complete.length > 0
     }
   }
 })
