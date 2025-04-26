@@ -71,11 +71,10 @@
     "title": "Rundenende",
     "gainIncome": "Erhalte dein <b>Einkommen</b>.",
     "objectives": {
-      "title": "<b>Ziele: </b> Du musst {count} <b>abgeschlossene Ziele</b> abwerfen, wenn möglich.",
-      "enterNumberCompleted": "Anzahl deiner <b>abgeschlossenen</b> Ziele:",
-      "discardObjectives": "Werfe {count} abgeschlossene Ziele ab.",
-      "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt.",
-      "objectivesWarning": "Bitte gebe die Anzahl der abgeschlossenen Ziele ein."
+      "title": "Du musst {count} <b>abgeschlossenes Ziel</b> abwerfen, wenn möglich. | Du musst {count} <b>abgeschlossene Ziele</b> abwerfen, wenn möglich.",
+      "numberCompleted": "Du hast {count} Ziel abgeschlossen. | Du hast {count} Ziele abgeschlossen.",
+      "discardObjectives": "Du wirfst {count} abgeschlossenes Ziel ab. | Du wirfst {count} abgeschlossene Ziele ab.",
+      "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt."
     }
   },
   "gameEnd": {
