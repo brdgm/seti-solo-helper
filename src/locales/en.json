@@ -112,6 +112,7 @@
   "botReachedMilestones": {
     "neutral": "The rival reached a <b>neutral</b> milestone on score {score}.",
     "gold": "The rival reached a <b>gold</b> milestone on score {score}.<br/>He claims the first, most valuable free spot on a gold tile.",
+    "centaurians": "When the rival reaches their message milestone, they choose the leftmost or rightmost available reward, according to the decision arrow.",
     "dismiss": "Dismiss"
   },
   "sideBar": {
@@ -122,7 +123,8 @@
     "speciesDiscovery": {
       "title": "Discover Species",
       "alreadyDiscovered": "Please select the species already discovered:",
-      "none": "(none)"
+      "none": "(none)",
+      "addCentauriansMilestone": "Add Rival Milestone Token"
     },
     "rival": {
       "title": "Rival"
@@ -185,7 +187,7 @@
         "centaurians": {
           "title": "Centaurians Special Action",
           "instructions": "If the rival still has a message milestone in his reserve and none on the scoring track, place one message milestone 15 points ahead of their current score.",
-          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action card.<br/>When the rival reaches their message milestone, they choose the leftmost or rightmost available reward, according to the decision arrow.<br/>The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay."
+          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action.<br/>The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay."
         },
         "exertians": {
           "title": "Exertians Special Action",

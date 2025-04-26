@@ -7,6 +7,8 @@
       <b>deck</b>: {{cardDeck.toPersistence()}}<br/>
       <b>resources</b>: {{resources}}<br/>
       <b>gain resources</b>: {{gainResources}}<br/>
+      <b>objectives</b>: {{objectiveStack.toPersistence()}}<br/>
+      <b>milestones</b>: {{milestoneTracker.toPersistence()}}<br/>
     </p>
   </div>
 </template>
@@ -18,6 +20,8 @@ import { useI18n } from 'vue-i18n'
 import { BotResources, useStateStore } from '@/store/state'
 import CardDeck from '@/services/CardDeck'
 import BotActions from '@/services/BotActions'
+import ObjectiveStack from '@/services/ObjectiveStack'
+import MilestoneTracker from '@/services/MilestoneTracker'
 
 export default defineComponent({
   name: 'DebugInfo',
@@ -35,6 +39,12 @@ export default defineComponent({
   computed: {
     cardDeck() : CardDeck {
       return this.navigationState.cardDeck
+    },
+    objectiveStack() : ObjectiveStack {
+      return this.navigationState.objectiveStack
+    },
+    milestoneTracker() : MilestoneTracker {
+      return this.navigationState.milestoneTracker
     },
     botActions() : BotActions {
       return this.navigationState.botActions

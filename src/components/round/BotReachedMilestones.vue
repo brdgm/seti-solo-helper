@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid mt-3">
     <div class="row" v-for="milestone in milestonesReached" :key="milestone.score">
-      <div class="col alert" :class="{'alert-warning': isGold(milestone), 'alert-primary': isNeutral(milestone)}">
+      <div class="col alert" :class="{'alert-warning': isGold(milestone), 'alert-primary': isNeutral(milestone), 'alert-info': isCentaurians(milestone)}">
         <AppIcon v-if="isNeutral(milestone)" type="action" name="species-discovery" class="icon"/>
         <span v-html="t(`botReachedMilestones.${milestone.type}`, {score:milestone.score})"></span><br/>
         <button class="btn btn-secondary btn-sm mt-2" @click="milestoneTracker.complete(milestone)">{{t('botReachedMilestones.dismiss')}}</button>
@@ -56,6 +56,9 @@ export default defineComponent({
     },
     isNeutral(milestone: Milestone) : boolean {
       return milestone.type == MilestoneType.NEUTRAL
+    },
+    isCentaurians(milestone: Milestone) : boolean {
+      return milestone.type == MilestoneType.CENTAURIANS
     }
   }
 })
