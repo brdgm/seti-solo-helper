@@ -53,7 +53,7 @@ export default class NavigationState {
       }
     }
 
-    this.botActions = new BotActions(this.cardDeck, this.botResources, this.botPass, state)
+    this.botActions = new BotActions(this.cardDeck, this.milestoneTracker, this.botResources, this.botPass, state)
   }
 
 }

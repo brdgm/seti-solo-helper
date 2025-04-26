@@ -13,7 +13,7 @@
       <p class="alert alert-info small" v-if="isSpeciesCentaurians">
         <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
         <span v-html="t('rules.action.speciesSpecialAction.centaurians.generalInstructions')"></span>
-        <button class="btn btn-info btn-sm mt-2" v-if="!hasCentauriansMilestone" @click="addCentauriansMilestone">{{t(`sideBar.speciesDiscovery.addCentauriansMilestone`)}}</button>
+        <CentauriansAddMilestoneTokenButton :navigationState="navigationState"/>
       </p>
       <p class="alert alert-info small" v-if="isSpeciesExertians">
         <span class="fw-bold" v-html="t('alienSpecies.exertians')"></span>:
@@ -31,12 +31,13 @@ import NavigationState from '@/util/NavigationState'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import AlienSpecies from '@/services/enum/AlienSpecies'
 import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
-import MilestoneType from '@/services/enum/MilestoneType'
+import CentauriansAddMilestoneTokenButton from './CentauriansAddMilestoneTokenButton.vue'
 
 export default defineComponent({
   name: 'AlienDiscoveryModal',
   components: {
-    ModalDialog
+    ModalDialog,
+    CentauriansAddMilestoneTokenButton
   },
   setup() {
     const { t } = useI18n()
@@ -58,15 +59,6 @@ export default defineComponent({
     },
     isSpeciesExertians() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.EXERTIANS)
-    },
-    hasCentauriansMilestone() : boolean {
-      return this.navigationState.milestoneTracker.milestones.find(m => m.type == MilestoneType.CENTAURIANS) !== undefined
-    }
-  },
-  methods: {
-    addCentauriansMilestone() : void {
-      const newVP = this.navigationState.botGainResources.merge(this.navigationState.botResources).vp
-      this.navigationState.milestoneTracker.add({type: MilestoneType.CENTAURIANS, score: newVP + 15})
     }
   }
 })

@@ -8,9 +8,6 @@
         </p>
       </div>
     </template>
-    <template #instruction>
-      <p v-html="t('rules.action.speciesSpecialAction.exertians.instructions')"></p>
-    </template>
   </ActionBox>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="actionBox col" @click="showInstructions">
+  <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
     <slot name="action"></slot>
     <div class="resources" v-if="$slots.resources">
       <slot name="resources"></slot>
@@ -79,11 +79,16 @@ export default defineComponent({
         default:
           return '#9ca1af'
       }
+    },
+    hasInstruction() : boolean {
+      return this.$slots.instruction !== undefined
     }
   },
   methods: {
     showInstructions() {
-      showModal(this.modalId)
+      if (this.hasInstruction) {
+        showModal(this.modalId)
+      }
     }
   }
 })
@@ -99,11 +104,13 @@ export default defineComponent({
   padding-bottom: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  cursor: pointer;
-  background-image: url('@/assets/icons/help-semi-transparent.webp');
-  background-repeat: no-repeat;
-  background-position: right 5px top 5px;
-  background-size: 1.25rem;
+  &.instruction {
+    cursor: pointer;
+    background-image: url('@/assets/icons/help-semi-transparent.webp');
+    background-repeat: no-repeat;
+    background-position: right 5px top 5px;
+    background-size: 1.25rem;
+  }
 }
 .decisionIcon {
   position: absolute;

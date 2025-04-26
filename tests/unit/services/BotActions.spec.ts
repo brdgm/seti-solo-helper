@@ -12,13 +12,19 @@ import AlienSpecies from '@/services/enum/AlienSpecies'
 import mockBotPersistence from '../helper/mockBotPersistence'
 import BotActions from '@/services/BotActions'
 import Action from '@/services/enum/Action'
+import MilestoneTracker from '@/services/MilestoneTracker'
+import mockMilestoneTracker from '../helper/mockMilestoneTracker'
+import MilestoneType from '@/services/enum/MilestoneType'
 
 describe('services/BotActions', () => {
-  it('currentCard-speciesDiscovery', () => {
+  it('currentCard-speciesDiscovery-undiscovered', () => {
     const state = getState({cardDeck:{pile:['S.3','S.4']}})
     expect(botActions('RoundTurnBot',{round:'1',turn:'1'}, state).currentCard?.id).to.eq('S.3')
     expect(botActions('RoundTurnBot',{round:'1',turn:'2'}, state).currentCard?.id).to.eq('S.4')
-    state.alienDiscovery.species = [AlienSpecies.MASCAMITES, AlienSpecies.CENTAURIANS]
+  })
+
+  it('currentCard-speciesDiscovery-discovered', () => {
+    const state = getState({cardDeck:{pile:['S.3','S.4']}, alienSpecies:[AlienSpecies.MASCAMITES, AlienSpecies.CENTAURIANS]})
     expect(botActions('RoundTurnBot',{round:'1',turn:'1'}, state).currentCard?.id).to.eq('S.15')
     expect(botActions('RoundTurnBot',{round:'1',turn:'2'}, state).currentCard?.id).to.eq('S.18')
   })
@@ -72,19 +78,34 @@ describe('services/BotActions', () => {
     ])
   })
 
+  it('S3-species-action-centaurians-no-milestone', () => {
+    const state = getState({cardDeck:{pile:['S.3','S.1']}, alienSpecies:[AlienSpecies.CENTAURIANS]})
+    expect(botActions('RoundTurnBot',{round:'1',turn:'1'}, state).actions.map(item => item.action)).to.eql([
+      Action.SPECIES_SPECIAL_ACTION, Action.TELESCOPE
+    ])
+  })
+
+  it('S3-species-action-centaurians-milestone', () => {
+    const state = getState({cardDeck:{pile:['S.3','S.1']}, alienSpecies:[AlienSpecies.CENTAURIANS],
+      milestoneTracker:mockMilestoneTracker({milestones:[{type:MilestoneType.CENTAURIANS, score:16}]})})
+    expect(botActions('RoundTurnBot',{round:'1',turn:'1'}, state).actions.map(item => item.action)).to.eql([
+      Action.TELESCOPE
+    ])
+  })
 })
 
-function getState(params: {cardDeck: MockCardDeckParams, publicity?: number, data?: number, probeCount?: number}) : State {
-  const { publicity, data, probeCount } = params
-  return mockState({rounds:[
+function getState(params: {cardDeck: MockCardDeckParams, publicity?: number, data?: number, probeCount?: number,
+    alienSpecies?: (AlienSpecies|undefined)[], milestoneTracker?: MilestoneTracker}) : State {
+  const { publicity, data, probeCount, alienSpecies, milestoneTracker } = params
+  return mockState({alienSpecies, rounds:[
     mockRound({round:1, startPlayer: Player.PLAYER, turns:[
-      mockTurn({round:1,turn:1,player:Player.PLAYER,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck),publicity,data,probeCount})}),
-      mockTurn({round:1,turn:1,player:Player.BOT,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck, 1),publicity,data,probeCount})}),
-      mockTurn({round:1,turn:2,player:Player.PLAYER,pass:true,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck,1),publicity,data,probeCount})}),
-      mockTurn({round:1,turn:2,player:Player.BOT,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck, 2),publicity,data,probeCount})}),
-      mockTurn({round:1,turn:3,player:Player.BOT,pass:true,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck, 2),publicity,data,probeCount})})
+      mockTurn({round:1,turn:1,player:Player.PLAYER,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck),publicity,data,probeCount,milestoneTracker})}),
+      mockTurn({round:1,turn:1,player:Player.BOT,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck, 1),publicity,data,probeCount,milestoneTracker})}),
+      mockTurn({round:1,turn:2,player:Player.PLAYER,pass:true,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck,1),publicity,data,probeCount,milestoneTracker})}),
+      mockTurn({round:1,turn:2,player:Player.BOT,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck, 2),publicity,data,probeCount,milestoneTracker})}),
+      mockTurn({round:1,turn:3,player:Player.BOT,pass:true,botPersistence:mockBotPersistence({cardDeck:mockCardDeck(params.cardDeck, 2),publicity,data,probeCount,milestoneTracker})})
     ], initialBotPersistence: mockBotPersistence({
-      cardDeck: mockCardDeck(params.cardDeck), publicity, data, probeCount
+      cardDeck: mockCardDeck(params.cardDeck), publicity, data, probeCount, milestoneTracker
     })})
   ]
   })  

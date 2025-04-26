@@ -7,12 +7,10 @@
       <div class="action">
         <p class="small">
           <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
-          <span v-html="t('rules.action.speciesSpecialAction.centaurians.instructions')"></span>
+          <span v-html="t('rules.action.speciesSpecialAction.centaurians.instructions')"></span><br/>
+          <CentauriansAddMilestoneTokenButton :navigationState="navigationState"/>
         </p>
       </div>
-    </template>
-    <template #instruction>
-      <p v-html="t('rules.action.speciesSpecialAction.centaurians.instructions')"></p>
     </template>
   </ActionBox>
 </template>
@@ -26,13 +24,15 @@ import ActionBox from '../ActionBox.vue'
 import TechType from '@/services/enum/TechType'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ProbeAction from '@/services/enum/ProbeAction'
+import CentauriansAddMilestoneTokenButton from '../CentauriansAddMilestoneTokenButton.vue'
 
 export default defineComponent({
   name: 'ActionSpeciesSpecialActionCentaurians',
   inheritAttrs: false,
   components: {
     ActionBox,
-    AppIcon
+    AppIcon,
+    CentauriansAddMilestoneTokenButton
   },
   emits: {
     ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars

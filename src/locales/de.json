@@ -112,7 +112,7 @@
   "botReachedMilestones": {
     "neutral": "Der Rivale hat einen <b>Entdeckungs</b>-Meilenstein auf Feld {score} erreicht.",
     "gold": "Der Rivale hat einen <b>goldenen</b> Meilenstein auf Feld {score} erreicht.<br/>Er besetzt das erste, wertvollste freie Feld auf den Gold-Wertungsplättchen.",
-    "centaurians": "Bei Erreichen des Nachricht-Meilensteins legt dein Rivale diesen dem Entscheidungspfeil folgend auf das freie am weitesten linke oder rechte Feld.",
+    "centaurians": "Centaurianer: Bei Erreichen des Nachricht-Meilensteins legt dein Rivale diesen dem Entscheidungspfeil folgend auf das freie am weitesten linke oder rechte Feld.",
     "dismiss": "Erledigt"
   },
   "sideBar": {
@@ -123,8 +123,7 @@
     "speciesDiscovery": {
       "title": "Spezies entdecken",
       "alreadyDiscovered": "Bitte wähle aus welche Spezies schon entdeckt wurden:",
-      "none": "(keine)",
-      "addCentauriansMilestone": "Füge Nachricht-Meilenstein des Gegners hinzu"
+      "none": "(keine)"
     },
     "rival": {
       "title": "Rivale"
@@ -187,7 +186,8 @@
         "centaurians": {
           "title": "Centaurianer Spezial-Aktion",
           "instructions": "Falls der Rivale noch Nachrichten-Meilensteine in seiner Reserve hat und keine auf der Punkteleiste: Platziere 15 Felder vor seinem aktuellen Punktemarker einen Nachrichten-Meilenstein.",
-          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktion nutzen.<br/>Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt."
+          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktion nutzen.<br/>Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt.",
+          "addMilestone": "Füge Nachricht-Meilenstein des Gegners hinzu"
         },
         "exertians": {
           "title": "Exertianer Spezial-Aktion",
