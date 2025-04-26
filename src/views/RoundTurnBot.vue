@@ -1,5 +1,6 @@
 <template>
   <SideBar :navigationState="navigationState"/>
+  <ObjectivesTopBar :navigationState="navigationState"/>
   <h1>{{t('player.bot')}}</h1>
 
   <template v-if="botPass">
@@ -14,8 +15,7 @@
       <AppIcon name="rotate-solar-system" class="icon"/>
     </p>
     <BotResources :botGainResources="navigationState.botGainResources"/>
-    <BotReachedMilestones :botResources="navigationState.botResources" :botGainResources="navigationState.botGainResources"
-        :currentCard="navigationState.botActions.currentCard"/>
+    <BotReachedMilestones :navigationState="navigationState"/>
     <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()">
       {{t('action.next')}}
     </button>
@@ -53,12 +53,14 @@ import BotResources from '@/components/round/BotResources.vue'
 import isFirstPass from '@/util/isFirstPass'
 import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
 import Action from '@/services/enum/Action'
+import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
 
 export default defineComponent({
   name: 'RoundTurnBot',
   components: {
     FooterButtons,
     SideBar,
+    ObjectivesTopBar,
     DebugInfo,
     BotTurn,
     AppIcon,
@@ -103,6 +105,10 @@ export default defineComponent({
       }
       const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
       cardDeck.addAdvancedCards(drawAdvancedCards)
+
+      const objectiveStack = this.navigationState.objectiveStack
+      objectiveStack.checkCompletedObjectives()
+
       this.state.storeRoundTurn({
         round:this.navigationState.round,
         turn:this.navigationState.turn,
@@ -110,6 +116,8 @@ export default defineComponent({
         player:this.navigationState.player,
         botPersistence: {
           cardDeck: cardDeck.toPersistence(),
+          objectiveStack: objectiveStack.toPersistence(),
+          milestoneTracker: this.navigationState.milestoneTracker.toPersistence(),
           resources: gainResources.merge(previousTurnResources)
         },
         pass: this.botPass ? true : undefined

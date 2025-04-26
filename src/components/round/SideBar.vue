@@ -15,7 +15,7 @@
           </template>
         </li>
       </ol>
-      <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#discoverAliensModal">{{t('sideBar.discover')}}</button>
+      <button class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#speciesDiscoveryModal">{{t('sideBar.discover')}}</button>
     </div>
     <hr/>
     <div class="rival">
@@ -32,27 +32,7 @@
     </div>
   </div>
 
-  <ModalDialog id="discoverAliensModal" :title="t('sideBar.speciesDiscovery.title')">
-    <template #body>
-      <p v-html="t('sideBar.speciesDiscovery.alreadyDiscovered')"></p>
-      <ol>
-        <li v-for="alienIndex in 2" :key="alienIndex" class="mt-2">
-          <select class="form-select" v-model="state.alienDiscovery.species[alienIndex-1]">
-            <option :value="undefined">{{t(`sideBar.speciesDiscovery.none`)}}</option>
-            <option v-for="species in alienSpecies" :key="species" :value="species">{{t(`alienSpecies.${species}`)}}</option>
-          </select>
-        </li>
-      </ol>
-      <p class="alert alert-info small" v-if="isSpeciesCentaurians">
-        <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
-        <span v-html="t('rules.action.speciesSpecialAction.centaurians.generalInstructions')"></span>
-      </p>
-      <p class="alert alert-info small" v-if="isSpeciesExertians">
-        <span class="fw-bold" v-html="t('alienSpecies.exertians')"></span>:
-        <span v-html="t('rules.action.speciesSpecialAction.exertians.generalInstructions')"></span>
-      </p>
-    </template>
-  </ModalDialog>
+  <SpeciesDiscoveryModal :navigationState="navigationState"/>
 </template>
 
 <script lang="ts">
@@ -61,17 +41,15 @@ import { useI18n } from 'vue-i18n'
 import { BotResources, useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import AppIcon from '../structure/AppIcon.vue'
-import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
-import AlienSpecies from '@/services/enum/AlienSpecies'
-import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
 import CardDeck from '@/services/CardDeck'
 import Card from '@/services/Card'
+import SpeciesDiscoveryModal from './SpeciesDiscoveryModal.vue'
 
 export default defineComponent({
   name: 'SideBar',
   components: {
     AppIcon,
-    ModalDialog
+    SpeciesDiscoveryModal
   },
   setup() {
     const { t } = useI18n()
@@ -91,9 +69,6 @@ export default defineComponent({
     turn() : number {
       return this.navigationState.turn
     },
-    alienSpecies() : AlienSpecies[] {
-      return getAllEnumValues(AlienSpecies)
-    },
     cardDeck() : CardDeck {
       return this.navigationState.cardDeck
     },
@@ -105,12 +80,6 @@ export default defineComponent({
     },
     progressCount() : number {
       return (this.resources.progress-1) % 12 + 1
-    },
-    isSpeciesCentaurians() : boolean {
-      return this.state.alienDiscovery.species.includes(AlienSpecies.CENTAURIANS)
-    },
-    isSpeciesExertians() : boolean {
-      return this.state.alienDiscovery.species.includes(AlienSpecies.EXERTIANS)
     }
   }
 })

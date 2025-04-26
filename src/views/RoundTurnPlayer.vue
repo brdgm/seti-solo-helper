@@ -1,12 +1,12 @@
 <template>
   <SideBar :navigationState="navigationState"/>
+  <ObjectivesTopBar :navigationState="navigationState"/>
   <h1>{{t('player.player')}}</h1>
 
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 
   <BotResources :botGainResources="navigationState.botGainResources"/>
-  <BotReachedMilestones :botResources="navigationState.botResources" :botGainResources="navigationState.botGainResources" 
-      :currentCard="navigationState.botActions.currentCard"/>
+  <BotReachedMilestones :navigationState="navigationState"/>
   
   <button class="btn btn-primary btn-lg mt-4" @click="next">
     {{t('action.next')}}
@@ -48,6 +48,7 @@ import BotResources from '@/components/round/BotResources.vue'
 import isFirstPass from '@/util/isFirstPass'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
+import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
@@ -57,6 +58,7 @@ export default defineComponent({
     BotReachedMilestones,
     ModalDialog,
     SideBar,
+    ObjectivesTopBar,
     DebugInfo,
     AppIcon
   },
@@ -93,6 +95,10 @@ export default defineComponent({
       const gainResources = this.navigationState.botGainResources
       const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
       cardDeck.addAdvancedCards(drawAdvancedCards)
+
+      const objectiveStack = this.navigationState.objectiveStack
+      objectiveStack.checkCompletedObjectives()
+
       this.state.storeRoundTurn({
         round:this.navigationState.round,
         turn:this.navigationState.turn,
@@ -101,6 +107,8 @@ export default defineComponent({
         pass: passed ? true : undefined,
         botPersistence: {
           cardDeck: cardDeck.toPersistence(),
+          objectiveStack: objectiveStack.toPersistence(),
+          milestoneTracker: this.navigationState.milestoneTracker.toPersistence(),
           resources: gainResources.merge(previousTurnResources)
         }
       })

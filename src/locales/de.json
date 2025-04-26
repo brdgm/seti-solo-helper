@@ -41,13 +41,7 @@
     "playerScoreTrackSetup": "Platziere deinen Wertungsmarker auf Feld {space} der Wertungsleiste.",
     "rivalPieces": "Dein Rivale erhält <b>alles Material einer Farbe</b>.",
     "componentsNotRequired": "Er benötigt keine Aktionskarten, Spielertableau, Wertungsmarker oder Bekanntheitsmarker.",
-    "objectiveStack": {
-      "title": "Bereite den <b>Zielstapel</b> vor:",
-      "top": "Oben: Wähle zufällig und mische <b>{count} x Level 1</b>-Ziele.",
-      "middle": "Mitte: Wähle zufällig und mische <b>{count} x Level 2</b>-Ziele.",
-      "bottom": "Unten: Wähle zufällig und mische <b>{count} x Level 3</b>-Ziele.",
-      "draw": "Decke die <b>obersten 3 Ziele</b> auf."
-    },
+    "objectiveStack": "Der Zielstapel wird von der Applikation verwaltet.",
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Direkte Effekte der Aktionen des Rivalen werden automatisch von der Applikation verwaltet, trage sie nicht in den Eingabefeldern ein.",
@@ -77,20 +71,17 @@
     "title": "Rundenende",
     "gainIncome": "Erhalte dein <b>Einkommen</b>.",
     "objectives": {
-      "title": "<b>Ziele: </b> Du musst {count} <b>abgeschlossene Ziele</b> abwerfen, wenn möglich.",
-      "enterNumberCompleted": "Anzahl deiner <b>abgeschlossenen</b> Ziele:",
-      "discardObjectives": "Werfe {count} abgeschlossene Ziele ab.",
-      "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt.",
-      "objectivesWarning": "Bitte gebe die Anzahl der abgeschlossenen Ziele ein."
+      "title": "Du musst {count} <b>abgeschlossenes Ziel</b> abwerfen, wenn möglich. | Du musst {count} <b>abgeschlossene Ziele</b> abwerfen, wenn möglich.",
+      "numberCompleted": "Du hast {count} Ziel abgeschlossen. | Du hast {count} Ziele abgeschlossen.",
+      "discardObjectives": "Du wirfst {count} abgeschlossenes Ziel ab. | Du wirfst {count} abgeschlossene Ziele ab.",
+      "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt."
     }
   },
   "gameEnd": {
     "title": "Spielende",
-    "difficultyLevel": "Schwierigkeit:",
     "gameStatus": {
       "title": "Spiel Status",
-      "uncompletedObjectives": "Anzahl der <b>nicht abgeschlossenen</b> Ziele",
-      "uncompletedObjectivesNote": "(sowohl die in der Zielauslage als auch die im Zielstapel)",
+      "uncompletedObjectives": "{count} nicht abgeschlossenen Ziel | {count} nicht abgeschlossenen Ziele",
       "exertianDanger": "Gesamte Exertianer-Gefahr",
       "exterianRivalCards": "Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte."
     },
@@ -119,7 +110,9 @@
   },
   "botReachedMilestones": {
     "neutral": "Der Rivale hat einen <b>Entdeckungs</b>-Meilenstein auf Feld {score} erreicht.",
-    "gold": "Der Rivale hat einen <b>goldenen</b> Meilenstein auf Feld {score} erreicht.<br/>Er besetzt das erste, wertvollste freie Feld auf den Gold-Wertungsplättchen."
+    "gold": "Der Rivale hat einen <b>goldenen</b> Meilenstein auf Feld {score} erreicht.<br/>Er besetzt das erste, wertvollste freie Feld auf den Gold-Wertungsplättchen.",
+    "centaurians": "Centaurianer: Bei Erreichen des Nachricht-Meilensteins legt dein Rivale diesen dem Entscheidungspfeil folgend auf das freie am weitesten linke oder rechte Feld.",
+    "dismiss": "Erledigt"
   },
   "sideBar": {
     "round": "Runde {round}",
@@ -192,7 +185,8 @@
         "centaurians": {
           "title": "Centaurianer Spezial-Aktion",
           "instructions": "Falls der Rivale noch Nachrichten-Meilensteine in seiner Reserve hat und keine auf der Punkteleiste: Platziere 15 Felder vor seinem aktuellen Punktemarker einen Nachrichten-Meilenstein.",
-          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktionskarte nutzen.<br/> Bei Erreichen des Nachricht-Meilensteins legt dein Rivale diesen dem Entscheidungspfeil folgend auf das freie am weitesten linke oder rechte Feld.<br/> Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt."
+          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktion nutzen.<br/>Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt.",
+          "addMilestone": "Füge Nachricht-Meilenstein des Gegners hinzu"
         },
         "exertians": {
           "title": "Exertianer Spezial-Aktion",

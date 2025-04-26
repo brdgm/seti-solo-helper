@@ -4,6 +4,7 @@
 enum TechType {
   PROBE = 'probe',
   TELESCOPE = 'telescope',
-  COMPUTER = 'computer'
+  COMPUTER = 'computer',
+  ANY = 'any'
 }
 export default TechType

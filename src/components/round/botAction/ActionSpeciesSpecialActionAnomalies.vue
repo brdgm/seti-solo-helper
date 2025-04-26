@@ -12,9 +12,6 @@
         </p>
       </div>
     </template>
-    <template #instruction>
-      <p v-html="t('rules.action.speciesSpecialAction.anomalies.instructions')"></p>
-    </template>
   </ActionBox>
 </template>
 

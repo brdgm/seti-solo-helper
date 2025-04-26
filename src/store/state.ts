@@ -5,6 +5,7 @@ import Player from '@/services/enum/Player'
 import AlienSpecies from '@/services/enum/AlienSpecies'
 import GoldScoreTile from '@/services/enum/GoldScoreTile'
 import GoldScoreTileSide from '@/services/enum/GoldScoreTileSide'
+import MilestoneType from '@/services/enum/MilestoneType'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -80,12 +81,28 @@ export interface RoundTurn {
 }
 export interface BotPersistence {
   cardDeck: CardDeckPersistence
+  objectiveStack?: ObjectiveStackPersistence
+  milestoneTracker?: MilestoneTrackerPersistence
   resources: BotResources
 }
 export interface CardDeckPersistence {
   pile: string[]
   discard: string[]
   advanced: string[]
+}
+export interface ObjectiveStackPersistence {
+  pile: number[]
+  current: number[]
+  currentItemCheck: boolean[][]
+  complete: number[]
+  discard: number[]
+}
+export interface MilestoneTrackerPersistence {
+  milestones: Milestone[]
+}
+export interface Milestone {
+  type: MilestoneType
+  score: number
 }
 export interface BotResources {
   progress: number

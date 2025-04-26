@@ -1,9 +1,10 @@
 <template>
   <div class="container-fluid mt-3">
     <div class="row" v-for="milestone in milestonesReached" :key="milestone.score">
-      <div class="col alert" :class="{'alert-warning': isGold(milestone), 'alert-primary': isNeutral(milestone)}">
+      <div class="col alert" :class="{'alert-warning': isGold(milestone), 'alert-primary': isNeutral(milestone), 'alert-info': isCentaurians(milestone)}">
         <AppIcon v-if="isNeutral(milestone)" type="action" name="species-discovery" class="icon"/>
-        <span v-html="t(`botReachedMilestones.${milestone.milestoneType}`, {score:milestone.score})"></span>
+        <span v-html="t(`botReachedMilestones.${milestone.type}`, {score:milestone.score})"></span><br/>
+        <button class="btn btn-secondary btn-sm mt-2" @click="milestoneTracker.complete(milestone)">{{t('botReachedMilestones.dismiss')}}</button>
         <AppIcon v-if="currentCard" type="decision-direction" :name="currentCard.decisionDirection" class="decisionIcon"/>
       </div>
     </div>
@@ -11,14 +12,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
-import BotGainResources from '@/services/BotGainResources'
-import { BotResources } from '@/store/state'
-import getReachedMilestones, { Milestone } from '@/util/getReachedMilestones'
+import { Milestone } from '@/store/state'
 import MilestoneType from '@/services/enum/MilestoneType'
+import NavigationState from '@/util/NavigationState'
 import Card from '@/services/Card'
+import MilestoneTracker from '@/services/MilestoneTracker'
 
 export default defineComponent({
   name: 'BotReachedMilestones',
@@ -30,36 +31,34 @@ export default defineComponent({
     return { t }
   },
   props: {
-    botResources: {
-      type: Object as PropType<BotResources>,
+    navigationState: {
+      type: NavigationState,
       required: true
-    },
-    botGainResources: {
-      type: BotGainResources,
-      required: true
-    },
-    currentCard: {
-      type: Object as PropType<Card>,
-      required: false
     }
   },
   computed: {
-    previousVP() : number {
-      return this.botResources.vp
+    currentCard() : Card|undefined {
+      return this.navigationState.botActions.currentCard
     },
-    newVP() {
-      return this.botGainResources.merge(this.botResources).vp
+    newVP() : number {
+      return this.navigationState.botGainResources.merge(this.navigationState.botResources).vp
+    },
+    milestoneTracker() : MilestoneTracker {
+      return this.navigationState.milestoneTracker
     },
     milestonesReached() : Milestone[] {
-      return getReachedMilestones(this.previousVP, this.newVP)
+      return this.milestoneTracker.getReachedMilestones(this.newVP)
     }
   },
   methods: {
     isGold(milestone: Milestone) : boolean {
-      return milestone.milestoneType == MilestoneType.GOLD
+      return milestone.type == MilestoneType.GOLD
     },
     isNeutral(milestone: Milestone) : boolean {
-      return milestone.milestoneType == MilestoneType.NEUTRAL
+      return milestone.type == MilestoneType.NEUTRAL
+    },
+    isCentaurians(milestone: Milestone) : boolean {
+      return milestone.type == MilestoneType.CENTAURIANS
     }
   }
 })

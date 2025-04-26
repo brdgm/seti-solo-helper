@@ -2,7 +2,7 @@
   <div class="tableWrapper">
     <table>
       <tbody>
-        <template v-if="hasObjectives || isSpeciesExertians">
+        <template v-if="isSpeciesExertians">
           <tr>
             <th scope="col">
               <h5 class="mt-2">{{t('gameEnd.gameStatus.title')}}</h5>
@@ -14,34 +14,20 @@
               <span class="fw-bold">{{t('player.bot')}}</span>
             </th>
           </tr>
-          <tr v-if="hasObjectives">
+          <tr>
             <th scope="row">
-              <span v-html="t('gameEnd.gameStatus.uncompletedObjectives')"></span><br/>
-              <span class="small" v-html="t('gameEnd.gameStatus.uncompletedObjectivesNote')"></span>
+              <span v-html="t('gameEnd.gameStatus.exertianDanger')"></span>
             </th>
             <td>
-              <NumberInput :max="maxObjectiveCount" v-model="uncompletedObjectives"/>
+              <NumberInput v-model="playerExertianDanger"/>
             </td>
             <td>
-              {{botObjectivesVP}}
+              <NumberInput v-model="botExertianDanger"/>
             </td>
           </tr>
-          <template v-if="isSpeciesExertians">
-            <tr>
-              <th scope="row">
-                <span v-html="t('gameEnd.gameStatus.exertianDanger')"></span>
-              </th>
-              <td>
-                <NumberInput v-model="playerExertianDanger"/>
-              </td>
-              <td>
-                <NumberInput v-model="botExertianDanger"/>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="3" class="fst-italic small" v-html="t('gameEnd.gameStatus.exterianRivalCards')"></td>
-            </tr>
-          </template>
+          <tr>
+            <td colspan="3" class="fst-italic small" v-html="t('gameEnd.gameStatus.exterianRivalCards')"></td>
+          </tr>
         </template>
         <tr>
           <th scope="col">
@@ -53,6 +39,15 @@
           <th scope="col">
             <span class="fw-bold">{{t('player.bot')}}</span>
           </th>
+        </tr>
+        <tr v-if="hasObjectives && uncompletedObjectives > 0">
+          <th scope="row">
+            <span v-html="t('gameEnd.gameStatus.uncompletedObjectives', {count:uncompletedObjectives}, uncompletedObjectives)"></span><br/>
+          </th>
+          <td></td>
+          <td>
+            {{botObjectivesVP}}
+          </td>
         </tr>
         <tr>
           <th scope="row">
@@ -147,7 +142,6 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, state)
 
-    const uncompletedObjectives = ref(undefined as number|undefined)
     const playerExertianDanger = ref(undefined as number|undefined)
     const botExertianDanger = ref(undefined as number|undefined)
 
@@ -157,8 +151,7 @@ export default defineComponent({
     const playerExertianVP = ref(undefined as number|undefined)
     const botExertianVP = ref(undefined as number|undefined)
 
-    return { t, state, navigationState,
-      uncompletedObjectives, playerExertianDanger, botExertianDanger,
+    return { t, state, navigationState, playerExertianDanger, botExertianDanger,
       playerScoreTrackVP, playerCardsVP, playerGoldTileVP, playerExertianVP, botExertianVP }
   },
   data() {
@@ -173,6 +166,10 @@ export default defineComponent({
     },
     hasObjectives() : boolean {
       return this.state.setup.difficultyLevel != DifficultyLevel.LEVEL_1
+    },
+    uncompletedObjectives() : number {
+      const objectiveStack = this.navigationState.objectiveStack
+      return objectiveStack.pile.length + objectiveStack.current.length
     },
     botObjectivesVP() : number {
       return toNumber(this.uncompletedObjectives) * 5
