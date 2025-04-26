@@ -4,7 +4,7 @@
   <FinalScoring/>
 
   <p class="mt-3">
-    {{t('gameEnd.difficultyLevel')}} <b>{{t(`difficultyLevel.${state.setup.difficultyLevel}`)}}</b>
+    {{t('setup.difficultyLevel.title')}}: <b>{{t(`difficultyLevel.${state.setup.difficultyLevel}`)}}</b>
   </p>
 
   <DebugInfo :navigationState="navigationState"/>
