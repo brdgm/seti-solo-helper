@@ -8,7 +8,7 @@
       <b>resources</b>: {{resources}}<br/>
       <b>gain resources</b>: {{gainResources}}<br/>
       <b>objectives</b>: {{objectiveStack.toPersistence()}}<br/>
-      <b>milestones</b>: {{milestoneTracker.toPersistence()}}<br/>
+      <b>milestones</b>: {{milestoneTracker.toPersistence().milestones}}<br/>
     </p>
   </div>
 </template>
