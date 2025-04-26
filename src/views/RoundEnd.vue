@@ -36,12 +36,8 @@ import RouteCalculator from '@/services/RouteCalculator'
 import { BotPersistence, useStateStore } from '@/store/state'
 import SideBar from '@/components/round/SideBar.vue'
 import Player from '@/services/enum/Player'
-import getPreviousTurns from '@/util/getPreviousTurns'
-import { MAX_TURN } from '@/util/getTurnOrder'
-import CardDeck from '@/services/CardDeck'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
-import ObjectiveStack from '@/services/ObjectiveStack'
 import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
 
 export default defineComponent({
@@ -59,13 +55,9 @@ export default defineComponent({
     const state = useStateStore()
 
     const navigationState = new NavigationState(route, state)
-    const { round } = navigationState
+    const { round, objectiveStack, cardDeck } = navigationState
 
     const routeCalculator = new RouteCalculator({round})
-
-    const previousTurns = getPreviousTurns({state, round, turn:MAX_TURN, player:Player.BOT})
-    const lastTurnBotPersistence = previousTurns[previousTurns.length-1]?.botPersistence
-    const objectiveStack = lastTurnBotPersistence?.objectiveStack ? ObjectiveStack.fromPersistence(lastTurnBotPersistence.objectiveStack) : ObjectiveStack.new(state.setup.difficultyLevel)
 
     // check objective completion / bot progress
     const hasObjectives = state.setup.difficultyLevel != DifficultyLevel.LEVEL_1
@@ -74,7 +66,7 @@ export default defineComponent({
     const discardObjectives = Math.min(expectedCompletedObjectives, completedObjectives)
     const botObjectivesProgress = (expectedCompletedObjectives - discardObjectives) * 3
 
-    return { t, router, state, navigationState, round, routeCalculator, lastTurnBotPersistence, objectiveStack,
+    return { t, router, state, navigationState, round, routeCalculator, cardDeck, objectiveStack,
       hasObjectives, expectedCompletedObjectives, completedObjectives, discardObjectives, botObjectivesProgress }
   },
   computed: {
@@ -87,22 +79,18 @@ export default defineComponent({
       // prepare next round with new player order
       const startPlayer = this.navigationState.startPlayer == Player.PLAYER ? Player.BOT : Player.PLAYER
       const nextRound = this.round + 1
-      if (!this.lastTurnBotPersistence) {
-        return
-      }
-      const cardDeck = CardDeck.fromPersistence(this.lastTurnBotPersistence.cardDeck)
-      cardDeck.prepareForNextRound()
+      this.cardDeck.prepareForNextRound()
       const previousTurnResources = this.navigationState.botResources
       const gainResources = this.navigationState.botGainResources
       gainResources.gainProgressSingleStep.value = this.botObjectivesProgress
       const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
-      cardDeck.addAdvancedCards(drawAdvancedCards)
+      this.cardDeck.addAdvancedCards(drawAdvancedCards)
 
       this.objectiveStack.checkCompletedObjectives()
       this.objectiveStack.discardCompletedObjectives(this.discardObjectives)
 
       const initialBotPersistence : BotPersistence = {
-        cardDeck: cardDeck.toPersistence(),
+        cardDeck: this.cardDeck.toPersistence(),
         objectiveStack: this.objectiveStack.toPersistence(),
         milestoneTracker: this.navigationState.milestoneTracker.toPersistence(),
         resources: gainResources.merge(previousTurnResources)
