@@ -7,6 +7,7 @@ import getInitialBotResources from './getInitialBotResources'
 import BotGainResources from '@/services/BotGainResources'
 import BotActions from '@/services/BotActions'
 import { MAX_TURN } from './getTurnOrder'
+import ObjectiveStack from '@/services/ObjectiveStack'
 
 export default class NavigationState {
 
@@ -17,6 +18,7 @@ export default class NavigationState {
   readonly player : Player
   readonly startPlayer : Player
   readonly cardDeck : CardDeck
+  readonly objectiveStack : ObjectiveStack
   readonly botResources : BotResources
   readonly botGainResources : BotGainResources
   readonly botPass?: boolean
@@ -35,6 +37,12 @@ export default class NavigationState {
     const lookupTurn = isRoundEndRoute(route) ? MAX_TURN : this.turn
     const botPersistence = getBotPersistence(state, this.round, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
+    if (botPersistence.objectiveStack) {
+      this.objectiveStack = ObjectiveStack.fromPersistence(botPersistence.objectiveStack)
+    }
+    else {
+      this.objectiveStack = ObjectiveStack.new(state.setup.difficultyLevel)
+    }
     this.botResources = botPersistence.resources
     this.botGainResources = new BotGainResources()
 
@@ -70,7 +78,8 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
   
   // last resort: create new (should never happen)
   return {
-    cardDeck: CardDeck.new(round).toPersistence(),
+    cardDeck: CardDeck.new(state.setup.difficultyLevel).toPersistence(),
+    objectiveStack: ObjectiveStack.new(state.setup.difficultyLevel).toPersistence(),
     resources: getInitialBotResources(roundData?.startPlayer ?? Player.PLAYER),
   }
 }

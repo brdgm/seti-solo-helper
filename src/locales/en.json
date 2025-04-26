@@ -41,13 +41,7 @@
     "playerScoreTrackSetup": "Place your score counter on space {space} of the score track.",
     "rivalPieces": "Give the rival <b>all pieces of one color</b>.",
     "componentsNotRequired": "He does not need the action cards, player board, score counter or publicity marker.",
-    "objectiveStack": {
-      "title": "Prepare the <b>objectives stack</b>:",
-      "top": "Top: Randomly select and shuffle <b>{count} x Level 1</b> objectives.",
-      "middle": "Middle: Randomly select and shuffle <b>{count} x Level 2</b> objectives.",
-      "bottom": "Bottom: Randomly select and shuffle <b>{count} x Level 3</b> objectives.",
-      "draw": "Reveal the <b>top 3 tiles</b> of the objective stack."
-    },
+    "objectiveStack": "The objective stack is managed by the application.",
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Direct effects from rival actions are managed by the application automatically, do not enter them in the input fields.",
@@ -77,11 +71,10 @@
     "title": "End of Round",
     "gainIncome": "Gain your <b>income</b>.",
     "objectives": {
-      "title": "<b>Objectives: </b> You need to discard {count} <b>completed objectives</b>, if possible.",
-      "enterNumberCompleted": "Enter number of <b>completed</b> objectives:",
-      "discardObjectives": "Discard {count} completed objective tiles.",
-      "botObjectiveProgress": "Your rival gains {count} progress.",
-      "objectivesWarning": "Please enter the number of completed objectives."
+      "title": "You need to discard {count} <b>completed objective</b>, if possible. | You need to discard {count} <b>completed objectives</b>, if possible.",
+      "numberCompleted": "You completed {count} objective. | You completed {count} objectives.",
+      "discardObjectives": "You discard {count} completed objective. | You discard {count} completed objectives.",
+      "botObjectiveProgress": "Your rival gains {count} progress."
     }
   },
   "gameEnd": {
@@ -89,8 +82,7 @@
     "difficultyLevel": "Difficulty:",
     "gameStatus": {
       "title": "Game Status",
-      "uncompletedObjectives": "Number of <b>uncompleted</b> objectives",
-      "uncompletedObjectivesNote": "(from the row and those still in the stack)",
+      "uncompletedObjectives": "{count} uncompleted objective | {count} uncompleted objectives",
       "exertianDanger": "Sum of Exertian danger",
       "exterianRivalCards": "At the end of the game, all rival Exertian cards are considered successfully completed, and the rival scores full points for them."
     },

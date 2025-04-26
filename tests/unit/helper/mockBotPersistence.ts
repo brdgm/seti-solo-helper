@@ -1,10 +1,13 @@
 import CardDeck from '@/services/CardDeck'
 import { BotPersistence } from '@/store/state'
 import mockCardDeck from './mockCardDeck'
+import ObjectiveStack from '@/services/ObjectiveStack'
+import mockObjectiveStack from './mockObjectiveStack'
 
 export default function (params?: MockBotPersistenceParams) : BotPersistence {  
   return {
     cardDeck: (params?.cardDeck ?? mockCardDeck()).toPersistence(),
+    objectiveStack: (params?.objectiveStack ?? mockObjectiveStack()).toPersistence(),
     resources: {
       progress: params?.progress ?? 0,
       publicity: params?.publicity ?? 0,
@@ -20,6 +23,7 @@ export default function (params?: MockBotPersistenceParams) : BotPersistence {
 
 export interface MockBotPersistenceParams {
   cardDeck?: CardDeck
+  objectiveStack?: ObjectiveStack
   progress?: number
   publicity?: number
   data?: number

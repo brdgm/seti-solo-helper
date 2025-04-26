@@ -80,12 +80,20 @@ export interface RoundTurn {
 }
 export interface BotPersistence {
   cardDeck: CardDeckPersistence
+  objectiveStack?: ObjectiveStackPersistence
   resources: BotResources
 }
 export interface CardDeckPersistence {
   pile: string[]
   discard: string[]
   advanced: string[]
+}
+export interface ObjectiveStackPersistence {
+  pile: number[]
+  current: number[]
+  currentItemCheck: boolean[][]
+  complete: number[]
+  discard: number[]
 }
 export interface BotResources {
   progress: number

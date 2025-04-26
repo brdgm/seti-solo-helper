@@ -1,10 +1,10 @@
 /**
- * Tech type
+ * Life Trace
  */
-enum TechType {
+enum LifeTrace {
   PROBE = 'probe',
   TELESCOPE = 'telescope',
   COMPUTER = 'computer',
   ANY = 'any'
 }
-export default TechType
+export default LifeTrace
