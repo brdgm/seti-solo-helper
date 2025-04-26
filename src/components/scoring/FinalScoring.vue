@@ -40,7 +40,7 @@
             <span class="fw-bold">{{t('player.bot')}}</span>
           </th>
         </tr>
-        <tr v-if="hasObjectives">
+        <tr v-if="hasObjectives && uncompletedObjectives > 0">
           <th scope="row">
             <span v-html="t('gameEnd.gameStatus.uncompletedObjectives', {count:uncompletedObjectives}, uncompletedObjectives)"></span><br/>
           </th>
