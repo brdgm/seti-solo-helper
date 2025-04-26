@@ -5,7 +5,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import MilestoneType from '@/services/enum/MilestoneType'
 
@@ -13,8 +12,7 @@ export default defineComponent({
   name: 'CentauriansAddMilestoneTokenButton',
   setup() {
     const { t } = useI18n()
-    const state = useStateStore()
-    return { t, state }
+    return { t }
   },
   props: {
     navigationState: {
