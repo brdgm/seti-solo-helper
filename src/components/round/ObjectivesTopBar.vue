@@ -73,8 +73,7 @@ export default defineComponent({
   margin-bottom: 10px;
   width: fit-content;
   @media (min-width: 820px) {
-    position: absolute;
-    right: 160px;
+    float: right;
     flex-direction: column;
     margin-left: 15px;
     & > * {

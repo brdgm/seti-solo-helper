@@ -3,7 +3,8 @@
     <div class="row" v-for="milestone in milestonesReached" :key="milestone.score">
       <div class="col alert" :class="{'alert-warning': isGold(milestone), 'alert-primary': isNeutral(milestone)}">
         <AppIcon v-if="isNeutral(milestone)" type="action" name="species-discovery" class="icon"/>
-        <span v-html="t(`botReachedMilestones.${milestone.type}`, {score:milestone.score})"></span>
+        <span v-html="t(`botReachedMilestones.${milestone.type}`, {score:milestone.score})"></span><br/>
+        <button class="btn btn-secondary btn-sm mt-2" @click="milestoneTracker.complete(milestone)">{{t('botReachedMilestones.dismiss')}}</button>
         <AppIcon v-if="currentCard" type="decision-direction" :name="currentCard.decisionDirection" class="decisionIcon"/>
       </div>
     </div>

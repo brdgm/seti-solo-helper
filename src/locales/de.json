@@ -111,7 +111,8 @@
   },
   "botReachedMilestones": {
     "neutral": "Der Rivale hat einen <b>Entdeckungs</b>-Meilenstein auf Feld {score} erreicht.",
-    "gold": "Der Rivale hat einen <b>goldenen</b> Meilenstein auf Feld {score} erreicht.<br/>Er besetzt das erste, wertvollste freie Feld auf den Gold-Wertungsplättchen."
+    "gold": "Der Rivale hat einen <b>goldenen</b> Meilenstein auf Feld {score} erreicht.<br/>Er besetzt das erste, wertvollste freie Feld auf den Gold-Wertungsplättchen.",
+    "dismiss": "Erledigt"
   },
   "sideBar": {
     "round": "Runde {round}",

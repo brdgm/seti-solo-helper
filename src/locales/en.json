@@ -111,7 +111,8 @@
   },
   "botReachedMilestones": {
     "neutral": "The rival reached a <b>neutral</b> milestone on score {score}.",
-    "gold": "The rival reached a <b>gold</b> milestone on score {score}.<br/>He claims the first, most valuable free spot on a gold tile."
+    "gold": "The rival reached a <b>gold</b> milestone on score {score}.<br/>He claims the first, most valuable free spot on a gold tile.",
+    "dismiss": "Dismiss"
   },
   "sideBar": {
     "round": "Round {round}",
