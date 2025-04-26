@@ -104,6 +104,7 @@ export default defineComponent({
       const initialBotPersistence : BotPersistence = {
         cardDeck: cardDeck.toPersistence(),
         objectiveStack: this.objectiveStack.toPersistence(),
+        milestoneTracker: this.navigationState.milestoneTracker.toPersistence(),
         resources: gainResources.merge(previousTurnResources)
       }
 

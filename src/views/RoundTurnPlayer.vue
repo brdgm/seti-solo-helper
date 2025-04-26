@@ -6,8 +6,7 @@
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 
   <BotResources :botGainResources="navigationState.botGainResources"/>
-  <BotReachedMilestones :botResources="navigationState.botResources" :botGainResources="navigationState.botGainResources" 
-      :currentCard="navigationState.botActions.currentCard"/>
+  <BotReachedMilestones :navigationState="navigationState"/>
   
   <button class="btn btn-primary btn-lg mt-4" @click="next">
     {{t('action.next')}}
@@ -109,6 +108,7 @@ export default defineComponent({
         botPersistence: {
           cardDeck: cardDeck.toPersistence(),
           objectiveStack: objectiveStack.toPersistence(),
+          milestoneTracker: this.navigationState.milestoneTracker.toPersistence(),
           resources: gainResources.merge(previousTurnResources)
         }
       })

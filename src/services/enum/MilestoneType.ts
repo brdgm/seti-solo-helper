@@ -3,6 +3,7 @@
  */
 enum MilestoneType {
   GOLD = 'gold',
-  NEUTRAL = 'neutral'
+  NEUTRAL = 'neutral',
+  CENTAURIANS = 'centaurians'
 }
 export default MilestoneType

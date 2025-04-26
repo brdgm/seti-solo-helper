@@ -3,6 +3,9 @@ import Action from './enum/Action'
 import { BotResources, State } from '@/store/state'
 import Cards from './Cards'
 import CardDeck from './CardDeck'
+import MilestoneTracker from './MilestoneTracker'
+import AlienSpecies from './enum/AlienSpecies'
+import MilestoneType from './enum/MilestoneType'
 
 /**
  * Determine possible actions for bot's current card
@@ -10,12 +13,14 @@ import CardDeck from './CardDeck'
 export default class BotActions {
 
   private readonly cardDeck : CardDeck
+  private readonly milestoneTracker : MilestoneTracker
   private readonly botResources : BotResources
   private readonly botPass : boolean
   private readonly state : State
 
-  constructor(cardDeck : CardDeck, botResources: BotResources, botPass: boolean|undefined, state : State) {
+  constructor(cardDeck : CardDeck, milestoneTracker: MilestoneTracker, botResources: BotResources, botPass: boolean|undefined, state : State) {
     this.cardDeck = cardDeck
+    this.milestoneTracker = milestoneTracker
     this.botResources = botResources
     this.botPass = botPass ?? false
     this.state = state
@@ -53,9 +58,15 @@ export default class BotActions {
         return this.botResources.probeCount > 0
       case Action.ANALYZE:
         return this.botResources.data >= 6
+      case Action.SPECIES_SPECIAL_ACTION:
+        return this.currentCard?.alienSpecies != AlienSpecies.CENTAURIANS || !this.hasCentauriansMilestone()
       default:
         return true
     }
+  }
+
+  private hasCentauriansMilestone() : boolean {
+    return this.milestoneTracker.milestones.find(m => m.type == MilestoneType.CENTAURIANS) !== undefined
   }
 
 }

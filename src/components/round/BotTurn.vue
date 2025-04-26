@@ -3,7 +3,7 @@
       @ready="ready"/>
 
   <BotResources v-if="showBotResources" :botGainResources="navigationState.botGainResources"/>
-  <BotReachedMilestones :botResources="navigationState.botResources" :botGainResources="navigationState.botGainResources" :currentCard="currentCard"/>
+  <BotReachedMilestones :navigationState="navigationState"/>
 
   <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" v-if="actionReady">
     {{t('roundTurnBot.executed')}}
