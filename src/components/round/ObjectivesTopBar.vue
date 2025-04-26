@@ -1,5 +1,5 @@
 <template>
-  <div class="objectives">
+  <div class="objectives" v-if="hasObjectives">
     <div class="objective" v-for="(objective,objectiveIndex) in objectiveStack.current" :key="objective.id">
       <AppIcon type="objective-level" :name="`${objective.level}`" class="levelIcon"/>
       <div v-for="(item,itemIndex) of objective.items" :key="itemIndex">
@@ -34,6 +34,8 @@ import NavigationState from '@/util/NavigationState'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ObjectiveStack from '@/services/ObjectiveStack'
 import ObjectiveItemTaskDisplay from './ObjectiveItemTaskDisplay.vue'
+import { useStateStore } from '@/store/state'
+import DifficultyLevel from '@/services/enum/DifficultyLevel'
 
 export default defineComponent({
   name: 'ObjectivesTopBar',
@@ -43,7 +45,8 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-    return { t }
+    const state = useStateStore()
+    return { t, state }
   },
   props: {
     navigationState: {
@@ -52,6 +55,9 @@ export default defineComponent({
     }
   },
   computed: {
+    hasObjectives() : boolean {
+      return this.state.setup.difficultyLevel != DifficultyLevel.LEVEL_1
+    },
     objectiveStack() : ObjectiveStack {
       return this.navigationState.objectiveStack
     }

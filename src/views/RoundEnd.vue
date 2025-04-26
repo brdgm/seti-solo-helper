@@ -4,7 +4,7 @@
   <h1>{{t('roundEnd.title')}}</h1>
 
   <div class="instructions">
-    <ol class="mt-4">
+    <ul class="mt-4">
       <li v-html="t('roundEnd.gainIncome')"></li>
       <template v-if="hasObjectives">
         <li v-html="t('roundEnd.objectives.title', {count:expectedCompletedObjectives}, expectedCompletedObjectives)"></li>
@@ -14,7 +14,7 @@
           <li v-if="botObjectivesProgress > 0" v-html="t('roundEnd.objectives.botObjectiveProgress', {count:botObjectivesProgress})"></li>
         </ul>
       </template>
-    </ol>
+    </ul>
   </div>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
@@ -123,7 +123,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .instructions {
   max-width: 1000px;
-  ol > li {
+  & > ul > li {
     margin-top: 0.5rem;
   }
 }
