@@ -82,8 +82,7 @@
     "difficultyLevel": "Schwierigkeit:",
     "gameStatus": {
       "title": "Spiel Status",
-      "uncompletedObjectives": "Anzahl der <b>nicht abgeschlossenen</b> Ziele",
-      "uncompletedObjectivesNote": "(sowohl die in der Zielauslage als auch die im Zielstapel)",
+      "uncompletedObjectives": "{count} nicht abgeschlossenen Ziel | {count} nicht abgeschlossenen Ziele",
       "exertianDanger": "Gesamte Exertianer-Gefahr",
       "exterianRivalCards": "Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte."
     },

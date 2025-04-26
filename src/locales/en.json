@@ -82,8 +82,7 @@
     "difficultyLevel": "Difficulty:",
     "gameStatus": {
       "title": "Game Status",
-      "uncompletedObjectives": "Number of <b>uncompleted</b> objectives",
-      "uncompletedObjectivesNote": "(from the row and those still in the stack)",
+      "uncompletedObjectives": "{count} uncompleted objective | {count} uncompleted objectives",
       "exertianDanger": "Sum of Exertian danger",
       "exterianRivalCards": "At the end of the game, all rival Exertian cards are considered successfully completed, and the rival scores full points for them."
     },
