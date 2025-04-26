@@ -79,7 +79,6 @@
   },
   "gameEnd": {
     "title": "Spielende",
-    "difficultyLevel": "Schwierigkeit:",
     "gameStatus": {
       "title": "Spiel Status",
       "uncompletedObjectives": "{count} nicht abgeschlossenen Ziel | {count} nicht abgeschlossenen Ziele",

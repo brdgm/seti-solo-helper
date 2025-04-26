@@ -79,7 +79,6 @@
   },
   "gameEnd": {
     "title": "End of Game",
-    "difficultyLevel": "Difficulty:",
     "gameStatus": {
       "title": "Game Status",
       "uncompletedObjectives": "{count} uncompleted objective | {count} uncompleted objectives",
