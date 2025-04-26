@@ -91,6 +91,7 @@ export interface CardDeckPersistence {
 export interface ObjectiveStackPersistence {
   pile: number[]
   current: number[]
+  currentItemCheck: boolean[][]
   complete: number[]
   discard: number[]
 }

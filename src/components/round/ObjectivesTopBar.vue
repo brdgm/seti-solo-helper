@@ -10,9 +10,13 @@
               <ObjectiveItemTaskDisplay :task="task"/>
             </template>
           </label>
-          <input type="checkbox" :id="`check-${objectiveIndex}-${itemIndex}`"/>
+          <input type="checkbox" :id="`check-${objectiveIndex}-${itemIndex}`" v-model="objectiveStack.currentItemCheck[objectiveIndex][itemIndex]"/>
         </div>
       </div>
+    </div>
+    <div class="completedObjectives" v-if="objectiveStack.complete.length > 0">
+      <AppIcon name="objective-completed" class="completedIcon"/>:
+      {{objectiveStack.complete.length}}
     </div>
   </div>
 </template>
@@ -88,5 +92,13 @@ export default defineComponent({
   display: flex;
   gap: 1px;
   align-items: center;
+}
+.completedObjectives {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  .completedIcon {
+    height: 1.5rem;
+  }
 }
 </style>

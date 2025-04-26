@@ -1,4 +1,4 @@
-import { shuffle } from 'lodash'
+import { cloneDeep, shuffle } from 'lodash'
 import { ObjectiveStackPersistence } from '@/store/state'
 import { ref } from 'vue'
 import DifficultyLevel from './enum/DifficultyLevel'
@@ -14,12 +14,14 @@ export default class ObjectiveStack {
 
   private readonly _pile
   private readonly _current
+  private readonly _currentItemCheck
   private readonly _complete
   private readonly _discard
 
-  private constructor(pile : Objective[], current : Objective[], complete : Objective[], discard : Objective[]) {
+  private constructor(pile : Objective[], current : Objective[], currentItemCheck : boolean[][], complete : Objective[], discard : Objective[]) {
     this._pile = ref(pile)
     this._current = ref(current)
+    this._currentItemCheck = ref(currentItemCheck)
     this._complete = ref(complete)
     this._discard = ref(discard)
   }
@@ -30,6 +32,10 @@ export default class ObjectiveStack {
 
   public get current() : readonly Objective[] {
     return this._current.value
+  }
+
+  public get currentItemCheck() : readonly boolean[][] {
+    return this._currentItemCheck.value
   }
 
   public get complete() : readonly Objective[] {
@@ -50,20 +56,24 @@ export default class ObjectiveStack {
         throw new Error('Stack is empty.')
       }
       this._current.value.push(objective)
+      this._currentItemCheck.value.push([])
     }
   }
 
   /**
-   * Marks an objective as completed and draws a new one.
-   * @param objective Objective to mark as completed
+   * Moves completed objectives to the completed pile and draws new ones.
    */
-  public completeObjective(objective : Objective) : void {
-    const index = this._current.value.findIndex(item => item.id == objective.id)
-    if (index < 0) {
-      throw new Error('Objective not found in current stack.')
+  public checkCompletedObjectives() : void {
+    for (let objectiveIndex=this._current.value.length-1; objectiveIndex>=0; objectiveIndex--) {
+      const objective = this._current.value[objectiveIndex]
+      const itemCheck = this._currentItemCheck.value[objectiveIndex]
+      if (isCompleted(objective, itemCheck)) {
+        // marks an objective as completed
+        const objectives = this._current.value.splice(objectiveIndex, 1)
+        this._currentItemCheck.value.splice(objectiveIndex, 1)
+        this._complete.value.push(...objectives)
+      }
     }
-    this._current.value.splice(index, 1)
-    this._complete.value.push(objective)
     this.draw()
   }
 
@@ -90,6 +100,7 @@ export default class ObjectiveStack {
     return {
       pile: this._pile.value.map(objective => objective.id),
       current: this._current.value.map(objective => objective.id),
+      currentItemCheck: cloneDeep(this._currentItemCheck.value),
       complete: this._complete.value.map(objective => objective.id),
       discard: this._discard.value.map(objective => objective.id),
     }
@@ -109,7 +120,7 @@ export default class ObjectiveStack {
       ...allLevel2.slice(0, settings.objectivesLevel2),
       ...allLevel3.slice(0, settings.objectivesLevel3)
     ]
-    const stack = new ObjectiveStack(pile, [], [], [])
+    const stack = new ObjectiveStack(pile, [], [], [], [])
     stack.draw()
     return stack
   }
@@ -121,9 +132,19 @@ export default class ObjectiveStack {
     return new ObjectiveStack(
       persistence.pile.map(Objectives.get),
       persistence.current.map(Objectives.get),
+      cloneDeep(persistence.currentItemCheck),
       persistence.complete.map(Objectives.get),
       persistence.discard.map(Objectives.get),
     )
   }
 
+}
+
+function isCompleted(objective: Objective, itemCheck: boolean[]) : boolean {
+  for (let itemIndex=0; itemIndex<objective.items.length; itemIndex++) {
+    if (!itemCheck[itemIndex]) {
+      return false
+    }
+  }
+  return true
 }

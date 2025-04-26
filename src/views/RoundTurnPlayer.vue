@@ -96,6 +96,10 @@ export default defineComponent({
       const gainResources = this.navigationState.botGainResources
       const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
       cardDeck.addAdvancedCards(drawAdvancedCards)
+
+      const objectiveStack = this.navigationState.objectiveStack
+      objectiveStack.checkCompletedObjectives()
+
       this.state.storeRoundTurn({
         round:this.navigationState.round,
         turn:this.navigationState.turn,
@@ -104,7 +108,7 @@ export default defineComponent({
         pass: passed ? true : undefined,
         botPersistence: {
           cardDeck: cardDeck.toPersistence(),
-          objectiveStack: this.navigationState.objectiveStack.toPersistence(),
+          objectiveStack: objectiveStack.toPersistence(),
           resources: gainResources.merge(previousTurnResources)
         }
       })

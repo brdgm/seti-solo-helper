@@ -49,13 +49,30 @@ describe('services/ObjectiveStack.', () => {
     expect(stack.current.map(item => item.id)).to.eql([101,102,201])
   })
 
-  it('completeObjective', () => {
+  it('checkCompletedObjectives', () => {
     const stack = mockObjectiveStack({pile:[202,203,204],current:[101,102,201]})
 
-    stack.completeObjective(stack.current[1])
-    expect(stack.current.map(item => item.id)).to.eql([101,201,202])
-    expect(stack.complete.map(item => item.id)).to.eql([102])
+    stack.checkCompletedObjectives()
+
+    expect(stack.current.map(item => item.id)).to.eql([101,102,201])
+    expect(stack.complete.map(item => item.id)).to.eql([])
+    expect(stack.pile.map(item => item.id)).to.eql([202,203,204])
+
+    stack.currentItemCheck[0][0] = true
+    stack.currentItemCheck[2][1] = true
+    stack.checkCompletedObjectives()
+
+    expect(stack.current.map(item => item.id)).to.eql([102,201,202])
+    expect(stack.complete.map(item => item.id)).to.eql([101])
     expect(stack.pile.map(item => item.id)).to.eql([203,204])
+
+    stack.currentItemCheck[0][0] = true
+    stack.currentItemCheck[1][0] = true
+    stack.checkCompletedObjectives()
+
+    expect(stack.current.map(item => item.id)).to.eql([202,203,204])
+    expect(stack.complete.map(item => item.id)).to.eql([101,201,102])
+    expect(stack.pile.map(item => item.id)).to.eql([])
   })
 
   it('discardCompletedObjectives', () => {
