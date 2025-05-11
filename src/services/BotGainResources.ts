@@ -71,7 +71,9 @@ export default class BotGainResources {
       case Action.TELESCOPE:
         if (techType === TechType.TELESCOPE) {
           this.actionTechTelescope.value -= 1
+          this.actionData.value += 1
         }
+        this.actionData.value += action.scanSector.length
         break
       case Action.ANALYZE:
         this.actionVP.value += action.victoryPoints
