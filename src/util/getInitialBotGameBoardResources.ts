@@ -12,16 +12,14 @@ import TechType from '@/services/enum/TechType'
  * @returns The resources the bot will gain from the game board.
  */
 export default function getInitialBotGameBoardResources(action: CardAction, techType?: TechType) : BotGameBoardResources {
-  switch (action.action) {
+  if (action.action == Action.TELESCOPE) {
     // most likely the bot will actually gain 1 data per sector scanned
     // it may he scans the same sector multiple times, and in this case does not get a data for each scan
-    case Action.TELESCOPE:
-      let data = action.scanSector.length
-      if (techType === TechType.TELESCOPE) {
-        data += 1
-      }
-      return { data }
-    default:
-      return {}
+    let data = action.scanSector.length
+    if (techType === TechType.TELESCOPE) {
+      data += 1
+    }
+    return { data }
   }
+  return {}
 }
