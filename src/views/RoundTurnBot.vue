@@ -14,7 +14,7 @@
     <p v-if="isFirstPass" class="mt-2">
       <AppIcon name="rotate-solar-system" class="icon"/>
     </p>
-    <BotResources v-model="botGameBoardResources"/>
+    <BotResources v-model="botGameBoardResources" :key="JSON.stringify(botGameBoardResources)"/>
     <BotReachedMilestones :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
     <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()">
       {{t('action.next')}}
@@ -25,7 +25,7 @@
     <BotAction :action="currentAction" :currentCard="botActions.currentCard" :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"
         :key="JSON.stringify(state.alienDiscovery.species)" @ready="ready"/>
 
-    <BotResources v-if="showBotResources" v-model="botGameBoardResources"/>
+    <BotResources v-if="showBotResources" v-model="botGameBoardResources" :key="JSON.stringify(botGameBoardResources)"/>
     <BotReachedMilestones :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
 
     <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" v-if="actionReady">
@@ -76,6 +76,7 @@ import BotAction from '@/components/round/BotAction.vue'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
 import hasBotGameBoardResources from '@/util/hasBotGameBoardResources'
+import getInitialBotGameBoardResources from '@/util/getInitialBotGameBoardResources'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -180,6 +181,7 @@ export default defineComponent({
     ready(techType?: TechType) : void {
       this.actionReady = true
       this.actionTechType = techType
+      this.botGameBoardResources = getInitialBotGameBoardResources(this.currentAction, techType)
       this.navigationState.botActionResources.applyAction(this.currentAction, techType, this.botActions.currentCard?.alienSpecies)
     }
   },
