@@ -14,7 +14,7 @@
     <p v-if="isFirstPass" class="mt-2">
       <AppIcon name="rotate-solar-system" class="icon"/>
     </p>
-    <BotResources v-model="botGameBoardResources" :key="JSON.stringify(botGameBoardResources)"/>
+    <BotResources v-model="botGameBoardResources" :key="botGameBoardResourcesUpdateCount"/>
     <BotReachedMilestones :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
     <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()">
       {{t('action.next')}}
@@ -25,7 +25,7 @@
     <BotAction :action="currentAction" :currentCard="botActions.currentCard" :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"
         :key="JSON.stringify(state.alienDiscovery.species)" @ready="ready"/>
 
-    <BotResources v-if="showBotResources" v-model="botGameBoardResources" :key="JSON.stringify(botGameBoardResources)"/>
+    <BotResources v-if="showBotResources" v-model="botGameBoardResources" :key="botGameBoardResourcesUpdateCount"/>
     <BotReachedMilestones :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
 
     <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" v-if="actionReady">
@@ -111,6 +111,7 @@ export default defineComponent({
   data() {
     return {
       botGameBoardResources: {} as BotGameBoardResources,
+      botGameBoardResourcesUpdateCount: 0,
       actionReady: false,
       actionTechType: undefined as TechType|undefined,
     }
@@ -182,6 +183,7 @@ export default defineComponent({
       this.actionReady = true
       this.actionTechType = techType
       this.botGameBoardResources = getInitialBotGameBoardResources(this.currentAction, techType)
+      this.botGameBoardResourcesUpdateCount++
       this.navigationState.botActionResources.applyAction(this.currentAction, techType, this.botActions.currentCard?.alienSpecies)
     }
   },
