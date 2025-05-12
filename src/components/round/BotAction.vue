@@ -1,7 +1,7 @@
 <template>
   <div class="actionItem">
     <component :is="componentName" :action="action"
-        :currentCard="currentCard" :navigationState="navigationState"
+        :currentCard="currentCard" :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"
         @ready="(techType:TechType) => $emit('ready', techType)"/>
   </div>
 </template>
@@ -23,6 +23,7 @@ import ActionSpeciesSpecialActionCentaurians from './botAction/ActionSpeciesSpec
 import ActionSpeciesSpecialActionExertians from './botAction/ActionSpeciesSpecialActionExertians.vue'
 import TechType from '@/services/enum/TechType'
 import Action from '@/services/enum/Action'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
 
 export default defineComponent({
   name: 'BotAction',
@@ -56,6 +57,10 @@ export default defineComponent({
     },
     navigationState: {
       type: NavigationState,
+      required: true
+    },
+    botGameBoardResources: {
+      type: Object as PropType<BotGameBoardResources>,
       required: true
     }
   },

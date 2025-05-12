@@ -4,11 +4,11 @@ import getIntRouteParam from '@brdgm/brdgm-commons/src/util/router/getIntRoutePa
 import Player from '@/services/enum/Player'
 import CardDeck from '@/services/CardDeck'
 import getInitialBotResources from './getInitialBotResources'
-import BotGainResources from '@/services/BotGainResources'
 import BotActions from '@/services/BotActions'
 import { MAX_TURN } from './getTurnOrder'
 import ObjectiveStack from '@/services/ObjectiveStack'
 import MilestoneTracker from '@/services/MilestoneTracker'
+import BotActionResources from '@/services/BotActionResources'
 
 export default class NavigationState {
 
@@ -22,7 +22,7 @@ export default class NavigationState {
   readonly objectiveStack : ObjectiveStack
   readonly milestoneTracker : MilestoneTracker
   readonly botResources : BotResources
-  readonly botGainResources : BotGainResources
+  readonly botActionResources : BotActionResources
   readonly botPass?: boolean
   readonly botActions : BotActions
 
@@ -42,7 +42,7 @@ export default class NavigationState {
     this.objectiveStack = botPersistence.objectiveStack ? ObjectiveStack.fromPersistence(botPersistence.objectiveStack) : ObjectiveStack.new(state.setup.difficultyLevel)
     this.milestoneTracker = botPersistence.milestoneTracker ? MilestoneTracker.fromPersistence(botPersistence.milestoneTracker) : MilestoneTracker.new()
     this.botResources = botPersistence.resources
-    this.botGainResources = new BotGainResources()
+    this.botActionResources = new BotActionResources()
 
     if (this.player == Player.BOT) {
       if (this.cardDeck.pileEmpty) {

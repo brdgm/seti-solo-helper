@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
 import { Milestone } from '@/store/state'
@@ -20,6 +20,7 @@ import MilestoneType from '@/services/enum/MilestoneType'
 import NavigationState from '@/util/NavigationState'
 import Card from '@/services/Card'
 import MilestoneTracker from '@/services/MilestoneTracker'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
 
 export default defineComponent({
   name: 'BotReachedMilestones',
@@ -34,6 +35,10 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
+    },
+    botGameBoardResources: {
+      type: Object as PropType<BotGameBoardResources>,
+      required: true
     }
   },
   computed: {
@@ -41,7 +46,7 @@ export default defineComponent({
       return this.navigationState.botActions.currentCard
     },
     newVP() : number {
-      return this.navigationState.botGainResources.merge(this.navigationState.botResources).vp
+      return this.navigationState.botActionResources.merge(this.navigationState.botResources, this.botGameBoardResources).vp
     },
     milestoneTracker() : MilestoneTracker {
       return this.navigationState.milestoneTracker
