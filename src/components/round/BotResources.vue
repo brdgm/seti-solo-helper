@@ -1,5 +1,4 @@
 <template>
-  <!-- eslint-disable vue/no-mutating-props -->
   <div class="resourcesWrapper">
     <div class="resources">
       <p v-html="t('botResources.gainThisTurn')"></p>
@@ -11,23 +10,23 @@
             <AppIcon type="resource" name="card" class="icon"/><span>/</span>
             <AppIcon type="resource" name="card-species" class="icon"/>
           </div>
-          <NumberInput v-model="botGainResources.gainProgressSingleStep.value"/>
+          <NumberInput v-model="resources.progressSingleStep"/>
         </div>
         <div class="option">
           <AppIcon name="income-increase" class="icon"/>
-          <NumberInput v-model="botGainResources.gainProgressIncomeIncrease.value"/>
+          <NumberInput v-model="resources.progressIncomeIncrease"/>
         </div>
         <div class="option">
           <AppIcon type="resource" name="publicity" class="icon"/>
-          <NumberInput v-model="botGainResources.gainPublicity.value"/>
+          <NumberInput v-model="resources.publicity"/>
         </div>
         <div class="option">
           <AppIcon type="resource" name="data" class="icon"/>
-          <NumberInput v-model="botGainResources.gainData.value"/>
+          <NumberInput v-model="resources.data"/>
         </div>
         <div class="option">
           <AppIcon type="resource" name="vp" class="icon"/>
-          <NumberInput v-model="botGainResources.gainVP.value"/>
+          <NumberInput v-model="resources.vp"/>
         </div>
         <div class="option small">
           <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#botResourcesLifeTraceModal">
@@ -64,17 +63,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppIcon from '../structure/AppIcon.vue'
 import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vue'
-import BotGainResources from '@/services/BotGainResources'
 import { useStateStore } from '@/store/state'
 import AlienSpecies from '@/services/enum/AlienSpecies'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
+import { cloneDeep } from 'lodash'
 
 export default defineComponent({
   name: 'BotResources',
+  emits: ['update:modelValue'],  
   components: {
     AppIcon,
     NumberInput,
@@ -86,9 +87,22 @@ export default defineComponent({
     return { t, state }
   },
   props: {
-    botGainResources: {
-      type: BotGainResources,
+    modelValue: {
+      type: Object as PropType<BotGameBoardResources>,
       required: true
+    }
+  },
+  data() {
+    return {
+      resources: cloneDeep(this.modelValue)
+    }
+  },
+  watch: {
+    resources: {
+      handler(newValue: BotGameBoardResources) {
+        this.$emit('update:modelValue', newValue)
+      },
+      deep: true
     }
   },
   computed: {

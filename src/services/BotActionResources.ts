@@ -5,17 +5,12 @@ import { CardAction } from './Card'
 import Action from './enum/Action'
 import TechType from './enum/TechType'
 import AlienSpecies from './enum/AlienSpecies'
+import BotGameBoardResources from './BotGameBoardResources'
 
 /**
- * Resources the bot gained this turn by either the actions, or manual input.
+ * Resources the bot gained this turn implicitly by the actions.
  */
-export default class BotGainResources {
-
-  public readonly gainProgressSingleStep = ref(undefined as number|undefined)
-  public readonly gainProgressIncomeIncrease = ref(undefined as number|undefined)
-  public readonly gainPublicity = ref(undefined as number|undefined)
-  public readonly gainData = ref(undefined as number|undefined)
-  public readonly gainVP = ref(undefined as number|undefined)
+export default class BotActionResources {
 
   private readonly actionProgress = ref(0)
   private readonly actionPublicity = ref(0)
@@ -26,22 +21,12 @@ export default class BotGainResources {
   private readonly actionTechComputer = ref(0)
   private readonly actionProbeCount = ref(0)
 
-  public get hasGainedResources() : boolean {
-    return this.gainProgressSingleStep.value != undefined
-        || this.gainProgressIncomeIncrease.value != undefined
-        || this.gainPublicity.value != undefined
-        || this.gainData.value != undefined
-        || this.gainVP.value != undefined
-  }
-
   public get resources() : BotResources {
     return {
-      progress: toNumber(this.gainProgressSingleStep.value)
-          + toNumber(this.gainProgressIncomeIncrease.value) * 4
-          + toNumber(this.actionProgress.value),
-      publicity: toNumber(this.gainPublicity.value) + this.actionPublicity.value,
-      data: toNumber(this.gainData.value) + this.actionData.value,
-      vp: toNumber(this.gainVP.value) + this.actionVP.value,
+      progress: this.actionProgress.value,
+      publicity: this.actionPublicity.value,
+      data: this.actionData.value,
+      vp: this.actionVP.value,
       techProbe: this.actionTechProbe.value,
       techTelescope: this.actionTechTelescope.value,
       techComputer: this.actionTechComputer.value,
@@ -129,16 +114,21 @@ export default class BotGainResources {
     this.actionProbeCount.value = 0
   }
 
-  public merge(botResources: BotResources) : BotResources {
+  public merge(botResources: BotResources, gameBoardResources : BotGameBoardResources) : BotResources {
     let initialData = botResources.data
     if (this.actionData.value == -6) {
       initialData = 0
     }
     const result : BotResources = {
-      progress: botResources.progress + this.resources.progress,
-      publicity: botResources.publicity + this.resources.publicity,
-      data: botResources.data + this.resources.data,
-      vp: botResources.vp + this.resources.vp,
+      progress: botResources.progress + this.resources.progress
+          + toNumber(gameBoardResources.progressSingleStep)
+          + toNumber(gameBoardResources.progressIncomeIncrease) * 4,
+      publicity: botResources.publicity + this.resources.publicity
+          + toNumber(gameBoardResources.publicity),
+      data: botResources.data + this.resources.data
+          + toNumber(gameBoardResources.data),
+      vp: botResources.vp + this.resources.vp
+          + toNumber(gameBoardResources.vp),
       techProbe: botResources.techProbe + this.resources.techProbe,
       techTelescope: botResources.techTelescope + this.resources.techTelescope,
       techComputer: botResources.techComputer + this.resources.techComputer,
@@ -158,9 +148,9 @@ export default class BotGainResources {
     return result
   }
 
-  public getDrawAdvancedCardCount(botResources: BotResources) : number {
+  public getDrawAdvancedCardCount(botResources: BotResources, gameBoardResources : BotGameBoardResources) : number {
     const initialProgress = botResources.progress
-    const newProgress = this.merge(botResources).progress
+    const newProgress = this.merge(botResources, gameBoardResources).progress
     let count = 0
     for (let i = initialProgress; i < newProgress; i++) {
       if (i % 12 == 0) {

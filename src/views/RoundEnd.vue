@@ -1,5 +1,5 @@
 <template>
-  <SideBar :navigationState="navigationState"/>
+  <SideBar :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
   <ObjectivesTopBar :navigationState="navigationState"/>
   <h1>{{t('roundEnd.title')}}</h1>
 
@@ -39,6 +39,7 @@ import Player from '@/services/enum/Player'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
 
 export default defineComponent({
   name: 'RoundEnd',
@@ -65,9 +66,10 @@ export default defineComponent({
     const completedObjectives = objectiveStack.complete.length
     const discardObjectives = Math.min(expectedCompletedObjectives, completedObjectives)
     const botObjectivesProgress = (expectedCompletedObjectives - discardObjectives) * 3
+    const botGameBoardResources = { progressSingleStep: botObjectivesProgress } as BotGameBoardResources
 
     return { t, router, state, navigationState, round, routeCalculator, cardDeck, objectiveStack,
-      hasObjectives, expectedCompletedObjectives, completedObjectives, discardObjectives, botObjectivesProgress }
+      hasObjectives, expectedCompletedObjectives, completedObjectives, discardObjectives, botObjectivesProgress, botGameBoardResources }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -81,9 +83,8 @@ export default defineComponent({
       const nextRound = this.round + 1
       this.cardDeck.prepareForNextRound()
       const previousTurnResources = this.navigationState.botResources
-      const gainResources = this.navigationState.botGainResources
-      gainResources.gainProgressSingleStep.value = this.botObjectivesProgress
-      const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
+      const botActionResources = this.navigationState.botActionResources
+      const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
       this.cardDeck.addAdvancedCards(drawAdvancedCards)
 
       this.objectiveStack.checkCompletedObjectives()
@@ -93,7 +94,7 @@ export default defineComponent({
         cardDeck: this.cardDeck.toPersistence(),
         objectiveStack: this.objectiveStack.toPersistence(),
         milestoneTracker: this.navigationState.milestoneTracker.toPersistence(),
-        resources: gainResources.merge(previousTurnResources)
+        resources: botActionResources.merge(previousTurnResources, this.botGameBoardResources)
       }
 
       this.state.storeRound({

@@ -32,11 +32,11 @@
     </div>
   </div>
 
-  <SpeciesDiscoveryModal :navigationState="navigationState"/>
+  <SpeciesDiscoveryModal :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { BotResources, useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
@@ -44,6 +44,7 @@ import AppIcon from '../structure/AppIcon.vue'
 import CardDeck from '@/services/CardDeck'
 import Card from '@/services/Card'
 import SpeciesDiscoveryModal from './SpeciesDiscoveryModal.vue'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
 
 export default defineComponent({
   name: 'SideBar',
@@ -59,6 +60,10 @@ export default defineComponent({
   props: {
     navigationState: {
       type: NavigationState,
+      required: true
+    },
+    botGameBoardResources: {
+      type: Object as PropType<BotGameBoardResources>,
       required: true
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <SideBar :navigationState="navigationState"/>
+  <SideBar :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
   <ObjectivesTopBar :navigationState="navigationState"/>
   <h1>{{t('player.bot')}}</h1>
 
@@ -14,20 +14,38 @@
     <p v-if="isFirstPass" class="mt-2">
       <AppIcon name="rotate-solar-system" class="icon"/>
     </p>
-    <BotResources :botGainResources="navigationState.botGainResources"/>
-    <BotReachedMilestones :navigationState="navigationState"/>
+    <BotResources v-model="botGameBoardResources" :key="botGameBoardResourcesUpdateCount"/>
+    <BotReachedMilestones :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
     <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()">
       {{t('action.next')}}
     </button>
   </template>
-  <template v-else>
-    <BotTurn v-if="navigationState.botActions.currentCard"
-       :navigationState="navigationState"
-       :botActions="navigationState.botActions"
-       :currentCard="navigationState.botActions.currentCard"
-       :key="JSON.stringify(state.alienDiscovery.species)"
-       @executed="next" @notPossible="notPossible"/>
+
+  <template v-else-if="botActions.currentCard">
+    <BotAction :action="currentAction" :currentCard="botActions.currentCard" :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"
+        :key="JSON.stringify(state.alienDiscovery.species)" @ready="ready"/>
+
+    <BotResources v-if="showBotResources" v-model="botGameBoardResources" :key="botGameBoardResourcesUpdateCount"/>
+    <BotReachedMilestones :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
+
+    <button class="btn btn-success btn-lg mt-4 me-2" @click="executed()" v-if="actionReady">
+      {{t('roundTurnBot.executed')}}
+    </button>
+
+    <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossibleCheckConfirm()" v-if="hasMoreActions">
+      {{t('roundTurnBot.notPossible')}}
+    </button>
   </template>
+
+  <ModalDialog id="botNotPossibleConfirmModal" :title="t('roundTurnBot.notPossibleConfirm.title')">
+    <template #body>
+      <p v-html="t('roundTurnBot.notPossibleConfirm.confirm')"></p>
+    </template>
+    <template #footer>
+      <button class="btn btn-danger" @click="notPossible()" data-bs-dismiss="modal">{{t('roundTurnBot.notPossibleConfirm.title')}}</button>
+      <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
+    </template>
+  </ModalDialog>
 
   <DebugInfo :navigationState="navigationState"/>
 
@@ -45,7 +63,6 @@ import { useStateStore } from '@/store/state'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import { Tooltip } from 'bootstrap'
-import BotTurn from '@/components/round/BotTurn.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import { CardAction } from '@/services/Card'
 import TechType from '@/services/enum/TechType'
@@ -54,6 +71,12 @@ import isFirstPass from '@/util/isFirstPass'
 import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
 import Action from '@/services/enum/Action'
 import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
+import BotAction from '@/components/round/BotAction.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
+import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
+import hasBotGameBoardResources from '@/util/hasBotGameBoardResources'
+import getInitialBotGameBoardResources from '@/util/getInitialBotGameBoardResources'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -62,10 +85,11 @@ export default defineComponent({
     SideBar,
     ObjectivesTopBar,
     DebugInfo,
-    BotTurn,
     AppIcon,
     BotResources,
-    BotReachedMilestones
+    BotReachedMilestones,
+    BotAction,
+    ModalDialog
   },
   setup() {
     const { t } = useI18n()
@@ -74,36 +98,56 @@ export default defineComponent({
     const state = useStateStore()
 
     const navigationState = new NavigationState(route, state)
-    const { round, turn, turnOrderIndex, action, player, botPass } = navigationState
+    const { round, turn, turnOrderIndex, action, player, botPass, botActions } = navigationState
     const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
 
     const isLastRound = (round == 5)
     if (botPass && !isLastRound) {
-      navigationState.botGainResources.applyAction({action:Action.PASS})
+      navigationState.botActionResources.applyAction({action:Action.PASS})
     }
 
-    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, botPass, isLastRound }
+    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, botPass, botActions, isLastRound }
+  },
+  data() {
+    return {
+      botGameBoardResources: {} as BotGameBoardResources,
+      botGameBoardResourcesUpdateCount: 0,
+      actionReady: false,
+      actionTechType: undefined as TechType|undefined,
+    }
   },
   computed: {
+    currentAction() : CardAction {
+      return this.navigationState.botActions.actions[this.navigationState.action]
+    },
     backButtonRouteTo() : string {
       return this.routeCalculator.getBackRouteTo(this.state)
     },
     isFirstPass() : boolean {
       return isFirstPass(this.state, this.round, this.turn, this.turnOrderIndex)
+    },
+    hasMoreActions() : boolean {
+      return this.navigationState.action < this.botActions.actions.length - 1
+    },
+    showBotResources() : boolean {
+      return [Action.TECH, Action.PROBE, Action.TELESCOPE, Action.ANALYZE, Action.SPECIES_SPECIAL_ACTION].includes(this.currentAction.action)
     }
   },
   methods: {
+    executed() : void {
+      this.next(this.currentAction, this.actionTechType)
+    },
     next(action?: CardAction, techType?: TechType) : void {
       const cardDeck = this.navigationState.cardDeck
       const previousTurnResources = this.navigationState.botResources
-      const gainResources = this.navigationState.botGainResources
+      const botActionResources = this.navigationState.botActionResources
       if (this.botPass) {
-        gainResources.applyAction({action:Action.PASS})
+        botActionResources.applyAction({action:Action.PASS})
       }
       else if (action) {
-        gainResources.applyAction(action, techType, this.navigationState.botActions.currentCard?.alienSpecies)
+        botActionResources.applyAction(action, techType, this.navigationState.botActions.currentCard?.alienSpecies)
       }
-      const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
+      const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
       cardDeck.addAdvancedCards(drawAdvancedCards)
 
       const objectiveStack = this.navigationState.objectiveStack
@@ -118,14 +162,29 @@ export default defineComponent({
           cardDeck: cardDeck.toPersistence(),
           objectiveStack: objectiveStack.toPersistence(),
           milestoneTracker: this.navigationState.milestoneTracker.toPersistence(),
-          resources: gainResources.merge(previousTurnResources)
+          resources: botActionResources.merge(previousTurnResources, this.botGameBoardResources)
         },
         pass: this.botPass ? true : undefined
       })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))
     },
+    notPossibleCheckConfirm() : void {
+      if (hasBotGameBoardResources(this.botGameBoardResources)) {
+        showModal('botNotPossibleConfirmModal')
+      }
+      else {
+        this.notPossible()
+      }
+    },
     notPossible() : void {
       this.router.push(this.routeCalculator.getNextActionRouteTo(this.state))
+    },
+    ready(techType?: TechType) : void {
+      this.actionReady = true
+      this.actionTechType = techType
+      this.botGameBoardResources = getInitialBotGameBoardResources(this.currentAction, techType)
+      this.botGameBoardResourcesUpdateCount++
+      this.navigationState.botActionResources.applyAction(this.currentAction, techType, this.botActions.currentCard?.alienSpecies)
     }
   },
   mounted() {
