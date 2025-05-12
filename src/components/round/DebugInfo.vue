@@ -6,7 +6,7 @@
       <b>valid actions</b>: {{botActions.actions}}<br/>
       <b>deck</b>: {{cardDeck.toPersistence()}}<br/>
       <b>resources</b>: {{resources}}<br/>
-      <b>gain resources</b>: {{gainResources}}<br/>
+      <b>action resources</b>: {{actionResources}}<br/>
       <b>objectives</b>: {{objectiveStack.toPersistence()}}<br/>
       <b>milestones</b>: {{milestoneTracker.toPersistence().milestones}}<br/>
     </p>
@@ -52,8 +52,8 @@ export default defineComponent({
     resources() : BotResources {
       return this.navigationState.botResources
     },
-    gainResources() : BotResources {
-      return this.navigationState.botGainResources.resources
+    actionResources() : BotResources {
+      return this.navigationState.botActionResources.resources
     }
   }
 })

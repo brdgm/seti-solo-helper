@@ -8,7 +8,7 @@
         <p class="small">
           <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
           <span v-html="t('rules.action.speciesSpecialAction.centaurians.instructions')"></span><br/>
-          <CentauriansAddMilestoneTokenButton :navigationState="navigationState"/>
+          <CentauriansAddMilestoneTokenButton :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
         </p>
       </div>
     </template>
@@ -25,6 +25,7 @@ import TechType from '@/services/enum/TechType'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import ProbeAction from '@/services/enum/ProbeAction'
 import CentauriansAddMilestoneTokenButton from '../CentauriansAddMilestoneTokenButton.vue'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
 
 export default defineComponent({
   name: 'ActionSpeciesSpecialActionCentaurians',
@@ -55,6 +56,10 @@ export default defineComponent({
     },
     navigationState: {
       type: NavigationState,
+      required: true
+    },
+    botGameBoardResources: {
+      type: Object as PropType<BotGameBoardResources>,
       required: true
     }
   },

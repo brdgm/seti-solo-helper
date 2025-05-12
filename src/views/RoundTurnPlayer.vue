@@ -1,12 +1,12 @@
 <template>
-  <SideBar :navigationState="navigationState"/>
+  <SideBar :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
   <ObjectivesTopBar :navigationState="navigationState"/>
   <h1>{{t('player.player')}}</h1>
 
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 
-  <BotResources :botGainResources="navigationState.botGainResources"/>
-  <BotReachedMilestones :navigationState="navigationState"/>
+  <BotResources v-model="botGameBoardResources"/>
+  <BotReachedMilestones :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
   
   <button class="btn btn-primary btn-lg mt-4" @click="next">
     {{t('action.next')}}
@@ -49,6 +49,7 @@ import isFirstPass from '@/util/isFirstPass'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import BotReachedMilestones from '@/components/round/BotReachedMilestones.vue'
 import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
@@ -74,6 +75,11 @@ export default defineComponent({
 
     return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, player }
   },
+  data() {
+    return {
+      botGameBoardResources: {} as BotGameBoardResources
+    }
+  },
   computed: {
     backButtonRouteTo() : string {
       return this.routeCalculator.getBackRouteTo(this.state)
@@ -92,8 +98,8 @@ export default defineComponent({
     nextWithPassed(passed : boolean) {
       const cardDeck = this.navigationState.cardDeck
       const previousTurnResources = this.navigationState.botResources
-      const gainResources = this.navigationState.botGainResources
-      const drawAdvancedCards = gainResources.getDrawAdvancedCardCount(previousTurnResources)
+      const botActionResources = this.navigationState.botActionResources
+      const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
       cardDeck.addAdvancedCards(drawAdvancedCards)
 
       const objectiveStack = this.navigationState.objectiveStack
@@ -109,7 +115,7 @@ export default defineComponent({
           cardDeck: cardDeck.toPersistence(),
           objectiveStack: objectiveStack.toPersistence(),
           milestoneTracker: this.navigationState.milestoneTracker.toPersistence(),
-          resources: gainResources.merge(previousTurnResources)
+          resources: botActionResources.merge(previousTurnResources, this.botGameBoardResources)
         }
       })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))

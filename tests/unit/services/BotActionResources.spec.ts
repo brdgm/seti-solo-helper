@@ -1,35 +1,18 @@
-import BotGainResources from '@/services/BotGainResources'
+import BotActionResources from '@/services/BotActionResources'
 import Action from '@/services/enum/Action'
 import AlienSpecies from '@/services/enum/AlienSpecies'
 import TechType from '@/services/enum/TechType'
 import { BotResources } from '@/store/state'
 import { expect } from 'chai'
 
-describe('services/BotGainResources', () => {
+describe('services/BotActionResources', () => {
   it('empty', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     expect(underTest.resources).to.eql(resources({}))
   })
 
-  it('gain-values', () => {
-    const underTest = new BotGainResources()
-
-    underTest.gainProgressSingleStep.value = 2
-    underTest.gainProgressIncomeIncrease.value = 1
-    underTest.gainPublicity.value = 3
-    underTest.gainData.value = 4
-    underTest.gainVP.value = 5
-
-    expect(underTest.resources).to.eql(resources({
-      progress: 2 + 1 * 4,
-      publicity: 3,
-      data: 4,
-      vp: 5
-    }))
-  })
-
   it('apply-tech', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.TECH, publicityCost: 6, progress: 1}, TechType.PROBE)
 
     expect(underTest.resources).to.eql(resources({
@@ -40,7 +23,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-launch', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.LAUNCH, publicity:2, progress:1})
 
     expect(underTest.resources).to.eql(resources({
@@ -51,7 +34,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-probe', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.PROBE, movementPoints:1, planets:[], probeActions:[]})
 
     expect(underTest.resources).to.eql(resources({
@@ -60,7 +43,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-probe-tech', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.PROBE, movementPoints:1, planets:[], probeActions:[]}, TechType.PROBE)
 
     expect(underTest.resources).to.eql(resources({
@@ -70,14 +53,14 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-telescope', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.TELESCOPE, scanSector:[]})
 
     expect(underTest.resources).to.eql(resources({}))
   })
 
   it('apply-telescope-tech', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.TELESCOPE, scanSector:[]}, TechType.TELESCOPE)
 
     expect(underTest.resources).to.eql(resources({
@@ -86,7 +69,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-analyze', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2})
 
     expect(underTest.resources).to.eql(resources({
@@ -96,7 +79,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-analyze-tech', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2}, TechType.COMPUTER)
 
     expect(underTest.resources).to.eql(resources({
@@ -108,7 +91,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-pass', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.PASS})
 
     expect(underTest.resources).to.eql(resources({
@@ -117,7 +100,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-alien-special-action-mascamites', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.MASCAMITES)
 
     expect(underTest.resources).to.eql(resources({
@@ -126,7 +109,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-alien-special-action-mascamites-tech', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, TechType.PROBE, AlienSpecies.MASCAMITES)
 
     expect(underTest.resources).to.eql(resources({
@@ -136,7 +119,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-alien-special-action-anomalies', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.ANOMALIES)
 
     expect(underTest.resources).to.eql(resources({
@@ -145,7 +128,7 @@ describe('services/BotGainResources', () => {
   })
 
   it('apply-alien-special-action-centaurians', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
     underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.CENTAURIANS)
 
     expect(underTest.resources).to.eql(resources({
@@ -154,13 +137,15 @@ describe('services/BotGainResources', () => {
   })
 
   it('merge', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
 
-    underTest.gainProgressSingleStep.value = 2
-    underTest.gainProgressIncomeIncrease.value = 1
-    underTest.gainPublicity.value = 3
-    underTest.gainData.value = 4
-    underTest.gainVP.value = 5
+    const gameBoardResources = {
+      progressSingleStep: 2,
+      progressIncomeIncrease: 1,
+      publicity: 3,
+      data: 4,
+      vp: 5
+    }
 
     underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2}, TechType.COMPUTER)
 
@@ -172,7 +157,7 @@ describe('services/BotGainResources', () => {
       techProbe: 1,
       techTelescope: 3,
       techComputer: 2
-    }))).to.eql(resources({
+    }), gameBoardResources)).to.eql(resources({
       progress: 12,
       publicity: 6,
       data: 5,
@@ -184,44 +169,37 @@ describe('services/BotGainResources', () => {
   })
 
   it('merge-data-bonus', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
 
-    underTest.gainData.value = 1
-    expect(underTest.merge(resources({}))).to.eql(resources({data: 1}))
+    expect(underTest.merge(resources({}), { data: 1 })).to.eql(resources({data: 1}))
 
-    underTest.gainData.value = 2
-    expect(underTest.merge(resources({}))).to.eql(resources({publicity:1, data: 2}))
+    expect(underTest.merge(resources({}), { data: 2 })).to.eql(resources({publicity:1, data: 2}))
 
-    underTest.gainData.value = 4
-    expect(underTest.merge(resources({}))).to.eql(resources({progress:4, publicity:1, data: 4}))
+    expect(underTest.merge(resources({}), { data: 4 })).to.eql(resources({progress:4, publicity:1, data: 4}))
 
-    underTest.gainData.value = 0
     underTest.applyAction({action:Action.ANALYZE, victoryPoints: 0})
-    expect(underTest.merge(resources({data:8}))).to.eql(resources({publicity:1, data: 2}))
+    expect(underTest.merge(resources({data:8}),{})).to.eql(resources({publicity:1, data: 2}))
   })
 
   it('merge-data-bonus-analyze', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
 
     underTest.applyAction({action:Action.ANALYZE, victoryPoints: 0})
 
-    expect(underTest.merge(resources({data:8}))).to.eql(resources({publicity:1, data: 2}))
-    expect(underTest.merge(resources({data:10}))).to.eql(resources({progress:4, publicity:1, data: 4}))
+    expect(underTest.merge(resources({data:8}), {})).to.eql(resources({publicity:1, data: 2}))
+    expect(underTest.merge(resources({data:10}), {})).to.eql(resources({progress:4, publicity:1, data: 4}))
   })
 
   it('getDrawAdvancedCardCount', () => {
-    const underTest = new BotGainResources()
+    const underTest = new BotActionResources()
 
-    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}))).to.eq(0)
+    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}), {})).to.eq(0)
 
-    underTest.gainProgressSingleStep.value = 11
-    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}))).to.eq(0)
+    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}), {progressSingleStep: 11})).to.eq(0)
 
-    underTest.gainProgressSingleStep.value = 12
-    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}))).to.eq(1)
+    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}), {progressSingleStep: 12})).to.eq(1)
 
-    underTest.gainProgressSingleStep.value = 28
-    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}))).to.eq(2)
+    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}), {progressSingleStep: 28})).to.eq(2)
   })
 })
 

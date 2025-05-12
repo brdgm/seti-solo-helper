@@ -3,10 +3,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
 import MilestoneType from '@/services/enum/MilestoneType'
+import BotGameBoardResources from '@/services/BotGameBoardResources'
 
 export default defineComponent({
   name: 'CentauriansAddMilestoneTokenButton',
@@ -18,6 +19,10 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
+    },
+    botGameBoardResources: {
+      type: Object as PropType<BotGameBoardResources>,
+      required: true
     }
   },
   computed: {
@@ -27,7 +32,7 @@ export default defineComponent({
   },
   methods: {
     addCentauriansMilestone() : void {
-      const newVP = this.navigationState.botGainResources.merge(this.navigationState.botResources).vp
+      const newVP = this.navigationState.botActionResources.merge(this.navigationState.botResources, this.botGameBoardResources).vp
       this.navigationState.milestoneTracker.add({type: MilestoneType.CENTAURIANS, score: newVP + 15})
     }
   }
