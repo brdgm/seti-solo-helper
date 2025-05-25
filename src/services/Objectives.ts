@@ -143,7 +143,7 @@ const cards : Objective[] = [
     id: 303,
     level: ObjectiveLevel.LEVEL_3,
     items: [
-      { tasks: [{ task: ObjectiveTask.ACTION_TELESCOPE }] },
+      { tasks: [{ task: ObjectiveTask.TECH_TYPE, techType: TechType.TELESCOPE }] },
       { tasks: [{ task: ObjectiveTask.SECTOR_WIN, sectorWin: SectorWin.ANY }] }
     ]
   },
