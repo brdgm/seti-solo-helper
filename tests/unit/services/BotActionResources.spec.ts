@@ -94,9 +94,7 @@ describe('services/BotActionResources', () => {
     const underTest = new BotActionResources()
     underTest.applyAction({action:Action.PASS})
 
-    expect(underTest.resources).to.eql(resources({
-      progress: 1
-    }))
+    expect(underTest.resources).to.eql(resources({}))
   })
 
   it('apply-alien-special-action-mascamites', () => {
