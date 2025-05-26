@@ -67,9 +67,6 @@ export default class BotActionResources {
           this.actionProgress.value += 1
         }
         break
-      case Action.PASS:
-        this.actionProgress.value += 1
-        break
       case Action.SPECIES_SPECIAL_ACTION:
         switch (alienSpecies) {
           case AlienSpecies.MASCAMITES:

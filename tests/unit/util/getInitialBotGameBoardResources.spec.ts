@@ -15,6 +15,11 @@ describe('util/getInitialBotGameBoardResources', () => {
     expect(resources).to.eql({data: 3})
   })
 
+  it('pass', () => {
+    const resources = getInitialBotGameBoardResources({action:Action.PASS})
+    expect(resources).to.eql({progressSingleStep: 1})
+  })
+
   it('other', () => {
     const resources = getInitialBotGameBoardResources({action:Action.ANALYZE, victoryPoints: 1}, TechType.COMPUTER)
     expect(resources).to.eql({})
