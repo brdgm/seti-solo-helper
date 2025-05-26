@@ -21,5 +21,9 @@ export default function getInitialBotGameBoardResources(action: CardAction, tech
     }
     return { data }
   }
+  else if (action.action == Action.PASS) {
+    // bot draws a card and gains 1 progress
+    return { progressSingleStep: 1 }
+  }
   return {}
 }

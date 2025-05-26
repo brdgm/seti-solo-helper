@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
@@ -101,16 +101,16 @@ export default defineComponent({
     const { round, turn, turnOrderIndex, action, player, botPass, botActions } = navigationState
     const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
 
+    const botGameBoardResources = ref({} as BotGameBoardResources)
     const isLastRound = (round == 5)
     if (botPass && !isLastRound) {
-      navigationState.botActionResources.applyAction({action:Action.PASS})
+      botGameBoardResources.value = getInitialBotGameBoardResources({action:Action.PASS})
     }
 
-    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, botPass, botActions, isLastRound }
+    return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, botPass, botActions, isLastRound, botGameBoardResources }
   },
   data() {
     return {
-      botGameBoardResources: {} as BotGameBoardResources,
       botGameBoardResourcesUpdateCount: 0,
       actionReady: false,
       actionTechType: undefined as TechType|undefined,
