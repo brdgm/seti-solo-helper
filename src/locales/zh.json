@@ -1,0 +1,259 @@
+{
+  "gameTitle": "SETI",
+  "home": {
+    "title": "SETI 单人模式助手",
+    "play1": "游玩 <a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> 单人模式与对手的研究机构展开竞争。",
+    "play2": "此应用程序取代了对手的行动卡组及玩家面板，并引导您完成游戏和单人模式下的游戏设置。支持所有难度级别。",
+    "feedback": "讨论和反馈："
+  },
+  "setup": {
+    "title": "游戏设置",
+    "difficultyLevel": {
+      "title": "难度等级",
+      "easy": "初出茅庐",
+      "hard": "出神入化"
+    },
+    "startPlayer": {
+      "title": "起始玩家",
+      "random": "随机",
+      "player": "玩家",
+      "bot": "对手"
+    }
+  },
+  "setupGameBoard": {
+    "title": "设置游戏版图",
+    "solarSystem": {
+      "title": "太阳系",
+      "randomizerApp": "主板图随机生成器 (外部链接)"
+    },
+    "goldScoringTile": {
+      "title": "金色里程碑板块",
+      "randomize": "随机"
+    }
+  },
+  "setupGame": {
+    "title": "游戏设置",
+    "setup2Players": "像通常<b>两位玩家</b>一样设置游戏。",
+    "startPlayer": {
+      "player": "<b>你</b>成为起始玩家。",
+      "bot": "你的<b>对手</b>成为起始玩。"
+    },
+    "playerScoreTrackSetup": "在分数轨 {space} 的位置放置你的计分指示物。",
+    "rivalPieces": "给予对手<b>一种颜色的所有配件</b>。",
+    "componentsNotRequired": "使用该单人游戏助手时对手不需要行动卡、玩家版图、分数指示物和声望指示物。",
+    "objectiveStack": {
+      "title": "准备<b>目标板块堆</b>:",
+      "top": "顶部: 随机选择并混洗 <b>{count} x 等级 1</b> 的目标板块。",
+      "middle": "中间：随机选择并混洗 <b>{count} x 等级 2</b> 的目标板块。",
+      "bottom": "底部：随机选择并混洗 <b>{count} x 等级 3</b> 的目标板块。",
+      "draw": "翻开目标板块堆 <b>顶部 3块</b> 目标形成起始目标。"
+    },
+    "ruleChanges": {
+      "title": "规则变更",
+      "resources": "<b>资源：</b>你的对手不会获得资源。相反，每当某个效果给对手带来这些资源时，请在每个回合结束时将它们输入到应用程序中，该应用程序会自动管理对手的进度轨。来对手动作的直接效果由应用程序自动管理，请勿重复输入它们。",
+      "objectives": "<b>目标</b>: 在你的回合结束时，将所有已完成的目标移动到你的版图附近的已完成目标堆中，并用目标板块堆中的新目标补充。你将始终有三个目标可以完成。"
+    }
+  },
+  "roundTurnPlayer": {
+    "execute": "执行你的回合行动",
+    "passConfirm": "是否弃权不行动跳过本轮？"
+  },
+  "roundTurnBot": {
+    "executed": "行动完成",
+    "notPossible": "无法执行",
+    "notPossibleConfirm": {
+      "title": "跳过行动",
+      "confirm": "请确认跳过该行动并丢弃输入的资源数。"
+    },
+    "pass": "对手弃权",
+    "discardEndOfRoundCard": "移除轮次结束牌堆中<b>顶部的卡牌</b>。",
+    "pickTech": "科技：",
+    "pleaseSelectTech": "请选择已选类型的科技。",
+    "pickProbeAction": "行动：",
+    "pleaseSelectProbeAction": "请选择所选行动。",
+    "checkSpeciesDiscovery": "<b> #{alienSpeciesIndex} 号地外生命物种</b> 是否已被发现？"
+  },
+  "roundEnd": {
+    "title": "轮次结束",
+    "gainIncome": "获得你的 <b>收入</b>.",
+    "objectives": {
+      "title": "<b>目标：如果可行，</b> 你需要提交 {count} <b>已完成目标</b>。",
+      "enterNumberCompleted": "输入<b>已完成</b>目标数：",
+      "discardObjectives": "提交 {count} 已完成目标板块。",
+      "botObjectiveProgress": "你的对手移动 {count} 格进度轨。",
+      "objectivesWarning": "请输入你已完成目标的数量。"
+    }
+  },
+  "gameEnd": {
+    "title": "结束游戏",
+    "difficultyLevel": "难度等级：",
+    "gameStatus": {
+      "title": "游戏状态",
+      "uncompletedObjectives": "<b>未完成</b>目标数",
+      "uncompletedObjectivesNote": "(仍在目标板块行的目标和仍然在目标板块中的目标。)",
+      "exertianDanger": "累积的危险值",
+      "exterianRivalCards": "在游戏结束时，所有对手打出的竭能族卡牌（Exertian cards）都视为成功完成，并获得其全部得分。"
+    },
+    "finalScoring": {
+      "title": "终局计分",
+      "scoreTrack": "分数轨道",
+      "endGameScoringCards": "终局计分卡牌",
+      "goldScoringTile": "金色里程碑板块 {index}",
+      "exertianVP": "竭能族卡牌（Exertian Cards）上的分数",
+      "exertianMinus": "竭能族（Exertian）危险值失去分数",
+      "totalVP": "总分"
+    }
+  },
+  "botResources": {
+    "gainThisTurn": "<b>对手</b>本回合从<i>游戏版图</i>获得的收入:",
+    "lifeTrace": {
+      "title": "生命痕迹",
+      "mark": "每当对手获得一格生命痕迹时，查看每一个地外生命物种对应颜色那一列。对手在该列中标记最低的可用空格。（它们忽略列下面的溢出区域，除非所有其他空格都已满。）",
+      "tiebreaker": "如果可用中拥有同样低的空格，则根据决策箭头选择最左边或最右边的空格进行标记。",
+      "oumuamua": "只有当它有适当数量的地外化石时，它才能标记地外生命面板需要支付地外化石的相应空格。否则会忽视这个空格。"
+    },
+    "exofossil": {
+      "title": "地外化石（Exofossils）",
+      "collect": "对手也像你一样收集地外化石（Exofossils）。"
+    }
+  },
+  "botReachedMilestones": {
+    "neutral": "对手到达一个<b>中立</b>里程碑 {score}。",
+    "gold": "对手到达一个<b>金色</b>里程碑 {score}。<br/>把一个标记放在一个黄金色里程碑的第一个空格上。"
+  },
+  "sideBar": {
+    "round": "轮次 {round}",
+    "turn": "回合 {turn}",
+    "species": "物种",
+    "discover": "发现",
+    "speciesDiscovery": {
+      "title": "发现地外生命物种",
+      "alreadyDiscovered": "请选择已被发现的地外生命物种：",
+      "none": "(无)"
+    },
+    "rival": {
+      "title": "对手"
+    }
+  },
+  "rules": {
+    "action": {
+      "tech": {
+        "title": "科技",
+        "rotateSolarSystems": "当对手获得一项科技，太阳系就会像往常一样进行旋转。",
+        "chooseTech": "对手按以下方式选择要研究的科技：",
+        "preferredTechs": "查看对手目前在进度轨上的位置。这显示了对手的首选科技。",
+        "twoPointTile": "如果该科技上有 2 分的板块，对手就会优先选择该科技而非其他。",
+        "getBonus": "给对手所选科技板块上显示的任何奖励，包括 2 分奖励（如果该科技有 2 分奖励）。<br/><b>例外</b>: 对手永远不会从科技中获得<i>发射</i> 和 <i> 2 点数据</i>的奖励。",
+        "discard": "丢弃该科技，应用程序会自动记录并管理它。"
+      },
+      "launch": {
+        "title": "发射",
+        "placeProbe": "对手在地球上放置一个探测器。"
+      },
+      "probe": {
+        "title": "轨道卫星/着陆器",
+        "moveProbe": "把对手的探测器从地球移到另一个行星上。按照从左到右的顺序检查行星，直到你找到一个你可以在规定的移动次数中到达的行星。与往常一样，对手需要额外支付 1 点移动力才能离开小行星带，所以在决定时候要考虑到这一点。",
+        "publicity": "执行移动时，对手获得到访行星和彗星获得的声望点。如果有多种方法可以使用提供的移动飞到指定行星，选择获得声望点最多的路线。",
+        "landOrbit": "最后，探测器可能转变为一个着陆器或轨道飞行器：",
+        "landMoon": "如果该行星有可供登录的<b>卫星</b>, 对手将进行登录。如果有多个卫星可供选择，对手会根据决策箭头选择最左侧或最右侧的卫星。",
+        "preferOrbitLand": "对手试图成为该行星<b>第一个</b>绕轨卫星或者<b>第一个</b>着陆器。 如果两个首个空格均可用，或者两者均不可用，对手则会依据行动卡牌的提示来决定",
+        "pointsResources": "无论哪种方式，对手获得任何从轨道卫星或着陆器获得的分数、资源和生命痕迹。"
+      },
+      "telescope": {
+        "title": "望远镜",
+        "markSignals": "根据行动所示标记对手的信号。对于来自卡牌行的信号，使用决策箭头来决定选择最左边的还是最右边的卡牌。",
+        "redrawCards": "当对手从卡牌行中标记完信号后，抽取牌库顶的牌补充被丢弃的牌。",
+        "multipleSectors": {
+          "title": "如果一个信号可以标记在多个不同的扇区，那么对手会根据以下逻辑为其信号选择一个扇区：",
+          "sectorWin": "如果通过标记信号，对手会<b>赢得一个扇区</b>，那么对手就会选择该扇区。",
+          "scorePoints": "如果无法赢得该扇区，对手则会查看标记信号是否能为标记该扇区的第二个信号<b>得分</b>。",
+          "mostMarkers": "如果没有一个扇区可以获胜或得分，则对手选择他<b>标记最多</b>的扇区。",
+          "tieBreaker": "在上述每个步骤中，如果出现平局，对手会倾向于较大的扇区（可包含更多数据的扇区）。"
+        }
+      },
+      "analyze": {
+        "title": "分析",
+        "lifeTrace": "对手标记蓝色的生命痕迹。"
+      },
+      "speciesDiscovery": {
+        "title": "地外生命被发现",
+        "instructions": "如果已经发现<b>#{alienSpeciesIndex}地外生命物种</b>，请使用右侧的<i>发现</i>按钮在应用程序中进行标记。然后改为执行替换的新的行动。"
+      },
+      "speciesSpecialAction": {
+        "mascamites": {
+          "title": "食铵星虫(Mascamites)特殊行动",
+          "instructions": "随机拿取一个该行星上的<b>样本标记</b>，然后正面朝上放置在该地外生命面板对应区域（忽略奖励）。",
+          "landPlanet": "对手在该行星执行一次登录行动。"
+        },
+        "anomalies": {
+          "title": "异象体(Anomalies)特殊行动",
+          "instructions": "如果对手没有赢得下一异象体(Anomalies)效果，它将标记一个<b>对应颜色</b>的生命痕迹标记到该物种最低空格上。"
+        },
+        "centaurians": {
+          "title": "半人马星人(Centaurians)特殊行动",
+          "instructions": "如果对手还有信息指示物他的库存中，并且没有其他信息指示物在计分轨上，他将1个信息指示物放置到比当前得分高出 15 分的位置。",
+          "generalInstructions": "当你发现该地外生命时，对手就像你一样放置一个信息里程碑标记。此外，他还保留所有剩余的信息里程碑，他将在自己的地外生命行动卡中使用这个标记。当对手到达信息里程碑时，他将根据决策箭头选择最左边或最右边的空白区域并获得奖励。对手只有在他的计算机已经填满时了并且数据池有足够的数据时才会支付进行标记。"
+        },
+        "exertians": {
+          "title": "竭能族(Exertians)特殊行动",
+          "instructions": "如果对手打出该地外生物的卡牌数及其在该地外生命面板上的标记总数小于5（4或更少），则对手从该地外生物的卡牌堆顶部<b>抽取一张牌</b>面朝下放置在他的游戏区域。.",
+          "generalInstructions": "对手只能通过他们为该地外生命设计的行动卡来抽取和打出竭能族(Exertians)卡牌。他们无视竭能族(Exertians)里程碑。<br/>当该地外生物被发现时，对手不会抽牌或打出任何卡牌，但他们会根据自己在发现标记区域上放置的每个标记，在进度轨推进对应格数。"
+        }
+      }
+    }
+  },
+  "player": {
+    "player": "玩家",
+    "bot": "对手"
+  },
+  "planet": {
+    "jupiter": "木星(Jupiter)",
+    "mars": "火星(Mars)",
+    "mercury": "水星(Mercury)",
+    "neptune": "海王星(Neptune)",
+    "saturn": "土星(Saturn)",
+    "uranus": "天王星(Uranus)",
+    "venus": "金星(Venus)",
+    "oumuamua": "奥陌陌(‘Oumuamua)"
+  },
+  "alienSpecies": {
+    "mascamites": "食铵星虫(Mascamites)",
+    "anomalies": "异象体(Anomalies)",
+    "oumuamua": "奥陌陌(‘Oumuamua)",
+    "centaurians": "半人马星人(Centaurians)",
+    "exertians": "竭能族(Exertians)"
+  },
+  "difficultyLevel": {
+    "1": "难度等级 1 - 无需 目标板块",
+    "2": "难度等级 2 - 10 目标板块",
+    "3": "难度等级 3 - 12 目标板块",
+    "4": "难度等级 4 - 15 目标板块",
+    "5": "难度等级 5 - 17 目标板块"
+  },
+  "notfound": {
+    "title": "找不到"
+  },
+  "action": {
+    "playGame": "玩游戏",
+    "startGame": "开始游戏",
+    "next": "下一步",
+    "nextRound": "下一轮次",
+    "abortGame": "掀桌",
+    "abortGameConfirm": "你确认要放弃正在进行的游戏吗？",
+    "endGame": "游戏结束",
+    "endGameConfirm": "你确定要结束游戏返回主页吗？",
+    "cancel": "容我三思",
+    "backToHome": "回到主页",
+    "back": "返回",
+    "close": "关闭",
+    "ok": "喏",
+    "pass": "弃权不行动"
+  },
+  "footer": {
+    "credits": "致谢"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "刷新助手应用程序",
+    "notice": "应用程序已更新-是否要刷新以使用最新版本？"
+  }
+}
