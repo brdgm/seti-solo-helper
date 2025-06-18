@@ -131,7 +131,7 @@
   "rules": {
     "action": {
       "tech": {
-        "title": "Tenología",
+        "title": "Tecnología",
         "rotateSolarSystems": "Cuando el rival obtenga una tecnología, avanza el sistema solar como es habitual.",
         "chooseTech": "El rival elige qué tecnología investigar de la siguiente manera:",
         "preferredTechs": "El rival prefiere la correspondiente a la posición actual en su marcador de progreso.",
