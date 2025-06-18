@@ -1,0 +1,253 @@
+{
+  "gameTitle": "SETI",
+  "home": {
+    "title": "SETI Asistente para juego en solitario",
+    "play1": "Juega una partida en solitario de <a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> contra una institución de investigación rival.",
+    "play2": "Esta aplicación sustituye la baraja de cartas y el tablero del rival, y te guía a través del juego con las reglas de solitario. También implementa todos los niveles de dificultad.",
+    "feedback": "Comentarios y discusión:"
+  },
+  "setup": {
+    "title": "Preparación",
+    "difficultyLevel": {
+      "title": "Nivel de Dificultad",
+      "easy": "Fácil",
+      "hard": "Difícil"
+    },
+    "startPlayer": {
+      "title": "Jugador Inicial",
+      "random": "Aleatorio",
+      "player": "Jugador",
+      "bot": "Rival"
+    }
+  },
+  "setupGameBoard": {
+    "title": "Preparación del Tablero de Juego",
+    "solarSystem": {
+      "title": "Sistema Solar",
+      "randomizerApp": "Aleatorizador SETI de CGE (externo)"
+    },
+    "goldScoringTile": {
+      "title": "Losetas Doradas de Puntuación",
+      "randomize": "Aleatorizar"
+    }
+  },
+  "setupGame": {
+    "title": "Preparación de la Partida",
+    "setup2Players": "Prepara una partida para <b>2 jugadores</b>.",
+    "startPlayer": {
+      "player": "<b>Tú</b> eres el jugador inicial.",
+      "bot": "El <b>rival</b> es el jugador inicial."
+    },
+    "playerScoreTrackSetup": "Coloca tu ficha de puntuación en el espacio {space} del marcador de puntos.",
+    "rivalPieces": "Dale al rival <b>todas las fichas de un color</b>.",
+    "componentsNotRequired": "No usa cartas de acción, tablero de jugador, marcador de puntos ni marcador de publicidad.",
+    "objectiveStack": "La pila de objetivos la maneja la aplicación.",
+    "ruleChanges": {
+      "title": "Cambios en las Reglas",
+      "resources": "<b>Recursos:</b> El rival no mantiene la cuenta de los recursos. En vez de ello, cuando un efecto <i>del tablero de juego</i> le proporcione recursos, introdúcelos en la aplicación al final de cada turno. La aplicación gestionará automáticamente el avance del rival. Los efectos directos de acciones del rival también los gestiona la aplicación automáticamente, no los introduzcas en los campos de entrada.",
+      "objectives": "<b>Objetivos</b>: Al final de tu turno, mueve todos los objetivos completados a una pila de descarte de objetivos junto a tu tablero de jugador y sustitúyelos con nuevos objetivos de la pila. Tendrás siempre 3 objetivos que completar hasta que la pila de objetivos se vacíe."
+    }
+  },
+  "roundTurnPlayer": {
+    "execute": "Juega tu turno.",
+    "passConfirm": "¿Pasar y finalizar la fase de acciones?"
+  },
+  "roundTurnBot": {
+    "executed": "Acción Finalizada",
+    "notPossible": "No Posible",
+    "notPossibleConfirm": {
+      "title": "Saltar Acción",
+      "confirm": "Por favor confirma que quieres saltarte esta acción, e ignorar los valores de recursos introducidos."
+    },
+    "pass": "El Rival pasa.",
+    "discardEndOfRoundCard": "Retira la <b>carta superior</b> de la pila de final de turno.",
+    "pickTech": "Tecnología:",
+    "pleaseSelectTech": "Por favor elige el tipo de tecnología.",
+    "pickProbeAction": "Acción:",
+    "pleaseSelectProbeAction": "Por favor elige la acción.",
+    "checkSpeciesDiscovery": "¿Ha sido descubierta la especie extraterrestre <b>species #{alienSpeciesIndex}</b>?"
+  },
+  "roundEnd": {
+    "title": "Final de la Ronda",
+    "gainIncome": "Obtén tus <b>ingresos</b>.",
+    "objectives": {
+      "title": "Tienes que descartar {count} <b>objetivo completado</b>, si es posible. | Tienes que descartar {count} <b>objetivos completados</b>, si es posible.",
+      "numberCompleted": "Has completado {count} objetivo. | Has completado {count} objetivos.",
+      "discardObjectives": "Has descartado {count} objetivo completado. | Has descartado {count} objetivos completados.",
+      "botObjectiveProgress": "Tu rival recibe {count} progreso."
+    }
+  },
+  "gameEnd": {
+    "title": "Final de la Partida",
+    "gameStatus": {
+      "title": "Estado de la Partida",
+      "uncompletedObjectives": "{count} objetivo incompleto | {count} objetivos incompletos",
+      "exertianDanger": "Suma de peligro Exertiano",
+      "exterianRivalCards": " Al final de la partida, todas las cartas Exertianas del rival se consideran completadas, y el rival se suma todos los puntos de las mismas."
+    },
+    "finalScoring": {
+      "title": "Puntuación Final",
+      "scoreTrack": "Marcador de Puntuación",
+      "endGameScoringCards": "Cartas de puntuación de final de partida",
+      "goldScoringTile": "Loseta Dorada de Puntuación {index}",
+      "exertianVP": "PV de Cartas Exertianas",
+      "exertianMinus": "Pérdida de Puntos Exertianos",
+      "totalVP": "PV Total"
+    }
+  },
+  "botResources": {
+    "gainThisTurn": "<b>Rival</b> gana, este turno, del <i>tablero de juego</i>:",
+    "lifeTrace": {
+      "title": "Signos de Vida",
+      "mark": "Cuando el rival obtenga un signo de vida, comprueba esa columna para cada especie extraterrestre. Tu rival marca el espacio más abajo disponible de esa columna. (Ignora el espacio de desbordamiento bajo la columna, a menos que todos los demás signos estén llenos)",
+      "tiebreaker": "Si los espacios de las columnas seleccionadas están a la misma altura, elige el de más a la izquierda o la derecha, en función de la flecha de decisión.",
+      "oumuamua": "Marcará el espacio que requiere el pago de exofósiles solo cuando tenga suficientes; en otro caso, considerará el espacio como ocupado."
+    },
+    "exofossil": {
+      "title": "Exofósiles",
+      "collect": "El rival también recoge fichas de exofósil."
+    }
+  },
+  "botReachedMilestones": {
+    "neutral": "El rival ha alcanzado un hito <b>neutral</b> en la puntuación {score}.",
+    "gold": "El rival ha alcanzado un hito <b>dorado</b> en la puntuación {score}.<br/>. Reclama el primer y más valioso espacio de una loseta dorada.",
+    "centaurians": "Centaurianos: Cuando el rival alcance su hito centauriano, elegirá la recompensa de más a la izquierda o la derecha, en función de la flecha de decisión.",
+    "dismiss": "Cancelar"
+  },
+  "sideBar": {
+    "round": "Ronda {round}",
+    "turn": "Turno {turn}",
+    "species": "Especies",
+    "discover": "Descubrir",
+    "speciesDiscovery": {
+      "title": "Descubrir especies",
+      "alreadyDiscovered": "Por favor, elige una especie que haya sido descubierta:",
+      "none": "(ninguna)"
+    },
+    "rival": {
+      "title": "Rival"
+    }
+  },
+  "rules": {
+    "action": {
+      "tech": {
+        "title": "Tecnología",
+        "rotateSolarSystems": "Cuando el rival obtenga una tecnología, avanza el sistema solar como es habitual.",
+        "chooseTech": "El rival elige qué tecnología investigar de la siguiente manera:",
+        "preferredTechs": "El rival prefiere la correspondiente a la posición actual en su marcador de progreso.",
+        "twoPointTile": "Si la tecnología tiene una loseta de 2 puntos en ella, el rival elige esa tecnología.",
+        "getBonus": "El rival obtiene cualquier bonificación indicada en la loseta de tecnología escogida, incluyendo la bonificación de 2 puntos si la tuviese.<br/><b>Excepción</b>: El rival nunca obtendrá bonificaciones de <i>lanzamiento</i> o <i>2 datos</i> de las tecnologías.",
+        "discard": "Retira la loseta de tecnología, la aplicación lo gestiona automáticamente."
+      },
+      "launch": {
+        "title": "Lanzar",
+        "placeProbe": "Coloca una sonda del rival en la Tierra."
+      },
+      "probe": {
+        "title": "Orbitador/Aterrizador",
+        "moveProbe": "Mueve la sonda del rival de la Tierra a un planeta. Comprueba los planetas por orden, de izquierda a derecha, hasta que encuentres uno al que puedas llegar con la cantidad de movimientos indicada. Como es habitual, el rival tiene que pagar 1 movimiento adicional para salir de asteroides, así que tenlo en cuenta al decidir a cuál puede llegar.",
+        "publicity": "Después de mover, el rival obtiene la publicidad por visitar planetas y cometas. Si hay varias formas de llegar a ese planeta usando los movimientos previstos, elige el plan de vuelo que le proporcione mayor publicidad.",
+        "landOrbit": "Por último, la sonda se convierte en un aterrizador o un orbitador:",
+        "landMoon": "Si el planeta tiene una <b>luna</b> con un espacio disponible, el rival intenta primero descartar una de sus tecnologías de sonda para aterrizar en ella. Si hay varias lunas disponibles, el rival elige la de más a la izquierda o la derecha, en función de la flecha de decisión.",
+        "preferOrbitLand": "El rival intentará hacerse con el <b>primer</b> espacio de orbitador o el <b>primer</b> espacio de aterrizador del planeta. Si ambos espacios –o ninguno– están disponibles, el rival se ciñe a la carta de acción.",
+        "pointsResources": "En cualquier caso, el rival recibe los puntos, los recursos y los signos de vida obtenidos con el orbitador o el aterrizador."
+      },
+      "telescope": {
+        "title": "Telescopio",
+        "markSignals": "Marca las señales del rival tal y como indica la acción. Para señales de la fila de cartas, usa la flecha de decisión para determinar si elegirá la de más a la izquierda o la de más a la derecha.",
+        "redrawCards": "Una vez que el rival ha terminado de marcar señales de la fila de cartas, reemplaza las cartas descartadas con nuevas cartas de encima del mazo.",
+        "multipleSectors": {
+          "title": "Si se pudiera colocar una señal en diferentes sectores, el rival elegirá un sector para su señal basándose en la siguiente lógica:",
+          "sectorWin": "Si al colocar la señal el rival <b>ganaría un sector</b>, elige dicho sector.",
+          "scorePoints": "Si no puede ganar un sector así, el rival comprueba si colocando una señal <b>puede anotarse puntos</b> por marcar la segunda señal en un sector.",
+          "mostMarkers": "Si no puede ganar un sector, o anotarse puntos, el rival opta por el sector donde <b>tenga más fichas</b>.",
+          "tieBreaker": "Para cada uno de estos pasos, en caso de empate, el rival opta por el sector más grande (el que puede contener más datos)."
+        }
+      },
+      "analyze": {
+        "title": "Analizar",
+        "lifeTrace": "El rival marca el signo de vida indicado."
+      },
+      "speciesDiscovery": {
+        "title": "Descubrimiento de Especies",
+        "instructions": "Si la <b>especie extraterrestre #{alienSpeciesIndex}</b> se ha descubierto, por favor márcala en la aplicación usando el botón <i>Descubrir</i> que hay a la derecha. Sigue las indicaciones de la acción de dicha especie en su lugar."
+      },
+      "speciesSpecialAction": {
+        "mascamites": {
+          "title": "Acción Especial de los Mascamitas",
+          "instructions": "Coge una <b>muestra</b> al azar del planeta y colócala boca arriba en el tablero de esta especie (ignora la recompensa).",
+          "landPlanet": "El rival aterriza en el planeta."
+        },
+        "anomalies": {
+          "title": "Acción Especial de las Anomalías",
+          "instructions": "Si el rival no va a ganar la siguiente anomalía, marca un signo de vida <b>de ese color</b> para esta especie."
+        },
+        "centaurians": {
+          "title": "Acción Especial de los Centaurianos",
+          "instructions": "Si el rival tiene aún hitos de mensaje en su reserva y ninguno en el marcador de puntuación, coloca 1 hito de mensaje 15 puntos por delante de su puntuación actual.",
+          "generalInstructions": "Cuando descubres esta especie extraterrestre, el rival coloca un hito de mensaje como lo haría el jugador, y recibe las fichas restantes. Las usará con su acción especial de los extraterrestres.<br/>El rival marca espacios que requieran el pago de datos sólo si tiene la computadora llena y suficientes datos en su reserva para hacer el pago.",
+          "addMilestone": "Añade la Ficha de Hito del Rival"
+        },
+        "exertians": {
+          "title": "Acción Especial de los Exertianos",
+          "instructions": "Cuenta el número de cartas de Exertiano jugadas por el rival y los signos de vida en el tablero de esta especie. Si el total es menor de 5, el rival <b>jugará una carta de exertiano</b> en secreto.",
+          "generalInstructions": "El rival sólo robará y jugará cartas de Exertiano con la acción relativa a esta especie. Ignora los hitos Exertianos.<br/>Cuando esta especie sea descubierta, el rival no roba ni juega cartas, pero avanzará en su marcador de progreso por cara ficha colocada en los espacios de descubrimiento."
+        }
+      }
+    }
+  },
+  "player": {
+    "player": "Jugador",
+    "bot": "Rival"
+  },
+  "planet": {
+    "jupiter": "Júpiter",
+    "mars": "Marte",
+    "mercury": "Mercurio",
+    "neptune": "Neptuno",
+    "saturn": "Saturno",
+    "uranus": "Urano",
+    "venus": "Venus",
+    "oumuamua": "‘Oumuamua"
+  },
+  "alienSpecies": {
+    "mascamites": "Mascamitas",
+    "anomalies": "Anomalías",
+    "oumuamua": "‘Oumuamua",
+    "centaurians": "Centaurianos",
+    "exertians": "Exertianos"
+  },
+  "difficultyLevel": {
+    "1": "Nivel 1 - sin objetivos",
+    "2": "Nivel 2 - 10 objetivos",
+    "3": "Nivel 3 - 12 objetivos",
+    "4": "Nivel 4 - 15 objetivos",
+    "5": "Nivel 5 - 17 objetivos"
+  },
+  "notfound": {
+    "title": "No Encontrado"
+  },
+  "action": {
+    "playGame": "Jugar una Partida",
+    "startGame": "Iniciar Partida",
+    "next": "Siguiente",
+    "nextRound": "Siguiente Ronda",
+    "abortGame": "Finalizar Partida",
+    "abortGameConfirm": "Finalizando la partida actual, ¿estás seguro?",
+    "endGame": "Fin de Partida",
+    "endGameConfirm": "Finalizar esta partida y volver a la página de inicio, ¿estás seguro?",
+    "cancel": "Cancelar",
+    "backToHome": "Volver al Inicio",
+    "back": "Atrás",
+    "close": "Cerrar",
+    "ok": "OK",
+    "pass": "Pasar"
+  },
+  "footer": {
+    "credits": "Créditos"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Actualizar Aplicación",
+    "notice": "La aplicación ha sido actualizada, ¿quieres actualizar para usar la última versión?"
+  }
+}
