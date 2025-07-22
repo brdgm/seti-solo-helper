@@ -22,7 +22,7 @@
         </div>
         <div class="option">
           <AppIcon type="resource" name="data" class="icon"/>
-          <NumberInput v-model="resources.data"/>
+          <NumberInput v-model="resources.data" :min="-3"/>
         </div>
         <div class="option">
           <AppIcon type="resource" name="vp" class="icon"/>

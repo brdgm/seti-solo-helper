@@ -53,7 +53,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/round/:round/end',
     name: 'RoundEnd',
     component: RoundEnd
-
   },
   {
     path: '/round/:round/gameEnd',
