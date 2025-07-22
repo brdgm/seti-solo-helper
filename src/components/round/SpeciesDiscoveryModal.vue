@@ -12,7 +12,7 @@
       </ol>
       <p class="alert alert-info small" v-if="isSpeciesCentaurians">
         <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
-        <span v-html="t('rules.action.speciesSpecialAction.centaurians.generalInstructions')"></span>
+        <span v-html="t('rules.action.speciesSpecialAction.centaurians.generalInstructions')"></span><br/>
         <CentauriansAddMilestoneTokenButton :navigationState="navigationState" :botGameBoardResources="botGameBoardResources"/>
       </p>
       <p class="alert alert-info small" v-if="isSpeciesExertians">

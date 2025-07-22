@@ -185,7 +185,7 @@
         "centaurians": {
           "title": "Centaurians Special Action",
           "instructions": "If the rival still has a message milestone in his reserve and none on the scoring track, place one message milestone 15 points ahead of their current score.",
-          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action.<br/>The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay.",
+          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action.<br/>The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay (min. 9 data). Enter the data cost as negative value.",
           "addMilestone": "Add Rival Milestone Token"
         },
         "exertians": {
