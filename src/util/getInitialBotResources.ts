@@ -1,3 +1,4 @@
+import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Player from '@/services/enum/Player'
 import { BotResources } from '@/store/state'
 
@@ -6,9 +7,9 @@ import { BotResources } from '@/store/state'
  * @param startPlayer Start player
  * @returns Bot resources
  */
-export default function(startPlayer: Player) : BotResources {
+export default function(startPlayer: Player, difficultyLevel: DifficultyLevel) : BotResources {
   return {
-    progress: 1,
+    progress: getInitialProgress(difficultyLevel),
     publicity: 4,
     data: 0,
     vp: startPlayer == Player.BOT ? 1 : 2,
@@ -16,5 +17,16 @@ export default function(startPlayer: Player) : BotResources {
     techTelescope: 0,
     techComputer: 0,
     probeCount: 0
+  }
+}
+
+function getInitialProgress(difficultyLevel: DifficultyLevel): number {
+  switch (difficultyLevel) {
+    case DifficultyLevel.LEVEL_4:
+      return 4
+    case DifficultyLevel.LEVEL_5:
+      return 9
+    default:
+      return 1
   }
 }
