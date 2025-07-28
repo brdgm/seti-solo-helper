@@ -79,7 +79,7 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
     cardDeck: CardDeck.new(state.setup.difficultyLevel).toPersistence(),
     objectiveStack: ObjectiveStack.new(state.setup.difficultyLevel).toPersistence(),
     milestoneTracker: MilestoneTracker.new().toPersistence(),
-    resources: getInitialBotResources(roundData?.startPlayer ?? Player.PLAYER),
+    resources: getInitialBotResources(roundData?.startPlayer ?? Player.PLAYER, state.setup.difficultyLevel),
   }
 }
 
