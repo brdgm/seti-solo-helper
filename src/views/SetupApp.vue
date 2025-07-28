@@ -54,7 +54,7 @@ export default defineComponent({
           cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
           objectiveStack: ObjectiveStack.new(this.state.setup.difficultyLevel).toPersistence(),
           milestoneTracker: MilestoneTracker.new().toPersistence(),
-          resources: getInitialBotResources(startPlayer)
+          resources: getInitialBotResources(startPlayer, this.state.setup.difficultyLevel)
         },
         turns: []
       }
