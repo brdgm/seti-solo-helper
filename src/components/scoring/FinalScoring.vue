@@ -197,14 +197,14 @@ export default defineComponent({
       return Math.max(toNumber(this.playerExertianDanger), toNumber(this.botExertianDanger))
     },
     playerExertianMinus() : number {
-      const exertianDanger = toNumber(this.playerExertianDanger);
+      const exertianDanger = toNumber(this.playerExertianDanger)
       if (exertianDanger > 0 && exertianDanger == this.maxExertianDanger) {
         return Math.floor(this.playerPretotalVP * 0.1)
       }
       return 0
     },
     botExertianMinus() : number {
-      const exertianDanger = toNumber(this.botExertianDanger);
+      const exertianDanger = toNumber(this.botExertianDanger)
       if (exertianDanger > 0 && exertianDanger == this.maxExertianDanger) {
         return Math.floor(this.botPretotalVP * 0.1)
       }
