@@ -19,8 +19,8 @@ describe('services/Cards', () => {
   })
 
   it('getAlienSpeciesCard', () => {
-    getAllEnumValues(AlienSpecies).forEach(alienSpecies => {
+    for (const alienSpecies of getAllEnumValues(AlienSpecies)) {
       expect(Cards.getAlienSpeciesCard(alienSpecies)).to.not.undefined
-    })
+    }
   })
 })

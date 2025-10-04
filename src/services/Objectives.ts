@@ -198,7 +198,9 @@ const cards : Objective[] = [
 ]
 
 const objectivesMap = new Map<number,Objective>()
-cards.forEach(objective => objectivesMap.set(objective.id, objective))
+for (const objective of cards) {
+  objectivesMap.set(objective.id, objective)
+}
 
 export default {
 

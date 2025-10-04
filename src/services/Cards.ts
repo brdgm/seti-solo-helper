@@ -209,7 +209,9 @@ const cards : Card[] = [
 ]
 
 const cardsMap = new Map<string,Card>()
-cards.forEach(card => cardsMap.set(card.id, card))
+for (const card of cards) {
+  cardsMap.set(card.id, card)
+}
 
 export default {
 

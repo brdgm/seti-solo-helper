@@ -12,13 +12,13 @@ export default function mockRound(params?: MockRoundParams) : Round {
   // renumber turnOrderIndex
   let previousTurn = 0
   let turnOrderIndex = 0
-  round.turns.forEach(turn => {
+  for (const turn of round.turns) {
     if (turn.turn != previousTurn) {
       turnOrderIndex = 0
       previousTurn = turn.turn
     }
     turn.turnOrderIndex = turnOrderIndex++
-  })
+  }
   return round
 }
 
