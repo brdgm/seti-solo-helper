@@ -7,7 +7,7 @@ import { BotResources } from '@/store/state'
  * @param startPlayer Start player
  * @returns Bot resources
  */
-export default function(startPlayer: Player, difficultyLevel: DifficultyLevel) : BotResources {
+export default function getInitialBotResources(startPlayer: Player, difficultyLevel: DifficultyLevel) : BotResources {
   return {
     progress: getInitialProgress(difficultyLevel),
     publicity: 4,

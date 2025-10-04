@@ -188,7 +188,9 @@ export default defineComponent({
     }
   },
   mounted() {
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
+    for (const tooltipTriggerEl of document.querySelectorAll('[data-bs-toggle="tooltip"]')) {
+      new Tooltip(tooltipTriggerEl)
+    }
   }
 })
 </script>

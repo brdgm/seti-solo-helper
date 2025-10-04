@@ -19,7 +19,7 @@ export default function getTurnOrder(state: State, currentRound: number, current
   let invalidTurn = false
   for (let turn=1; turn<=currentTurn+1; turn++) {
     let turnOrderIndex = 0
-    playerOrder.forEach(player => {
+    for (const player of playerOrder) {
       const hasPassed = turns.find(item => item.turn<turn
             && item.player==player && item.pass) != undefined
       if (!hasPassed) {
@@ -30,7 +30,7 @@ export default function getTurnOrder(state: State, currentRound: number, current
         steps.push({round:round.round, turn, turnOrderIndex, player})
         turnOrderIndex++
       }
-    })
+    }
   }
   if (invalidTurn) {
     return []
