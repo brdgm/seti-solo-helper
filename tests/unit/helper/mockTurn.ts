@@ -2,7 +2,7 @@ import Player from '@/services/enum/Player'
 import { BotPersistence, RoundTurn } from '@/store/state'
 import mockBotPersistence from './mockBotPersistence'
 
-export default function (params?: MockTurnParams) : RoundTurn {
+export default function mockTurn(params?: MockTurnParams) : RoundTurn {
   return {
     round: params?.round ?? 1,
     turn: params?.turn ?? 1,

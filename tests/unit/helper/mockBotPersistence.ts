@@ -5,7 +5,7 @@ import ObjectiveStack from '@/services/ObjectiveStack'
 import mockObjectiveStack from './mockObjectiveStack'
 import MilestoneTracker from '@/services/MilestoneTracker'
 
-export default function (params?: MockBotPersistenceParams) : BotPersistence {  
+export default function mockBotPersistence(params?: MockBotPersistenceParams) : BotPersistence {  
   return {
     cardDeck: (params?.cardDeck ?? mockCardDeck()).toPersistence(),
     objectiveStack: (params?.objectiveStack ?? mockObjectiveStack()).toPersistence(),

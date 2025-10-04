@@ -5,7 +5,7 @@ import DifficultyLevel from '@/services/enum/DifficultyLevel'
  * @param difficultyLevel Difficulty level
  * @returns Difficulty level settings
  */
-export default function(difficultyLevel : DifficultyLevel) : DifficultyLevelSettings {
+export default function getDifficultyLevelSettings(difficultyLevel : DifficultyLevel) : DifficultyLevelSettings {
   switch (difficultyLevel) {
     case DifficultyLevel.LEVEL_1:
       return { advancedCards: 0, objectivesLevel1: 0, objectivesLevel2: 0, objectivesLevel3: 0 }
