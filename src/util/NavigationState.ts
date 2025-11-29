@@ -31,7 +31,7 @@ export default class NavigationState {
     this.turn = getIntRouteParam(route, 'turn')
     this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
     this.action = getIntRouteParam(route, 'action')
-    this.player = (route.name == 'RoundTurnPlayer') ? Player.PLAYER : Player.BOT
+    this.player = (route.name == 'RoundTurnBot') ? Player.BOT : Player.PLAYER
 
     const roundData = state.rounds.find(item => item.round === this.round)
     this.startPlayer = roundData?.startPlayer ?? Player.PLAYER
