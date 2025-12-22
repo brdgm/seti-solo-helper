@@ -14,9 +14,11 @@ export default function getAlienSpecies(expansions: Expansion[]) : AlienSpecies[
     AlienSpecies.EXERTIANS
   ]
   if (expansions.includes(Expansion.SPACE_AGENCIES_SPECIES)) { 
-    species.push(AlienSpecies.ARKHOS)
-    species.push(AlienSpecies.GLYPHIDS)
-    species.push(AlienSpecies.AMOEBA)
+    species.push(
+      AlienSpecies.ARKHOS,
+      AlienSpecies.GLYPHIDS,
+      AlienSpecies.AMOEBA
+    )
   }
   return species
 }

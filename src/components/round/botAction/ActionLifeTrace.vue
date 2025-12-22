@@ -52,14 +52,6 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
-  },
-  computed: {
-    hasTelescopeTech() : boolean {
-      return this.navigationState.botResources.techTelescope > 0
-    }
-  },
-  mounted() {
-    this.$emit('ready', this.hasTelescopeTech ? TechType.TELESCOPE : undefined)
   }
 })
 </script>
