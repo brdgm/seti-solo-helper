@@ -10,7 +10,6 @@
 
   <p v-html="t('home.play1')"></p>
   <p v-html="t('home.play2')"></p>
-  <p v-html="t('home.play3')"></p>
 
   <p class="text-muted fst-italic">
     {{t('home.feedback')}}

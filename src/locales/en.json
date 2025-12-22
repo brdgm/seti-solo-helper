@@ -3,8 +3,7 @@
   "home": {
     "title": "SETI Solo Helper",
     "play1": "Play a <a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> solo game against a rival research institution.",
-    "play2": "This application replaces the rival action cards and player board and guides you through the game and solo ruleset. It supports all difficult levels.",
-    "play3": "The <a href='https://boardgamegeek.com/boardgameexpansion/445048/seti-space-agencies' target='_blank' rel='noopener'>Space Agencies</a> expansion is supported.",
+    "play2": "This application replaces the rival action cards and player board and guides you through the game and solo ruleset. It supports all difficult levels and the <a href='https://boardgamegeek.com/boardgameexpansion/445048/seti-space-agencies' target='_blank' rel='noopener'>Space Agencies</a> expansion.",
     "feedback": "Discussion and Feedback:"
   },
   "setup": {

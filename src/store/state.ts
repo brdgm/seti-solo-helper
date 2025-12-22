@@ -30,9 +30,7 @@ export const useStateStore = defineStore(`${name}.state`, {
       this.alienDiscovery.species = [undefined, undefined]
     },
     setupToggleExpansion(expansion: Expansion) : void {
-      if (!this.setup.expansions) {
-        this.setup.expansions = []
-      }
+      this.setup.expansions ??= []
       toggleArrayItem(this.setup.expansions, expansion)
     },
     storeRound(round : Round) : void {
