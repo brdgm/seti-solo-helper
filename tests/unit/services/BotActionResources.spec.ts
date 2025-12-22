@@ -1,6 +1,8 @@
 import BotActionResources from '@/services/BotActionResources'
 import Action from '@/services/enum/Action'
 import AlienSpecies from '@/services/enum/AlienSpecies'
+import DifficultyLevel from '@/services/enum/DifficultyLevel'
+import LifeTrace from '@/services/enum/LifeTrace'
 import TechType from '@/services/enum/TechType'
 import { BotResources } from '@/store/state'
 import { expect } from 'chai'
@@ -13,7 +15,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-tech', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.TECH, publicityCost: 6, progress: 1}, TechType.PROBE)
+    underTest.applyAction({action:Action.TECH, publicityCost: 6, progress: 1}, DifficultyLevel.LEVEL_1, TechType.PROBE)
 
     expect(underTest.resources).to.eql(resources({
       progress: 1,
@@ -24,7 +26,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-launch', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.LAUNCH, publicity:2, progress:1})
+    underTest.applyAction({action:Action.LAUNCH, publicity:2, progress:1}, DifficultyLevel.LEVEL_1)
 
     expect(underTest.resources).to.eql(resources({
       progress: 1,
@@ -35,7 +37,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-probe', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.PROBE, movementPoints:1, planets:[], probeActions:[]})
+    underTest.applyAction({action:Action.PROBE, movementPoints:1, planets:[], probeActions:[]}, DifficultyLevel.LEVEL_1)
 
     expect(underTest.resources).to.eql(resources({
       probeCount: -1
@@ -44,7 +46,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-probe-tech', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.PROBE, movementPoints:1, planets:[], probeActions:[]}, TechType.PROBE)
+    underTest.applyAction({action:Action.PROBE, movementPoints:1, planets:[], probeActions:[]}, DifficultyLevel.LEVEL_1, TechType.PROBE)
 
     expect(underTest.resources).to.eql(resources({
       techProbe: -1,
@@ -54,14 +56,14 @@ describe('services/BotActionResources', () => {
 
   it('apply-telescope', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.TELESCOPE, scanSector:[]})
+    underTest.applyAction({action:Action.TELESCOPE, scanSector:[]}, DifficultyLevel.LEVEL_1)
 
     expect(underTest.resources).to.eql(resources({}))
   })
 
   it('apply-telescope-tech', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.TELESCOPE, scanSector:[]}, TechType.TELESCOPE)
+    underTest.applyAction({action:Action.TELESCOPE, scanSector:[]}, DifficultyLevel.LEVEL_1, TechType.TELESCOPE)
 
     expect(underTest.resources).to.eql(resources({
       techTelescope: -1
@@ -70,7 +72,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-analyze', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2})
+    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2}, DifficultyLevel.LEVEL_1)
 
     expect(underTest.resources).to.eql(resources({
       data: -6,
@@ -80,7 +82,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-analyze-tech', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2}, TechType.COMPUTER)
+    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2}, DifficultyLevel.LEVEL_1, TechType.COMPUTER)
 
     expect(underTest.resources).to.eql(resources({
       progress: 1,
@@ -92,14 +94,31 @@ describe('services/BotActionResources', () => {
 
   it('apply-pass', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.PASS})
+    underTest.applyAction({action:Action.PASS}, DifficultyLevel.LEVEL_1)
 
     expect(underTest.resources).to.eql(resources({}))
   })
 
+  it('apply-life-trace', () => {
+    const underTest = new BotActionResources()
+    underTest.applyAction({action:Action.LIFE_TRACE, lifeTrace: LifeTrace.ANY, progressDifficulty: false}, DifficultyLevel.LEVEL_1)
+
+    expect(underTest.resources).to.eql(resources({
+    }))
+  })
+
+  it('apply-life-trace', () => {
+    const underTest = new BotActionResources()
+    underTest.applyAction({action:Action.LIFE_TRACE, lifeTrace: LifeTrace.ANY, progressDifficulty: true}, DifficultyLevel.LEVEL_3)
+
+    expect(underTest.resources).to.eql(resources({
+      progress: 3
+    }))
+  })
+
   it('apply-alien-special-action-mascamites', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.MASCAMITES)
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, DifficultyLevel.LEVEL_1, undefined, AlienSpecies.MASCAMITES)
 
     expect(underTest.resources).to.eql(resources({
       probeCount: -1
@@ -108,7 +127,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-alien-special-action-mascamites-tech', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, TechType.PROBE, AlienSpecies.MASCAMITES)
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, DifficultyLevel.LEVEL_1, TechType.PROBE, AlienSpecies.MASCAMITES)
 
     expect(underTest.resources).to.eql(resources({
       techProbe: -1,
@@ -118,7 +137,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-alien-special-action-anomalies', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.ANOMALIES)
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, DifficultyLevel.LEVEL_1, undefined, AlienSpecies.ANOMALIES)
 
     expect(underTest.resources).to.eql(resources({
       vp: 3
@@ -127,7 +146,7 @@ describe('services/BotActionResources', () => {
 
   it('apply-alien-special-action-centaurians', () => {
     const underTest = new BotActionResources()
-    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, undefined, AlienSpecies.CENTAURIANS)
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, DifficultyLevel.LEVEL_1, undefined, AlienSpecies.CENTAURIANS)
 
     expect(underTest.resources).to.eql(resources({
       progress: 1
@@ -145,7 +164,7 @@ describe('services/BotActionResources', () => {
       vp: 5
     }
 
-    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2}, TechType.COMPUTER)
+    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 2}, DifficultyLevel.LEVEL_1, TechType.COMPUTER)
 
     expect(underTest.merge(resources({
       progress: 1,
@@ -175,14 +194,14 @@ describe('services/BotActionResources', () => {
 
     expect(underTest.merge(resources({}), { data: 4 })).to.eql(resources({progress:4, publicity:1, data: 4}))
 
-    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 0})
+    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 0}, DifficultyLevel.LEVEL_1)
     expect(underTest.merge(resources({data:8}),{})).to.eql(resources({publicity:1, data: 2}))
   })
 
   it('merge-data-bonus-analyze', () => {
     const underTest = new BotActionResources()
 
-    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 0})
+    underTest.applyAction({action:Action.ANALYZE, victoryPoints: 0}, DifficultyLevel.LEVEL_1)
 
     expect(underTest.merge(resources({data:8}), {})).to.eql(resources({publicity:1, data: 2}))
     expect(underTest.merge(resources({data:10}), {})).to.eql(resources({progress:4, publicity:1, data: 4}))

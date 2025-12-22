@@ -16,6 +16,7 @@ import ActionLaunch from './botAction/ActionLaunch.vue'
 import ActionProbe from './botAction/ActionProbe.vue'
 import ActionTelescope from './botAction/ActionTelescope.vue'
 import ActionAnalyze from './botAction/ActionAnalyze.vue'
+import ActionLifeTrace from './botAction/ActionLifeTrace.vue'
 import ActionSpeciesDiscovery from './botAction/ActionSpeciesDiscovery.vue'
 import ActionSpeciesSpecialActionMascamites from './botAction/ActionSpeciesSpecialActionMascamites.vue'
 import ActionSpeciesSpecialActionAnomalies from './botAction/ActionSpeciesSpecialActionAnomalies.vue'
@@ -33,6 +34,7 @@ export default defineComponent({
     ActionProbe,
     ActionTelescope,
     ActionAnalyze,
+    ActionLifeTrace,
     ActionSpeciesDiscovery,
     ActionSpeciesSpecialActionMascamites,
     ActionSpeciesSpecialActionAnomalies,

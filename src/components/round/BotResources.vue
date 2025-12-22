@@ -45,6 +45,10 @@
   <ModalDialog id="botResourcesLifeTraceModal" :title="t('botResources.lifeTrace.title')">
     <template #body>
       <p v-html="t('botResources.lifeTrace.mark')"></p>
+      <p>
+        <AppIcon type="life-trace" name="any" class="icon float-start"/>
+        <span v-html="t('botResources.lifeTrace.any')"></span>
+      </p>
       <p v-html="t('botResources.lifeTrace.tiebreaker')"></p>
       <template v-if="isSpeciesOumuamua">
         <p>
@@ -155,5 +159,9 @@ export default defineComponent({
       }
     }
   }
+}
+.modal .icon {
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }
 </style>

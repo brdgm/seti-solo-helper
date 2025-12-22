@@ -129,7 +129,7 @@ export default defineComponent({
       return this.navigationState.action < this.botActions.actions.length - 1
     },
     showBotResources() : boolean {
-      return [Action.TECH, Action.PROBE, Action.TELESCOPE, Action.ANALYZE, Action.SPECIES_SPECIAL_ACTION].includes(this.currentAction.action)
+      return [Action.TECH, Action.PROBE, Action.TELESCOPE, Action.ANALYZE, Action.SPECIES_SPECIAL_ACTION, Action.LIFE_TRACE].includes(this.currentAction.action)
     }
   },
   methods: {
@@ -141,10 +141,10 @@ export default defineComponent({
       const previousTurnResources = this.navigationState.botResources
       const botActionResources = this.navigationState.botActionResources
       if (this.botPass) {
-        botActionResources.applyAction({action:Action.PASS})
+        botActionResources.applyAction({action:Action.PASS}, this.state.setup.difficultyLevel)
       }
       else if (action) {
-        botActionResources.applyAction(action, techType, this.navigationState.botActions.currentCard?.alienSpecies)
+        botActionResources.applyAction(action, this.state.setup.difficultyLevel, techType, this.navigationState.botActions.currentCard?.alienSpecies)
       }
       const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
       cardDeck.addAdvancedCards(drawAdvancedCards)
@@ -183,7 +183,7 @@ export default defineComponent({
       this.actionTechType = techType
       this.botGameBoardResources = getInitialBotGameBoardResources(this.currentAction, techType)
       this.botGameBoardResourcesUpdateCount++
-      this.navigationState.botActionResources.applyAction(this.currentAction, techType, this.botActions.currentCard?.alienSpecies)
+      this.navigationState.botActionResources.applyAction(this.currentAction, this.state.setup.difficultyLevel, techType, this.botActions.currentCard?.alienSpecies)
     }
   }
 })

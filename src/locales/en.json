@@ -105,6 +105,7 @@
     "lifeTrace": {
       "title": "Life Traces",
       "mark": "Whenever your rival earns a life trace, look at that column for each alien species. Your rival marks the lowest available space in that column. (They ignore the overflow space below the column, unless all other spaces are full.)",
+      "any": "With this symbol, the rival considers all available columns.",
       "tiebreaker": "If the spaces in the selected columns are equally low, choose the leftmost or rightmost, depending on the decision arrow.",
       "oumuamua": "They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied."
     },
@@ -172,6 +173,10 @@
       "analyze": {
         "title": "Analyze",
         "lifeTrace": "The rival marks the displayed life trace."
+      },
+      "lifeTrace": {
+        "title": "Life Trace",
+        "instructions": "The rival earns a life trace."
       },
       "speciesDiscovery": {
         "title": "Species Discovery",

@@ -6,6 +6,7 @@ import Action from './enum/Action'
 import TechType from './enum/TechType'
 import AlienSpecies from './enum/AlienSpecies'
 import BotGameBoardResources from './BotGameBoardResources'
+import DifficultyLevel from './enum/DifficultyLevel'
 
 /**
  * Resources the bot gained this turn implicitly by the actions.
@@ -34,7 +35,7 @@ export default class BotActionResources {
     }  
   }
 
-  public applyAction(action: CardAction, techType?: TechType, alienSpecies?: AlienSpecies) : void {
+  public applyAction(action: CardAction, difficultyLevel: DifficultyLevel, techType?: TechType, alienSpecies?: AlienSpecies) : void {
     this.resetAction()
     switch (action.action) {
       case Action.TECH:
@@ -65,6 +66,11 @@ export default class BotActionResources {
           this.actionTechComputer.value -= 1
           this.actionVP.value += 3
           this.actionProgress.value += 1
+        }
+        break
+      case Action.LIFE_TRACE:
+        if (action.progressDifficulty) {
+          this.actionProgress.value += difficultyLevel
         }
         break
       case Action.SPECIES_SPECIAL_ACTION:

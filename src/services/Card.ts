@@ -26,7 +26,6 @@ export type CardAction =
   CardActionSpeciesDiscovery |
   CardActionSpeciesSpecialAction |
   CardActionPassAction |
-  CardActionProgressDifficulty |
   CardActionLifeTrace
 
 export type CardActionTech = {
@@ -71,11 +70,8 @@ export type CardActionPassAction = {
   action: Action.PASS
 }
 
-export type CardActionProgressDifficulty = {
-  action: Action.PROGRESS_DIFFICULTY
-}
-
 export type CardActionLifeTrace = {
   action: Action.LIFE_TRACE
   lifeTrace: LifeTrace
+  progressDifficulty: boolean
 }

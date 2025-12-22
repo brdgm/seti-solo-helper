@@ -61,7 +61,7 @@ const cards : Card[] = [
     cardType: CardType.STARTER,
     decisionDirection: DecisionDirection.LEFT,
     actions: [
-      { action: Action.PROGRESS_DIFFICULTY }
+      { action: Action.LIFE_TRACE, lifeTrace: LifeTrace.ANY, progressDifficulty: true }
     ],
     expansion: Expansion.SPACE_AGENCIES_ORGANIZATIONS
   },
@@ -235,7 +235,7 @@ const cards : Card[] = [
     decisionDirection: DecisionDirection.RIGHT,
     actions: [
       { action: Action.SPECIES_SPECIAL_ACTION },
-      { action: Action.LIFE_TRACE, lifeTrace: LifeTrace.ANY },
+      { action: Action.LIFE_TRACE, lifeTrace: LifeTrace.ANY, progressDifficulty: false },
     ],
     expansion: Expansion.SPACE_AGENCIES_SPECIES
   },

@@ -104,7 +104,8 @@
     "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielplan</i>:",
     "lifeTrace": {
       "title": "Spuren",
-      "mark": "Platziert dein Rivale Spuren, musst du alle Spalten dieser Spezies überprüfen. Er bevorzugt das niedrigste freie Feld dieser Spalten. (Er ignoriert Überflussfelder, solange er eine andere Wahl hat.)",
+      "mark": "Platziert dein Rivale Spuren, musst du bei allen Spezies diese Spalte überprüfen. Er bevorzugt das niedrigste freie Feld dieser Spalte. (Er ignoriert Überflussfelder, solange er eine andere Wahl hat.)",
+      "any": "Bei diesem Symbol musst du alle verfügbaren Spalten prüfen.",
       "tiebreaker": "Gibt es mehrere gleichniedrige Spalten, wählt dein Rivale dem Entscheidungspfeil folgend das erste freie Feld von links bzw. rechts.",
       "oumuamua": "Er kann nur Felder besetzen, falls er die entsprechende Anzahl an Exofossilien besitzt. Ansonsten ignoriert er sie."
     },
@@ -172,6 +173,10 @@
       "analyze": {
         "title": "Datenanalyse",
         "lifeTrace": "Der Rivale platziert die angezeigte Spur."
+      },
+      "lifeTrace": {
+        "title": "Spuren",
+        "instructions": "Der Rivale platziert eine Spur."
       },
       "speciesDiscovery": {
         "title": "Entdecken einer Species",
