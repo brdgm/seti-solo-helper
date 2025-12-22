@@ -90,7 +90,7 @@ export default defineComponent({
   },
   computed: {
     showLanderMoon() : boolean {
-      return this.hasProbeTech && this.action.planets.filter(planet => planet != Planet.OUMUAMUA).length > 0
+      return this.hasProbeTech && this.action.planets.some(planet => planet != Planet.OUMUAMUA)
     },
     hasProbeTech() : boolean {
       return this.navigationState.botResources.techProbe > 0

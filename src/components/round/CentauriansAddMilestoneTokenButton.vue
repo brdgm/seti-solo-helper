@@ -27,7 +27,7 @@ export default defineComponent({
   },
   computed: {
     hasCentauriansMilestone() : boolean {
-      return this.navigationState.milestoneTracker.milestones.find(m => m.type == MilestoneType.CENTAURIANS) !== undefined
+      return this.navigationState.milestoneTracker.milestones.some(m => m.type == MilestoneType.CENTAURIANS)
     }
   },
   methods: {

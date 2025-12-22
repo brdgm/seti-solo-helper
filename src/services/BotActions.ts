@@ -66,7 +66,7 @@ export default class BotActions {
   }
 
   private hasCentauriansMilestone() : boolean {
-    return this.milestoneTracker.milestones.find(m => m.type == MilestoneType.CENTAURIANS) !== undefined
+    return this.milestoneTracker.milestones.some(m => m.type == MilestoneType.CENTAURIANS)
   }
 
 }

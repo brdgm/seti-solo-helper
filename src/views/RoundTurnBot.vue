@@ -62,7 +62,6 @@ import RouteCalculator from '@/services/RouteCalculator'
 import { useStateStore } from '@/store/state'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
-import { Tooltip } from 'bootstrap'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import { CardAction } from '@/services/Card'
 import TechType from '@/services/enum/TechType'
@@ -185,11 +184,6 @@ export default defineComponent({
       this.botGameBoardResources = getInitialBotGameBoardResources(this.currentAction, techType)
       this.botGameBoardResourcesUpdateCount++
       this.navigationState.botActionResources.applyAction(this.currentAction, techType, this.botActions.currentCard?.alienSpecies)
-    }
-  },
-  mounted() {
-    for (const tooltipTriggerEl of document.querySelectorAll('[data-bs-toggle="tooltip"]')) {
-      new Tooltip(tooltipTriggerEl)
     }
   }
 })

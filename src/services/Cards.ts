@@ -239,7 +239,7 @@ export default {
    * @returns Card
    */
   getAlienSpeciesCard(alienSpecies: AlienSpecies) : Card {
-    const card = cards.filter(item => item.cardType === CardType.ALIEN && item.alienSpecies === alienSpecies)[0]
+    const card = cards.find(item => item.cardType === CardType.ALIEN && item.alienSpecies === alienSpecies)
     if (!card) {
       throw new Error("No alien species card for " + alienSpecies)
     }
