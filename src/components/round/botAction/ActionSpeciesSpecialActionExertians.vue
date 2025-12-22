@@ -18,7 +18,6 @@ import NavigationState from '@/util/NavigationState'
 import Card, { CardActionSpeciesSpecialAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import TechType from '@/services/enum/TechType'
-import ProbeAction from '@/services/enum/ProbeAction'
 
 export default defineComponent({
   name: 'ActionSpeciesSpecialActionExertians',
@@ -31,10 +30,7 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-
-    const selectedProbeAction = ref(undefined as ProbeAction|undefined)
-
-    return { t, selectedProbeAction }
+    return { t }
   },
   props: {
     action: {
