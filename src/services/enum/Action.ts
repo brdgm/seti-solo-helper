@@ -9,6 +9,8 @@ enum Action {
   ANALYZE = 'analyze',
   SPECIES_DISCOVERY = 'species-discovery',
   SPECIES_SPECIAL_ACTION = 'species-special-action',
-  PASS = 'pass'
+  PASS = 'pass',
+  PROGRESS_DIFFICULTY = 'progress-difficulty',
+  LIFE_TRACE = 'life-trace'
 }
 export default Action

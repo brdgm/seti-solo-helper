@@ -21,7 +21,8 @@
     },
     "expansions": {
       "title": "Expansions",
-      "space-agencies": "Space Agencies"
+      "space-agencies-species": "Space Agencies: New Species",
+      "space-agencies-organizations": "Space Agencies: Organizations"
     }
   },
   "setupGameBoard": {
@@ -219,7 +220,10 @@
     "anomalies": "Anomalies",
     "oumuamua": "‘Oumuamua",
     "centaurians": "Centaurians",
-    "exertians": "Exertians"
+    "exertians": "Exertians",
+    "arkhos": "Arkhos",
+    "glyphids": "Glyphids",
+    "amoeba": "Amoeba"
   },
   "difficultyLevel": {
     "1": "Level 1 - no objectives",

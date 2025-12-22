@@ -76,7 +76,7 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
   
   // last resort: create new (should never happen)
   return {
-    cardDeck: CardDeck.new(state.setup.difficultyLevel).toPersistence(),
+    cardDeck: CardDeck.new(state.setup.difficultyLevel, state.setup.expansions ?? []).toPersistence(),
     objectiveStack: ObjectiveStack.new(state.setup.difficultyLevel).toPersistence(),
     milestoneTracker: MilestoneTracker.new().toPersistence(),
     resources: getInitialBotResources(roundData?.startPlayer ?? Player.PLAYER, state.setup.difficultyLevel),

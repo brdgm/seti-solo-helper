@@ -6,6 +6,7 @@ import { ref } from 'vue'
 import DifficultyLevel from './enum/DifficultyLevel'
 import CardType from './enum/CardType'
 import getDifficultyLevelSettings from '@/util/getDifficultyLevelSettings'
+import Expansion from './enum/Expansion'
 
 /**
  * Manages the solo card deck with action cards and advanced reserve cards.
@@ -90,10 +91,12 @@ export default class CardDeck {
   /**
    * Creates a shuffled new card deck.
    * @param difficultyLevel DifficultyLevel
+   * @param expansions Expansions
+   * @returns CardDeck
    */
-  public static new(difficultyLevel: DifficultyLevel) : CardDeck {
-    const allStarterCards = shuffle(Cards.getAll(CardType.STARTER))
-    const allAdvancedCards = shuffle(Cards.getAll(CardType.ADVANCED))
+  public static new(difficultyLevel: DifficultyLevel, expansions: Expansion[]) : CardDeck {
+    const allStarterCards = shuffle(Cards.getAll(CardType.STARTER, expansions))
+    const allAdvancedCards = shuffle(Cards.getAll(CardType.ADVANCED, expansions))
     const advancedCardCount = getDifficultyLevelSettings(difficultyLevel).advancedCards
     const cards = shuffle([...allStarterCards, ...allAdvancedCards.slice(0, advancedCardCount)])
     const advanced = allAdvancedCards.slice(advancedCardCount)

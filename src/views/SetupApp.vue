@@ -54,7 +54,7 @@ export default defineComponent({
         round: 1,
         startPlayer,
         initialBotPersistence: {
-          cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
+          cardDeck: CardDeck.new(this.state.setup.difficultyLevel, this.state.setup.expansions ?? []).toPersistence(),
           objectiveStack: ObjectiveStack.new(this.state.setup.difficultyLevel).toPersistence(),
           milestoneTracker: MilestoneTracker.new().toPersistence(),
           resources: getInitialBotResources(startPlayer, this.state.setup.difficultyLevel)

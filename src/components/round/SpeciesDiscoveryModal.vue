@@ -30,9 +30,9 @@ import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import AlienSpecies from '@/services/enum/AlienSpecies'
-import getAllEnumValues from '@brdgm/brdgm-commons/src/util/enum/getAllEnumValues'
 import CentauriansAddMilestoneTokenButton from './CentauriansAddMilestoneTokenButton.vue'
 import BotGameBoardResources from '@/services/BotGameBoardResources'
+import getAlienSpecies from '@/util/getAlienSpecies'
 
 export default defineComponent({
   name: 'AlienDiscoveryModal',
@@ -57,7 +57,7 @@ export default defineComponent({
   },
   computed: {
     alienSpecies() : AlienSpecies[] {
-      return getAllEnumValues(AlienSpecies)
+      return getAlienSpecies(this.state.setup.expansions ?? [])
     },
     isSpeciesCentaurians() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.CENTAURIANS)
