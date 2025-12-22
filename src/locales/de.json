@@ -18,6 +18,10 @@
       "random": "Zufällig",
       "player": "Spieler",
       "bot": "Rivale"
+    },
+    "expansions": {
+      "title": "Erweiterungen",
+      "space-agencies": "Raumfahrtorganisationen"
     }
   },
   "setupGameBoard": {

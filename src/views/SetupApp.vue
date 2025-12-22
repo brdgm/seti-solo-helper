@@ -3,6 +3,7 @@
 
   <DifficultyLevel/>
   <StartPlayer/>
+  <ExpansionsSetup/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="setupGame()">
     {{t('setupGameBoard.title')}}
@@ -26,13 +27,15 @@ import getInitialBotResources from '@/util/getInitialBotResources'
 import getRandomGoldScoreTileSetup from '@/util/getRandomGoldScoreTileSetup'
 import ObjectiveStack from '@/services/ObjectiveStack'
 import MilestoneTracker from '@/services/MilestoneTracker'
+import ExpansionsSetup from '@/components/setup/ExpansionsSetup.vue'
 
 export default defineComponent({
   name: 'SetupApp',
   components: {
     FooterButtons,
     DifficultyLevel,
-    StartPlayer
+    StartPlayer,
+    ExpansionsSetup
   },
   setup() {
     const { t } = useI18n()

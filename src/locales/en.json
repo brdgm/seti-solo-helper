@@ -18,6 +18,10 @@
       "random": "Random",
       "player": "Player",
       "bot": "Rival"
+    },
+    "expansions": {
+      "title": "Expansions",
+      "space-agencies": "Space Agencies"
     }
   },
   "setupGameBoard": {
