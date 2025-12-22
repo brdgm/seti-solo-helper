@@ -9,6 +9,7 @@ import { MAX_TURN } from './getTurnOrder'
 import ObjectiveStack from '@/services/ObjectiveStack'
 import MilestoneTracker from '@/services/MilestoneTracker'
 import BotActionResources from '@/services/BotActionResources'
+import getFirstRound from './getFirstRound'
 
 export default class NavigationState {
 
@@ -27,7 +28,7 @@ export default class NavigationState {
   readonly botActions : BotActions
 
   constructor(route: RouteLocation, state: State) {    
-    this.round = getIntRouteParam(route, 'round')
+    this.round = getRound(route, state)
     this.turn = getIntRouteParam(route, 'turn')
     this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
     this.action = getIntRouteParam(route, 'action')
@@ -56,6 +57,16 @@ export default class NavigationState {
     this.botActions = new BotActions(this.cardDeck, this.milestoneTracker, this.botResources, this.botPass, state)
   }
 
+}
+
+function getRound(route: RouteLocation, state: State) : number {
+  const round = getIntRouteParam(route, 'round')
+  if (round > 0) {
+    return round
+  }
+  else {
+    return getFirstRound(state.setup.expansions ?? [])
+  }
 }
 
 function getBotPersistence(state:State, round:number, turn:number, turnOrderIndex:number) : BotPersistence {

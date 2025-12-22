@@ -58,7 +58,7 @@ export default defineComponent({
     const navigationState = new NavigationState(route, state)
     const { round, objectiveStack, cardDeck } = navigationState
 
-    const routeCalculator = new RouteCalculator({round})
+    const routeCalculator = new RouteCalculator({round}, state.setup.expansions ?? [])
 
     // check objective completion / bot progress
     const hasObjectives = state.setup.difficultyLevel != DifficultyLevel.LEVEL_1
@@ -103,7 +103,7 @@ export default defineComponent({
         turns: [],
         initialBotPersistence
       })
-      const routeCalculator = new RouteCalculator({round:this.round+1})
+      const routeCalculator = new RouteCalculator({round:this.round+1}, this.state.setup.expansions ?? [])
       this.router.push(routeCalculator.getFirstTurnRouteTo(this.state))
     }
   }

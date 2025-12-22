@@ -28,6 +28,7 @@ import getRandomGoldScoreTileSetup from '@/util/getRandomGoldScoreTileSetup'
 import ObjectiveStack from '@/services/ObjectiveStack'
 import MilestoneTracker from '@/services/MilestoneTracker'
 import ExpansionsSetup from '@/components/setup/ExpansionsSetup.vue'
+import getFirstRound from '@/util/getFirstRound'
 
 export default defineComponent({
   name: 'SetupApp',
@@ -51,7 +52,7 @@ export default defineComponent({
       // prepare round 1
       const startPlayer = this.state.setup.startPlayer ?? randomEnum(Player)
       const round : Round = {
-        round: 1,
+        round: getFirstRound(this.state.setup.expansions ?? []),
         startPlayer,
         initialBotPersistence: {
           cardDeck: CardDeck.new(this.state.setup.difficultyLevel, this.state.setup.expansions ?? []).toPersistence(),

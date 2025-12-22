@@ -98,7 +98,7 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, state)
     const { round, turn, turnOrderIndex, action, player, botPass, botActions } = navigationState
-    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
+    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player}, state.setup.expansions ?? [])
 
     const botGameBoardResources = ref({} as BotGameBoardResources)
     const isLastRound = (round == 5)

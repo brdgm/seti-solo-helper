@@ -39,6 +39,7 @@
   "setupGame": {
     "title": "Spielaufbau",
     "setup2Players": "Bereite die Partie für <b>2 Personen</b> vor.",
+    "setup2PlayersRound2": "Bereite die Partie für <b>2 Personen</b> vor (beginne mit Runde 2).",
     "startPlayer": {
       "player": "<b>Du</b> bist der Startspieler.",
       "bot": "Dein <b>Rivale</b> ist der Startspieler."
@@ -47,10 +48,12 @@
     "rivalPieces": "Dein Rivale erhält <b>alles Material einer Farbe</b>.",
     "componentsNotRequired": "Er benötigt keine Aktionskarten, Spielertableau, Wertungsmarker oder Bekanntheitsmarker.",
     "objectiveStack": "Der Zielstapel wird von der Applikation verwaltet.",
+    "chooseOrganizationQuickstartCards": "Wähle deine <b>Organisation und Schnellstart-Karten</b>.",
+    "rivalNoOrganizationQuickstartCards": "Dein Rivale erhält keine Organisation und keine Schnellstart-Karten.",
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Direkte Effekte der Aktionen des Rivalen werden automatisch von der Applikation verwaltet, trage sie nicht in den Eingabefeldern ein.",
-      "objectives": "<b>Ziele</b>: Die Ziele werden von der Applikation verwaltet. Markiere sie, sobald du sie erledigt hast."
+      "objectives": "<b>Ziele</b>: Markiere sie in der Applikation, sobald du sie erfüllt hast."
     }
   },
   "roundTurnPlayer": {

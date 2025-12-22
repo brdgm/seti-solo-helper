@@ -10,7 +10,7 @@
               <ObjectiveItemTaskDisplay :task="task"/>
             </template>
           </label>
-          <input type="checkbox" :id="`check-${objectiveIndex}-${itemIndex}`" v-model="objectiveStack.currentItemCheck[objectiveIndex][itemIndex]"/>
+          <input v-if="!readOnly" type="checkbox" :id="`check-${objectiveIndex}-${itemIndex}`" v-model="objectiveStack.currentItemCheck[objectiveIndex][itemIndex]"/>
         </div>
       </div>
     </div>
@@ -52,6 +52,10 @@ export default defineComponent({
     navigationState: {
       type: NavigationState,
       required: true
+    },
+    readOnly: {
+      type: Boolean,
+      required: false
     }
   },
   computed: {

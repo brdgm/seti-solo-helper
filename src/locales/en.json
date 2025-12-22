@@ -39,6 +39,7 @@
   "setupGame": {
     "title": "Setup Game",
     "setup2Players": "Set up the game for <b>two players</b>.",
+    "setup2PlayersRound2": "Set up the game for <b>two players</b> (starting with round 2).",
     "startPlayer": {
       "player": "<b>You</b> are the start player.",
       "bot": "Your <b>rival</b> is the start player."
@@ -47,10 +48,12 @@
     "rivalPieces": "Give the rival <b>all pieces of one color</b>.",
     "componentsNotRequired": "He does not need the action cards, player board, score counter or publicity marker.",
     "objectiveStack": "The objective stack is managed by the application.",
+    "chooseOrganizationQuickstartCards": "Choose your <b>organization and quick start cards</b>.",
+    "rivalNoOrganizationQuickstartCards": "The rival does not get an organization or quick start cards.",
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Direct effects from rival actions are managed by the application automatically, do not enter them in the input fields.",
-      "objectives": "<b>Objectives</b>: Objectives are managed by the application. Mark them once you have completed them."
+      "objectives": "<b>Objectives</b>: Mark them in the application once you have completed them."
     }
   },
   "roundTurnPlayer": {

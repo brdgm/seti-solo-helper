@@ -71,7 +71,7 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, state)
     const { round, turn, turnOrderIndex, player } = navigationState
-    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, player})
+    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, player}, state.setup.expansions ?? [])
 
     return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, player }
   },
