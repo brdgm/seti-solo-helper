@@ -52,6 +52,9 @@ export default defineComponent({
       type: NavigationState,
       required: true
     }
+  },
+  mounted() {
+    this.$emit('ready')
   }
 })
 </script>

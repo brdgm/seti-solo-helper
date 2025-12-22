@@ -38,21 +38,21 @@ describe('services/ObjectiveStack.', () => {
     const stack = ObjectiveStack.new(DifficultyLevel.LEVEL_5, [Expansion.SPACE_AGENCIES_ORGANIZATIONS])
 
     expect(stack.pile.length, 'pile').to.eq(12)
-    expect(stack.current.length, 'current').to.eq(3)
+    expect(stack.current.length, 'current').to.eq(5)
     expect(stack.current.map(item => item.level), 'current levels')
-        .to.eql([ObjectiveLevel.LEVEL_2,ObjectiveLevel.LEVEL_2,ObjectiveLevel.LEVEL_2])
+        .to.eql([ObjectiveLevel.LONG_TERM,ObjectiveLevel.LONG_TERM,ObjectiveLevel.LEVEL_2,ObjectiveLevel.LEVEL_2,ObjectiveLevel.LEVEL_2])
     expect(stack.complete.length, 'complete').to.eq(0)
     expect(stack.discard.length, 'discard').to.eq(0)
   })
 
   it('draw', () => {
-    const stack = mockObjectiveStack({pile:[102,201,202,203,204],current:[101]})
+    const stack = mockObjectiveStack({pile:[102,201,202,203,204],current:[901,902,101]})
 
     stack.draw()
-    expect(stack.current.map(item => item.id)).to.eql([101,102,201])
+    expect(stack.current.map(item => item.id)).to.eql([901,902,101,102,201])
 
     stack.draw()
-    expect(stack.current.map(item => item.id)).to.eql([101,102,201])
+    expect(stack.current.map(item => item.id)).to.eql([901,902,101,102,201])
   })
 
   it('checkCompletedObjectives', () => {

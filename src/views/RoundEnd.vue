@@ -13,6 +13,12 @@
           <li v-if="discardObjectives > 0" v-html="t('roundEnd.objectives.discardObjectives', {count:discardObjectives}, discardObjectives)"></li>
           <li v-if="botObjectivesProgress > 0" v-html="t('roundEnd.objectives.botObjectiveProgress', {count:botObjectivesProgress})"></li>
         </ul>
+        <template v-if="uncompletedLongTermTasks > 0">
+          <li v-html="t('roundEnd.longTermObjectives', {count:uncompletedLongTermTasks}, uncompletedLongTermTasks)"></li>
+          <ul>
+            <li v-html="t('roundEnd.objectives.botObjectiveProgress', {count:uncompletedLongTermTasks})"></li>
+          </ul>
+        </template>
       </template>
     </ul>
   </div>
@@ -40,6 +46,7 @@ import DebugInfo from '@/components/round/DebugInfo.vue'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
 import BotGameBoardResources from '@/services/BotGameBoardResources'
+import ObjectiveLevel from '@/services/enum/ObjectiveLevel'
 
 export default defineComponent({
   name: 'RoundEnd',
@@ -66,10 +73,22 @@ export default defineComponent({
     const completedObjectives = objectiveStack.complete.length
     const discardObjectives = Math.min(expectedCompletedObjectives, completedObjectives)
     const botObjectivesProgress = (expectedCompletedObjectives - discardObjectives) * 3
-    const botGameBoardResources = { progressSingleStep: botObjectivesProgress } as BotGameBoardResources
+
+    // long-term objectives
+    let uncompletedLongTermTasks = 0
+    for (let objectiveIndex=0; objectiveIndex<objectiveStack.current.length; objectiveIndex++) {
+      const objective = objectiveStack.current[objectiveIndex]
+      if (objective.level == ObjectiveLevel.LONG_TERM) {
+        const uncompletedTasks = objectiveStack.currentItemCheck[objectiveIndex].filter(check => !check).length
+        uncompletedLongTermTasks += uncompletedTasks
+      }
+    }
+
+    const botGameBoardResources = { progressSingleStep: botObjectivesProgress + uncompletedLongTermTasks } as BotGameBoardResources
 
     return { t, router, state, navigationState, round, routeCalculator, cardDeck, objectiveStack,
-      hasObjectives, expectedCompletedObjectives, completedObjectives, discardObjectives, botObjectivesProgress, botGameBoardResources }
+      hasObjectives, expectedCompletedObjectives, completedObjectives, discardObjectives, uncompletedLongTermTasks,
+      botObjectivesProgress, botGameBoardResources }
   },
   computed: {
     backButtonRouteTo() : string {

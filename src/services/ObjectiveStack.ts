@@ -49,9 +49,11 @@ export default class ObjectiveStack {
 
   /**
    * Draws until 3 current objectives are revealed (if available).
+   * @returns Whether an objective was drawn
    */
   public draw() : void {
-    while (this._current.value.length < 3 && this._pile.value.length > 0) {
+    // long-term objectives are always drawn first and never count towards the 3 current objectives
+    while (this._current.value.filter(objective => objective.level !== ObjectiveLevel.LONG_TERM).length < 3 && this._pile.value.length > 0) {
       const objective = this._pile.value.shift()
       if (!objective) {
         throw new Error('Stack is empty.')
@@ -72,7 +74,9 @@ export default class ObjectiveStack {
         // marks an objective as completed
         const objectives = this._current.value.splice(objectiveIndex, 1)
         this._currentItemCheck.value.splice(objectiveIndex, 1)
-        this._complete.value.push(...objectives)
+        if (objective.level != ObjectiveLevel.LONG_TERM) {
+          this._complete.value.push(...objectives)
+        }
       }
     }
     this.draw()
@@ -114,19 +118,26 @@ export default class ObjectiveStack {
    */
   public static new(difficultyLevel: DifficultyLevel, expansions: Expansion[]) : ObjectiveStack {
     const hasSpaceAgenciesOrganization = expansions.includes(Expansion.SPACE_AGENCIES_ORGANIZATIONS)
+    const allLongTerm = shuffle(Objectives.getAll(ObjectiveLevel.LONG_TERM))
     const allLevel1 = shuffle(Objectives.getAll(ObjectiveLevel.LEVEL_1))
     const allLevel2 = shuffle(Objectives.getAll(ObjectiveLevel.LEVEL_2))
     const allLevel3 = shuffle(Objectives.getAll(ObjectiveLevel.LEVEL_3))
     const settings = getDifficultyLevelSettings(difficultyLevel)
     
     const pile : Objective[] = []
-    if (!hasSpaceAgenciesOrganization) {
+    const current : Objective[] = []
+    const currentItemCheck : boolean[][] = []
+    if (hasSpaceAgenciesOrganization) {
+      current.push(...allLongTerm.slice(0, 2))
+      currentItemCheck.push([], [])
+    }
+    else {
       pile.push(...allLevel1.slice(0, settings.objectivesLevel1))
     }
     pile.push(...allLevel2.slice(0, settings.objectivesLevel2),
       ...allLevel3.slice(0, settings.objectivesLevel3))
 
-    const stack = new ObjectiveStack(pile, [], [], [], [])
+    const stack = new ObjectiveStack(pile, current, currentItemCheck, [], [])
     stack.draw()
     return stack
   }

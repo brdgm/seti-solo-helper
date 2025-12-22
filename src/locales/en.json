@@ -53,7 +53,7 @@
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Direct effects from rival actions are managed by the application automatically, do not enter them in the input fields.",
-      "objectives": "<b>Objectives</b>: Mark them in the application once you have completed them."
+      "objectives": "<b>Objectives</b>: Mark the tasks in the application once you have completed them. If a single trigger could mark multiple tasks (even on different objectives), you must choose only one."
     }
   },
   "roundTurnPlayer": {
@@ -83,7 +83,8 @@
       "numberCompleted": "You completed {count} objective. | You completed {count} objectives.",
       "discardObjectives": "You discard {count} completed objective. | You discard {count} completed objectives.",
       "botObjectiveProgress": "Your rival gains {count} progress."
-    }
+    },
+    "longTermObjectives": "You have {count} uncompleted task on <b>long-term objectives</b>. | You have {count} uncompleted tasks on <b>long-term objectives</b>."
   },
   "gameEnd": {
     "title": "End of Game",

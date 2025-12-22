@@ -14,5 +14,6 @@ describe('services/Objectives', () => {
     expect(Objectives.getAll(ObjectiveLevel.LEVEL_1).length).to.eq(4)
     expect(Objectives.getAll(ObjectiveLevel.LEVEL_2).length).to.eq(11)
     expect(Objectives.getAll(ObjectiveLevel.LEVEL_3).length).to.eq(9)
+    expect(Objectives.getAll(ObjectiveLevel.LONG_TERM).length).to.eq(3)
   })
 })

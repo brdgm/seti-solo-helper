@@ -53,7 +53,7 @@
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Direkte Effekte der Aktionen des Rivalen werden automatisch von der Applikation verwaltet, trage sie nicht in den Eingabefeldern ein.",
-      "objectives": "<b>Ziele</b>: Markiere sie in der Applikation, sobald du sie erfüllt hast."
+      "objectives": "<b>Ziele</b>: Markiere die Aufgaben in der Applikation, sobald du sie erfüllt hast. Falls ein einzelner Auslöser mehrere Aufgaben (auch auf verschiedenen Zielen) markieren könnte, musst du dich für eine entscheiden."
     }
   },
   "roundTurnPlayer": {
@@ -83,7 +83,8 @@
       "numberCompleted": "Du hast {count} Ziel abgeschlossen. | Du hast {count} Ziele abgeschlossen.",
       "discardObjectives": "Du wirfst {count} abgeschlossenes Ziel ab. | Du wirfst {count} abgeschlossene Ziele ab.",
       "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt."
-    }
+    },
+    "longTermObjectives": "Du hast {count} unerledigte Aufgabe bei <b>langfristigen Zielen</b>. | Du hast {count} unerledigte Aufgaben bei <b>langfristigen Zielen</b>."
   },
   "gameEnd": {
     "title": "Spielende",
