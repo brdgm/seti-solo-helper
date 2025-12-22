@@ -10,5 +10,5 @@ import { State } from '@/store/state'
 export default function isFirstPass(state:State, round:number, turn:number, turnOrderIndex:number) : boolean {
   const roundData = state.rounds.find(item => item.round==round)
   const previousTurns = roundData?.turns.filter(item => item.turn < turn || (item.turn == turn && item.turnOrderIndex < turnOrderIndex)) ?? []
-  return previousTurns.find(item => item.pass) == undefined  
+  return !previousTurns.some(item => item.pass)
 }

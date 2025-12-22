@@ -186,11 +186,6 @@ export default defineComponent({
       this.botGameBoardResourcesUpdateCount++
       this.navigationState.botActionResources.applyAction(this.currentAction, techType, this.botActions.currentCard?.alienSpecies)
     }
-  },
-  mounted() {
-    for (const tooltipTriggerEl of document.querySelectorAll('[data-bs-toggle="tooltip"]')) {
-      new Tooltip(tooltipTriggerEl)
-    }
   }
 })
 </script>

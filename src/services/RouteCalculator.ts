@@ -93,7 +93,7 @@ export default class RouteCalculator {
    */
   public getLastTurnRouteTo(state: State) : string {
     const steps = getTurnOrder(state, this.round, this.turn)
-    const lastStep = steps[steps.length-1]
+    const lastStep = steps.at(-1)
     if (lastStep) {
       return RouteCalculator.routeTo(lastStep)
     }
