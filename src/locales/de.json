@@ -160,7 +160,8 @@
         "landOrbit": "Danach wandelt er die Sonde in einen Lander oder Orbiter um:",
         "landMoon": "Hat der Planet einen <b>Mond</b> mit freiem Feld, landet der Rivale darauf. Sind mehrere Monde verfügbar, wählt er dem Entscheidungspfeil folgend den ersten freien Mond ganz links bzw. ganz rechts.",
         "preferOrbitLand": "Der Rivale bevorzugt das <b>erste</b> Orbiter- oder Landerfeld dieses Planeten. Sind beide Felder frei oder keines der beiden, wählt dein Rivale entsprechend der angezeigten Aktionssymbole.",
-        "pointsResources": "Anschließend erhält dein Rivale die angegebenen Punkte, Ressourcen und Spuren seines Orbiters oder Landers."
+        "pointsResources": "Anschließend erhält dein Rivale die angegebenen Punkte, Ressourcen und Spuren seines Orbiters oder Landers.",
+        "glyphidsCheckPlanets": "Überprüfe nur Planeten mit"
       },
       "telescope": {
         "title": "Scannen naher Sterne",
@@ -177,10 +178,6 @@
       "analyze": {
         "title": "Datenanalyse",
         "lifeTrace": "Der Rivale platziert die angezeigte Spur."
-      },
-      "lifeTrace": {
-        "title": "Spuren",
-        "instructions": "Der Rivale platziert eine Spur."
       },
       "speciesDiscovery": {
         "title": "Entdecken einer Species",
@@ -206,6 +203,15 @@
           "title": "Exertianer Spezial-Aktion",
           "instructions": "Falls die Anzahl der Exertianer-Karten und Spuren des Rivalen auf dem Tableau dieser Spezies max. 4 ist: Er <b>spielt 1 geheime Exertianer-Karte</b>.",
           "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch Aktionen die sich auf diese Spezies beziehen. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen. Jedoch schreitet er auf der Fortschrittsleiste pro eigenem Marker auf Entdeckungsfeldern voran."
+        },
+        "arkhos": {
+          "title": "Arkhos Spezial-Aktion",
+          "instructions": "Der Rivale entsperrt 1 seiner Sicherheitskarten und legt 1 seiner Marker auf das Überflussfeld der zugehörigen Farbe unter dieser Spezies (ignoriere die Belohnung - von der Anwendung verwaltet).",
+          "gainExplorationReward": "Dann erhält er:"
+        },
+        "amoeba": {
+          "title": "Amoeba Spezial-Aktion",
+          "instructions": "Wenn ein Bereich des Amöben-Tableaus 3 Organellenplättchen hat, erhält dein Rivale alle Organellen-Belohnungen des Bereichs (und bewegt die Plättchen wie üblich)."
         }
       }
     }

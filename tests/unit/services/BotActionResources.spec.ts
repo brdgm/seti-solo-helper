@@ -154,6 +154,15 @@ describe('services/BotActionResources', () => {
     }))
   })
 
+  it('apply-alien-special-action-arkhos', () => {
+    const underTest = new BotActionResources()
+    underTest.applyAction({action:Action.SPECIES_SPECIAL_ACTION}, DifficultyLevel.LEVEL_1, undefined, AlienSpecies.ARKHOS)
+
+    expect(underTest.resources).to.eql(resources({
+      vp: 3
+    }))
+  })
+
   it('merge', () => {
     const underTest = new BotActionResources()
 

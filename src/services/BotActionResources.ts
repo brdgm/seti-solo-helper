@@ -83,6 +83,7 @@ export default class BotActionResources {
             }
             break
           case AlienSpecies.ANOMALIES:
+          case AlienSpecies.ARKHOS:
             this.actionVP.value += 3
             break
           case AlienSpecies.CENTAURIANS:

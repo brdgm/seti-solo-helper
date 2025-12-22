@@ -223,7 +223,7 @@ const cards : Card[] = [
     alienSpecies: AlienSpecies.GLYPHIDS,
     decisionDirection: DecisionDirection.LEFT,
     actions: [
-      { action: Action.SPECIES_SPECIAL_ACTION },
+      { action: Action.PROBE, movementPoints: 4, planets: [Planet.MERCURY,Planet.NEPTUNE,Planet.URANUS,Planet.SATURN,Planet.JUPITER,Planet.MARS,Planet.VENUS], probeActions: [ProbeAction.LANDER,ProbeAction.ORBITER] },
       { action: Action.TELESCOPE, scanSector: [ScanSector.EARTH, ScanSector.EARTH, ScanSector.CARD] },
     ],
     expansion: Expansion.SPACE_AGENCIES_SPECIES

@@ -22,6 +22,8 @@ import ActionSpeciesSpecialActionMascamites from './botAction/ActionSpeciesSpeci
 import ActionSpeciesSpecialActionAnomalies from './botAction/ActionSpeciesSpecialActionAnomalies.vue'
 import ActionSpeciesSpecialActionCentaurians from './botAction/ActionSpeciesSpecialActionCentaurians.vue'
 import ActionSpeciesSpecialActionExertians from './botAction/ActionSpeciesSpecialActionExertians.vue'
+import ActionSpeciesSpecialActionArkhos from './botAction/ActionSpeciesSpecialActionArkhos.vue'
+import ActionSpeciesSpecialActionAmoeba from './botAction/ActionSpeciesSpecialActionAmoeba.vue'
 import TechType from '@/services/enum/TechType'
 import Action from '@/services/enum/Action'
 import BotGameBoardResources from '@/services/BotGameBoardResources'
@@ -39,7 +41,9 @@ export default defineComponent({
     ActionSpeciesSpecialActionMascamites,
     ActionSpeciesSpecialActionAnomalies,
     ActionSpeciesSpecialActionCentaurians,
-    ActionSpeciesSpecialActionExertians
+    ActionSpeciesSpecialActionExertians,
+    ActionSpeciesSpecialActionArkhos,
+    ActionSpeciesSpecialActionAmoeba
   },
   emits: {
     ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars

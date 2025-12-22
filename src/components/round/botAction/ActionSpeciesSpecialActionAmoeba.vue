@@ -1,44 +1,44 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="t('botResources.lifeTrace.title')">
-    <template #resources v-if="action.progressDifficulty">
-      <AppIcon v-for="index in state.setup.difficultyLevel" :key="index" name="progress-1" class="icon resources"/>
-    </template>
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.amoeba.title')">
     <template #action>
       <div class="action">
-        <AppIcon type="life-trace" :name="action.lifeTrace" class="icon"/>
+        <p class="small">
+          <span class="fw-bold" v-html="t('alienSpecies.amoeba')"></span>:
+          <span v-html="t('rules.action.speciesSpecialAction.amoeba.instructions')"></span>
+        </p>
       </div>
     </template>
   </ActionBox>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
-import Card, { CardActionLifeTrace } from '@/services/Card'
+import Card, { CardActionSpeciesSpecialAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
-import AppIcon from '@/components/structure/AppIcon.vue'
 import TechType from '@/services/enum/TechType'
-import { useStateStore } from '@/store/state'
+import ProbeAction from '@/services/enum/ProbeAction'
 
 export default defineComponent({
-  name: 'ActionLifeTrace',
+  name: 'ActionSpeciesSpecialActionAmoeba',
   inheritAttrs: false,
   components: {
-    ActionBox,
-    AppIcon
+    ActionBox
   },
   emits: {
     ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
   },
   setup() {
     const { t } = useI18n()
-    const state = useStateStore()
-    return { t, state }
+
+    const selectedProbeAction = ref(undefined as ProbeAction|undefined)
+
+    return { t, selectedProbeAction }
   },
   props: {
     action: {
-      type: Object as PropType<CardActionLifeTrace>,
+      type: Object as PropType<CardActionSpeciesSpecialAction>,
       required: true
     },
     currentCard: {
@@ -65,12 +65,9 @@ export default defineComponent({
   gap: 10px;
 }
 .icon {
-  height: 4rem;
+  height: 3rem;
   &.resources {
     height: 1.5rem;
   }
-}
-.icon.resources + .icon.resources {
-  margin-left: -0.6rem;
 }
 </style>
