@@ -50,7 +50,7 @@
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Direct effects from rival actions are managed by the application automatically, do not enter them in the input fields.",
-      "objectives": "<b>Objectives</b>: At the end of your turn, move all completed objectives into a completed-objectives pile near your board and replace them with new ones from the stack. You will always have 3 objectives to work on until the stack runs out."
+      "objectives": "<b>Objectives</b>: Objectives are managed by the application. Mark them once you have completed them."
     }
   },
   "roundTurnPlayer": {

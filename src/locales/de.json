@@ -50,7 +50,7 @@
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Direkte Effekte der Aktionen des Rivalen werden automatisch von der Applikation verwaltet, trage sie nicht in den Eingabefeldern ein.",
-      "objectives": "<b>Ziele</b>: Sammle am Ende deines Zugs alle abgeschlossenen Ziele auf einem Stapel und ersetze sie durch neue vom Zielstapel. Du hast immer 3 Ziele – bis der Zielstapel leer ist."
+      "objectives": "<b>Ziele</b>: Die Ziele werden von der Applikation verwaltet. Markiere sie, sobald du sie erledigt hast."
     }
   },
   "roundTurnPlayer": {
