@@ -6,6 +6,7 @@ import getDifficultyLevelSettings from '@/util/getDifficultyLevelSettings'
 import Objective from './Objective'
 import Objectives from './Objectives'
 import ObjectiveLevel from './enum/ObjectiveLevel'
+import Expansion from './enum/Expansion'
 
 /**
  * Manages the objective stack and tracks completed objectives.
@@ -109,17 +110,22 @@ export default class ObjectiveStack {
   /**
    * Creates a shuffled new objective stack.
    * @param difficultyLevel Difficulty level
+   * @param expansions Selected expansions
    */
-  public static new(difficultyLevel: DifficultyLevel) : ObjectiveStack {
+  public static new(difficultyLevel: DifficultyLevel, expansions: Expansion[]) : ObjectiveStack {
+    const hasSpaceAgenciesOrganization = expansions.includes(Expansion.SPACE_AGENCIES_ORGANIZATIONS)
     const allLevel1 = shuffle(Objectives.getAll(ObjectiveLevel.LEVEL_1))
     const allLevel2 = shuffle(Objectives.getAll(ObjectiveLevel.LEVEL_2))
     const allLevel3 = shuffle(Objectives.getAll(ObjectiveLevel.LEVEL_3))
     const settings = getDifficultyLevelSettings(difficultyLevel)
-    const pile = [
-      ...allLevel1.slice(0, settings.objectivesLevel1),
-      ...allLevel2.slice(0, settings.objectivesLevel2),
-      ...allLevel3.slice(0, settings.objectivesLevel3)
-    ]
+    
+    const pile : Objective[] = []
+    if (!hasSpaceAgenciesOrganization) {
+      pile.push(...allLevel1.slice(0, settings.objectivesLevel1))
+    }
+    pile.push(...allLevel2.slice(0, settings.objectivesLevel2),
+      ...allLevel3.slice(0, settings.objectivesLevel3))
+
     const stack = new ObjectiveStack(pile, [], [], [], [])
     stack.draw()
     return stack
