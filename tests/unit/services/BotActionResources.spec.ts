@@ -6,6 +6,7 @@ import LifeTrace from '@/services/enum/LifeTrace'
 import TechType from '@/services/enum/TechType'
 import { BotResources } from '@/store/state'
 import { expect } from 'chai'
+import mockCardDeck from '../helper/mockCardDeck'
 
 describe('services/BotActionResources', () => {
   it('empty', () => {
@@ -207,16 +208,51 @@ describe('services/BotActionResources', () => {
     expect(underTest.merge(resources({data:10}), {})).to.eql(resources({progress:4, publicity:1, data: 4}))
   })
 
-  it('getDrawAdvancedCardCount', () => {
+  it('drawAdvancedCards-0', () => {
     const underTest = new BotActionResources()
 
-    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}), {})).to.eq(0)
+    const cardDeck = mockCardDeck({advanced:['S.1','S.2']})
+    underTest.drawAdvancedCards(resources({progress:1}), {}, cardDeck)
+    // no advanced card drawn
+    expect(cardDeck.pile.length).to.eq(0)
+    expect(cardDeck.advanced.length).to.eq(2)
 
-    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}), {progressSingleStep: 11})).to.eq(0)
+    underTest.drawAdvancedCards(resources({progress:1}), {progressSingleStep: 11}, cardDeck)
+    // no advanced card drawn
+    expect(cardDeck.pile.length).to.eq(0)
+    expect(cardDeck.advanced.length).to.eq(2)
+  })
 
-    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}), {progressSingleStep: 12})).to.eq(1)
+  it('drawAdvancedCards-1', () => {
+    const underTest = new BotActionResources()
 
-    expect(underTest.getDrawAdvancedCardCount(resources({progress:1}), {progressSingleStep: 28})).to.eq(2)
+    const cardDeck = mockCardDeck({advanced:['S.1','S.2']})
+    underTest.drawAdvancedCards(resources({progress:1}), {progressSingleStep: 12}, cardDeck)
+    // one advanced card drawn
+    expect(cardDeck.pile.length).to.eq(1)
+    expect(cardDeck.advanced.length).to.eq(1)
+  })
+
+  it('drawAdvancedCards-2', () => {
+    const underTest = new BotActionResources()
+
+    const cardDeck = mockCardDeck({advanced:['S.1','S.2']})
+    underTest.drawAdvancedCards(resources({progress:1}), {progressSingleStep: 28}, cardDeck)
+    // two advanced card drawn
+    expect(cardDeck.pile.length).to.eq(2)
+    expect(cardDeck.advanced.length).to.eq(0)
+    expect(underTest.resources.vp).to.eq(0)
+  })
+
+  it('drawAdvancedCards-2-not-available-1', () => {
+    const underTest = new BotActionResources()
+
+    const cardDeck = mockCardDeck({advanced:['S.1']})
+    underTest.drawAdvancedCards(resources({progress:1}), {progressSingleStep: 28}, cardDeck)
+    // two advanced card drawn
+    expect(cardDeck.pile.length).to.eq(1)
+    expect(cardDeck.advanced.length).to.eq(0)
+    expect(underTest.resources.vp).to.eq(8)
   })
 })
 

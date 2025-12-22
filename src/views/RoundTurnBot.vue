@@ -146,8 +146,7 @@ export default defineComponent({
       else if (action) {
         botActionResources.applyAction(action, this.state.setup.difficultyLevel, techType, this.navigationState.botActions.currentCard?.alienSpecies)
       }
-      const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
-      cardDeck.addAdvancedCards(drawAdvancedCards)
+      botActionResources.drawAdvancedCards(previousTurnResources, this.botGameBoardResources, cardDeck)
 
       const objectiveStack = this.navigationState.objectiveStack
       objectiveStack.checkCompletedObjectives()

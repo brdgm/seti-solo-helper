@@ -103,8 +103,7 @@ export default defineComponent({
       this.cardDeck.prepareForNextRound()
       const previousTurnResources = this.navigationState.botResources
       const botActionResources = this.navigationState.botActionResources
-      const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
-      this.cardDeck.addAdvancedCards(drawAdvancedCards)
+      botActionResources.drawAdvancedCards(previousTurnResources, this.botGameBoardResources, this.cardDeck)
 
       this.objectiveStack.checkCompletedObjectives()
       this.objectiveStack.discardCompletedObjectives(this.discardObjectives)

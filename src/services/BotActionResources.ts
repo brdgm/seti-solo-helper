@@ -7,6 +7,7 @@ import TechType from './enum/TechType'
 import AlienSpecies from './enum/AlienSpecies'
 import BotGameBoardResources from './BotGameBoardResources'
 import DifficultyLevel from './enum/DifficultyLevel'
+import CardDeck from './CardDeck'
 
 /**
  * Resources the bot gained this turn implicitly by the actions.
@@ -151,16 +152,22 @@ export default class BotActionResources {
     return result
   }
 
-  public getDrawAdvancedCardCount(botResources: BotResources, gameBoardResources : BotGameBoardResources) : number {
+  public drawAdvancedCards(botResources: BotResources, gameBoardResources : BotGameBoardResources, cardDeck: CardDeck) : void {
+    // determine number of advanced card that should be drawn
     const initialProgress = botResources.progress
     const newProgress = this.merge(botResources, gameBoardResources).progress
-    let count = 0
+    let advancedCardCount = 0
     for (let i = initialProgress; i < newProgress; i++) {
       if (i % 12 == 0) {
-        count++
+        advancedCardCount++
       }
     }
-    return count
+
+    // try to add that number from card deck
+    const unableToAdd = cardDeck.addAdvancedCards(advancedCardCount)
+
+    // for each card that could not be added, gain 8 VP
+    this.actionVP.value += unableToAdd * 8
   }
 
 }

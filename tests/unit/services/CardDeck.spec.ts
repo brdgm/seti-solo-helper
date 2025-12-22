@@ -51,7 +51,7 @@ describe('services/CardDeck', () => {
   it('addAdvancedCards', () => {
     const deck = mockCardDeck({pile:['S.1','S.5','S.2'],advanced:['S.6','S.7','S.8']})
 
-    deck.addAdvancedCards(2)
+    expect(deck.addAdvancedCards(2)).to.eq(0)
     expect(deck.pile.length, 'pile').to.eq(5)
     expect(deck.discard.length, 'discard').to.eq(0)
     expect(deck.advanced.length, 'advanced').to.eq(1)

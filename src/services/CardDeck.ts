@@ -59,20 +59,25 @@ export default class CardDeck {
 
   /**
    * Adds further advanced cards (if available) to top of the pile.
+   * @param count Number of advanced cards to add
+   * @returns Number cards that could not be added (not enough advanced cards left)
    */
-  public addAdvancedCards(count: number) {
+  public addAdvancedCards(count: number) : number {
+    let actualCount = 0
     for (let i=0; i<count; i++) {
       const card = this._advanced.value.shift()
       if (card) {
         this._pile.value.unshift(card)
+        actualCount++
       }
     }
+    return count - actualCount
   }
 
   /**
    * Reshuffle deck for next round.
    */
-  public prepareForNextRound() {
+  public prepareForNextRound() : void {
     this._pile.value = shuffle([...this._pile.value, ...this._discard.value])
     this._discard.value = []
   }
