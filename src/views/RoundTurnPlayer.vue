@@ -71,7 +71,7 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, state)
     const { round, turn, turnOrderIndex, player } = navigationState
-    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, player})
+    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, player}, state.setup.expansions ?? [])
 
     return { t, router, navigationState, state, routeCalculator, round, turn, turnOrderIndex, player }
   },
@@ -99,8 +99,7 @@ export default defineComponent({
       const cardDeck = this.navigationState.cardDeck
       const previousTurnResources = this.navigationState.botResources
       const botActionResources = this.navigationState.botActionResources
-      const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
-      cardDeck.addAdvancedCards(drawAdvancedCards)
+      botActionResources.drawAdvancedCards(previousTurnResources, this.botGameBoardResources, cardDeck)
 
       const objectiveStack = this.navigationState.objectiveStack
       objectiveStack.checkCompletedObjectives()

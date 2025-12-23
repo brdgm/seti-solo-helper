@@ -19,9 +19,8 @@ export default function getTurnOrder(state: State, currentRound: number, current
   let invalidTurn = false
   for (let turn=1; turn<=currentTurn+1; turn++) {
     let turnOrderIndex = 0
-    playerOrder.forEach(player => {
-      const hasPassed = turns.find(item => item.turn<turn
-            && item.player==player && item.pass) != undefined
+    for (const player of playerOrder) {
+      const hasPassed = turns.some(item => item.turn<turn && item.player==player && item.pass)
       if (!hasPassed) {
         if (turn > MAX_TURN) {
           // not a valid round as not all have passed in time, return empty list of steps
@@ -30,7 +29,7 @@ export default function getTurnOrder(state: State, currentRound: number, current
         steps.push({round:round.round, turn, turnOrderIndex, player})
         turnOrderIndex++
       }
-    })
+    }
   }
   if (invalidTurn) {
     return []

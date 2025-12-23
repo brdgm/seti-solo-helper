@@ -16,14 +16,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 import NavigationState from '@/util/NavigationState'
 import Card, { CardActionSpeciesSpecialAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import TechType from '@/services/enum/TechType'
 import AppIcon from '@/components/structure/AppIcon.vue'
-import ProbeAction from '@/services/enum/ProbeAction'
 
 export default defineComponent({
   name: 'ActionSpeciesSpecialActionAnomalies',
@@ -37,10 +36,7 @@ export default defineComponent({
   },
   setup() {
     const { t } = useI18n()
-
-    const selectedProbeAction = ref(undefined as ProbeAction|undefined)
-
-    return { t, selectedProbeAction }
+    return { t }
   },
   props: {
     action: {

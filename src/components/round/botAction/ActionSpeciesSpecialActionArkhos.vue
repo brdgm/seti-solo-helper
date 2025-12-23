@@ -1,10 +1,18 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.exertians.title')">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.arkhos.title')">
+    <template #resources>
+      <AppIcon name="vp-3" class="icon resources"/>
+    </template>
     <template #action>
       <div class="action">
         <p class="small">
-          <span class="fw-bold" v-html="t('alienSpecies.exertians')"></span>:
-          <span v-html="t('rules.action.speciesSpecialAction.exertians.instructions')"></span>
+          <span class="fw-bold" v-html="t('alienSpecies.arkhos')"></span>:
+          <span v-html="t('rules.action.speciesSpecialAction.arkhos.instructions')"></span>
+        </p>
+        <p class="small">
+          <span v-html="t('rules.action.speciesSpecialAction.arkhos.gainExplorationReward')"></span>
+          <AppIcon name="arkhos-exploration-reward-minor" class="icon"/>
+          <AppIcon name="arkhos-exploration-reward-minor" class="icon"/>
         </p>
       </div>
     </template>
@@ -18,12 +26,14 @@ import NavigationState from '@/util/NavigationState'
 import Card, { CardActionSpeciesSpecialAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import TechType from '@/services/enum/TechType'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
-  name: 'ActionSpeciesSpecialActionExertians',
+  name: 'ActionSpeciesSpecialActionArkhos',
   inheritAttrs: false,
   components: {
-    ActionBox
+    ActionBox,
+    AppIcon
   },
   emits: {
     ready: (_techType?: TechType) => true,  // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -58,6 +68,14 @@ export default defineComponent({
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  .icon {
+    margin-left: 0.25rem;
+  }
+}
+.icon {
+  height: 2.25rem;
+  &.resources {
+    height: 1.5rem;
+  }
 }
 </style>

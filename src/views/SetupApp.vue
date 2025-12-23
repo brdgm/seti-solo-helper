@@ -3,6 +3,7 @@
 
   <DifficultyLevel/>
   <StartPlayer/>
+  <ExpansionsSetup/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="setupGame()">
     {{t('setupGameBoard.title')}}
@@ -26,13 +27,16 @@ import getInitialBotResources from '@/util/getInitialBotResources'
 import getRandomGoldScoreTileSetup from '@/util/getRandomGoldScoreTileSetup'
 import ObjectiveStack from '@/services/ObjectiveStack'
 import MilestoneTracker from '@/services/MilestoneTracker'
+import ExpansionsSetup from '@/components/setup/ExpansionsSetup.vue'
+import getFirstRound from '@/util/getFirstRound'
 
 export default defineComponent({
   name: 'SetupApp',
   components: {
     FooterButtons,
     DifficultyLevel,
-    StartPlayer
+    StartPlayer,
+    ExpansionsSetup
   },
   setup() {
     const { t } = useI18n()
@@ -48,11 +52,11 @@ export default defineComponent({
       // prepare round 1
       const startPlayer = this.state.setup.startPlayer ?? randomEnum(Player)
       const round : Round = {
-        round: 1,
+        round: getFirstRound(this.state.setup.expansions ?? []),
         startPlayer,
         initialBotPersistence: {
-          cardDeck: CardDeck.new(this.state.setup.difficultyLevel).toPersistence(),
-          objectiveStack: ObjectiveStack.new(this.state.setup.difficultyLevel).toPersistence(),
+          cardDeck: CardDeck.new(this.state.setup.difficultyLevel, this.state.setup.expansions ?? []).toPersistence(),
+          objectiveStack: ObjectiveStack.new(this.state.setup.difficultyLevel, this.state.setup.expansions ?? []).toPersistence(),
           milestoneTracker: MilestoneTracker.new().toPersistence(),
           resources: getInitialBotResources(startPlayer, this.state.setup.difficultyLevel)
         },

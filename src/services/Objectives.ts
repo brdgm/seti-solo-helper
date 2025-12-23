@@ -195,10 +195,40 @@ const cards : Objective[] = [
       { tasks: [{ task: ObjectiveTask.ACTION_TELESCOPE }] }
     ]
   },
+  // --- Long-term ---
+  {
+    id: 901,
+    level: ObjectiveLevel.LONG_TERM,
+    items: [
+      { tasks: [{ task: ObjectiveTask.TECH_TYPE, techType: TechType.PROBE }] },
+      { tasks: [{ task: ObjectiveTask.TECH_TYPE, techType: TechType.TELESCOPE }] },
+      { tasks: [{ task: ObjectiveTask.TECH_TYPE, techType: TechType.COMPUTER }] },
+    ]
+  },
+  {
+    id: 902,
+    level: ObjectiveLevel.LONG_TERM,
+    items: [
+      { tasks: [{ task: ObjectiveTask.INCOME }] },
+      { tasks: [{ task: ObjectiveTask.INCOME }] },
+      { tasks: [{ task: ObjectiveTask.INCOME }] },
+    ]
+  },
+  {
+    id: 903,
+    level: ObjectiveLevel.LONG_TERM,
+    items: [
+      { tasks: [{ task: ObjectiveTask.LIFE_TRACE, lifeTrace: LifeTrace.ANY }] },
+      { tasks: [{ task: ObjectiveTask.LIFE_TRACE, lifeTrace: LifeTrace.ANY }] },
+      { tasks: [{ task: ObjectiveTask.LIFE_TRACE, lifeTrace: LifeTrace.ANY }] },
+    ]
+  },
 ]
 
 const objectivesMap = new Map<number,Objective>()
-cards.forEach(objective => objectivesMap.set(objective.id, objective))
+for (const objective of cards) {
+  objectivesMap.set(objective.id, objective)
+}
 
 export default {
 

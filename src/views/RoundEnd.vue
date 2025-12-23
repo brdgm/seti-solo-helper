@@ -13,6 +13,12 @@
           <li v-if="discardObjectives > 0" v-html="t('roundEnd.objectives.discardObjectives', {count:discardObjectives}, discardObjectives)"></li>
           <li v-if="botObjectivesProgress > 0" v-html="t('roundEnd.objectives.botObjectiveProgress', {count:botObjectivesProgress})"></li>
         </ul>
+        <template v-if="uncompletedLongTermTasks > 0">
+          <li v-html="t('roundEnd.longTermObjectives', {count:uncompletedLongTermTasks}, uncompletedLongTermTasks)"></li>
+          <ul>
+            <li v-html="t('roundEnd.objectives.botObjectiveProgress', {count:uncompletedLongTermTasks})"></li>
+          </ul>
+        </template>
       </template>
     </ul>
   </div>
@@ -40,6 +46,7 @@ import DebugInfo from '@/components/round/DebugInfo.vue'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
 import BotGameBoardResources from '@/services/BotGameBoardResources'
+import ObjectiveLevel from '@/services/enum/ObjectiveLevel'
 
 export default defineComponent({
   name: 'RoundEnd',
@@ -58,7 +65,7 @@ export default defineComponent({
     const navigationState = new NavigationState(route, state)
     const { round, objectiveStack, cardDeck } = navigationState
 
-    const routeCalculator = new RouteCalculator({round})
+    const routeCalculator = new RouteCalculator({round}, state.setup.expansions ?? [])
 
     // check objective completion / bot progress
     const hasObjectives = state.setup.difficultyLevel != DifficultyLevel.LEVEL_1
@@ -66,10 +73,27 @@ export default defineComponent({
     const completedObjectives = objectiveStack.complete.length
     const discardObjectives = Math.min(expectedCompletedObjectives, completedObjectives)
     const botObjectivesProgress = (expectedCompletedObjectives - discardObjectives) * 3
-    const botGameBoardResources = { progressSingleStep: botObjectivesProgress } as BotGameBoardResources
+
+    // long-term objectives
+    let uncompletedLongTermTasks = 0
+    for (let objectiveIndex=0; objectiveIndex<objectiveStack.current.length; objectiveIndex++) {
+      const objective = objectiveStack.current[objectiveIndex]
+      if (objective.level == ObjectiveLevel.LONG_TERM) {
+        let uncompletedTasks = 0
+        for (let itemIndex=0; itemIndex<objective.items.length; itemIndex++) {
+          if (!objectiveStack.currentItemCheck[objectiveIndex][itemIndex]) {
+            uncompletedTasks++
+          }
+        }
+        uncompletedLongTermTasks += uncompletedTasks
+      }
+    }
+
+    const botGameBoardResources = { progressSingleStep: botObjectivesProgress + uncompletedLongTermTasks } as BotGameBoardResources
 
     return { t, router, state, navigationState, round, routeCalculator, cardDeck, objectiveStack,
-      hasObjectives, expectedCompletedObjectives, completedObjectives, discardObjectives, botObjectivesProgress, botGameBoardResources }
+      hasObjectives, expectedCompletedObjectives, completedObjectives, discardObjectives, uncompletedLongTermTasks,
+      botObjectivesProgress, botGameBoardResources }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -84,8 +108,7 @@ export default defineComponent({
       this.cardDeck.prepareForNextRound()
       const previousTurnResources = this.navigationState.botResources
       const botActionResources = this.navigationState.botActionResources
-      const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
-      this.cardDeck.addAdvancedCards(drawAdvancedCards)
+      botActionResources.drawAdvancedCards(previousTurnResources, this.botGameBoardResources, this.cardDeck)
 
       this.objectiveStack.checkCompletedObjectives()
       this.objectiveStack.discardCompletedObjectives(this.discardObjectives)
@@ -103,7 +126,7 @@ export default defineComponent({
         turns: [],
         initialBotPersistence
       })
-      const routeCalculator = new RouteCalculator({round:this.round+1})
+      const routeCalculator = new RouteCalculator({round:this.round+1}, this.state.setup.expansions ?? [])
       this.router.push(routeCalculator.getFirstTurnRouteTo(this.state))
     }
   }

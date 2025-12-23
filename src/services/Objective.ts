@@ -31,7 +31,8 @@ export type ObjectiveItemTaskAction = {
     ObjectiveTask.PROBE_VISIT_ASTEROIDS |
     ObjectiveTask.PROBE_VISIT_COMET |
     ObjectiveTask.MISSION_COMPLETE |
-    ObjectiveTask.CARD_PLAY_3_CREDITS
+    ObjectiveTask.CARD_PLAY_3_CREDITS |
+    ObjectiveTask.INCOME
 }
   
 export type ObjectiveItemTaskCountable = {

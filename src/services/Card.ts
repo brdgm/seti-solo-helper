@@ -2,6 +2,8 @@ import Action from './enum/Action'
 import AlienSpecies from './enum/AlienSpecies'
 import CardType from './enum/CardType'
 import DecisionDirection from './enum/DecisionDirection'
+import Expansion from './enum/Expansion'
+import LifeTrace from './enum/LifeTrace'
 import Planet from './enum/Planet'
 import ProbeAction from './enum/ProbeAction'
 import ScanSector from './enum/ScanSector'
@@ -12,6 +14,7 @@ export default interface Card {
   alienSpecies?: AlienSpecies
   decisionDirection: DecisionDirection
   actions: CardAction[]
+  expansion?: Expansion
 }
 
 export type CardAction =
@@ -22,7 +25,8 @@ export type CardAction =
   CardActionAnalyze |
   CardActionSpeciesDiscovery |
   CardActionSpeciesSpecialAction |
-  CardActionPassAction
+  CardActionPassAction |
+  CardActionLifeTrace
 
 export type CardActionTech = {
   action: Action.TECH
@@ -64,4 +68,10 @@ export type CardActionSpeciesSpecialAction = {
 
 export type CardActionPassAction = {
   action: Action.PASS
+}
+
+export type CardActionLifeTrace = {
+  action: Action.LIFE_TRACE
+  lifeTrace: LifeTrace
+  progressDifficulty: boolean
 }

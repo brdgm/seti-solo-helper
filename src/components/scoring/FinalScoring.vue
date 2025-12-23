@@ -78,6 +78,22 @@
           </td>
           <td></td>
         </tr>
+        <template v-if="isSpeciesGlyphids">
+          <tr>
+            <th scope="row">
+              <span v-html="t('gameEnd.finalScoring.glyphidsVP')"></span>
+            </th>
+            <td>
+              <NumberInput v-model="playerGlyphidsVP"/>
+            </td>
+            <td>
+              <NumberInput v-model="botGlyphidsVP"/>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" class="fst-italic small" v-html="t('gameEnd.finalScoring.glyphidsVPRival')"></td>
+          </tr>
+        </template>
         <template v-if="isSpeciesExertians">
           <tr>
             <th scope="row">
@@ -150,9 +166,12 @@ export default defineComponent({
     const playerGoldTileVP = ref([] as (number|undefined)[])
     const playerExertianVP = ref(undefined as number|undefined)
     const botExertianVP = ref(undefined as number|undefined)
+    const playerGlyphidsVP = ref(undefined as number|undefined)
+    const botGlyphidsVP = ref(undefined as number|undefined)
 
     return { t, state, navigationState, playerExertianDanger, botExertianDanger,
-      playerScoreTrackVP, playerCardsVP, playerGoldTileVP, playerExertianVP, botExertianVP }
+      playerScoreTrackVP, playerCardsVP, playerGoldTileVP,
+      playerExertianVP, botExertianVP, playerGlyphidsVP, botGlyphidsVP }
   },
   data() {
     return {
@@ -180,6 +199,9 @@ export default defineComponent({
     isSpeciesExertians() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.EXERTIANS)
     },
+    isSpeciesGlyphids() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.GLYPHIDS)
+    },
     playerPretotalVP() : number {
       return toNumber(this.playerScoreTrackVP)
           + toNumber(this.playerCardsVP)
@@ -187,24 +209,26 @@ export default defineComponent({
           + toNumber(this.playerGoldTileVP[1])
           + toNumber(this.playerGoldTileVP[2])
           + toNumber(this.playerExertianVP)
+          + toNumber(this.playerGlyphidsVP)
     },
     botPretotalVP() : number {
       return this.botScoreTrackVP
           + this.botObjectivesVP
           + toNumber(this.botExertianVP)
+          + toNumber(this.botGlyphidsVP)
     },
     maxExertianDanger() : number {
       return Math.max(toNumber(this.playerExertianDanger), toNumber(this.botExertianDanger))
     },
     playerExertianMinus() : number {
-      const exertianDanger = toNumber(this.playerExertianDanger);
+      const exertianDanger = toNumber(this.playerExertianDanger)
       if (exertianDanger > 0 && exertianDanger == this.maxExertianDanger) {
         return Math.floor(this.playerPretotalVP * 0.1)
       }
       return 0
     },
     botExertianMinus() : number {
-      const exertianDanger = toNumber(this.botExertianDanger);
+      const exertianDanger = toNumber(this.botExertianDanger)
       if (exertianDanger > 0 && exertianDanger == this.maxExertianDanger) {
         return Math.floor(this.botPretotalVP * 0.1)
       }

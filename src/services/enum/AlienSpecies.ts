@@ -6,6 +6,9 @@ enum AlienSpecies {
   ANOMALIES = 'anomalies',
   OUMUAMUA = 'oumuamua',
   CENTAURIANS = 'centaurians',
-  EXERTIANS = 'exertians'
+  EXERTIANS = 'exertians',
+  ARKHOS = 'arkhos',
+  GLYPHIDS = 'glyphids',
+  AMOEBA = 'amoeba'
 }
 export default AlienSpecies

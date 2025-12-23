@@ -4,11 +4,12 @@
       <p v-html="t('botResources.gainThisTurn')"></p>
       <div class="options">
         <div class="option large">
-          <div>
+          <div :class="{'icons-narrow':hasSpaceAgenciesSpecies}">
             <AppIcon type="resource" name="credit" class="icon"/><span>/</span>
             <AppIcon type="resource" name="energy" class="icon"/><span>/</span>
             <AppIcon type="resource" name="card" class="icon"/><span>/</span>
-            <AppIcon type="resource" name="card-species" class="icon"/>
+            <AppIcon type="resource" name="card-species" class="icon"/><template v-if="hasSpaceAgenciesSpecies"><span>/</span>
+            <AppIcon type="resource" name="signal-token" class="icon"/></template>
           </div>
           <NumberInput v-model="resources.progressSingleStep"/>
         </div>
@@ -45,11 +46,39 @@
   <ModalDialog id="botResourcesLifeTraceModal" :title="t('botResources.lifeTrace.title')">
     <template #body>
       <p v-html="t('botResources.lifeTrace.mark')"></p>
+      <p>
+        <AppIcon type="life-trace" name="any" class="icon float-start"/>
+        <span v-html="t('botResources.lifeTrace.any')"></span>
+      </p>
       <p v-html="t('botResources.lifeTrace.tiebreaker')"></p>
       <template v-if="isSpeciesOumuamua">
-        <p>
+        <p class="alert alert-info small">
           <span class="fw-bold" v-html="t('alienSpecies.oumuamua')"></span>:
           <span v-html="t('botResources.lifeTrace.oumuamua')"></span>
+        </p>
+      </template>
+      <template v-if="isSpeciesCentaurians">
+        <p class="alert alert-info small">
+          <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
+          <span v-html="t('botResources.lifeTrace.centaurians')"></span>
+        </p>
+      </template>
+      <template v-if="isSpeciesArkhos">
+        <p class="alert alert-info small">
+          <span class="fw-bold" v-html="t('alienSpecies.arkhos')"></span>:
+          <span v-html="t('botResources.lifeTrace.arkhos')"></span>
+        </p>
+      </template>
+      <template v-if="isSpeciesGlyphids">
+        <p class="alert alert-info small">
+          <span class="fw-bold" v-html="t('alienSpecies.glyphids')"></span>:
+          <span v-html="t('botResources.lifeTrace.glyphids')"></span>
+        </p>
+      </template>
+      <template v-if="isSpeciesAmoeba">
+        <p class="alert alert-info small">
+          <span class="fw-bold" v-html="t('alienSpecies.amoeba')"></span>:
+          <span v-html="t('botResources.lifeTrace.amoeba')"></span>
         </p>
       </template>
     </template>
@@ -72,6 +101,7 @@ import AlienSpecies from '@/services/enum/AlienSpecies'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import BotGameBoardResources from '@/services/BotGameBoardResources'
 import { cloneDeep } from 'lodash'
+import Expansion from '@/services/enum/Expansion'
 
 export default defineComponent({
   name: 'BotResources',
@@ -108,6 +138,21 @@ export default defineComponent({
   computed: {
     isSpeciesOumuamua() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.OUMUAMUA)
+    },
+    isSpeciesCentaurians() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.CENTAURIANS)
+    },
+    isSpeciesArkhos() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.ARKHOS)
+    },
+    isSpeciesGlyphids() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.GLYPHIDS)
+    },
+    isSpeciesAmoeba() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.AMOEBA)
+    },
+    hasSpaceAgenciesSpecies() : boolean {
+      return this.state.setup.expansions?.includes(Expansion.SPACE_AGENCIES_SPECIES) ?? false
     }
   }
 })
@@ -154,6 +199,19 @@ export default defineComponent({
         flex-grow: 1;
       }
     }
+  }
+}
+.modal .icon {
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+.icons-narrow {
+  * {
+    margin-right: -0.15rem;
+    margin-bottom: 0.2rem;
+  }
+  .icon {
+    height: 1.25rem;
   }
 }
 </style>

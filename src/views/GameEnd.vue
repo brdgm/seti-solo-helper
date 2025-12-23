@@ -39,7 +39,7 @@ export default defineComponent({
     const navigationState = new NavigationState(route, state)
     const { round } = navigationState
 
-    const routeCalculator = new RouteCalculator({round})
+    const routeCalculator = new RouteCalculator({round}, state.setup.expansions ?? [])
 
     return { t, router, state, round, navigationState, routeCalculator }
   },

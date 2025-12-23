@@ -62,7 +62,6 @@ import RouteCalculator from '@/services/RouteCalculator'
 import { useStateStore } from '@/store/state'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
-import { Tooltip } from 'bootstrap'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import { CardAction } from '@/services/Card'
 import TechType from '@/services/enum/TechType'
@@ -99,7 +98,7 @@ export default defineComponent({
 
     const navigationState = new NavigationState(route, state)
     const { round, turn, turnOrderIndex, action, player, botPass, botActions } = navigationState
-    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
+    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player}, state.setup.expansions ?? [])
 
     const botGameBoardResources = ref({} as BotGameBoardResources)
     const isLastRound = (round == 5)
@@ -130,7 +129,7 @@ export default defineComponent({
       return this.navigationState.action < this.botActions.actions.length - 1
     },
     showBotResources() : boolean {
-      return [Action.TECH, Action.PROBE, Action.TELESCOPE, Action.ANALYZE, Action.SPECIES_SPECIAL_ACTION].includes(this.currentAction.action)
+      return [Action.TECH, Action.PROBE, Action.TELESCOPE, Action.ANALYZE, Action.SPECIES_SPECIAL_ACTION, Action.LIFE_TRACE].includes(this.currentAction.action)
     }
   },
   methods: {
@@ -142,13 +141,12 @@ export default defineComponent({
       const previousTurnResources = this.navigationState.botResources
       const botActionResources = this.navigationState.botActionResources
       if (this.botPass) {
-        botActionResources.applyAction({action:Action.PASS})
+        botActionResources.applyAction({action:Action.PASS}, this.state.setup.difficultyLevel)
       }
       else if (action) {
-        botActionResources.applyAction(action, techType, this.navigationState.botActions.currentCard?.alienSpecies)
+        botActionResources.applyAction(action, this.state.setup.difficultyLevel, techType, this.navigationState.botActions.currentCard?.alienSpecies)
       }
-      const drawAdvancedCards = botActionResources.getDrawAdvancedCardCount(previousTurnResources, this.botGameBoardResources)
-      cardDeck.addAdvancedCards(drawAdvancedCards)
+      botActionResources.drawAdvancedCards(previousTurnResources, this.botGameBoardResources, cardDeck)
 
       const objectiveStack = this.navigationState.objectiveStack
       objectiveStack.checkCompletedObjectives()
@@ -184,11 +182,8 @@ export default defineComponent({
       this.actionTechType = techType
       this.botGameBoardResources = getInitialBotGameBoardResources(this.currentAction, techType)
       this.botGameBoardResourcesUpdateCount++
-      this.navigationState.botActionResources.applyAction(this.currentAction, techType, this.botActions.currentCard?.alienSpecies)
+      this.navigationState.botActionResources.applyAction(this.currentAction, this.state.setup.difficultyLevel, techType, this.botActions.currentCard?.alienSpecies)
     }
-  },
-  mounted() {
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
   }
 })
 </script>
