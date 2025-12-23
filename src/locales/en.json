@@ -99,6 +99,8 @@
       "scoreTrack": "Score Track",
       "endGameScoringCards": "End-of-game scoring cards",
       "goldScoringTile": "Gold Scoring Tile {index}",
+      "glyphidsVP": "Glyph Token VP",
+      "glyphidsVPRival": "Your rival scores 3 VP per glyph token, regardless of type.",
       "exertianVP": "Exertian Cards VP",
       "exertianMinus": "Exertian Point Loss",
       "totalVP": "Total VP"

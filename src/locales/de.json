@@ -99,6 +99,8 @@
       "scoreTrack": "Wertungsleiste",
       "endGameScoringCards": "Wertungskarten (mit goldenem Feld)",
       "goldScoringTile": "Gold-Wertungsplättchen {index}",
+      "glyphidsVP": "Punkte für Glyphenplättchen",
+      "glyphidsVPRival": "Dein Rivale erhält 3 Punkte pro Glyphenplättchen, egal welcher Art.",
       "exertianVP": "Punkte von Exertianer-Karten",
       "exertianMinus": "Punkteverlust durch Exertianer",
       "totalVP": "Total VP"
