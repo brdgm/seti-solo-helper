@@ -216,6 +216,9 @@
           "gainExplorationReward": "Then they gain:",
           "generalInstructions": "When Arkhos is discovered, the rival gains minor exploration rewards for his contribution and 3 security cards."
         },
+        "glyphids": {
+          "generalInstructions": "The rival gains glyph tokens the same way as a player. If they gain an undeciphered token, they immediately place it on the translation board and gain the reward (prefer upper slots when possible, use decision arrow to break ties)."
+        },
         "amoeba": {
           "title": "Amoeba Special Action",
           "instructions": "If one of the sections on the Amoeba board has 3 organelle tokens, the rival gains all organelle bonuses in that section (and moves the tokens as usual)."

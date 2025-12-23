@@ -216,6 +216,9 @@
           "gainExplorationReward": "Dann erhält er:",
           "generalInstructions": "Sobald Arkhos entdeckt wird, erhält dein Rivale kleine Erkundungsbelohnungen für seinen Beitrag sowie 3 Sicherheitskarten."
         },
+        "glyphids": {
+          "generalInstructions": "Dein Rivale erhält Glyphenplättchen wie üblich. Erhält dein Rivale ein nicht entschlüsseltes Plättchen, platziert er es sofort auf dem Übersetzungstableau und erhält die Belohnung (er bevorzugt obere Felder, nutze Entscheidungspfeile bei Gleichstand)."
+        },
         "amoeba": {
           "title": "Amoeba Spezial-Aktion",
           "instructions": "Wenn ein Bereich des Amöben-Tableaus 3 Organellenplättchen hat, erhält dein Rivale alle Organellen-Belohnungen des Bereichs (und bewegt die Plättchen wie üblich)."

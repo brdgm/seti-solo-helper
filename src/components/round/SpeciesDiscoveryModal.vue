@@ -23,6 +23,10 @@
         <span class="fw-bold" v-html="t('alienSpecies.arkhos')"></span>:
         <span v-html="t('rules.action.speciesSpecialAction.arkhos.generalInstructions')"></span>
       </p>
+      <p class="alert alert-info small" v-if="isSpeciesGlyphids">
+        <span class="fw-bold" v-html="t('alienSpecies.glyphids')"></span>:
+        <span v-html="t('rules.action.speciesSpecialAction.glyphids.generalInstructions')"></span>
+      </p>
     </template>
   </ModalDialog>
 </template>
@@ -71,6 +75,9 @@ export default defineComponent({
     },
     isSpeciesArkhos() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.ARKHOS)
+    },
+    isSpeciesGlyphids() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.GLYPHIDS)
     }
   }
 })
