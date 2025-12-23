@@ -3,7 +3,7 @@
   "home": {
     "title": "SETI Solo Helper",
     "play1": "Spiele den <a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> Solomodus gegen ein rivalisierendes Forschungsinstitut.",
-    "play2": "Diese Applikation ersetzt die Aktionskarten und das Spieltableau des Rivalen und führt dich durch das Spiel und das Solo-Regelwerk. Alle Schwierigkeitsgrade werden unterstützt.",
+    "play2": "Diese Applikation ersetzt die Aktionskarten und das Spieltableau des Rivalen und führt dich durch das Spiel und das Solo-Regelwerk. Alle Schwierigkeitsgrade und die <a href='https://boardgamegeek.com/boardgameexpansion/445048/seti-space-agencies' target='_blank' rel='noopener'>Raumfahrtorganisationen</a>-Erweiterung werden unterstützt.",
     "feedback": "Discussion and Feedback:"
   },
   "setup": {
@@ -18,6 +18,11 @@
       "random": "Zufällig",
       "player": "Spieler",
       "bot": "Rivale"
+    },
+    "expansions": {
+      "title": "Erweiterungen",
+      "space-agencies-species": "Raumfahrtorganisationen: Neue Spezies",
+      "space-agencies-organizations": "Raumfahrtorganisationen: Organisationen"
     }
   },
   "setupGameBoard": {
@@ -34,6 +39,7 @@
   "setupGame": {
     "title": "Spielaufbau",
     "setup2Players": "Bereite die Partie für <b>2 Personen</b> vor.",
+    "setup2PlayersRound2": "Bereite die Partie für <b>2 Personen</b> vor (beginne mit Runde 2).",
     "startPlayer": {
       "player": "<b>Du</b> bist der Startspieler.",
       "bot": "Dein <b>Rivale</b> ist der Startspieler."
@@ -42,10 +48,12 @@
     "rivalPieces": "Dein Rivale erhält <b>alles Material einer Farbe</b>.",
     "componentsNotRequired": "Er benötigt keine Aktionskarten, Spielertableau, Wertungsmarker oder Bekanntheitsmarker.",
     "objectiveStack": "Der Zielstapel wird von der Applikation verwaltet.",
+    "chooseOrganizationQuickstartCards": "Wähle deine <b>Organisation und Schnellstart-Karten</b>.",
+    "rivalNoOrganizationQuickstartCards": "Dein Rivale erhält keine Organisation und keine Schnellstart-Karten.",
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Direkte Effekte der Aktionen des Rivalen werden automatisch von der Applikation verwaltet, trage sie nicht in den Eingabefeldern ein.",
-      "objectives": "<b>Ziele</b>: Sammle am Ende deines Zugs alle abgeschlossenen Ziele auf einem Stapel und ersetze sie durch neue vom Zielstapel. Du hast immer 3 Ziele – bis der Zielstapel leer ist."
+      "objectives": "<b>Ziele</b>: Markiere die Aufgaben in der Applikation, sobald du sie erfüllt hast. Falls ein einzelner Auslöser mehrere Aufgaben (auch auf verschiedenen Zielen) markieren könnte, musst du dich für eine entscheiden."
     }
   },
   "roundTurnPlayer": {
@@ -75,7 +83,8 @@
       "numberCompleted": "Du hast {count} Ziel abgeschlossen. | Du hast {count} Ziele abgeschlossen.",
       "discardObjectives": "Du wirfst {count} abgeschlossenes Ziel ab. | Du wirfst {count} abgeschlossene Ziele ab.",
       "botObjectiveProgress": "Dein Rivale erhält {count} Fortschritt."
-    }
+    },
+    "longTermObjectives": "Du hast {count} unerledigte Aufgabe bei <b>langfristigen Zielen</b>. | Du hast {count} unerledigte Aufgaben bei <b>langfristigen Zielen</b>."
   },
   "gameEnd": {
     "title": "Spielende",
@@ -90,6 +99,8 @@
       "scoreTrack": "Wertungsleiste",
       "endGameScoringCards": "Wertungskarten (mit goldenem Feld)",
       "goldScoringTile": "Gold-Wertungsplättchen {index}",
+      "glyphidsVP": "Punkte für Glyphenplättchen",
+      "glyphidsVPRival": "Dein Rivale erhält 3 Punkte pro Glyphenplättchen, egal welcher Art.",
       "exertianVP": "Punkte von Exertianer-Karten",
       "exertianMinus": "Punkteverlust durch Exertianer",
       "totalVP": "Total VP"
@@ -99,9 +110,14 @@
     "gainThisTurn": "Der <b>Rivale</b> erhält diesen Zug <i>vom Spielplan</i>:",
     "lifeTrace": {
       "title": "Spuren",
-      "mark": "Platziert dein Rivale Spuren, musst du alle Spalten dieser Spezies überprüfen. Er bevorzugt das niedrigste freie Feld dieser Spalten. (Er ignoriert Überflussfelder, solange er eine andere Wahl hat.)",
+      "mark": "Platziert dein Rivale Spuren, musst du bei allen Spezies diese Spalte überprüfen. Er bevorzugt das niedrigste freie Feld dieser Spalte. (Er ignoriert Überflussfelder, solange er eine andere Wahl hat.)",
+      "any": "Bei diesem Symbol musst du alle verfügbaren Spalten prüfen.",
       "tiebreaker": "Gibt es mehrere gleichniedrige Spalten, wählt dein Rivale dem Entscheidungspfeil folgend das erste freie Feld von links bzw. rechts.",
-      "oumuamua": "Er kann nur Felder besetzen, falls er die entsprechende Anzahl an Exofossilien besitzt. Ansonsten ignoriert er sie."
+      "oumuamua": "Er kann nur Felder besetzen, falls er die entsprechende Anzahl an Exofossilien besitzt. Ansonsten ignoriert er sie.",
+      "centaurians": "Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt (min. 6 Daten zzgl. der Datenkosten). Trage die Datenkosten dann als negativer Wert ein.",
+      "arkhos": "Der Rivale kann seine Sicherheitskarten nur entsperren, wenn die entsprechende Aktion angezeigt wird. Ignoriere Felder des Arkhos-Tableaus, auf die dein Rivale noch nicht zugreifen kann.<br/>Hat der Rivale die Wahl zwischen <b>Feldern desselben Levels</b>, bevorzugt er Arkhos-Felder vor den Feldern anderer Spezies.",
+      "glyphids": "Leere Felder (ohne Plättchen) in der oberen Reihe des Glyphiden-Tableaus ignoriert dein Rivale.",
+      "amoeba": "Platziert der Rivale Marker auf Amöbenfeldern, ignoriert er Felder mit 0 oder 1 Organellenbelohnung."
     },
     "exofossil": {
       "title": "Exofossilien",
@@ -150,7 +166,8 @@
         "landOrbit": "Danach wandelt er die Sonde in einen Lander oder Orbiter um:",
         "landMoon": "Hat der Planet einen <b>Mond</b> mit freiem Feld, landet der Rivale darauf. Sind mehrere Monde verfügbar, wählt er dem Entscheidungspfeil folgend den ersten freien Mond ganz links bzw. ganz rechts.",
         "preferOrbitLand": "Der Rivale bevorzugt das <b>erste</b> Orbiter- oder Landerfeld dieses Planeten. Sind beide Felder frei oder keines der beiden, wählt dein Rivale entsprechend der angezeigten Aktionssymbole.",
-        "pointsResources": "Anschließend erhält dein Rivale die angegebenen Punkte, Ressourcen und Spuren seines Orbiters oder Landers."
+        "pointsResources": "Anschließend erhält dein Rivale die angegebenen Punkte, Ressourcen und Spuren seines Orbiters oder Landers.",
+        "glyphidsCheckPlanets": "Überprüfe nur Planeten mit"
       },
       "telescope": {
         "title": "Scannen naher Sterne",
@@ -185,13 +202,26 @@
         "centaurians": {
           "title": "Centaurianer Spezial-Aktion",
           "instructions": "Falls der Rivale noch Nachrichten-Meilensteine in seiner Reserve hat und keine auf der Punkteleiste: Platziere 15 Felder vor seinem aktuellen Punktemarker einen Nachrichten-Meilenstein.",
-          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktion nutzen.<br/>Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt (min. 6 Daten zzgl. der Datenkosten). Trage die Datenkosten dann als negativer Wert ein.",
+          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktion nutzen.",
           "addMilestone": "Füge Nachricht-Meilenstein des Gegners hinzu"
         },
         "exertians": {
           "title": "Exertianer Spezial-Aktion",
           "instructions": "Falls die Anzahl der Exertianer-Karten und Spuren des Rivalen auf dem Tableau dieser Spezies max. 4 ist: Er <b>spielt 1 geheime Exertianer-Karte</b>.",
           "generalInstructions": "Dein Rivale erhält und spielt Exertianer-Karten nur durch Aktionen die sich auf diese Spezies beziehen. Er ignoriert Exertianer-Meilensteine.<br/>Bei Entdeckung der Exertianer erhält er keine ihrer Karten und kann auch keine davon ausspielen. Jedoch schreitet er auf der Fortschrittsleiste pro eigenem Marker auf Entdeckungsfeldern voran."
+        },
+        "arkhos": {
+          "title": "Arkhos Spezial-Aktion",
+          "instructions": "Der Rivale entsperrt 1 seiner Sicherheitskarten und legt 1 seiner Marker auf das Überflussfeld der zugehörigen Farbe unter dieser Spezies (ignoriere die Belohnung - von der Anwendung verwaltet).",
+          "gainExplorationReward": "Dann erhält er:",
+          "generalInstructions": "Sobald Arkhos entdeckt wird, erhält dein Rivale kleine Erkundungsbelohnungen für seinen Beitrag sowie 3 Sicherheitskarten."
+        },
+        "glyphids": {
+          "generalInstructions": "Dein Rivale erhält Glyphenplättchen wie üblich. Erhält dein Rivale ein nicht entschlüsseltes Plättchen, platziert er es sofort auf dem Übersetzungstableau und erhält die Belohnung (er bevorzugt obere Felder, nutze Entscheidungspfeile bei Gleichstand)."
+        },
+        "amoeba": {
+          "title": "Amoeba Spezial-Aktion",
+          "instructions": "Wenn ein Bereich des Amöben-Tableaus 3 Organellenplättchen hat, erhält dein Rivale alle Organellen-Belohnungen des Bereichs (und bewegt die Plättchen wie üblich)."
         }
       }
     }
@@ -215,7 +245,10 @@
     "anomalies": "Anomalien",
     "oumuamua": "‘Oumuamua",
     "centaurians": "Centaurianer",
-    "exertians": "Exertianer"
+    "exertians": "Exertianer",
+    "arkhos": "Arkhos",
+    "glyphids": "Glyphide",
+    "amoeba": "Amöbe"
   },
   "difficultyLevel": {
     "1": "Level 1 - keine Ziele",

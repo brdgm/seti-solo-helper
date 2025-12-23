@@ -3,10 +3,11 @@ import ObjectiveLevel from '@/services/enum/ObjectiveLevel'
 import ObjectiveStack from '@/services/ObjectiveStack'
 import { expect } from 'chai'
 import mockObjectiveStack from '../helper/mockObjectiveStack'
+import Expansion from '@/services/enum/Expansion'
 
 describe('services/ObjectiveStack.', () => {
   it('new-1', () => {
-    const stack = ObjectiveStack.new(DifficultyLevel.LEVEL_2)
+    const stack = ObjectiveStack.new(DifficultyLevel.LEVEL_2, [])
 
     expect(stack.pile.length, 'pile').to.eq(7)
     expect(stack.current.length, 'current').to.eq(3)
@@ -23,7 +24,7 @@ describe('services/ObjectiveStack.', () => {
   })
 
   it('new-5', () => {
-    const stack = ObjectiveStack.new(DifficultyLevel.LEVEL_5)
+    const stack = ObjectiveStack.new(DifficultyLevel.LEVEL_5, [])
 
     expect(stack.pile.length, 'pile').to.eq(14)
     expect(stack.current.length, 'current').to.eq(3)
@@ -31,22 +32,27 @@ describe('services/ObjectiveStack.', () => {
         .to.eql([ObjectiveLevel.LEVEL_1,ObjectiveLevel.LEVEL_1,ObjectiveLevel.LEVEL_2])
     expect(stack.complete.length, 'complete').to.eq(0)
     expect(stack.discard.length, 'discard').to.eq(0)
+  })
 
-    const persistence = stack.toPersistence()
-    expect(persistence.pile.length, 'pile').to.eq(14)
-    expect(persistence.current.length, 'current').to.eq(3)
-    expect(persistence.complete.length, 'complete').to.eq(0)
-    expect(persistence.discard.length, 'discard').to.eq(0)
+  it('new-5-space-agencies-organizations', () => {
+    const stack = ObjectiveStack.new(DifficultyLevel.LEVEL_5, [Expansion.SPACE_AGENCIES_ORGANIZATIONS])
+
+    expect(stack.pile.length, 'pile').to.eq(12)
+    expect(stack.current.length, 'current').to.eq(5)
+    expect(stack.current.map(item => item.level), 'current levels')
+        .to.eql([ObjectiveLevel.LONG_TERM,ObjectiveLevel.LONG_TERM,ObjectiveLevel.LEVEL_2,ObjectiveLevel.LEVEL_2,ObjectiveLevel.LEVEL_2])
+    expect(stack.complete.length, 'complete').to.eq(0)
+    expect(stack.discard.length, 'discard').to.eq(0)
   })
 
   it('draw', () => {
-    const stack = mockObjectiveStack({pile:[102,201,202,203,204],current:[101]})
+    const stack = mockObjectiveStack({pile:[102,201,202,203,204],current:[901,902,101]})
 
     stack.draw()
-    expect(stack.current.map(item => item.id)).to.eql([101,102,201])
+    expect(stack.current.map(item => item.id)).to.eql([901,902,101,102,201])
 
     stack.draw()
-    expect(stack.current.map(item => item.id)).to.eql([101,102,201])
+    expect(stack.current.map(item => item.id)).to.eql([901,902,101,102,201])
   })
 
   it('checkCompletedObjectives', () => {

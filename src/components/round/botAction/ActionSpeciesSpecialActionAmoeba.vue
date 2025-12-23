@@ -1,10 +1,10 @@
 <template>
-  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.exertians.title')">
+  <ActionBox :currentCard="currentCard" :instruction-title="t('rules.action.speciesSpecialAction.amoeba.title')">
     <template #action>
       <div class="action">
         <p class="small">
-          <span class="fw-bold" v-html="t('alienSpecies.exertians')"></span>:
-          <span v-html="t('rules.action.speciesSpecialAction.exertians.instructions')"></span>
+          <span class="fw-bold" v-html="t('alienSpecies.amoeba')"></span>:
+          <span v-html="t('rules.action.speciesSpecialAction.amoeba.instructions')"></span>
         </p>
       </div>
     </template>
@@ -20,7 +20,7 @@ import ActionBox from '../ActionBox.vue'
 import TechType from '@/services/enum/TechType'
 
 export default defineComponent({
-  name: 'ActionSpeciesSpecialActionExertians',
+  name: 'ActionSpeciesSpecialActionAmoeba',
   inheritAttrs: false,
   components: {
     ActionBox
@@ -59,5 +59,11 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+.icon {
+  height: 3rem;
+  &.resources {
+    height: 1.5rem;
+  }
 }
 </style>

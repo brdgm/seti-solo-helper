@@ -7,6 +7,8 @@ import AlienSpecies from './enum/AlienSpecies'
 import Planet from './enum/Planet'
 import ProbeAction from './enum/ProbeAction'
 import ScanSector from './enum/ScanSector'
+import Expansion from './enum/Expansion'
+import LifeTrace from './enum/LifeTrace'
 
 /**
  * Solo cards
@@ -53,6 +55,15 @@ const cards : Card[] = [
       { action: Action.PROBE, movementPoints: 3, planets: [Planet.JUPITER, Planet.MARS, Planet.SATURN, Planet.VENUS], probeActions: [ProbeAction.ORBITER, ProbeAction.LANDER] },
       { action: Action.TECH, publicityCost: 0, progress: 1 },
     ]
+  },
+  {
+    id: 'SE2_S.1',
+    cardType: CardType.STARTER,
+    decisionDirection: DecisionDirection.LEFT,
+    actions: [
+      { action: Action.LIFE_TRACE, lifeTrace: LifeTrace.ANY, progressDifficulty: true }
+    ],
+    expansion: Expansion.SPACE_AGENCIES_ORGANIZATIONS
   },
   // --- advances cards ---
   {
@@ -206,6 +217,39 @@ const cards : Card[] = [
       { action: Action.TELESCOPE, scanSector: [ScanSector.EARTH, ScanSector.CARD, ScanSector.CARD] },
     ]
   },
+  {
+    id: 'SE2_S.2',
+    cardType: CardType.ALIEN,
+    alienSpecies: AlienSpecies.GLYPHIDS,
+    decisionDirection: DecisionDirection.LEFT,
+    actions: [
+      { action: Action.PROBE, movementPoints: 4, planets: [Planet.MERCURY,Planet.NEPTUNE,Planet.URANUS,Planet.SATURN,Planet.JUPITER,Planet.MARS,Planet.VENUS], probeActions: [ProbeAction.LANDER,ProbeAction.ORBITER] },
+      { action: Action.TELESCOPE, scanSector: [ScanSector.EARTH, ScanSector.EARTH, ScanSector.CARD] },
+    ],
+    expansion: Expansion.SPACE_AGENCIES_SPECIES
+  },
+  {
+    id: 'SE2_S.3',
+    cardType: CardType.ALIEN,
+    alienSpecies: AlienSpecies.ARKHOS,
+    decisionDirection: DecisionDirection.RIGHT,
+    actions: [
+      { action: Action.SPECIES_SPECIAL_ACTION },
+      { action: Action.LIFE_TRACE, lifeTrace: LifeTrace.ANY, progressDifficulty: false },
+    ],
+    expansion: Expansion.SPACE_AGENCIES_SPECIES
+  },
+  {
+    id: 'SE2_S.4',
+    cardType: CardType.ALIEN,
+    alienSpecies: AlienSpecies.AMOEBA,
+    decisionDirection: DecisionDirection.RIGHT,
+    actions: [
+      { action: Action.SPECIES_SPECIAL_ACTION },
+      { action: Action.TECH, publicityCost: 0, progress: 1 },
+    ],
+    expansion: Expansion.SPACE_AGENCIES_SPECIES
+  },
 ]
 
 const cardsMap = new Map<string,Card>()
@@ -227,10 +271,13 @@ export default {
   /**
    * Get all cards
    * @param cardType Card type
+   * @param expansion Expansions
    * @returns Cards
    */
-  getAll(cardType: CardType) : Card[] {
-    return cards.filter(card => card.cardType === cardType)
+  getAll(cardType: CardType, expansion: Expansion[]) : Card[] {
+    return cards
+        .filter(card => card.cardType === cardType)
+        .filter(card => !card.expansion || expansion.includes(card.expansion))
   },
 
   /**

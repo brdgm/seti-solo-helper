@@ -4,6 +4,11 @@
       <AppIcon type="tech-discard" name="probe" class="icon resources"/>
     </template>
     <template #action>
+      <p class="small glyhpids" v-if="isAlienSpeciesGlyphids">
+        <span class="fw-bold" v-html="t('alienSpecies.glyphids')"></span>:
+        <span v-html="t('rules.action.probe.glyphidsCheckPlanets')"></span>
+        <AppIcon name="glyphid-token" class="icon glyhpidToken"/>
+      </p>
       <div class="action">
         <AppIcon :name="`movement-points-${action.movementPoints}`" class="icon"/>
         <template v-for="(planet,index) in action.planets" :key="planet">
@@ -56,6 +61,7 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import Planet from '@/services/enum/Planet'
 import TechType from '@/services/enum/TechType'
 import ProbeAction from '@/services/enum/ProbeAction'
+import AlienSpecies from '@/services/enum/AlienSpecies'
 
 export default defineComponent({
   name: 'ActionProbe',
@@ -104,6 +110,9 @@ export default defineComponent({
     },
     isLanderMoonSelected() : boolean {
       return this.selectedProbeAction == ProbeAction.LANDER_MOON
+    },
+    isAlienSpeciesGlyphids() : boolean {
+      return this.currentCard.alienSpecies == AlienSpecies.GLYPHIDS
     }
   },
   methods: {
@@ -133,6 +142,10 @@ export default defineComponent({
   &.resources {
     height: 1.5rem;
   }
+  &.glyhpidToken {
+    height: 1.5rem;
+    margin-left: 0.25rem;
+  }
 }
 .planet {
   display: flex;
@@ -142,5 +155,11 @@ export default defineComponent({
     text-transform: uppercase;
     font-size: 11px;
   }
+}
+.glyhpids {
+  background-color: #ada;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
 }
 </style>

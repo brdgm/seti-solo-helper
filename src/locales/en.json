@@ -3,7 +3,7 @@
   "home": {
     "title": "SETI Solo Helper",
     "play1": "Play a <a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> solo game against a rival research institution.",
-    "play2": "This application replaces the rival action cards and player board and guides you through the game and solo ruleset. It supports all difficult levels.",
+    "play2": "This application replaces the rival action cards and player board and guides you through the game and solo ruleset. It supports all difficult levels and the <a href='https://boardgamegeek.com/boardgameexpansion/445048/seti-space-agencies' target='_blank' rel='noopener'>Space Agencies</a> expansion.",
     "feedback": "Discussion and Feedback:"
   },
   "setup": {
@@ -18,6 +18,11 @@
       "random": "Random",
       "player": "Player",
       "bot": "Rival"
+    },
+    "expansions": {
+      "title": "Expansions",
+      "space-agencies-species": "Space Agencies: New Species",
+      "space-agencies-organizations": "Space Agencies: Organizations"
     }
   },
   "setupGameBoard": {
@@ -34,6 +39,7 @@
   "setupGame": {
     "title": "Setup Game",
     "setup2Players": "Set up the game for <b>two players</b>.",
+    "setup2PlayersRound2": "Set up the game for <b>two players</b> (starting with round 2).",
     "startPlayer": {
       "player": "<b>You</b> are the start player.",
       "bot": "Your <b>rival</b> is the start player."
@@ -42,10 +48,12 @@
     "rivalPieces": "Give the rival <b>all pieces of one color</b>.",
     "componentsNotRequired": "He does not need the action cards, player board, score counter or publicity marker.",
     "objectiveStack": "The objective stack is managed by the application.",
+    "chooseOrganizationQuickstartCards": "Choose your <b>organization and quick start cards</b>.",
+    "rivalNoOrganizationQuickstartCards": "The rival does not get an organization or quick start cards.",
     "ruleChanges": {
       "title": "Rule Changes",
       "resources": "<b>Resources:</b> Your rival does not keep track of resources. Instead, whenever an effect <i>on the game board</i> gives your rival resources, enter them in the application at the end of each turn. The application automatically manages the rival's progress. Direct effects from rival actions are managed by the application automatically, do not enter them in the input fields.",
-      "objectives": "<b>Objectives</b>: At the end of your turn, move all completed objectives into a completed-objectives pile near your board and replace them with new ones from the stack. You will always have 3 objectives to work on until the stack runs out."
+      "objectives": "<b>Objectives</b>: Mark the tasks in the application once you have completed them. If a single trigger could mark multiple tasks (even on different objectives), you must choose only one."
     }
   },
   "roundTurnPlayer": {
@@ -75,7 +83,8 @@
       "numberCompleted": "You completed {count} objective. | You completed {count} objectives.",
       "discardObjectives": "You discard {count} completed objective. | You discard {count} completed objectives.",
       "botObjectiveProgress": "Your rival gains {count} progress."
-    }
+    },
+    "longTermObjectives": "You have {count} uncompleted task on <b>long-term objectives</b>. | You have {count} uncompleted tasks on <b>long-term objectives</b>."
   },
   "gameEnd": {
     "title": "End of Game",
@@ -90,6 +99,8 @@
       "scoreTrack": "Score Track",
       "endGameScoringCards": "End-of-game scoring cards",
       "goldScoringTile": "Gold Scoring Tile {index}",
+      "glyphidsVP": "Glyph Token VP",
+      "glyphidsVPRival": "Your rival scores 3 VP per glyph token, regardless of type.",
       "exertianVP": "Exertian Cards VP",
       "exertianMinus": "Exertian Point Loss",
       "totalVP": "Total VP"
@@ -100,8 +111,13 @@
     "lifeTrace": {
       "title": "Life Traces",
       "mark": "Whenever your rival earns a life trace, look at that column for each alien species. Your rival marks the lowest available space in that column. (They ignore the overflow space below the column, unless all other spaces are full.)",
+      "any": "With this symbol, the rival considers all available columns.",
       "tiebreaker": "If the spaces in the selected columns are equally low, choose the leftmost or rightmost, depending on the decision arrow.",
-      "oumuamua": "They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied."
+      "oumuamua": "They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied.",
+      "centaurians": "The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay (min. 6 data plus the data cost). Enter the data cost as negative value.",
+      "arkhos": "The only way the rival breaches their security cards is when the corresponding action is shown. Ignore Arkhos board spaces the rival cannot access yet.<br/>When <b>choosing between spaces on the same level</b>, the rival prefers Arkhos spaces over other species.",
+      "glyphids": "If any of the top spaces on this species board is empty (no token to take), the rival ignores it.",
+      "amoeba": "When selecting spaces to mark, the rival ignores Amoeba spaces with 1 or 0 organelle bonuses."
     },
     "exofossil": {
       "title": "Exofossils",
@@ -150,7 +166,8 @@
         "landOrbit": "Finally, the probe becomes a lander or an orbiter:",
         "landMoon": "If the planet has a <b>moon</b> with an available space, rival will land on it. If multiple moons are available, the rival chooses the leftmost or rightmost, depending on the decision arrow.",
         "preferOrbitLand": "The rival tries to take the <b>first</b> orbiter space or the <b>first</b> lander space on the planet. If both first spaces are available, or if neither is, the rival defers to the displayed action order.",
-        "pointsResources": "Either way, give the rival any points, resources, and life traces earned from the orbiter or lander."
+        "pointsResources": "Either way, give the rival any points, resources, and life traces earned from the orbiter or lander.",
+        "glyphidsCheckPlanets": "Only check planets with"
       },
       "telescope": {
         "title": "Telescope",
@@ -185,13 +202,26 @@
         "centaurians": {
           "title": "Centaurians Special Action",
           "instructions": "If the rival still has a message milestone in his reserve and none on the scoring track, place one message milestone 15 points ahead of their current score.",
-          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action.<br/>The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay (min. 6 data plus the data cost). Enter the data cost as negative value.",
+          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action.",
           "addMilestone": "Add Rival Milestone Token"
         },
         "exertians": {
           "title": "Exertians Special Action",
           "instructions": "Count the number of rival's played exertian cards and rival's alien traces on this species board. If the total is less than 5, the rival secretly <b>plays a exertian card</b>.",
           "generalInstructions": "The rival can only draw and play Exertian cards via actions related to this species. They ignore the Exertian milestones.<br/>When this species is discovered, the rival does not draw or play any cards, but they do advance on the progress track for each marker they placed on the discovery spaces."
+        },
+        "arkhos": {
+          "title": "Arkhos Special Action",
+          "instructions": "The rival breaches one of their security cards at random and marks and overflow space below this species in the matching color (ignoring its reward - managed by the application).",
+          "gainExplorationReward": "Then they gain:",
+          "generalInstructions": "When Arkhos is discovered, the rival gains minor exploration rewards for his contribution and 3 security cards."
+        },
+        "glyphids": {
+          "generalInstructions": "The rival gains glyph tokens the same way as a player. If they gain an undeciphered token, they immediately place it on the translation board and gain the reward (prefer upper slots when possible, use decision arrow to break ties)."
+        },
+        "amoeba": {
+          "title": "Amoeba Special Action",
+          "instructions": "If one of the sections on the Amoeba board has 3 organelle tokens, the rival gains all organelle bonuses in that section (and moves the tokens as usual)."
         }
       }
     }
@@ -215,7 +245,10 @@
     "anomalies": "Anomalies",
     "oumuamua": "‘Oumuamua",
     "centaurians": "Centaurians",
-    "exertians": "Exertians"
+    "exertians": "Exertians",
+    "arkhos": "Arkhos",
+    "glyphids": "Glyphids",
+    "amoeba": "Amoeba"
   },
   "difficultyLevel": {
     "1": "Level 1 - no objectives",

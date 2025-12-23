@@ -1,9 +1,11 @@
 <template>
+  <ObjectivesTopBar :navigationState="navigationState" :readOnly="true"/>
   <h1>{{t('setupGame.title')}}</h1>
 
   <div class="instructions mt-4">
     <ol>
-      <li v-html="t('setupGame.setup2Players')"></li>
+      <li v-if="hasSpaceAgenciesOrganizations" v-html="t('setupGame.setup2PlayersRound2')"></li>
+      <li v-else v-html="t('setupGame.setup2Players')"></li>
       <ul>
         <li v-html="t(`setupGame.startPlayer.${startPlayer}`)"></li>
         <li v-html="t('setupGame.playerScoreTrackSetup', {space:playerScoreTrackSpace})"></li>
@@ -13,6 +15,12 @@
         <li v-html="t('setupGame.componentsNotRequired')"></li>
       </ul>
       <li v-if="hasObjectives" v-html="t('setupGame.objectiveStack')"></li>
+      <template v-if="hasSpaceAgenciesOrganizations">
+        <li v-html="t('setupGame.chooseOrganizationQuickstartCards')"></li>
+        <ul>
+          <li v-html="t('setupGame.rivalNoOrganizationQuickstartCards')"></li>
+        </ul>
+      </template>
     </ol>
   </div>
 
@@ -40,22 +48,30 @@ import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Player from '@/services/enum/Player'
 import RouteCalculator from '@/services/RouteCalculator'
+import NavigationState from '@/util/NavigationState'
+import ObjectivesTopBar from '@/components/round/ObjectivesTopBar.vue'
+import getFirstRound from '@/util/getFirstRound'
+import Expansion from '@/services/enum/Expansion'
 
 export default defineComponent({
   name: 'SetupGame',
   components: {
-    FooterButtons
+    FooterButtons,
+    ObjectivesTopBar
   },
   setup() {
     const { t } = useI18n()
-    const state = useStateStore()
     const router = useRouter()
+    const route = useRoute()
+    const state = useStateStore()
 
-    return { t, state, router }
+    const navigationState = new NavigationState(route, state)
+
+    return { t, state, router, navigationState }
   },
   computed: {
     startPlayer() : Player {
@@ -67,11 +83,14 @@ export default defineComponent({
     },
     playerScoreTrackSpace() : number {
       return this.startPlayer == Player.PLAYER ? 1 : 2
+    },
+    hasSpaceAgenciesOrganizations() : boolean {
+      return this.state.setup.expansions?.includes(Expansion.SPACE_AGENCIES_ORGANIZATIONS) ?? false
     }
   },
   methods: {
     setupBot() : void {
-      const routeCalculator = new RouteCalculator({round:1})
+      const routeCalculator = new RouteCalculator({round:getFirstRound(this.state.setup.expansions ?? [])}, this.state.setup.expansions ?? [])
       this.router.push(routeCalculator.getFirstTurnRouteTo(this.state))
     }
   }

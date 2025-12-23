@@ -6,6 +6,8 @@ import Action from './enum/Action'
 import TechType from './enum/TechType'
 import AlienSpecies from './enum/AlienSpecies'
 import BotGameBoardResources from './BotGameBoardResources'
+import DifficultyLevel from './enum/DifficultyLevel'
+import CardDeck from './CardDeck'
 
 /**
  * Resources the bot gained this turn implicitly by the actions.
@@ -34,7 +36,7 @@ export default class BotActionResources {
     }  
   }
 
-  public applyAction(action: CardAction, techType?: TechType, alienSpecies?: AlienSpecies) : void {
+  public applyAction(action: CardAction, difficultyLevel: DifficultyLevel, techType?: TechType, alienSpecies?: AlienSpecies) : void {
     this.resetAction()
     switch (action.action) {
       case Action.TECH:
@@ -67,6 +69,11 @@ export default class BotActionResources {
           this.actionProgress.value += 1
         }
         break
+      case Action.LIFE_TRACE:
+        if (action.progressDifficulty) {
+          this.actionProgress.value += difficultyLevel
+        }
+        break
       case Action.SPECIES_SPECIAL_ACTION:
         switch (alienSpecies) {
           case AlienSpecies.MASCAMITES:
@@ -76,6 +83,7 @@ export default class BotActionResources {
             }
             break
           case AlienSpecies.ANOMALIES:
+          case AlienSpecies.ARKHOS:
             this.actionVP.value += 3
             break
           case AlienSpecies.CENTAURIANS:
@@ -145,16 +153,22 @@ export default class BotActionResources {
     return result
   }
 
-  public getDrawAdvancedCardCount(botResources: BotResources, gameBoardResources : BotGameBoardResources) : number {
+  public drawAdvancedCards(botResources: BotResources, gameBoardResources : BotGameBoardResources, cardDeck: CardDeck) : void {
+    // determine number of advanced card that should be drawn
     const initialProgress = botResources.progress
     const newProgress = this.merge(botResources, gameBoardResources).progress
-    let count = 0
+    let advancedCardCount = 0
     for (let i = initialProgress; i < newProgress; i++) {
       if (i % 12 == 0) {
-        count++
+        advancedCardCount++
       }
     }
-    return count
+
+    // try to add that number from card deck
+    const unableToAdd = cardDeck.addAdvancedCards(advancedCardCount)
+
+    // for each card that could not be added, gain 8 VP
+    this.actionVP.value += unableToAdd * 8
   }
 
 }

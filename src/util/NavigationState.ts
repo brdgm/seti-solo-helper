@@ -9,6 +9,7 @@ import { MAX_TURN } from './getTurnOrder'
 import ObjectiveStack from '@/services/ObjectiveStack'
 import MilestoneTracker from '@/services/MilestoneTracker'
 import BotActionResources from '@/services/BotActionResources'
+import getFirstRound from './getFirstRound'
 
 export default class NavigationState {
 
@@ -27,7 +28,7 @@ export default class NavigationState {
   readonly botActions : BotActions
 
   constructor(route: RouteLocation, state: State) {    
-    this.round = getIntRouteParam(route, 'round')
+    this.round = getRound(route, state)
     this.turn = getIntRouteParam(route, 'turn')
     this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
     this.action = getIntRouteParam(route, 'action')
@@ -39,7 +40,7 @@ export default class NavigationState {
     const lookupTurn = isRoundEndRoute(route) ? MAX_TURN : this.turn
     const botPersistence = getBotPersistence(state, this.round, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
-    this.objectiveStack = botPersistence.objectiveStack ? ObjectiveStack.fromPersistence(botPersistence.objectiveStack) : ObjectiveStack.new(state.setup.difficultyLevel)
+    this.objectiveStack = botPersistence.objectiveStack ? ObjectiveStack.fromPersistence(botPersistence.objectiveStack) : ObjectiveStack.new(state.setup.difficultyLevel, state.setup.expansions ?? [])
     this.milestoneTracker = botPersistence.milestoneTracker ? MilestoneTracker.fromPersistence(botPersistence.milestoneTracker) : MilestoneTracker.new()
     this.botResources = botPersistence.resources
     this.botActionResources = new BotActionResources()
@@ -56,6 +57,16 @@ export default class NavigationState {
     this.botActions = new BotActions(this.cardDeck, this.milestoneTracker, this.botResources, this.botPass, state)
   }
 
+}
+
+function getRound(route: RouteLocation, state: State) : number {
+  const round = getIntRouteParam(route, 'round')
+  if (round > 0) {
+    return round
+  }
+  else {
+    return getFirstRound(state.setup.expansions ?? [])
+  }
 }
 
 function getBotPersistence(state:State, round:number, turn:number, turnOrderIndex:number) : BotPersistence {
@@ -76,8 +87,8 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
   
   // last resort: create new (should never happen)
   return {
-    cardDeck: CardDeck.new(state.setup.difficultyLevel).toPersistence(),
-    objectiveStack: ObjectiveStack.new(state.setup.difficultyLevel).toPersistence(),
+    cardDeck: CardDeck.new(state.setup.difficultyLevel, state.setup.expansions ?? []).toPersistence(),
+    objectiveStack: ObjectiveStack.new(state.setup.difficultyLevel, state.setup.expansions ?? []).toPersistence(),
     milestoneTracker: MilestoneTracker.new().toPersistence(),
     resources: getInitialBotResources(roundData?.startPlayer ?? Player.PLAYER, state.setup.difficultyLevel),
   }

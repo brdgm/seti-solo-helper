@@ -1,6 +1,8 @@
 import { State } from '@/store/state'
 import getTurnOrder, { MAX_TURN } from '@/util/getTurnOrder'
 import Player from './enum/Player'
+import Expansion from './enum/Expansion'
+import getFirstRound from '@/util/getFirstRound'
 
 /**
  * Calculate routes for next/back respecting "passed" state of players/bots.
@@ -12,13 +14,15 @@ export default class RouteCalculator {
   readonly turnOrderIndex : number
   readonly action : number
   readonly player? : Player
+  readonly firstRound : number
 
-  constructor(params:{round: number, turn?: number, turnOrderIndex?: number, action?: number, player?: Player}) {
+  constructor(params:{round: number, turn?: number, turnOrderIndex?: number, action?: number, player?: Player}, expansions: Expansion[]) {
     this.round = params.round
     this.turn = params.turn ?? MAX_TURN  // when called in EndOfRound/EndOfGame context
     this.turnOrderIndex = params.turnOrderIndex ?? 0
     this.action = params.action ?? 0
     this.player = params.player
+    this.firstRound = getFirstRound(expansions)
   }
 
   /**
@@ -72,7 +76,7 @@ export default class RouteCalculator {
     }
     const previousStep = steps[currentStepIndex-1]
     if (!previousStep) {
-      if (this.round == 1) {
+      if (this.round == this.firstRound) {
         return ''
       }
       return `/round/${this.round-1}/end`

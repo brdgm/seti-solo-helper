@@ -1,6 +1,6 @@
 {
   "name": "@brdgm/seti-solo-helper",
-  "version": "1.2.8",
+  "version": "1.3.0",
   "private": true,
   "description": "SETI Solo Helper",
   "appDeployName": "seti",

@@ -16,6 +16,7 @@ enum ObjectiveTask {
   PLANET_ORBIT_LAND = 'planet-orbit-land',
   TECH_TYPE = 'tech-type',
   MISSION_COMPLETE = 'mission-complete',
-  CARD_PLAY_3_CREDITS = 'card-play-3-credits'
+  CARD_PLAY_3_CREDITS = 'card-play-3-credits',
+  INCOME = 'income'
 }
 export default ObjectiveTask

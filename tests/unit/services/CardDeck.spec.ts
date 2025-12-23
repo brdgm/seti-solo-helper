@@ -5,7 +5,7 @@ import mockCardDeck from '../helper/mockCardDeck'
 
 describe('services/CardDeck', () => {
   it('new-1', () => {
-    const deck = CardDeck.new(DifficultyLevel.LEVEL_1)
+    const deck = CardDeck.new(DifficultyLevel.LEVEL_1, [])
 
     expect(deck.currentCard, 'actionCard').to.undefined
     expect(deck.pile.length, 'pile').to.eq(4)
@@ -19,7 +19,7 @@ describe('services/CardDeck', () => {
   })
 
   it('new-3', () => {
-    const deck = CardDeck.new(DifficultyLevel.LEVEL_3)
+    const deck = CardDeck.new(DifficultyLevel.LEVEL_3, [])
 
     expect(deck.currentCard, 'actionCard').to.undefined
     expect(deck.pile.length, 'pile').to.eq(5)
@@ -51,7 +51,7 @@ describe('services/CardDeck', () => {
   it('addAdvancedCards', () => {
     const deck = mockCardDeck({pile:['S.1','S.5','S.2'],advanced:['S.6','S.7','S.8']})
 
-    deck.addAdvancedCards(2)
+    expect(deck.addAdvancedCards(2)).to.eq(0)
     expect(deck.pile.length, 'pile').to.eq(5)
     expect(deck.discard.length, 'discard').to.eq(0)
     expect(deck.advanced.length, 'advanced').to.eq(1)

@@ -6,6 +6,8 @@ import AlienSpecies from '@/services/enum/AlienSpecies'
 import GoldScoreTile from '@/services/enum/GoldScoreTile'
 import GoldScoreTileSide from '@/services/enum/GoldScoreTileSide'
 import MilestoneType from '@/services/enum/MilestoneType'
+import Expansion from '@/services/enum/Expansion'
+import toggleArrayItem from '@brdgm/brdgm-commons/src/util/array/toggleArrayItem'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -26,6 +28,10 @@ export const useStateStore = defineStore(`${name}.state`, {
       this.rounds = []
       this.setup.goldScoreTileSetup = undefined
       this.alienDiscovery.species = [undefined, undefined]
+    },
+    setupToggleExpansion(expansion: Expansion) : void {
+      this.setup.expansions ??= []
+      toggleArrayItem(this.setup.expansions, expansion)
     },
     storeRound(round : Round) : void {
       this.rounds = this.rounds.filter(item => item.round < round.round)
@@ -52,6 +58,7 @@ export interface State {
 }
 export interface Setup {
   difficultyLevel: DifficultyLevel
+  expansions?: Expansion[]
   startPlayer?: Player
   goldScoreTileSetup?: GoldScoreTileSetup
   debugMode?: boolean
