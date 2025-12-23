@@ -4,11 +4,12 @@
       <p v-html="t('botResources.gainThisTurn')"></p>
       <div class="options">
         <div class="option large">
-          <div>
+          <div :class="{'icons-narrow':hasSpaceAgenciesSpecies}">
             <AppIcon type="resource" name="credit" class="icon"/><span>/</span>
             <AppIcon type="resource" name="energy" class="icon"/><span>/</span>
             <AppIcon type="resource" name="card" class="icon"/><span>/</span>
-            <AppIcon type="resource" name="card-species" class="icon"/>
+            <AppIcon type="resource" name="card-species" class="icon"/><template v-if="hasSpaceAgenciesSpecies"><span>/</span>
+            <AppIcon type="resource" name="signal-token" class="icon"/></template>
           </div>
           <NumberInput v-model="resources.progressSingleStep"/>
         </div>
@@ -100,6 +101,7 @@ import AlienSpecies from '@/services/enum/AlienSpecies'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import BotGameBoardResources from '@/services/BotGameBoardResources'
 import { cloneDeep } from 'lodash'
+import Expansion from '@/services/enum/Expansion'
 
 export default defineComponent({
   name: 'BotResources',
@@ -148,6 +150,9 @@ export default defineComponent({
     },
     isSpeciesAmoeba() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.AMOEBA)
+    },
+    hasSpaceAgenciesSpecies() : boolean {
+      return this.state.setup.expansions?.includes(Expansion.SPACE_AGENCIES_SPECIES) ?? false
     }
   }
 })
@@ -199,5 +204,14 @@ export default defineComponent({
 .modal .icon {
   height: 1.5rem;
   margin-right: 0.5rem;
+}
+.icons-narrow {
+  * {
+    margin-right: -0.15rem;
+    margin-bottom: 0.2rem;
+  }
+  .icon {
+    height: 1.25rem;
+  }
 }
 </style>
