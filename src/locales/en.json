@@ -111,7 +111,11 @@
       "mark": "Whenever your rival earns a life trace, look at that column for each alien species. Your rival marks the lowest available space in that column. (They ignore the overflow space below the column, unless all other spaces are full.)",
       "any": "With this symbol, the rival considers all available columns.",
       "tiebreaker": "If the spaces in the selected columns are equally low, choose the leftmost or rightmost, depending on the decision arrow.",
-      "oumuamua": "They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied."
+      "oumuamua": "They mark the space that requires payment of exofossils only when they have enough of them; otherwise, they consider the space occupied.",
+      "centaurians": "The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay (min. 6 data plus the data cost). Enter the data cost as negative value.",
+      "arkhos": "The only way the rival breaches their security cards is when the corresponding action is shown. Ignore Arkhos board spaces the rival cannot access yet.<br/>When <b>choosing between spaces on the same level</b>, the rival prefers Arkhos spaces over other species.",
+      "glyphids": "If any of the top spaces on this species board is empty (no token to take), the rival ignores it.",
+      "amoeba": "When selecting spaces to mark, the rival ignores Amoeba spaces with 1 or 0 organelle bonuses."
     },
     "exofossil": {
       "title": "Exofossils",
@@ -196,7 +200,7 @@
         "centaurians": {
           "title": "Centaurians Special Action",
           "instructions": "If the rival still has a message milestone in his reserve and none on the scoring track, place one message milestone 15 points ahead of their current score.",
-          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action.<br/>The rival marks spaces that require payment of data only if they have a full computer and enough leftover data to pay (min. 6 data plus the data cost). Enter the data cost as negative value.",
+          "generalInstructions": "When you discover this alien species, the rival places one message milestone token as a player would, and takes all leftover tokens. They get to use them with their alien action.",
           "addMilestone": "Add Rival Milestone Token"
         },
         "exertians": {
@@ -207,7 +211,8 @@
         "arkhos": {
           "title": "Arkhos Special Action",
           "instructions": "The rival breaches one of their security cards at random and marks and overflow space below this species in the matching color (ignoring its reward - managed by the application).",
-          "gainExplorationReward": "Then they gain:"
+          "gainExplorationReward": "Then they gain:",
+          "generalInstructions": "When Arkhos is discovered, the rival gains minor exploration rewards for his contribution and 3 security cards."
         },
         "amoeba": {
           "title": "Amoeba Special Action",

@@ -19,6 +19,10 @@
         <span class="fw-bold" v-html="t('alienSpecies.exertians')"></span>:
         <span v-html="t('rules.action.speciesSpecialAction.exertians.generalInstructions')"></span>
       </p>
+      <p class="alert alert-info small" v-if="isSpeciesArkhos">
+        <span class="fw-bold" v-html="t('alienSpecies.arkhos')"></span>:
+        <span v-html="t('rules.action.speciesSpecialAction.arkhos.generalInstructions')"></span>
+      </p>
     </template>
   </ModalDialog>
 </template>
@@ -64,6 +68,9 @@ export default defineComponent({
     },
     isSpeciesExertians() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.EXERTIANS)
+    },
+    isSpeciesArkhos() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.ARKHOS)
     }
   }
 })

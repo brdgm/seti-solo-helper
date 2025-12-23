@@ -111,7 +111,11 @@
       "mark": "Platziert dein Rivale Spuren, musst du bei allen Spezies diese Spalte überprüfen. Er bevorzugt das niedrigste freie Feld dieser Spalte. (Er ignoriert Überflussfelder, solange er eine andere Wahl hat.)",
       "any": "Bei diesem Symbol musst du alle verfügbaren Spalten prüfen.",
       "tiebreaker": "Gibt es mehrere gleichniedrige Spalten, wählt dein Rivale dem Entscheidungspfeil folgend das erste freie Feld von links bzw. rechts.",
-      "oumuamua": "Er kann nur Felder besetzen, falls er die entsprechende Anzahl an Exofossilien besitzt. Ansonsten ignoriert er sie."
+      "oumuamua": "Er kann nur Felder besetzen, falls er die entsprechende Anzahl an Exofossilien besitzt. Ansonsten ignoriert er sie.",
+      "centaurians": "Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt (min. 6 Daten zzgl. der Datenkosten). Trage die Datenkosten dann als negativer Wert ein.",
+      "arkhos": "Der Rivale kann seine Sicherheitskarten nur entsperren, wenn die entsprechende Aktion angezeigt wird. Ignoriere Felder des Arkhos-Tableaus, auf die dein Rivale noch nicht zugreifen kann.<br/>Hat der Rivale die Wahl zwischen <b>Feldern desselben Levels</b>, bevorzugt er Arkhos-Felder vor den Feldern anderer Spezies.",
+      "glyphids": "Leere Felder (ohne Plättchen) in der oberen Reihe des Glyphiden-Tableaus ignoriert dein Rivale.",
+      "amoeba": "Platziert der Rivale Marker auf Amöbenfeldern, ignoriert er Felder mit 0 oder 1 Organellenbelohnung."
     },
     "exofossil": {
       "title": "Exofossilien",
@@ -196,7 +200,7 @@
         "centaurians": {
           "title": "Centaurianer Spezial-Aktion",
           "instructions": "Falls der Rivale noch Nachrichten-Meilensteine in seiner Reserve hat und keine auf der Punkteleiste: Platziere 15 Felder vor seinem aktuellen Punktemarker einen Nachrichten-Meilenstein.",
-          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktion nutzen.<br/>Dein Rivale besetzt Felder mit Datenkosten nur dann, falls sein Computer bereits voll ist und er genügend Daten besitzt (min. 6 Daten zzgl. der Datenkosten). Trage die Datenkosten dann als negativer Wert ein.",
+          "generalInstructions": "Sobald die Centraurianer entdeckt werden, legen du und dein Rivale je einen Nachricht-Meilenstein aus. Außerdem erhält er alle übrigen Nachricht-Meilensteine. Diese kann er mit seiner Spezies-Aktion nutzen.",
           "addMilestone": "Füge Nachricht-Meilenstein des Gegners hinzu"
         },
         "exertians": {
@@ -207,7 +211,8 @@
         "arkhos": {
           "title": "Arkhos Spezial-Aktion",
           "instructions": "Der Rivale entsperrt 1 seiner Sicherheitskarten und legt 1 seiner Marker auf das Überflussfeld der zugehörigen Farbe unter dieser Spezies (ignoriere die Belohnung - von der Anwendung verwaltet).",
-          "gainExplorationReward": "Dann erhält er:"
+          "gainExplorationReward": "Dann erhält er:",
+          "generalInstructions": "Sobald Arkhos entdeckt wird, erhält dein Rivale kleine Erkundungsbelohnungen für seinen Beitrag sowie 3 Sicherheitskarten."
         },
         "amoeba": {
           "title": "Amoeba Spezial-Aktion",

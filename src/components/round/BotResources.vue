@@ -51,9 +51,33 @@
       </p>
       <p v-html="t('botResources.lifeTrace.tiebreaker')"></p>
       <template v-if="isSpeciesOumuamua">
-        <p>
+        <p class="alert alert-info small">
           <span class="fw-bold" v-html="t('alienSpecies.oumuamua')"></span>:
           <span v-html="t('botResources.lifeTrace.oumuamua')"></span>
+        </p>
+      </template>
+      <template v-if="isSpeciesCentaurians">
+        <p class="alert alert-info small">
+          <span class="fw-bold" v-html="t('alienSpecies.centaurians')"></span>:
+          <span v-html="t('botResources.lifeTrace.centaurians')"></span>
+        </p>
+      </template>
+      <template v-if="isSpeciesArkhos">
+        <p class="alert alert-info small">
+          <span class="fw-bold" v-html="t('alienSpecies.arkhos')"></span>:
+          <span v-html="t('botResources.lifeTrace.arkhos')"></span>
+        </p>
+      </template>
+      <template v-if="isSpeciesGlyphids">
+        <p class="alert alert-info small">
+          <span class="fw-bold" v-html="t('alienSpecies.glyphids')"></span>:
+          <span v-html="t('botResources.lifeTrace.glyphids')"></span>
+        </p>
+      </template>
+      <template v-if="isSpeciesAmoeba">
+        <p class="alert alert-info small">
+          <span class="fw-bold" v-html="t('alienSpecies.amoeba')"></span>:
+          <span v-html="t('botResources.lifeTrace.amoeba')"></span>
         </p>
       </template>
     </template>
@@ -112,6 +136,18 @@ export default defineComponent({
   computed: {
     isSpeciesOumuamua() : boolean {
       return this.state.alienDiscovery.species.includes(AlienSpecies.OUMUAMUA)
+    },
+    isSpeciesCentaurians() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.CENTAURIANS)
+    },
+    isSpeciesArkhos() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.ARKHOS)
+    },
+    isSpeciesGlyphids() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.GLYPHIDS)
+    },
+    isSpeciesAmoeba() : boolean {
+      return this.state.alienDiscovery.species.includes(AlienSpecies.AMOEBA)
     }
   }
 })
