@@ -79,7 +79,12 @@ export default defineComponent({
     for (let objectiveIndex=0; objectiveIndex<objectiveStack.current.length; objectiveIndex++) {
       const objective = objectiveStack.current[objectiveIndex]
       if (objective.level == ObjectiveLevel.LONG_TERM) {
-        const uncompletedTasks = objectiveStack.currentItemCheck[objectiveIndex].filter(check => !check).length
+        let uncompletedTasks = 0
+        for (let itemIndex=0; itemIndex<objective.items.length; itemIndex++) {
+          if (!objectiveStack.currentItemCheck[objectiveIndex][itemIndex]) {
+            uncompletedTasks++
+          }
+        }
         uncompletedLongTermTasks += uncompletedTasks
       }
     }
