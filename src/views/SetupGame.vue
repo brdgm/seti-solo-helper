@@ -75,7 +75,7 @@ export default defineComponent({
   },
   computed: {
     startPlayer() : Player {
-      const round1 = this.state.rounds.find(round => round.round == 1)
+      const round1 = this.state.rounds.find(r => r.round == getFirstRound(this.state.setup.expansions ?? []))
       return round1?.startPlayer ?? Player.PLAYER
     },
     hasObjectives() : boolean {
