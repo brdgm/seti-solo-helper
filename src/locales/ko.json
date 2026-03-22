@@ -1,0 +1,286 @@
+{
+  "gameTitle": "세티: 외계의 지성체를 찾아서",
+  "home": {
+    "title": "SETI 솔로 도우미",
+    "play1": "<a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> 솔로 게임을 라이벌 연구 기관과 플레이하세요.",
+    "play2": "이 애플리케이션은 라이벌 행동 카드와 플레이어 보드를 대체하며, 게임과 솔로 규칙을 안내합니다. 모든 난이도와 <a href='https://boardgamegeek.com/boardgameexpansion/445048/seti-space-agencies' target='_blank' rel='noopener'>우주 기관</a> 확장판을 지원합니다.",
+    "feedback": "토론 및 피드백:"
+  },
+  "setup": {
+    "title": "게임 설정",
+    "difficultyLevel": {
+      "title": "난이도",
+      "easy": "쉬움",
+      "hard": "어려움"
+    },
+    "startPlayer": {
+      "title": "시작 플레이어",
+      "random": "무작위",
+      "player": "플레이어",
+      "bot": "라이벌"
+    },
+    "expansions": {
+      "title": "확장판",
+      "space-agencies-species": "우주 기관: 새로운 종족",
+      "space-agencies-organizations": "우주 기관: 조직"
+    }
+  },
+  "setupGameBoard": {
+    "title": "게임 보드 설정",
+    "solarSystem": {
+      "title": "태양계",
+      "randomizerApp": "CGE SETI 랜더마이저 (외부)"
+    },
+    "goldScoringTile": {
+      "title": "골드 점수 타일",
+      "randomize": "무작위 선택"
+    }
+  },
+  "setupGame": {
+    "title": "게임 설정",
+    "setup2Players": "<b>2인용</b> 게임을 설정하세요.",
+    "setup2PlayersRound2": "<b>2인용</b> 게임을 설정하세요 (2라운드부터 시작).",
+    "startPlayer": {
+      "player": "<b>당신</b>이 시작 플레이어입니다.",
+      "bot": "<b>라이벌</b>이 시작 플레이어입니다."
+    },
+    "playerScoreTrackSetup": "점수 카운터를 점수 트랙의 {space} 칸에 놓으세요.",
+    "rivalPieces": "라이벌에게 <b>한 색깔의 모든 구성품</b>을 주세요.",
+    "componentsNotRequired": "라이벌은 행동 카드, 플레이어 보드, 점수 카운터, 홍보 마커가 필요하지 않습니다.",
+    "objectiveStack": "목표 더미는 애플리케이션에서 관리됩니다.",
+    "chooseOrganizationQuickstartCards": "<b>조직과 빠른 시작 카드</b>를 선택하세요.",
+    "rivalNoOrganizationQuickstartCards": "라이벌은 조직이나 빠른 시작 카드를 받지 않습니다.",
+    "ruleChanges": {
+      "title": "규칙 변경",
+      "resources": "<b>자원:</b> 라이벌은 자원을 추적하지 않습니다. 대신, <i>게임 보드</i>의 효과가 라이벌에게 자원을 줄 때마다, 각 턴 끝에 애플리케이션에 입력하세요. 애플리케이션이 라이벌의 진행을 자동으로 관리합니다. 라이벌 행동의 직접 효과는 애플리케이션에서 자동으로 관리되므로, 입력 필드에 입력하지 마세요.",
+      "objectives": "<b>목표</b>: 완료한 과제를 애플리케이션에서 표시하세요. 단일 트리거가 여러 과제를 표시할 수 있는 경우(다른 목표라도), 하나만 선택해야 합니다."
+    }
+  },
+  "roundTurnPlayer": {
+    "execute": "턴을 실행하세요.",
+    "passConfirm": "패스하고 행동 페이즈에서 빠지시겠습니까?"
+  },
+  "roundTurnBot": {
+    "executed": "행동 완료",
+    "notPossible": "불가능",
+    "notPossibleConfirm": {
+      "title": "행동 건너뛰기",
+      "confirm": "이 행동을 건너뛰고 입력된 자원 값을 버리려면 확인하세요."
+    },
+    "pass": "라이벌이 패스합니다.",
+    "discardEndOfRoundCard": "라운드 종료 더미에서 <b>맨 위 카드</b>를 제거하세요.",
+    "pickTech": "기술:",
+    "pleaseSelectTech": "선택한 기술의 종류를 선택하세요.",
+    "pickProbeAction": "행동:",
+    "pleaseSelectProbeAction": "선택한 행동을 선택하세요.",
+    "checkSpeciesDiscovery": "<b>종족 #{alienSpeciesIndex}</b>이 이미 발견되었나요?"
+  },
+  "roundEnd": {
+    "title": "라운드 종료",
+    "gainIncome": "<b>수입</b>을 얻으세요.",
+    "objectives": {
+      "title": "가능하다면 완료된 <b>목표 {count}개</b>를 버려야 합니다. | 가능하다면 완료된 <b>목표 {count}개</b>를 버려야 합니다.",
+      "numberCompleted": "목표 {count}개를 완료했습니다. | 목표 {count}개를 완료했습니다.",
+      "discardObjectives": "완료된 목표 {count}개를 버립니다. | 완료된 목표 {count}개를 버립니다.",
+      "botObjectiveProgress": "라이벌이 진행도 {count}를 얻습니다."
+    },
+    "longTermObjectives": "<b>장기 목표</b>에 미완료 과제가 {count}개 있습니다. | <b>장기 목표</b>에 미완료 과제가 {count}개 있습니다."
+  },
+  "gameEnd": {
+    "title": "게임 종료",
+    "gameStatus": {
+      "title": "게임 상태",
+      "uncompletedObjectives": "미완료 목표 {count}개 | 미완료 목표 {count}개",
+      "exertianDanger": "엑서티안 위험도 합계",
+      "exterianRivalCards": "게임 종료 시, 모든 라이벌 엑서티안 카드는 성공적으로 완료된 것으로 간주되어, 라이벌이 그것들로 만점을 득점합니다."
+    },
+    "finalScoring": {
+      "title": "최종 점수",
+      "scoreTrack": "점수 트랙",
+      "endGameScoringCards": "게임 종료 점수 카드",
+      "goldScoringTile": "골드 점수 타일 {index}",
+      "glyphidsVP": "글리프 토큰 승점",
+      "glyphidsVPRival": "라이벌은 종류에 관계없이 글리프 토큰당 3승점을 얻습니다.",
+      "exertianVP": "엑서티안 카드 승점",
+      "exertianMinus": "엑서티안 점수 손실",
+      "totalVP": "총 승점"
+    }
+  },
+  "botResources": {
+    "gainThisTurn": "<b>라이벌</b>이 이번 턴에 <i>게임 보드</i>에서 얻는 것:",
+    "lifeTrace": {
+      "title": "생명 흔적",
+      "mark": "라이벌이 생명 흔적을 얻을 때마다, 각 외계 종족에 대해 해당 열을 확인하세요. 라이벌은 그 열에서 사용 가능한 가장 낮은 공간을 표시합니다. (다른 모든 공간이 가득 차지 않는 한, 열 아래의 오버플로 공간은 무시합니다.)",
+      "any": "이 기호로, 라이벌은 사용 가능한 모든 열을 고려합니다.",
+      "tiebreaker": "선택된 열의 공간이 똑같이 낮다면, 결정 화살표에 따라 가장 왼쪽 또는 가장 오른쪽을 선택하세요.",
+      "oumuamua": "엑소화석을 충분히 가지고 있을 때만 엑소화석 지불이 필요한 공간을 표시하며, 그렇지 않으면 해당 공간을 점유된 것으로 간주합니다.",
+      "centaurians": "라이벌은 완전한 컴퓨터와 지불할 충분한 남은 데이터(최소 6개 데이터 + 데이터 비용)가 있을 때만 데이터 지불이 필요한 공간을 표시합니다. 데이터 비용을 음수 값으로 입력하세요.",
+      "arkhos": "라이벌이 보안 카드를 뚫는 유일한 방법은 해당 행동이 표시될 때입니다. 라이벌이 아직 접근할 수 없는 아르코스 보드 공간은 무시하세요.<br/><b>같은 레벨의 공간 중에서 선택할 때</b>, 라이벌은 다른 종족보다 아르코스 공간을 선호합니다.",
+      "glyphids": "이 종족 보드의 상단 공간 중 하나라도 비어있다면(가져갈 토큰이 없음), 라이벌은 이를 무시합니다.",
+      "amoeba": "표시할 공간을 선택할 때, 라이벌은 1개 또는 0개의 오르가넬라 보너스가 있는 아메바 공간을 무시합니다."
+    },
+    "exofossil": {
+      "title": "엑소화석",
+      "collect": "라이벌도 엑소화석 토큰을 수집합니다."
+    }
+  },
+  "botReachedMilestones": {
+    "neutral": "라이벌이 점수 {score}에서 <b>중립</b> 이정표에 도달했습니다.",
+    "gold": "라이벌이 점수 {score}에서 <b>골드</b> 이정표에 도달했습니다.<br/>그는 골드 타일에서 첫 번째, 가장 가치 있는 무료 공간을 차지합니다.",
+    "centaurians": "센타우리안: 라이벌이 메시지 이정표에 도달하면, 결정 화살표에 따라 가장 왼쪽 또는 가장 오른쪽 사용 가능한 보상을 선택합니다.",
+    "dismiss": "닫기"
+  },
+  "sideBar": {
+    "round": "{round}라운드",
+    "turn": "{turn}턴",
+    "species": "종족",
+    "discover": "발견",
+    "speciesDiscovery": {
+      "title": "종족 발견",
+      "alreadyDiscovered": "이미 발견된 종족을 선택하세요:",
+      "none": "(없음)"
+    },
+    "rival": {
+      "title": "라이벌"
+    }
+  },
+  "rules": {
+    "action": {
+      "tech": {
+        "title": "기술",
+        "rotateSolarSystems": "라이벌이 기술을 얻을 때마다, 평소처럼 태양계를 진행시키세요.",
+        "chooseTech": "라이벌은 다음 방식으로 연구할 기술을 선택합니다:",
+        "preferredTechs": "라이벌은 표시된 순서대로 기술을 선호합니다.",
+        "twoPointTile": "2점 타일이 있는 기술이 있다면, 해당 순서 내에서 다른 모든 것보다 그것을 선호합니다.",
+        "getBonus": "라이벌이 가져간 기술 타일에 표시된 모든 보너스(기술에 2점 보너스가 있었다면 그것도 포함)를 라이벌에게 주세요.<br/><b>예외</b>: 라이벌은 기술에서 <i>발사</i>나 <i>데이터 2개</i> 보너스를 절대 받지 않습니다.",
+        "discard": "기술을 버리면, 애플리케이션이 자동으로 관리합니다."
+      },
+      "launch": {
+        "title": "발사",
+        "placeProbe": "라이벌 탐사선 피규어를 지구에 놓으세요."
+      },
+      "probe": {
+        "title": "궤도선/착륙선",
+        "moveProbe": "라이벌의 탐사선을 지구에서 행성으로 이동시키세요. 왼쪽부터 오른쪽 순서로 행성을 확인하여, 표시된 이동 횟수로 도달할 수 있는 첫 번째 행성을 찾으세요. 평소처럼, 라이벌은 소행성대를 떠나려면 1번의 추가 이동이 필요하므로, 도달 가능한 것을 결정할 때 이를 고려하세요.",
+        "publicity": "이동 후, 행성과 혜성 방문으로 얻은 홍보도를 라이벌에게 주세요. 제공된 이동으로 해당 행성에 날아가는 방법이 여러 개 있다면, 가장 많은 홍보도를 주는 비행 계획을 선택하세요.",
+        "landOrbit": "마지막으로, 탐사선은 착륙선 또는 궤도선이 됩니다:",
+        "landMoon": "행성에 사용 가능한 공간이 있는 <b>달</b>이 있다면, 라이벌이 그곳에 착륙합니다. 여러 달을 사용할 수 있다면, 라이벌은 결정 화살표에 따라 가장 왼쪽 또는 가장 오른쪽을 선택합니다.",
+        "preferOrbitLand": "라이벌은 행성에서 <b>첫 번째</b> 궤도선 공간이나 <b>첫 번째</b> 착륙선 공간을 차지하려고 합니다. 첫 번째 공간 둘 다 사용 가능하거나 둘 다 사용할 수 없다면, 라이벌은 표시된 행동 순서를 따릅니다.",
+        "pointsResources": "어느 경우든, 궤도선이나 착륙선에서 얻은 점수, 자원, 생명 흔적을 라이벌에게 주세요.",
+        "glyphidsCheckPlanets": "다음이 있는 행성만 확인하세요"
+      },
+      "telescope": {
+        "title": "망원경",
+        "markSignals": "행동에서 표시한 대로 라이벌의 신호를 표시하세요. 카드 행의 신호는 결정 화살표를 사용하여 가장 왼쪽 또는 가장 오른쪽 카드가 선택될지 결정하세요.",
+        "redrawCards": "라이벌이 카드 행의 신호 표시를 완료한 후, 버린 카드를 덱 맨 위의 새 카드로 교체하세요.",
+        "multipleSectors": {
+          "title": "신호를 여러 다른 섹터에 표시할 수 있다면, 라이벌은 다음 논리에 따라 신호에 대한 섹터를 선택합니다:",
+          "sectorWin": "신호를 표시함으로써 라이벌이 <b>섹터를 이길</b> 수 있다면, 라이벌은 그 섹터를 선택합니다.",
+          "scorePoints": "그런 섹터를 이길 수 없다면, 라이벌은 대신 신호 표시가 섹터에서 두 번째 신호를 표시하여 <b>점수를 얻을 수</b> 있는지 확인합니다.",
+          "mostMarkers": "섹터를 이기거나 점수를 얻을 수 없다면, 라이벌은 자신이 <b>가장 많은 마커를 가진</b> 섹터를 선택합니다.",
+          "tieBreaker": "각 단계에서 동점인 경우, 라이벌은 더 큰 섹터(가장 많은 데이터를 포함할 수 있는 섹터)를 선호합니다."
+        }
+      },
+      "analyze": {
+        "title": "분석",
+        "lifeTrace": "라이벌은 표시된 생명 흔적을 표시합니다."
+      },
+      "speciesDiscovery": {
+        "title": "종족 발견",
+        "instructions": "외계 <b>종족 #{alienSpeciesIndex}</b>이 이미 발견되었다면, 오른쪽의 <i>발견</i> 버튼을 사용하여 애플리케이션에서 이를 표시하세요. 그 다음 대체된 종족 행동을 따르세요."
+      },
+      "speciesSpecialAction": {
+        "mascamites": {
+          "title": "마스카미테스 특수 행동",
+          "instructions": "행성에서 무작위 <b>샘플 토큰</b>을 가져와서 이 종족 보드에 앞면으로 놓으세요 (보상은 무시).",
+          "landPlanet": "라이벌이 행성에 착륙합니다."
+        },
+        "anomalies": {
+          "title": "아노말리 특수 행동",
+          "instructions": "라이벌이 다음 아노말리에서 이기지 않고 있다면, 이 종족에 대해 <b>그 색깔의</b> 종족 흔적 1개를 표시합니다."
+        },
+        "centaurians": {
+          "title": "센타우리안 특수 행동",
+          "instructions": "라이벌이 여전히 비축품에 메시지 이정표가 있고 점수 트랙에는 없다면, 현재 점수보다 15점 앞에 메시지 이정표 하나를 놓으세요.",
+          "generalInstructions": "이 외계 종족을 발견할 때, 라이벌은 플레이어처럼 메시지 이정표 토큰 하나를 놓고, 남은 토큰을 모두 가져갑니다. 그들은 외계 행동으로 이것들을 사용할 수 있습니다.",
+          "addMilestone": "라이벌 이정표 토큰 추가"
+        },
+        "exertians": {
+          "title": "엑서티안 특수 행동",
+          "instructions": "라이벌이 플레이한 엑서티안 카드 수와 이 종족 보드의 라이벌 외계 흔적을 세어보세요. 총합이 5 미만이면, 라이벌이 비밀리에 <b>엑서티안 카드를 플레이</b>합니다.",
+          "generalInstructions": "라이벌은 이 종족과 관련된 행동을 통해서만 엑서티안 카드를 뽑고 플레이할 수 있습니다. 엑서티안 이정표는 무시합니다.<br/>이 종족이 발견될 때, 라이벌은 카드를 뽑거나 플레이하지 않지만, 발견 공간에 놓은 각 마커에 대해 진행 트랙에서 진행합니다."
+        },
+        "arkhos": {
+          "title": "아르코스 특수 행동",
+          "instructions": "라이벌이 보안 카드 중 하나를 무작위로 뚫고, 일치하는 색깔의 이 종족 아래 오버플로 공간을 표시합니다 (보상은 무시 - 애플리케이션에서 관리).",
+          "gainExplorationReward": "그 다음 다음을 얻습니다:",
+          "generalInstructions": "아르코스가 발견될 때, 라이벌은 자신의 기여에 대한 소규모 탐사 보상과 보안 카드 3장을 얻습니다."
+        },
+        "glyphids": {
+          "generalInstructions": "라이벌은 플레이어와 같은 방식으로 글리프 토큰을 얻습니다. 해독되지 않은 토큰을 얻으면, 즉시 번역 보드에 놓고 보상을 얻습니다 (가능할 때 상단 슬롯을 선호하며, 동점 시 결정 화살표 사용)."
+        },
+        "amoeba": {
+          "title": "아메바 특수 행동",
+          "instructions": "아메바 보드의 섹션 중 하나에 오르가넬라 토큰이 3개 있다면, 라이벌은 그 섹션의 모든 오르가넬라 보너스를 얻습니다 (그리고 평소처럼 토큰을 이동시킵니다)."
+        }
+      }
+    }
+  },
+  "player": {
+    "player": "플레이어",
+    "bot": "라이벌"
+  },
+  "planet": {
+    "jupiter": "목성",
+    "mars": "화성",
+    "mercury": "수성",
+    "neptune": "해왕성",
+    "saturn": "토성",
+    "uranus": "천왕성",
+    "venus": "금성",
+    "oumuamua": "오우무아무아"
+  },
+  "alienSpecies": {
+    "mascamites": "마스카미테스",
+    "anomalies": "아노말리",
+    "oumuamua": "오우무아무아",
+    "centaurians": "센타우리안",
+    "exertians": "엑서티안",
+    "arkhos": "아르코스",
+    "glyphids": "글리피드",
+    "amoeba": "아메바"
+  },
+  "difficultyLevel": {
+    "1": "레벨 1 - 목표 없음",
+    "2": "레벨 2 - 목표 10개",
+    "3": "레벨 3 - 목표 12개",
+    "4": "레벨 4 - 목표 15개",
+    "5": "레벨 5 - 목표 17개"
+  },
+  "notfound": {
+    "title": "찾을 수 없음"
+  },
+  "action": {
+    "playGame": "게임 플레이",
+    "startGame": "게임 시작",
+    "next": "다음",
+    "nextRound": "다음 라운드",
+    "abortGame": "게임 중단",
+    "abortGameConfirm": "진행 중인 게임을 중단합니다 - 확실한가요?",
+    "endGame": "게임 종료",
+    "endGameConfirm": "이 게임을 종료하고 홈 화면으로 돌아갑니다 - 확실한가요?",
+    "cancel": "취소",
+    "backToHome": "홈으로 돌아가기",
+    "back": "뒤로",
+    "close": "닫기",
+    "ok": "확인",
+    "pass": "패스"
+  },
+  "footer": {
+    "credits": "크레딧"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "앱 새로고침",
+    "notice": "애플리케이션이 업데이트되었습니다 - 최신 버전을 사용하기 위해 새로고침하시겠습니까?"
+  }
+}
