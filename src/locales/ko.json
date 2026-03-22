@@ -79,7 +79,7 @@
     "title": "라운드 종료",
     "gainIncome": "<b>수입</b>을 얻으세요.",
     "objectives": {
-      "title": "가능하다면 완료된 <b>목표 {count}개</b>를 버려야 합니다. | 가능하다면 완료된 <b>목표 {count}개</b>를 버려야 합니다.",
+      "title": "가능하다면 완료된 <b>목표</b> {count}개를 버려야 합니다. | 가능하다면 완료된 <b>목표</b> {count}개를 버려야 합니다.",
       "numberCompleted": "목표 {count}개를 완료했습니다. | 목표 {count}개를 완료했습니다.",
       "discardObjectives": "완료된 목표 {count}개를 버립니다. | 완료된 목표 {count}개를 버립니다.",
       "botObjectiveProgress": "라이벌이 진행도 {count}를 얻습니다."
