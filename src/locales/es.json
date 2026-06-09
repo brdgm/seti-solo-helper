@@ -18,6 +18,11 @@
       "random": "Aleatorio",
       "player": "Jugador",
       "bot": "Rival"
+    },
+    "expansions": {
+      "title": "Expansiones",
+      "space-agencies-species": "Agencias Espaciales: Nuevas Especies",
+      "space-agencies-organizations": "Agencias Espaciales: Organizaciones"
     }
   },
   "setupGameBoard": {
@@ -34,6 +39,7 @@
   "setupGame": {
     "title": "Preparación de la Partida",
     "setup2Players": "Prepara una partida para <b>2 jugadores</b>.",
+    "setup2PlayersRound2": "Prepara una partida para <b>2 jugadores</b> (comenzando con la ronda 2).",
     "startPlayer": {
       "player": "<b>Tú</b> eres el jugador inicial.",
       "bot": "El <b>rival</b> es el jugador inicial."
@@ -42,6 +48,8 @@
     "rivalPieces": "Dale al rival <b>todas las fichas de un color</b>.",
     "componentsNotRequired": "No usa cartas de acción, tablero de jugador, marcador de puntos ni marcador de publicidad.",
     "objectiveStack": "La pila de objetivos la maneja la aplicación.",
+    "chooseOrganizationQuickstartCards": "Elige tu <b>organización y cartas de inicio rápido</b>.",
+    "rivalNoOrganizationQuickstartCards": "El rival no recibe una organización ni cartas de inicio rápido.",
     "ruleChanges": {
       "title": "Cambios en las Reglas",
       "resources": "<b>Recursos:</b> El rival no mantiene la cuenta de los recursos. En vez de ello, cuando un efecto <i>del tablero de juego</i> le proporcione recursos, introdúcelos en la aplicación al final de cada turno. La aplicación gestionará automáticamente el avance del rival. Los efectos directos de acciones del rival también los gestiona la aplicación automáticamente, no los introduzcas en los campos de entrada.",
@@ -75,7 +83,8 @@
       "numberCompleted": "Has completado {count} objetivo. | Has completado {count} objetivos.",
       "discardObjectives": "Has descartado {count} objetivo completado. | Has descartado {count} objetivos completados.",
       "botObjectiveProgress": "Tu rival recibe {count} progreso."
-    }
+    },
+    "longTermObjectives": "Tienes {count} tarea incompleta en <b>objetivos a largo plazo</b>. | Tienes {count} tareas incompletas en <b>objetivos a largo plazo</b>."
   },
   "gameEnd": {
     "title": "Final de la Partida",
@@ -90,6 +99,8 @@
       "scoreTrack": "Marcador de Puntuación",
       "endGameScoringCards": "Cartas de puntuación de final de partida",
       "goldScoringTile": "Loseta Dorada de Puntuación {index}",
+      "glyphidsVP": "PV de Fichas de Glifo",
+      "glyphidsVPRival": "Tu rival obtiene 3 PV por cada ficha de glifo, sin importar el tipo.",
       "exertianVP": "PV de Cartas Exertianas",
       "exertianMinus": "Pérdida de Puntos Exertianos",
       "totalVP": "PV Total"
@@ -100,8 +111,13 @@
     "lifeTrace": {
       "title": "Signos de Vida",
       "mark": "Cuando el rival obtenga un signo de vida, comprueba esa columna para cada especie extraterrestre. Tu rival marca el espacio más abajo disponible de esa columna. (Ignora el espacio de desbordamiento bajo la columna, a menos que todos los demás signos estén llenos)",
+      "any": "Con este símbolo, el rival considera todas las columnas disponibles.",
       "tiebreaker": "Si los espacios de las columnas seleccionadas están a la misma altura, elige el de más a la izquierda o la derecha, en función de la flecha de decisión.",
-      "oumuamua": "Marcará el espacio que requiere el pago de exofósiles solo cuando tenga suficientes; en otro caso, considerará el espacio como ocupado."
+      "oumuamua": "Marcará el espacio que requiere el pago de exofósiles solo cuando tenga suficientes; en otro caso, considerará el espacio como ocupado.",
+      "centaurians": "El rival marca los espacios que requieren el pago de datos solo si tienen una computadora completa y suficientes datos sobrantes para pagar (mín. 6 datos más el coste de los datos). Introduce el coste de los datos como valor negativo.",
+      "arkhos": "La única forma en que el rival fuerce sus cartas de seguridad es cuando se muestra la acción correspondiente. Ignora los espacios del tablero de Arkhos a los que el rival aún no puede acceder.<br/>Al <b>elegir entre espacios en el mismo nivel</b>, el rival prefiere los espacios de Arkhos sobre otras especies.",
+      "glyphids": "Si alguno de los espacios superiores en este tablero de especies está vacío (sin ficha para coger), el rival lo ignora.",
+      "amoeba": "Al seleccionar espacios para marcar, el rival ignora los espacios de Ameba con 1 o 0 bonificaciones de orgánulo."
     },
     "exofossil": {
       "title": "Exofósiles",
@@ -149,8 +165,9 @@
         "publicity": "Después de mover, el rival obtiene la publicidad por visitar planetas y cometas. Si hay varias formas de llegar a ese planeta usando los movimientos previstos, elige el plan de vuelo que le proporcione mayor publicidad.",
         "landOrbit": "Por último, la sonda se convierte en un aterrizador o un orbitador:",
         "landMoon": "Si el planeta tiene una <b>luna</b> con un espacio disponible, el rival intenta primero descartar una de sus tecnologías de sonda para aterrizar en ella. Si hay varias lunas disponibles, el rival elige la de más a la izquierda o la derecha, en función de la flecha de decisión.",
-        "preferOrbitLand": "El rival intentará hacerse con el <b>primer</b> espacio de orbitador o el <b>primer</b> espacio de aterrizador del planeta. Si ambos espacios –o ninguno– están disponibles, el rival se ciñe a la carta de acción.",
-        "pointsResources": "En cualquier caso, el rival recibe los puntos, los recursos y los signos de vida obtenidos con el orbitador o el aterrizador."
+        "preferOrbitLand": "El rival intentará hacerse con el <b>primer</b> espacio de orbitador o el <b>primer</b> espacio de aterrizador del planeta. Si ambos espacios -o ninguno- están disponibles, el rival se ciñe a la carta de acción.",
+        "pointsResources": "En cualquier caso, el rival recibe los puntos, los recursos y los signos de vida obtenidos con el orbitador o el aterrizador.",
+        "glyphidsCheckPlanets": "Solo comprueba los planetas con"
       },
       "telescope": {
         "title": "Telescopio",
@@ -191,7 +208,20 @@
         "exertians": {
           "title": "Acción Especial de los Exertianos",
           "instructions": "Cuenta el número de cartas de Exertiano jugadas por el rival y los signos de vida en el tablero de esta especie. Si el total es menor de 5, el rival <b>jugará una carta de exertiano</b> en secreto.",
-          "generalInstructions": "El rival sólo robará y jugará cartas de Exertiano con la acción relativa a esta especie. Ignora los hitos Exertianos.<br/>Cuando esta especie sea descubierta, el rival no roba ni juega cartas, pero avanzará en su marcador de progreso por cara ficha colocada en los espacios de descubrimiento."
+          "generalInstructions": "El rival sólo robará y jugará cartas de Exertiano con acciones relativas a esta especie. Ignora los hitos Exertianos.<br/>Cuando esta especie sea descubierta, el rival no roba ni juega cartas, pero avanzará en su marcador de progreso por cara ficha colocada en los espacios de descubrimiento."
+        },
+        "arkhos": {
+          "title": "Acción Especial de los Arkhos",
+          "instructions": "El rival fuerza una de sus cartas de seguridad al azar y marca un espacio de desbordamiento debajo de esta especie en el color correspondiente (ignorando su recompensa - gestionado por la aplicación).",
+          "gainExplorationReward": "Luego obtiene:",
+          "generalInstructions": "Cuando se descubre Arkhos, el rival obtiene recompensas menores de exploración por su contribución y 3 cartas de seguridad."
+        },
+        "glyphids": {
+          "generalInstructions": "El rival obtiene fichas de glifos de la misma manera que un jugador. Si obtiene una ficha no descifrada, la coloca inmediatamente en el tablero de traducción y obtiene la recompensa (prefiere los espacios superiores cuando sea posible, usa la flecha de decisión para desempatar)."
+        },
+        "amoeba": {
+          "title": "Acción Especial de las Amebas",
+          "instructions": "Si una de las secciones del tablero de Ameba tiene 3 fichas de orgánulo, el rival obtiene todas las bonificaciones de orgánulo en esa sección (y mueve las fichas como de costumbre)."
         }
       }
     }
@@ -215,7 +245,10 @@
     "anomalies": "Anomalías",
     "oumuamua": "‘Oumuamua",
     "centaurians": "Centaurianos",
-    "exertians": "Exertianos"
+    "exertians": "Exertianos",
+    "arkhos": "Arkhos",
+    "glyphids": "Glífidos",
+    "amoeba": "Ameba"
   },
   "difficultyLevel": {
     "1": "Nivel 1 - sin objetivos",
