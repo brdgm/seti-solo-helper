@@ -3,7 +3,7 @@
   "home": {
     "title": "SETI Solo Helper",
     "play1": "Play a <a href='https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence' target='_blank' rel='noopener'><b>SETI</b></a> solo game against a rival research institution.",
-    "play2": "This application replaces the rival action cards and player board and guides you through the game and solo ruleset. It supports all difficult levels and the <a href='https://boardgamegeek.com/boardgameexpansion/445048/seti-space-agencies' target='_blank' rel='noopener'>Space Agencies</a> expansion.",
+    "play2": "This application replaces the rival action cards and player board and guides you through the game and solo ruleset. It supports all difficulty levels and the <a href='https://boardgamegeek.com/boardgameexpansion/445048/seti-space-agencies' target='_blank' rel='noopener'>Space Agencies</a> expansion.",
     "feedback": "Discussion and Feedback:"
   },
   "setup": {
@@ -207,12 +207,12 @@
         },
         "exertians": {
           "title": "Exertians Special Action",
-          "instructions": "Count the number of rival's played exertian cards and rival's alien traces on this species board. If the total is less than 5, the rival secretly <b>plays a exertian card</b>.",
+          "instructions": "Count the number of rival's played exertian cards and rival's alien traces on this species board. If the total is less than 5, the rival secretly <b>plays an exertian card</b>.",
           "generalInstructions": "The rival can only draw and play Exertian cards via actions related to this species. They ignore the Exertian milestones.<br/>When this species is discovered, the rival does not draw or play any cards, but they do advance on the progress track for each marker they placed on the discovery spaces."
         },
         "arkhos": {
           "title": "Arkhos Special Action",
-          "instructions": "The rival breaches one of their security cards at random and marks and overflow space below this species in the matching color (ignoring its reward - managed by the application).",
+          "instructions": "The rival breaches one of their security cards at random and marks an overflow space below this species in the matching color (ignoring its reward - managed by the application).",
           "gainExplorationReward": "Then they gain:",
           "generalInstructions": "When Arkhos is discovered, the rival gains minor exploration rewards for his contribution and 3 security cards."
         },
