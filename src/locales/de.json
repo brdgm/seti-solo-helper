@@ -51,7 +51,7 @@
     "chooseOrganizationQuickstartCards": "Wähle deine <b>Organisation und Schnellstart-Karten</b>.",
     "rivalNoOrganizationQuickstartCards": "Dein Rivale erhält keine Organisation und keine Schnellstart-Karten.",
     "ruleChanges": {
-      "title": "Rule Changes",
+      "title": "Regeländerungen",
       "resources": "<b>Ressourcen:</b> Dein Rivale sammelt keine Ressourcen. Erfasse stattdessen alle Ressourcen die er durch Effekte <i>auf dem Spielplan</i> erhält am Ende des Zuges in der Applikation. Die Applikation verwaltet den Fortschritt des Rivalen automatisch. Direkte Effekte der Aktionen des Rivalen werden automatisch von der Applikation verwaltet, trage sie nicht in den Eingabefeldern ein.",
       "objectives": "<b>Ziele</b>: Markiere die Aufgaben in der Applikation, sobald du sie erfüllt hast. Falls ein einzelner Auslöser mehrere Aufgaben (auch auf verschiedenen Zielen) markieren könnte, musst du dich für eine entscheiden."
     }
@@ -70,7 +70,7 @@
     "pass": "Der Rivale passt.",
     "discardEndOfRoundCard": "Entferne die <b>oberste Karte</b> des aktuellen Abschlussstapels.",
     "pickTech": "Technologie:",
-    "pleaseSelectTech": "Bitte wähle den Type der gewählten Technologie aus.",
+    "pleaseSelectTech": "Bitte wähle den Typ der gewählten Technologie aus.",
     "pickProbeAction": "Aktion:",
     "pleaseSelectProbeAction": "Bitte aktiviere die gewählte Aktion.",
     "checkSpeciesDiscovery": "Ist <b>Spezies #{alienSpeciesIndex}</b> schon entdeckt?"
@@ -90,7 +90,7 @@
     "title": "Spielende",
     "gameStatus": {
       "title": "Spiel Status",
-      "uncompletedObjectives": "{count} nicht abgeschlossenen Ziel | {count} nicht abgeschlossenen Ziele",
+      "uncompletedObjectives": "{count} nicht abgeschlossenes Ziel | {count} nicht abgeschlossene Ziele",
       "exertianDanger": "Gesamte Exertianer-Gefahr",
       "exterianRivalCards": "Am Ende der Partie gelten alle ausgespielten Exertianer-Karten deines Rivalen als erledigt und er erhält für sie alle Punkte."
     },
@@ -103,7 +103,7 @@
       "glyphidsVPRival": "Dein Rivale erhält 3 Punkte pro Glyphenplättchen, egal welcher Art.",
       "exertianVP": "Punkte von Exertianer-Karten",
       "exertianMinus": "Punkteverlust durch Exertianer",
-      "totalVP": "Total VP"
+      "totalVP": "Gesamtpunkte"
     }
   },
   "botResources": {
@@ -186,14 +186,14 @@
         "lifeTrace": "Der Rivale platziert die angezeigte Spur."
       },
       "speciesDiscovery": {
-        "title": "Entdecken einer Species",
-        "instructions": "Wenn <b>Spezies #{alienSpeciesIndex}</b> bereits entdeckt ist, vermerke das in der Applikation, indem du die Funktion <i>Entdecken</i> auf der rechten Seite benutzt. Folge dann den Spezies-Aktionen die anstelle angezeigt werden."
+        "title": "Entdecken einer Spezies",
+        "instructions": "Wenn <b>Spezies #{alienSpeciesIndex}</b> bereits entdeckt ist, vermerke das in der Applikation, indem du die Funktion <i>Entdecken</i> auf der rechten Seite benutzt. Folge dann den Spezies-Aktionen die stattdessen angezeigt werden."
       },
       "speciesSpecialAction": {
         "mascamites": {
           "title": "Maskamiten Spezial-Aktion",
           "instructions": "Nimm ein beliebiges <b>Probenplättchen</b> vom Planeten und platziere es offen auf dem Tableau dieser Spezies (ignoriere die Belohnung).",
-          "landPlanet": "Der Rivale landed auf dem Planet."
+          "landPlanet": "Der Rivale landet auf dem Planeten."
         },
         "anomalies": {
           "title": "Anomalien Spezial-Aktion",
@@ -233,8 +233,8 @@
   "planet": {
     "jupiter": "Jupiter",
     "mars": "Mars",
-    "mercury": "Mercury",
-    "neptune": "Neptune",
+    "mercury": "Merkur",
+    "neptune": "Neptun",
     "saturn": "Saturn",
     "uranus": "Uranus",
     "venus": "Venus",
